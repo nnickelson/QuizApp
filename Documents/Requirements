@@ -18,7 +18,9 @@ Team members: Ron and Nathan
     Type: functional
     Summary: Images can be removed from the front of each card to make room for textgoogl.
     
-    Name: add_text_to_front_of_card
+    Name: text_alignment_button
+    Type: constraint
+    Summary: Text is centered in buttons borders.    Name: add_text_to_front_of_card
     Type: functional
     Summary: Text can be added to the front of each card if it does not have a picture.
     
@@ -82,4 +84,14 @@ Team members: Ron and Nathan
     Type: constraint
     Summary: Text is left justified for flashcards.
     
+    Name: text_font_family
+    Type: constraint
+    Summary: Font family is in order: Georgia, Times New Roman, and Segoe UI.
     
+    Name: text_font_size
+    Type: constraint
+    Summary: Font size is 14.
+    
+    Name: text_color
+    Type: constraint
+    Summary: The text color is black.
