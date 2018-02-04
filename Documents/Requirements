@@ -20,7 +20,9 @@ Team members: Ron and Nathan
     
     Name: text_alignment_button
     Type: constraint
-    Summary: Text is centered in buttons borders.    Name: add_text_to_front_of_card
+    Summary: Text is centered in buttons borders.    
+    
+    Name: add_text_to_front_of_card
     Type: functional
     Summary: Text can be added to the front of each card if it does not have a picture.
     
