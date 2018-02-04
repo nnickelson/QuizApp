@@ -1,0 +1,42 @@
+ Project Quiz App Requirements
+Team members: Ron and Nathan
+
+    Name: create_deck
+    Type: functional
+    Summary: Create a deck from a group of exisiting cards.
+    
+    Name: deck_title
+    Type: functional
+    Summary: Create a title for a deck.
+
+    Name: add_card
+    Type: functional
+    Summary: Cards can be created and added to a deck.
+    
+    Name: add_text_to_card
+    Type: functional
+    Summary: Text can be added to the front and/or back of each cards.
+    
+    Name: add_picture
+    Type: functional
+    Summary: Images  can be added to the front of each card.
+
+    Name: delete_card
+    Type: functional
+    Summary: Certain cards may be removed from the deck they belong to if necessary.
+
+    Name: platform_os
+    Type: constraint
+    Summary: The target platform operating system is Windows 10.
+
+    Name: platform_resolution
+    Type: constraint
+    Summary: Must work on 1080p monitors.
+    
+    Name: image_type
+    Type: constraint
+    Summary: Must work be JPEG.
+    
+    Name: Character_Encoding
+    Type: constraint
+    Summary: UTF-8 character encoding.
