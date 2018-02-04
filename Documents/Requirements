@@ -13,13 +13,21 @@ Team members: Ron and Nathan
     Type: functional
     Summary: Cards can be created and added to a deck.
     
-    Name: add_text_to_card
+    Name: remove_picture
     Type: functional
-    Summary: Text can be added to the front and/or back of each cards.
+    Summary: Images can be removed from the front of each card to make room for textgoogl.
+    
+    Name: add_text_to_front_of_card
+    Type: functional
+    Summary: Text can be added to the front of each card if it does not have a picture.
+    
+    Name: add_text_to_back_of_card
+    Type: functional
+    Summary: Text can be added to the back of each card.
     
     Name: add_picture
     Type: functional
-    Summary: Images  can be added to the front of each card.
+    Summary: Images can be added to the front of each card.
 
     Name: delete_card
     Type: functional
@@ -44,6 +52,10 @@ Team members: Ron and Nathan
     Name: image_type
     Type: constraint
     Summary: Must work be JPEG.
+    
+    Name: image_location
+    Type: constraint
+    Summary: Images can only be on the front of each card.
     
     Name: upload_limit
     Type: constraint
