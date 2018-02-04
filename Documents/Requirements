@@ -24,6 +24,14 @@ Team members: Ron and Nathan
     Name: delete_card
     Type: functional
     Summary: Certain cards may be removed from the deck they belong to if necessary.
+    
+    Name: upload_Deck
+    Type: functional
+    Summary: Decks in text format can be uploaded to the software.
+    
+    Name: export_Deck
+    Type: functional
+    Summary: Decks can be exported in text file to PC.
 
     Name: platform_os
     Type: constraint
@@ -37,6 +45,14 @@ Team members: Ron and Nathan
     Type: constraint
     Summary: Must work be JPEG.
     
-    Name: Character_Encoding
+    Name: upload_limit
+    Type: constraint
+    Summary: Only one deck of cards in text format can be uploaded at a time.
+     
+    Name: export_limit
+    Type: constraint
+    Summary: Only one deck of cards can be exported at a time in text format.
+    
+    Name: character_encoding
     Type: constraint
     Summary: UTF-8 character encoding.
