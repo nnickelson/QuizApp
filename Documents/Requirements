@@ -1,4 +1,5 @@
- Project Quiz App Requirements
+
+Project Quiz App Requirements
 Team members: Ron and Nathan
 
     Name: create_deck
@@ -68,3 +69,17 @@ Team members: Ron and Nathan
     Name: character_encoding
     Type: constraint
     Summary: UTF-8 character encoding.
+    
+    Name: primary_language
+    Type: constraint
+    Summary: English is the primary language.
+    
+    Name: text_alignment_button
+    Type: constraint
+    Summary: Text is centered in buttons borders.
+    
+    Name: text_alignment_flashcards
+    Type: constraint
+    Summary: Text is left justified for flashcards.
+    
+    
