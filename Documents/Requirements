@@ -2,98 +2,225 @@
 Project Quiz App Requirements
 Team members: Ron and Nathan
 
-    Name: create_deck
-    Type: functional
-    Summary: Create a deck from a group of exisiting cards.
+    1. Preliminary Constraints
     
-    Name: deck_title
-    Type: functional
-    Summary: Create a title for a deck.
+        Name: platform_resolution
+        Type: constraint
+        Summary: Must work on 1080p monitors.
 
-    Name: add_card
-    Type: functional
-    Summary: Cards can be created and added to a deck.
-    
-    Name: remove_picture
-    Type: functional
-    Summary: Images can be removed from the front of each card to make room for textgoogl.
-    
-    Name: text_alignment_button
-    Type: constraint
-    Summary: Text is centered in buttons borders.    
-    
-    Name: add_text_to_front_of_card
-    Type: functional
-    Summary: Text can be added to the front of each card if it does not have a picture.
-    
-    Name: add_text_to_back_of_card
-    Type: functional
-    Summary: Text can be added to the back of each card.
-    
-    Name: add_picture
-    Type: functional
-    Summary: Images can be added to the front of each card.
+        Name: platform_os
+        Type: constraint
+        Summary: The target platform operating system is Windows 10.
+        
+        Name: image_type
+        Type: constraint
+        Summary: Image types are JPEG.
+        
+        Name: character_encoding
+        Type: constraint
+        Summary: UTF-8 character encoding.
 
-    Name: delete_card
-    Type: functional
-    Summary: Certain cards may be removed from the deck they belong to if necessary.
-    
-    Name: upload_Deck
-    Type: functional
-    Summary: Decks in text format can be uploaded to the software.
-    
-    Name: export_Deck
-    Type: functional
-    Summary: Decks can be exported in text file to PC.
+        Name: primary_language
+        Type: constraint
+        Summary: English is the primary language.
+        
+        Name: text_alignment_button
+        Type: constraint
+        Summary: Text is centered in buttons borders.
 
-    Name: platform_os
-    Type: constraint
-    Summary: The target platform operating system is Windows 10.
+        Name: text_alignment_flashcards
+        Type: constraint
+        Summary: Text is left justified for flashcards.
 
-    Name: platform_resolution
-    Type: constraint
-    Summary: Must work on 1080p monitors.
+        Name: text_font_family
+        Type: constraint
+        Summary: Font family is in order: Georgia, Times New Roman, and Segoe UI.
+
+        Name: text_font_size
+        Type: constraint
+        Summary: Font size is 14.
+
+        Name: text_color
+        Type: constraint
+        Summary: The text color is black.
     
-    Name: image_type
-    Type: constraint
-    Summary: Must work be JPEG.
+    2. Main Menu Buttons
     
-    Name: image_location
-    Type: constraint
-    Summary: Images can only be on the front of each card.
+        Name: create_deck_button
+        Type: functional
+        Summary: Create a deck from a group of exisiting cards.
+
+        Name: create_quiz_button
+        Type: functional
+        Summary: Main menu button that takes user to a submenu to construct a quiz and save its format
+
+        Name: take_quiz_button
+        Type: functional
+        Summary: Main menu button that takes user to a submenu to take a preformed quiz
+
+        Name: study_quiz_button
+        Type: functional
+        Summary: Main menu button that takes user to a submenu to look over questions and cards to study
+
+        Name: import_deck_button
+        Type: functional
+        Summary: Main menu button that takes user to a submenu to copy a deck from another location on the PC
+
+        Name: export_deck_button
+        Type: functional
+        Summary: Main menu button that takes user to a submenu to copy a deck to another location on the PC
     
-    Name: upload_limit
-    Type: constraint
-    Summary: Only one deck of cards in text format can be uploaded at a time.
-     
-    Name: export_limit
-    Type: constraint
-    Summary: Only one deck of cards can be exported at a time in text format.
+    3. Create Deck 
     
-    Name: character_encoding
-    Type: constraint
-    Summary: UTF-8 character encoding.
+        Name: deck_title
+        Type: functional
+        Summary: Create a title for a deck.
+
+        Name: add_card
+        Type: functional
+        Summary: Cards can be created and added to a deck.
+        
+        Name: delete_card
+        Type: functional
+        Summary: Certain cards may be removed from the deck they belong to if necessary.
+        
+        Name: create_multiple_choice_question
+        Type: functional
+        Summary: Allows user to create and store a question with up to 3 subject headings, one right answer, 
+                 and up to 4 incorrect answers in a text file 
+        
+        Name: all_of_the_above_button
+        Type: functional
+        Summary: Option in create_multiple_choice_question. Allows the answer 'All of the above' as an answer choice
+                 and ensures it the last multiple choice option, or second to last if none_of_the_above has been selected
+        
+        Name: none_of_the_above_button
+        Type: functional
+        Summary: Option in create_multiple_choice_question. Allows the answer 'None of the above' as an answer choice
+                 and ensures it is the last multiple choice option
+
+        Name: create_truefalse_question
+        Type: functional
+        Summary: Allows user to create and store a question with up to 3 subject headings and true or false options 
+                 in a text file. True is listed first, False is listed second.
+        
+        Name: create_fill_in_blank_question
+        Type: functional
+        Summary: Allows user to create and store a question with a text-based answer in a text file
+
+        Name: text_alignment_button
+        Type: constraint
+        Summary: Text is centered in buttons borders.    
+
+        Name: add_text_to_front_of_card
+        Type: functional
+        Summary: Text can be added to the front of each card if it does not have a picture.
+
+        Name: add_text_to_back_of_card
+        Type: functional
+        Summary: Text can be added to the back of each card.
+
+        Name: add_picture
+        Type: functional
+        Summary: Images can be added to the front of each card.
+        
+        Name: remove_picture
+        Type: functional
+        Summary: Images can be removed from the front of each card to make room for textgoogl.
+        
+        Name: image_location
+        Type: constraint
+        Summary: Images can only be on the front of each card.
+        
+        Name: add_subject_matter
+        Type: functional
+        Summary: Allows user to tag each question or flashcard with up to 3 relevant general subject headings
+        
+        Name: exit_menu
+        Type: functional
+        Summary: Sends user to the parent menu
+        
+    4. Create Quiz
+        
+        Name: save_quiz
+        Type: functional
+        Summary: Allows user to set and save number of questions, time limits, and randomizer options for a quiz to take
+                 in the future
+        
+        Name: exit_menu
+        Type: functional
+        Summary: Sends user to the parent menu
+        
+    5. Take Quiz
+        
+        Name: load_quiz
+        Type: functional
+        Summary: Allows user to load a quiz with default settings or a user-saved quiz
+        
+        Name: favor_missed_questions
+        Type: functional
+        Summary: Sets missed questions during quiz to be more likely to be repeated in the same quiz
+        
+        Name: randomize_answers
+        Type: functional
+        Summary: randomizes the order of the answers for multiple choice questions unless 'all of the above' or
+                 'none of the above' is one of the choices
+        
+        Name: scoring
+        Type: functional
+        Summary: Keeps track of overall percentage scoring, individual questions missed, the number of questions missed per 
+                 identified subject category
+
+        Name: score_save
+        Type: functional
+        Summary: Saves a quiz score in a text file for comparison to future quiz attempts
+        
+        Name: feedback_function
+        Type: functional
+        Summary: Provides information to user on the subject categories of the most missed and well known categories
+                 and individual questions
+        
+        Name: exit_menu
+        Type: functional
+        Summary: Sends user to the parent menu
+        
+    6. Study Quiz
+        
+        Name: study_quiz
+        Type: functional
+        Summary: Allows user to click on any number of buttons displaying the subject categories stored for questions
+                 or flashcards or to review a random list of questions or flashcards stored on file
+        
+        Name: exit_menu
+        Type: functional
+        Summary: Sends user to the parent menu
     
-    Name: primary_language
-    Type: constraint
-    Summary: English is the primary language.
+    7. Import/Export Decks
     
-    Name: text_alignment_button
-    Type: constraint
-    Summary: Text is centered in buttons borders.
+        Name: upload_Deck
+        Type: functional
+        Summary: Decks in text format can be uploaded to the software.
+
+        Name: export_Deck
+        Type: functional
+        Summary: Decks can be exported in text file to PC.  
+
+        Name: upload_limit
+        Type: constraint
+        Summary: Only one deck of cards in text format can be uploaded at a time.
+
+        Name: export_limit
+        Type: constraint
+        Summary: Only one deck of cards can be exported at a time in text format.
+        
+        Name: exit_menu
+        Type: functional
+        Summary: Sends user to the parent menu
+
+        
+
+        
+
+        
+ 
     
-    Name: text_alignment_flashcards
-    Type: constraint
-    Summary: Text is left justified for flashcards.
-    
-    Name: text_font_family
-    Type: constraint
-    Summary: Font family is in order: Georgia, Times New Roman, and Segoe UI.
-    
-    Name: text_font_size
-    Type: constraint
-    Summary: Font size is 14.
-    
-    Name: text_color
-    Type: constraint
-    Summary: The text color is black.
