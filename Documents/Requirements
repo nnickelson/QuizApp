@@ -166,6 +166,20 @@ Team members: Ron and Nathan
         Summary: randomizes the order of the answers for multiple choice questions unless 'all of the above' or
                  'none of the above' is one of the choices
         
+        Name: button_answer_options
+        Type: functional
+        Summary: User clickable buttons will appear on the left side of true-false and multiple-choice questions. Only one
+                 button will be allowed to be active at a time. Clicking another button unclicks the previous one.
+        
+        Name: text_answer_options
+        Type: functional
+        Summary: For fill-in-the-blank questions, a text box will appear below the question to accept text based input
+        
+        Name: submit_answer_button
+        Type: functional
+        Summary: A button that will be available to press once an answer button has been chosen for a multiple choice question
+                 or text has been entered into a fill-in-the-blank text box
+        
         Name: scoring
         Type: functional
         Summary: Keeps track of overall percentage scoring, individual questions missed, the number of questions missed per 
