@@ -147,10 +147,6 @@ Team members: Ron and Nathan
         Summary: Allows user to set and save number of questions, time limits, and randomizer options for a quiz to take
                  in the future
         
-        Name: exit_menu
-        Type: functional
-        Summary: Sends user to the parent menu
-        
     5. Take Quiz
         
         Name: load_quiz
@@ -194,10 +190,6 @@ Team members: Ron and Nathan
         Summary: Provides information to user on the subject categories of the most missed and well known categories
                  and individual questions
         
-        Name: exit_menu
-        Type: functional
-        Summary: Sends user to the parent menu
-        
     6. Study Quiz
         
         Name: study_quiz
@@ -205,9 +197,6 @@ Team members: Ron and Nathan
         Summary: Allows user to click on any number of buttons displaying the subject categories stored for questions
                  or flashcards or to review a random list of questions or flashcards stored on file
         
-        Name: exit_menu
-        Type: functional
-        Summary: Sends user to the parent menu
     
     7. Import/Export Decks
     
@@ -226,10 +215,23 @@ Team members: Ron and Nathan
         Name: export_limit
         Type: constraint
         Summary: Only one deck of cards can be exported at a time in text format.
+
         
-        Name: exit_menu
+    8. Navigation Menu
+    
+        Name: Return_Home
         Type: functional
-        Summary: Sends user to the parent menu
+        Summary: Returns the user back to the homepage.
+
+        Name: Go_To_Create_Deck
+        Type: functional
+        Summary: Takes the user to the create a deck page. 
+
+        Name: My_Deck
+        Type: constraint
+        Summary: Takes the user to a list of their created decks organized from left to right in alphabetical order (a - z).
+
+
 
         
 
