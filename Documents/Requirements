@@ -38,11 +38,19 @@ Team members: Ron and Nathan
 
         Name: text_font_size
         Type: constraint
-        Summary: Font size is 14.
+        Summary: Font size is 12.
 
-        Name: text_color
+        Name: text_color_for_decriptions_or_flashcards
         Type: constraint
         Summary: The text color is black.
+        
+        Name: text_color_for_Titles
+        Type: constraint
+        Summary: The text color is Secondary Blue (hex #8b9dc3).
+        
+        Name: Application_Background_color
+        Type: constraint
+        Summary: The background color is light grey (hex #F7F7F7).
     
     2. Main Menu Buttons
     
@@ -241,7 +249,7 @@ Team members: Ron and Nathan
         
         Name: Menu_Color
         Type: constraint
-        Summary: The navigation menu is secondary blue (#627AAD).
+        Summary: The navigation menu is secondary blue (#3b5998).
         
         Name: App_Name_Location
         Type: constraint
@@ -249,7 +257,15 @@ Team members: Ron and Nathan
         
         Name: App_Name_Color
         Type: constraint
-        Summary: The app name color will be Off white (#F2F2F2).
+        Summary: The app name color will be Off white (#ffffff).
+        
+        Name: Menu_nav_links_color
+        Type: constraint
+        Summary: The color for each menu label will be Off white (#ffffff).
+        
+        Name: App_Name_Font_Size
+        Type: constraint
+        Summary: The font size will be 50% bigger than the menu text size.
 
 
 
