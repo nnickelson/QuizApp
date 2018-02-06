@@ -228,8 +228,28 @@ Team members: Ron and Nathan
         Summary: Takes the user to the create a deck page. 
 
         Name: My_Deck
-        Type: constraint
+        Type: functional
         Summary: Takes the user to a list of their created decks organized from left to right in alphabetical order (a - z).
+        
+        Name: Go_To_Import_Export
+        Type: functional
+        Summary: Takes the user to the import/export deck page.
+        
+        Name: Menu_Postition
+        Type: constraint
+        Summary: The navigation menu is fixed at the top of every page in the application.
+        
+        Name: Menu_Color
+        Type: constraint
+        Summary: The navigation menu is secondary blue (#627AAD).
+        
+        Name: App_Name_Location
+        Type: constraint
+        Summary: The app name is located inside of the navigation to the far left.
+        
+        Name: App_Name_Color
+        Type: constraint
+        Summary: The app name color will be Off white (#F2F2F2).
 
 
 
