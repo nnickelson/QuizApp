@@ -12,6 +12,18 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The target platform operating system is Windows 10.
         
+        Name: integrated_development_environemnt (IDE)
+        Type: constraint
+        Summary: The primary IDE is Visual Studio 2015 Enterprise
+        
+        Name: format_language
+        Type: constraint
+        Summary: The primary of the software is C#
+        
+        Name: format_graphical_user_interface_framework (GUI Framework)
+        Type: constraint
+        Summary: The primary GUI framework is Microsoft's eXtensible Application Markup Language (XAML).
+        
         Name: image_type
         Type: constraint
         Summary: Image types are JPEG.
@@ -56,37 +68,41 @@ Team members: Ron and Nathan
     
         Name: create_deck_button
         Type: functional
-        Summary: Create a deck from a group of exisiting cards.
+        Summary: Main menu button that takes user to the create deck submenu.
 
         Name: create_quiz_button
         Type: functional
-        Summary: Main menu button that takes user to a submenu to construct a quiz and save its format
+        Summary: Main menu button that takes user to a create quiz submenu.
 
         Name: take_quiz_button
         Type: functional
-        Summary: Main menu button that takes user to a submenu to take a preformed quiz
+        Summary: Main menu button that takes user to a take quiz submenu.
 
         Name: study_quiz_button
         Type: functional
-        Summary: Main menu button that takes user to a submenu to look over questions and cards to study
+        Summary: Main menu button that takes user to a study quiz submenu.
 
         Name: import_deck_button
         Type: functional
-        Summary: Main menu button that takes user to a submenu to copy a deck from another location on the PC
+        Summary: Main menu button that takes user to an import deck submenu.
 
         Name: export_deck_button
         Type: functional
-        Summary: Main menu button that takes user to a submenu to copy a deck to another location on the PC
+        Summary: Main menu button that takes user to an export deck submenu.
     
     3. Create Deck 
     
         Name: deck_title
         Type: functional
         Summary: Create a title for a deck.
+        
+        Name: create_card
+        Type: functional
+        Summary: User can create a flashcard
 
         Name: add_card
         Type: functional
-        Summary: Cards can be created and added to a deck.
+        Summary: User can add a flashcard to a deck.
         
         Name: delete_card
         Type: functional
@@ -94,8 +110,12 @@ Team members: Ron and Nathan
         
         Name: create_multiple_choice_question
         Type: functional
-        Summary: Allows user to create and store a question with up to 3 subject headings, one right answer, 
-                 and up to 4 incorrect answers in a text file 
+        Summary: Allows user to create a question with up to 3 subject headings, one right answer, 
+                 and up to 4 incorrect answers in a text file.
+        
+        Name: store_multiple_choice_question
+        Type: functional
+        Summary: Allows user to store a created multiple choice question
         
         Name: all_of_the_above_button
         Type: functional
@@ -107,14 +127,22 @@ Team members: Ron and Nathan
         Summary: Option in create_multiple_choice_question. Allows the answer 'None of the above' as an answer choice
                  and ensures it is the last multiple choice option
 
-        Name: create_truefalse_question
+        Name: create_true_false_question
         Type: functional
-        Summary: Allows user to create and store a question with up to 3 subject headings and true or false options 
+        Summary: Allows user to create a question with up to 3 subject headings and true or false options 
                  in a text file. True is listed first, False is listed second.
+        
+        Name: store_true_false_question
+        Type: functional
+        Summary: Allows user to store a true/false question
         
         Name: create_fill_in_blank_question
         Type: functional
-        Summary: Allows user to create and store a question with a text-based answer in a text file
+        Summary: Allows user to create a question with a text-based answer in a text file
+        
+        Name: store_fill_in_blank_question
+        Type: functional
+        Summary: Allows the user to store a created fill in the blank question
 
         Name: text_alignment_button
         Type: constraint
@@ -150,10 +178,21 @@ Team members: Ron and Nathan
         
     4. Create Quiz
         
-        Name: save_quiz
+        Name: save_quiz_set_number
         Type: functional
-        Summary: Allows user to set and save number of questions, time limits, and randomizer options for a quiz to take
-                 in the future
+        Summary: Allows user to set number of questions for a quiz
+        
+        Name: save_quiz_set_time
+        Type: functional
+        Summary: Allows user to set time limits for a quiz
+        
+        Name: save_quiz_set_randomizer
+        Type: functional
+        Summary: Allows user to set and randomizer options for a quiz
+        
+        Name: save_quiz_parameters
+        Type: functional
+        Summary: Allows user to save the parameters of a quiz to a text file
         
     5. Take Quiz
         
@@ -184,14 +223,41 @@ Team members: Ron and Nathan
         Summary: A button that will be available to press once an answer button has been chosen for a multiple choice question
                  or text has been entered into a fill-in-the-blank text box
         
-        Name: scoring
+        Name: scoring_percentage
         Type: functional
-        Summary: Keeps track of overall percentage scoring, individual questions missed, the number of questions missed per 
-                 identified subject category
-
-        Name: score_save
+        Summary: calculates a 0-100% score for a quiz
+        
+        Name: scoring_percentage_display
         Type: functional
-        Summary: Saves a quiz score in a text file for comparison to future quiz attempts
+        Summary: outputs to display the scoring_percentage for a quiz
+        
+        Name: scoring_percentage_save
+        Type: functional
+        Summary: saves a scoring_percentage for a quiz to text file
+        
+        Name: scoring_missed_questions_overall
+        Type: functional
+        Summary: Keeps track of overall individual questions missed
+        
+        Name: scoring_missed_questions_overall_display
+        Type: functional
+        Summary: outputs to display the scoring_missed_questions_overall
+        
+        Name: scoring_missed_questions_overall_save
+        Type: functional
+        Summary: saves scoring_missed_questions_overall to a text file
+        
+        Name: scoring_missed_questions_subject
+        Type: functional
+        Summary: Keeps track of the number of questions missed per identified subject category
+        
+        Name: scoring_missed_questions_subject_display
+        Type: functional
+        Summary: outputs to display the scoring_missed_questions_subject
+        
+        Name: scoring_missed_questions_subject_save
+        Type: functional
+        Summary: saves scoring_missed_questions_subject to a text file
         
         Name: feedback_function
         Type: functional
@@ -208,17 +274,17 @@ Team members: Ron and Nathan
     
     7. Import/Export Decks
     
-        Name: upload_Deck
+        Name: import_Deck
         Type: functional
-        Summary: Decks in text format can be uploaded to the software.
+        Summary: Decks in text format can be copied to a software file from another PC file location.
 
         Name: export_Deck
         Type: functional
-        Summary: Decks can be exported in text file to PC.  
+        Summary: Decks in text format can be copied from a software file to another PC file location.  
 
-        Name: upload_limit
+        Name: import_limit
         Type: constraint
-        Summary: Only one deck of cards in text format can be uploaded at a time.
+        Summary: Only one deck of cards can be imported at a time in text format.
 
         Name: export_limit
         Type: constraint
