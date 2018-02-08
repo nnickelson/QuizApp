@@ -154,44 +154,37 @@ Team members: Ron and Nathan
         Type: functional
         Summary: Allows user to import their saved quiz settings 
         
-    5. Create an actual quiz
-        
-        Name: create_multiple_choice_question
+    5. Create quiz question types
+    
+        Name: multiple_choice_question
         Type: functional
-        Summary: Allows user to create a question with up to 3 subject headings, one right answer, 
-                 and up to 4 incorrect answers in a text file.
+        Summary: Allows user to create multiple choice questions
         
-        Name: store_multiple_choice_question
-        Type: functional
-        Summary: Allows user to store a created multiple choice question
+        Name: radio_button_limit_mulitple_choice
+        Type: constraint
+        Summary: Allows user to create multiple choice questions
         
-        Name: all_of_the_above_button
+        Name: fill_in_the_blank_Question
         Type: functional
-        Summary: Option in create_multiple_choice_question. Allows the answer 'All of the above' as an answer choice
-                 and ensures it the last multiple choice option, or second to last if none_of_the_above has been selected
+        Summary: Allows user to fill in the blank questions.
         
-        Name: none_of_the_above_button
+        Name: number_of_blanks_per_question
         Type: functional
-        Summary: Option in create_multiple_choice_question. Allows the answer 'None of the above' as an answer choice
-                 and ensures it is the last multiple choice option
+        Summary: Only one fill in the blank per question
+        
+        Name: number_of_blanks_per_question
+        Type: functional
+        Summary: Only one fill in the blank per question
+        
+        Name: true_or_false_question
+        Type: functional
+        Summary: Allows user to create true or false questions
+        
+        Name: number_of_true_or_false_per_question
+        Type: constraint
+        Summary: only one true or false per question
+        
 
-        Name: create_true_false_question
-        Type: functional
-        Summary: Allows user to create a question with up to 3 subject headings and true or false options 
-                 in a text file. True is listed first, False is listed second.
-        
-        Name: store_true_false_question
-        Type: functional
-        Summary: Allows user to store a true/false question
-        
-        Name: create_fill_in_blank_question
-        Type: functional
-        Summary: Allows user to create a question with a text-based answer in a text file
-        
-        Name: store_fill_in_blank_question
-        Type: functional
-        Summary: Allows the user to store a created fill in the blank question  
-        
         
     6. Take Quiz
         
