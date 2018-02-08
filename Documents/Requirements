@@ -12,7 +12,7 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The target platform operating system is Windows 10.
         
-        Name: integrated_development_environemnt (IDE)
+        Name: integrated_development_environemnt 
         Type: constraint
         Summary: The primary IDE is Visual Studio 2015 Enterprise
         
@@ -20,7 +20,7 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The primary of the software is C#
         
-        Name: format_graphical_user_interface_framework (GUI Framework)
+        Name: format_graphical_user_interface_framework 
         Type: constraint
         Summary: The primary GUI framework is Microsoft's eXtensible Application Markup Language (XAML).
         
@@ -108,6 +108,54 @@ Team members: Ron and Nathan
         Type: functional
         Summary: Certain cards may be removed from the deck they belong to if necessary.
         
+        Name: add_picture
+        Type: functional
+        Summary: Images can be added to the front of each card.
+        
+        Name: remove_picture
+        Type: functional
+        Summary: Images can be removed from the front of each card to make room for textgoogl.
+        
+        Name: image_location
+        Type: constraint
+        Summary: Images can only be on the front of each card.
+        
+        Name: exit_menu
+        Type: functional
+        Summary: Sends user to the parent menu
+        
+    4. Create Quiz settings
+        
+        Name: set_total_quiz_questions
+        Type: functional
+        Summary: Allows user to set number of questions for a quiz
+        
+        Name: set_quiz_time
+        Type: functional
+        Summary: Allows user to set time limits for a quiz
+        
+        Name: choose_quiz_settings
+        Type: functional
+        Summary: Allows user to choose options for a quiz
+        
+        Name: randomize_quiz_settings
+        Type: functional
+        Summary: Allows user to randomize options for a quiz
+        
+        Name: save_quiz_settings
+        Type: functional
+        Summary: Allows user to save the settings of a quiz to a text file
+        
+        Name: export_quiz_settings
+        Type: functional
+        Summary: Allows user to export quiz settings 
+        
+        Name: import_quiz_settings
+        Type: functional
+        Summary: Allows user to import their saved quiz settings 
+        
+    5. Create an actual quiz
+        
         Name: create_multiple_choice_question
         Type: functional
         Summary: Allows user to create a question with up to 3 subject headings, one right answer, 
@@ -142,59 +190,10 @@ Team members: Ron and Nathan
         
         Name: store_fill_in_blank_question
         Type: functional
-        Summary: Allows the user to store a created fill in the blank question
-
-        Name: text_alignment_button
-        Type: constraint
-        Summary: Text is centered in buttons borders.    
-
-        Name: add_text_to_front_of_card
-        Type: functional
-        Summary: Text can be added to the front of each card if it does not have a picture.
-
-        Name: add_text_to_back_of_card
-        Type: functional
-        Summary: Text can be added to the back of each card.
-
-        Name: add_picture
-        Type: functional
-        Summary: Images can be added to the front of each card.
+        Summary: Allows the user to store a created fill in the blank question  
         
-        Name: remove_picture
-        Type: functional
-        Summary: Images can be removed from the front of each card to make room for textgoogl.
         
-        Name: image_location
-        Type: constraint
-        Summary: Images can only be on the front of each card.
-        
-        Name: add_subject_matter
-        Type: functional
-        Summary: Allows user to tag each question or flashcard with up to 3 relevant general subject headings
-        
-        Name: exit_menu
-        Type: functional
-        Summary: Sends user to the parent menu
-        
-    4. Create Quiz
-        
-        Name: save_quiz_set_number
-        Type: functional
-        Summary: Allows user to set number of questions for a quiz
-        
-        Name: save_quiz_set_time
-        Type: functional
-        Summary: Allows user to set time limits for a quiz
-        
-        Name: save_quiz_set_randomizer
-        Type: functional
-        Summary: Allows user to set and randomizer options for a quiz
-        
-        Name: save_quiz_parameters
-        Type: functional
-        Summary: Allows user to save the parameters of a quiz to a text file
-        
-    5. Take Quiz
+    6. Take Quiz
         
         Name: load_quiz
         Type: functional
@@ -264,15 +263,11 @@ Team members: Ron and Nathan
         Summary: Provides information to user on the subject categories of the most missed and well known categories
                  and individual questions
         
-    6. Study Quiz
+    7. Study Deck
         
-        Name: study_quiz
-        Type: functional
-        Summary: Allows user to click on any number of buttons displaying the subject categories stored for questions
-                 or flashcards or to review a random list of questions or flashcards stored on file
-        
+
     
-    7. Import/Export Decks
+    8. Import/Export Decks
     
         Name: import_Deck
         Type: functional
@@ -291,7 +286,7 @@ Team members: Ron and Nathan
         Summary: Only one deck of cards can be exported at a time in text format.
 
         
-    8. Navigation Menu
+    9. Navigation Menu
     
         Name: Return_Home
         Type: functional
@@ -333,6 +328,7 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The font size will be 50% bigger than the menu text size.
 
+    10. Quiz Results page
 
 
         
