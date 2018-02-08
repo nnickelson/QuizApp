@@ -64,7 +64,7 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The background color is light grey (hex #F7F7F7).
     
-    2. Main Menu Buttons
+    2. Home page buttons
     
         Name: create_deck_button
         Type: functional
@@ -90,7 +90,7 @@ Team members: Ron and Nathan
         Type: functional
         Summary: Main menu button that takes user to an export deck submenu.
     
-    3. Create Deck 
+    3. Create a Deck 
     
         Name: deck_title
         Type: functional
@@ -223,7 +223,7 @@ Team members: Ron and Nathan
         Summary: export the quiz to the quiz folder
     
         
-    7. Start Quiz
+    7. Start a Quiz
         
         Name: load_quizzes
         Type: functional
@@ -335,7 +335,7 @@ Team members: Ron and Nathan
         Type: functional
         Summary: sort all decks from Z to A
         
-    13. Navigate selected study deck
+    13. Navigate a selected study deck
     
         Name: go_to_last_flashcard
         Type: functional
