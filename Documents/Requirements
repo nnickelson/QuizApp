@@ -210,6 +210,10 @@ Team members: Ron and Nathan
         Type: functional
         Summary: delete a question that has already been created
         
+        Name: add_optional_JPEG_to_question
+        Type: functional
+        Summary: allows the integration of the SEE principle by adding an image to jogg the users memory
+        
         Name: quiz_title
         Type: functional
         Summary: give the quiz a title
@@ -219,7 +223,7 @@ Team members: Ron and Nathan
         Summary: export the quiz to the quiz folder
     
         
-    7. Take Quiz
+    7. Start Quiz
         
         Name: load_quizzes
         Type: functional
@@ -229,67 +233,91 @@ Team members: Ron and Nathan
         Type: functional
         Summary: allows user to choose a quiz to take
         
-        Name: favor_missed_questions
+        Name: optional_checkbox_to_randomize_questions
         Type: functional
-        Summary: Sets missed questions during quiz to be more likely to be repeated in the same quiz
+        Summary: randomizes the order of the questions
         
-        Name: randomize_answers
+        Name: optional_checkbox_to_randomize_answers
         Type: functional
-        Summary: randomizes the order of the answers for multiple choice questions unless 'all of the above' or
-                 'none of the above' is one of the choices
+        Summary: randomizes the order of the multiple choice answers if any exist
         
-        Name: button_answer_options
+    8. Navigating Quiz
+        
+        Name: next_quiz_question
         Type: functional
-        Summary: User clickable buttons will appear on the left side of true-false and multiple-choice questions. Only one
-                 button will be allowed to be active at a time. Clicking another button unclicks the previous one.
+        Summary: move forward to the next quiz question
         
-        Name: text_answer_options
+        Name: previous_quiz_question
         Type: functional
-        Summary: For fill-in-the-blank questions, a text box will appear below the question to accept text based input
+        Summary: move backward to the previous quiz question
         
-        Name: submit_answer_button
+  
+    9. Quiz in progress
+    
+        Name: current_question_number
         Type: functional
-        Summary: A button that will be available to press once an answer button has been chosen for a multiple choice question
-                 or text has been entered into a fill-in-the-blank text box
+        Summary: display the current quiz number out of the total questions in the top left corner. (ex: 1/10)
         
-        Name: scoring_percentage
+        Name: current_question_number
         Type: functional
-        Summary: calculates a 0-100% score for a quiz
+        Summary: display the current time left in the quiz in the top right corner.
         
-        Name: scoring_percentage_display
+        Name: SEE_flash_card_image
         Type: functional
-        Summary: outputs to display the scoring_percentage for a quiz
+        Summary: display the image that the user selected for the question to help jogg their memory located in the top center.
         
-        Name: scoring_percentage_save
+        
+        Name: current_question_number
         Type: functional
-        Summary: saves a scoring_percentage for a quiz to text file
+        Summary: display the current time left in the quiz.
         
-        Name: scoring_missed_questions_overall
+  
+   10. Submit the quiz
+   
+        Name: submit_quiz
         Type: functional
-        Summary: Keeps track of overall individual questions missed
+        Summary: save all answer choices
+   
+        Name: check_if_all_questions_answered
+        Type: constraint
+        Summary: check if the user has answered all questions
         
-        Name: scoring_missed_questions_overall_display
+        Name: Display_unanswered_question_numbers
+        Type: constraint
+        Summary: tell the user the question numbers they have not answered if they did not answer all of the questions
+        
+        Name: are_you_sure
         Type: functional
-        Summary: outputs to display the scoring_missed_questions_overall
+        Summary: pop-up that verfies if the user really wants to submit the quiz
         
-        Name: scoring_missed_questions_overall_save
+        Name: score_quiz
         Type: functional
-        Summary: saves scoring_missed_questions_overall to a text file
+        Summary: calucate number of correct answers out of total questions
         
-        Name: scoring_missed_questions_subject
+    11. Quiz Results page
+    
+        Name: get_quiz_score
         Type: functional
-        Summary: Keeps track of the number of questions missed per identified subject category
+        Summary: get the quiz score once it has been scored
         
-        Name: scoring_missed_questions_subject_display
+        Name: display_quiz_score
         Type: functional
-        Summary: outputs to display the scoring_missed_questions_subject
+        Summary: display the quiz score based off of a percentage from 0 - 100%
         
-        Name: scoring_missed_questions_subject_save
+        Name: display_percentage_grade
         Type: functional
-        Summary: saves scoring_missed_questions_subject to a text file
+        Summary: display the quiz score based off of a percentage from 0 - 100% up to one decimal place
         
+        Name: display_which_question_numbers_were_wrong
+        Type: functional
+        Summary: show question number of which questions are wrong
         
-    8. Choose a study deck
+        Name: go_back_to_take_a_quiz_page
+        Type: functional
+        Summary: returns the user back to the take a quiz page
+
+        
+    12. Choose a study deck
     
         Name: load_decks
         Type: functional
@@ -307,7 +335,7 @@ Team members: Ron and Nathan
         Type: functional
         Summary: sort all decks from Z to A
         
-    9. Navigate selected study deck
+    13. Navigate selected study deck
     
         Name: go_to_last_flashcard
         Type: functional
@@ -333,7 +361,7 @@ Team members: Ron and Nathan
         Type: functional
         Summary: flip flashcard to the opposite side
     
-    10. Import/Export Decks
+    14. Import/Export Decks
     
         Name: import_Deck
         Type: functional
@@ -352,7 +380,7 @@ Team members: Ron and Nathan
         Summary: Only one deck of cards can be exported at a time in text format.
 
         
-    11. Navigation Menu
+    15. Navigation Menu
     
         Name: Return_Home
         Type: functional
@@ -394,7 +422,7 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The font size will be 50% bigger than the menu text size.
 
-    12. Quiz Results page
+
 
 
         
