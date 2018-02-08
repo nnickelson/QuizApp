@@ -332,6 +332,10 @@ Team members: Ron and Nathan
         Name: finished_studying
         Type: functional
         Summary: return back to "choose a deck to study" page
+        
+        Name: flip_flashcard
+        Type: functional
+        Summary: flip flashcard to the opposite side
     
      
 
