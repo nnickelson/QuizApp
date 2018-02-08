@@ -311,15 +311,27 @@ Team members: Ron and Nathan
         Type: functional
         Summary: sort all decks from Z to A
         
-    9. Display cards in current selected deck to study
+    9. Navigate selected study deck
     
-        Name: current_flashcard
+        Name: go_to_last_flashcard
         Type: functional
-        Summary: 
+        Summary: allows the user to jump to the last flash card in the deck
         
-        Name: current_flashcard
+        Name: go_to_first_flashcard
         Type: functional
-        Summary: 
+        Summary: allows the user to jump to the first flash card in the deck
+        
+        Name: go_to_next_flashcard
+        Type: functional
+        Summary: move forward to the next flash card
+        
+        Name: go_to_previous_flashcard
+        Type: functional
+        Summary: move backward to the previous flash card
+        
+        Name: finished_studying
+        Type: functional
+        Summary: return back to "choose a deck to study" page
     
      
 
