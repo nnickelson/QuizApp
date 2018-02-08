@@ -288,10 +288,6 @@ Team members: Ron and Nathan
         Type: functional
         Summary: saves scoring_missed_questions_subject to a text file
         
-        Name: feedback_function
-        Type: functional
-        Summary: Provides information to user on the subject categories of the most missed and well known categories
-                 and individual questions
         
     8. Choose a study deck
     
@@ -337,8 +333,6 @@ Team members: Ron and Nathan
         Type: functional
         Summary: flip flashcard to the opposite side
     
-     
-
     10. Import/Export Decks
     
         Name: import_Deck
