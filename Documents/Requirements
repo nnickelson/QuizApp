@@ -184,7 +184,7 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: only one true or false per question
         
-    5. Create the actual quiz
+    6. Create the actual quiz
     
         Name: load_total_questions
         Type: functional
@@ -219,7 +219,7 @@ Team members: Ron and Nathan
         Summary: export the quiz to the quiz folder
     
         
-    6. Take Quiz
+    7. Take Quiz
         
         Name: load_quizzes
         Type: functional
@@ -293,7 +293,7 @@ Team members: Ron and Nathan
         Summary: Provides information to user on the subject categories of the most missed and well known categories
                  and individual questions
         
-    7. Choose a study deck
+    8. Choose a study deck
     
         Name: load_decks
         Type: functional
@@ -311,7 +311,7 @@ Team members: Ron and Nathan
         Type: functional
         Summary: sort all decks from Z to A
         
-    7. Display cards in current selected deck to study
+    9. Display cards in current selected deck to study
     
         Name: current_flashcard
         Type: functional
@@ -323,7 +323,7 @@ Team members: Ron and Nathan
     
      
 
-    8. Import/Export Decks
+    10. Import/Export Decks
     
         Name: import_Deck
         Type: functional
@@ -342,7 +342,7 @@ Team members: Ron and Nathan
         Summary: Only one deck of cards can be exported at a time in text format.
 
         
-    9. Navigation Menu
+    11. Navigation Menu
     
         Name: Return_Home
         Type: functional
@@ -384,7 +384,7 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The font size will be 50% bigger than the menu text size.
 
-    10. Quiz Results page
+    12. Quiz Results page
 
 
         
