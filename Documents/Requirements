@@ -293,10 +293,36 @@ Team members: Ron and Nathan
         Summary: Provides information to user on the subject categories of the most missed and well known categories
                  and individual questions
         
-    7. Study Deck
-        
-
+    7. Choose a study deck
     
+        Name: load_decks
+        Type: functional
+        Summary: load all of the users created decks from "MyDecks" folder
+        
+        Name: choose_a_deck_to_study
+        Type: functional
+        Summary: select one deck the user would like to study
+        
+        Name: sort_list_of_decks_AtoZ
+        Type: functional
+        Summary: sort all decks from A to Z
+        
+        Name: sort_list_of_decks_ZtoA
+        Type: functional
+        Summary: sort all decks from Z to A
+        
+    7. Display cards in current selected deck to study
+    
+        Name: current_flashcard
+        Type: functional
+        Summary: 
+        
+        Name: current_flashcard
+        Type: functional
+        Summary: 
+    
+     
+
     8. Import/Export Decks
     
         Name: import_Deck
@@ -305,7 +331,7 @@ Team members: Ron and Nathan
 
         Name: export_Deck
         Type: functional
-        Summary: Decks in text format can be copied from a software file to another PC file location.  
+        Summary: Decks in text format can be exported to the "MyDecks" folder.  
 
         Name: import_limit
         Type: constraint
