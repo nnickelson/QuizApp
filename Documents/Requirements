@@ -184,13 +184,50 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: only one true or false per question
         
-
+    5. Create the actual quiz
+    
+        Name: load_total_questions
+        Type: functional
+        Summary: get the total number of questions
+        
+        Name: choose_question_type_per_question
+        Type: functional
+        Summary: allows user to choose question type for curreny question number
+        
+        Name: write_question
+        Type: functional
+        Summary: write the question for the current question number
+        
+        Name: write_answer_choice
+        Type: functional
+        Summary: write the appropraite answer choice for the current question number
+        
+        Name: correct_answer
+        Type: functional
+        Summary: write the appropraite correct answer choice for the current question number
+        
+        Name: delete_question
+        Type: functional
+        Summary: delete a question that has already been created
+        
+        Name: quiz_title
+        Type: functional
+        Summary: give the quiz a title
+        
+        Name: finish_creating_quiz
+        Type: functional
+        Summary: export the quiz to the quiz folder
+    
         
     6. Take Quiz
         
-        Name: load_quiz
+        Name: load_quizzes
         Type: functional
-        Summary: Allows user to load a quiz with default settings or a user-saved quiz
+        Summary: load quizzes from quiz folder
+        
+        Name: choose_quiz_to_take
+        Type: functional
+        Summary: allows user to choose a quiz to take
         
         Name: favor_missed_questions
         Type: functional
