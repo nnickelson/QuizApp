@@ -229,6 +229,14 @@ Team members: Ron and Nathan
         Type: functional
         Summary: load quizzes from quiz folder
         
+        Name: load_quiz_timer
+        Type: functional
+        Summary: get the allotted time for the quiz
+        
+        Name: start_quiz_timer
+        Type: functional
+        Summary: start counting down the timer once the quiz starts
+        
         Name: choose_quiz_to_take
         Type: functional
         Summary: allows user to choose a quiz to take
@@ -254,22 +262,29 @@ Team members: Ron and Nathan
   
     9. Quiz in progress
     
+        Name: display_quiz_title
+        Type: functional
+        Summary: quiz title is displayed above SEE flash card image
+    
         Name: current_question_number
         Type: functional
-        Summary: display the current quiz number out of the total questions in the top left corner. (ex: 1/10)
+        Summary: display the current quiz number out of the total questions in the top left corner (ex: 1/10)
         
         Name: current_question_number
         Type: functional
-        Summary: display the current time left in the quiz in the top right corner.
+        Summary: display the current time left in the quiz in the top right corner
         
         Name: SEE_flash_card_image
         Type: functional
-        Summary: display the image that the user selected for the question to help jogg their memory located in the top center.
-        
+        Summary: display the image that the user selected for the question to help jogg their memory located in the top center
         
         Name: current_question_number
         Type: functional
-        Summary: display the current time left in the quiz.
+        Summary: display the current time left in the quiz
+        
+        Name: quiz_time_exceeded
+        Type: functional
+        Summary: once the countdown time reaches zero, automatically submit the quiz with no are you sure message.
         
   
    10. Submit the quiz
