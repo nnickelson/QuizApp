@@ -51,6 +51,14 @@ Team members: Ron and Nathan
         Name: text_font_size
         Type: constraint
         Summary: Font size is 12.
+        
+        Name: text_limit_question
+        Type: constraint
+        Summary: The text limit for any question is 200 characters
+        
+        Name: text_limit_answer
+        Type: constraint
+        Summary: the text limit for any answer is 100 characters
 
         Name: text_color_for_decriptions_or_flashcards
         Type: constraint
@@ -167,10 +175,6 @@ Team members: Ron and Nathan
         Name: fill_in_the_blank_Question
         Type: functional
         Summary: Allows user to fill in the blank questions.
-        
-        Name: number_of_blanks_per_question
-        Type: functional
-        Summary: Only one fill in the blank per question
         
         Name: number_of_blanks_per_question
         Type: functional
