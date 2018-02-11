@@ -22,7 +22,7 @@ Team members: Ron and Nathan
         
         Name: format_graphical_user_interface_framework 
         Type: constraint
-        Summary: The primary GUI framework is Microsoft's eXtensible Application Markup Language (XAML).
+        Summary: The primary GUI framework is Microsoft's extensible Application Markup Language (XAML).
         
         Name: image_type
         Type: constraint
@@ -122,7 +122,7 @@ Team members: Ron and Nathan
         
         Name: remove_picture
         Type: functional
-        Summary: Images can be removed from the front of each card to make room for textgoogl.
+        Summary: Images can be removed from the front of each card to make room for text.
         
         Name: image_location
         Type: constraint
@@ -196,7 +196,7 @@ Team members: Ron and Nathan
         
         Name: choose_question_type_per_question
         Type: functional
-        Summary: allows user to choose question type for curreny question number
+        Summary: allows user to choose question type for currency question number
         
         Name: write_question
         Type: functional
@@ -204,11 +204,11 @@ Team members: Ron and Nathan
         
         Name: write_answer_choice
         Type: functional
-        Summary: write the appropraite answer choice for the current question number
+        Summary: write the appropriate answer choice for the current question number
         
         Name: correct_answer
         Type: functional
-        Summary: write the appropraite correct answer choice for the current question number
+        Summary: write the appropriate correct answer choice for the current question number
         
         Name: delete_question
         Type: functional
@@ -216,7 +216,7 @@ Team members: Ron and Nathan
         
         Name: add_optional_JPEG_to_question
         Type: functional
-        Summary: allows the integration of the SEE principle by adding an image to jogg the users memory
+        Summary: allows the integration of the SEE principle by adding an image to jog the user’s memory
         
         Name: quiz_title
         Type: functional
@@ -251,7 +251,7 @@ Team members: Ron and Nathan
         
         Name: optional_checkbox_to_randomize_answers
         Type: functional
-        Summary: randomizes the order of the multiple choice answers if any exist
+        Summary: randomizes the order of the multiple-choice answers if any exist
         
     8. Navigating Quiz
         
@@ -307,11 +307,11 @@ Team members: Ron and Nathan
         
         Name: are_you_sure
         Type: functional
-        Summary: pop-up that verfies if the user really wants to submit the quiz
+        Summary: pop-up that verifies if the user really wants to submit the quiz
         
         Name: score_quiz
         Type: functional
-        Summary: calucate number of correct answers out of total questions
+        Summary: calculate number of correct answers out of total questions
         
     11. Quiz Results page
     
@@ -321,11 +321,11 @@ Team members: Ron and Nathan
         
         Name: display_quiz_score
         Type: functional
-        Summary: display the quiz score based off of a percentage from 0 - 100%
+        Summary: display the quiz score based off a percentage from 0 - 100%
         
         Name: display_percentage_grade
         Type: functional
-        Summary: display the quiz score based off of a percentage from 0 - 100% up to one decimal place
+        Summary: display the quiz score based off a percentage from 0 - 100% up to one decimal place
         
         Name: display_which_question_numbers_were_wrong
         Type: functional
@@ -340,7 +340,7 @@ Team members: Ron and Nathan
     
         Name: load_decks
         Type: functional
-        Summary: load all of the users created decks from "MyDecks" folder
+        Summary: load all the users created decks from "MyDecks" folder
         
         Name: choose_a_deck_to_study
         Type: functional
