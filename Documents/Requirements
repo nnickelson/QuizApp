@@ -146,17 +146,9 @@ Team members: Ron and Nathan
         Type: functional
         Summary: Allows user to choose options for a quiz
         
-        Name: randomize_quiz_settings
-        Type: functional
-        Summary: Allows user to randomize options for a quiz
-        
-        Name: save_quiz_settings
-        Type: functional
-        Summary: Allows user to save the settings of a quiz to a text file
-        
         Name: export_quiz_settings
         Type: functional
-        Summary: Allows user to export quiz settings 
+        Summary: Allows user to save the settings of a quiz to a text file
         
         Name: import_quiz_settings
         Type: functional
