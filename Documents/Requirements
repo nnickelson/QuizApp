@@ -48,10 +48,6 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: Font family is in order: Georgia, Times New Roman, and Segoe UI.
 
-        Name: text_font_size
-        Type: constraint
-        Summary: Font size is 12.
-        
         Name: text_limit_question
         Type: constraint
         Summary: The text limit for any question is 200 characters
@@ -59,18 +55,6 @@ Team members: Ron and Nathan
         Name: text_limit_answer
         Type: constraint
         Summary: the text limit for any answer is 100 characters
-
-        Name: text_color_for_decriptions_or_flashcards
-        Type: constraint
-        Summary: The text color is black.
-        
-        Name: text_color_for_Titles
-        Type: constraint
-        Summary: The text color is Secondary Blue (hex #8b9dc3).
-        
-        Name: Application_Background_color
-        Type: constraint
-        Summary: The background color is light grey (hex #F7F7F7).
     
     2. Home page buttons
     
@@ -122,15 +106,15 @@ Team members: Ron and Nathan
         
         Name: add_picture
         Type: functional
-        Summary: Images can be added to the front of each card.
+        Summary: Images can be added to the back of each card.
         
         Name: remove_picture
         Type: functional
-        Summary: Images can be removed from the front of each card to make room for text.
+        Summary: Images can be removed from the back of each card to make room for text.
         
         Name: image_location
         Type: constraint
-        Summary: Images can only be on the front of each card.
+        Summary: Images can only be on the back of each card.
         
         Name: exit_menu
         Type: functional
@@ -414,21 +398,11 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The navigation menu is fixed at the top of every page in the application.
         
-        Name: Menu_Color
-        Type: constraint
-        Summary: The navigation menu is secondary blue (#3b5998).
-        
         Name: App_Name_Location
         Type: constraint
         Summary: The app name is located inside of the navigation to the far left.
         
-        Name: App_Name_Color
-        Type: constraint
-        Summary: The app name color will be Off white (#ffffff).
-        
-        Name: Menu_nav_links_color
-        Type: constraint
-        Summary: The color for each menu label will be Off white (#ffffff).
+
         
 
 
