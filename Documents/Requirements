@@ -18,7 +18,7 @@ Team members: Ron and Nathan
         
         Name: format_language
         Type: constraint
-        Summary: The primary of the software is C#
+        Summary: The primary programming language of the software is C#
         
         Name: format_graphical_user_interface_framework 
         Type: constraint
@@ -30,7 +30,7 @@ Team members: Ron and Nathan
         
         Name: character_encoding
         Type: constraint
-        Summary: UTF-8 character encoding.
+        Summary: UTF-8-character encoding.
 
         Name: primary_language
         Type: constraint
@@ -374,7 +374,7 @@ Team members: Ron and Nathan
         
         Name: finished_studying
         Type: functional
-        Summary: return back to "choose a deck to study" page
+        Summary: return to "choose a deck to study" page
         
         Name: flip_flashcard
         Type: functional
@@ -437,9 +437,6 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: The color for each menu label will be Off white (#ffffff).
         
-        Name: App_Name_Font_Size
-        Type: constraint
-        Summary: The font size will be 50% bigger than the menu text size.
 
 
 
