@@ -104,6 +104,10 @@ Team members: Ron and Nathan
         Type: functional
         Summary: Create a title for a deck.
         
+        Name: deck_title_constraints
+        Type: constraint
+        Summary: The title must start with an upper case alpahbetical character.
+        
         Name: create_card
         Type: functional
         Summary: User can create a flashcard
@@ -338,13 +342,10 @@ Team members: Ron and Nathan
         Type: functional
         Summary: select one deck the user would like to study
         
-        Name: sort_list_of_decks_AtoZ
-        Type: functional
-        Summary: sort all decks from A to Z
-        
-        Name: sort_list_of_decks_ZtoA
-        Type: functional
-        Summary: sort all decks from Z to A
+        Name: sort_alphaNumerically
+        type: functional
+        Summary: sort the given list of strings alpha-numerically.
+
         
     13. Navigate a selected study deck
     
