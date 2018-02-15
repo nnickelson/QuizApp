@@ -35,18 +35,6 @@ Team members: Ron and Nathan
         Name: primary_language
         Type: constraint
         Summary: English is the primary language.
-        
-        Name: text_alignment_button
-        Type: constraint
-        Summary: Text is centered in buttons borders.
-
-        Name: text_alignment_flashcards
-        Type: constraint
-        Summary: Text is left justified for flashcards.
-
-        Name: text_font_family
-        Type: constraint
-        Summary: Font family is in order: Georgia, Times New Roman, and Segoe UI.
     
     2. Home page buttons
     
