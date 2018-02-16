@@ -175,7 +175,7 @@ Team members: Ron and Nathan
         
         Name: load_quizzes_on_startup
         Type: functional
-        Summary: load quizzes from quiz folder on start up
+        Summary: load quizzes from "MyQuizzes" folder on start up
         
         Name: load_quiz_timer
         Type: functional
@@ -313,23 +313,31 @@ Team members: Ron and Nathan
         Type: functional
         Summary: flip flashcard to the opposite side
     
-    14. Import/Export Decks
+    14. Import/Export Decks and Quizzes
     
         Name: import_Deck
         Type: functional
-        Summary: Decks in text format can be copied to a software file from another PC file location.
+        Summary: A deck file representing a set of flashcards will be placed on the "MyDecks" foleder to be loaded on start up.
 
         Name: export_Deck
         Type: functional
-        Summary: Decks in text format can be exported to the "MyDecks" folder.  
+        Summary: Deck files can be exported to the "MyDecks" folder.  
+        
+        Name: import_Quiz
+        Type: functional
+        Summary: Places quiz file in the "MyQuizzes" folder to be loaded on start up.
+
+        Name: export_Quiz
+        Type: functional
+        Summary: Quiz files can be exported to the "MyQuizzes" folder.
 
         Name: import_limit
         Type: constraint
-        Summary: Only one deck of cards can be imported at a time in text format.
+        Summary: Only one file can be imported at a time in text format.
 
         Name: export_limit
         Type: constraint
-        Summary: Only one deck of cards can be exported at a time in text format.
+        Summary: Only one file can be exported at a time in text format.
 
         
     15. Navigation Menu
@@ -357,6 +365,7 @@ Team members: Ron and Nathan
         Name: App_Name_Location
         Type: constraint
         Summary: The app name is located inside of the navigation to the far left.
+        
         
 
         
