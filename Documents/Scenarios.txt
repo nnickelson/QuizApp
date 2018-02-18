@@ -1,0 +1,89 @@
+
+Scenario One:
+
+	As a student, Nathan is looking for different ways to study. He takes notes in class
+and reviews his notes a couple of times a week but he doesn't have a good bearing on how well
+he knows the material so he decides to use  his Quiz program to create study material. Nathan 
+opens the Quiz program and clicks on 'Create Questions'. If he is a bit unsure on how to make 
+a question to study, he can click the 'Help' button which will show a couple of examples on 
+how to turn notes into questions. Once he feels comfortable with how to form a question, he
+can proceed with making a question. The program allows hime to enter a question and then add
+possible answers to that questions, ensuring one of them is marked as the correct answer. The
+program also allows him to make 'fill in the blank' and 'true/false' questiosn in the same 
+fashion. After making his question, Nathan can give it a category like 'History' or 'Biology'
+to tag it with as well as 2 additional categories like 'Chapter 4' or 'Mid Term Questions'.
+He can then store that question to review at his convenience.
+	The program doesn't have questions built in, so Nathan does have to make sure that he
+has the correct notes or materials to make questions with correct answers. Once this is done,
+he can select to take a quiz. The quiz can be taken in different ways to simulate a real test
+environment or just for review purposes. During the quiz, a score is shown to Nathan to let him 
+know how well he is doing and when the quiz is over he can see which questions he missed during
+that session. Other information is available, too, such as previous scores in the same category
+and overall scores. He can then use this information to concentrate on the areas that he is
+having the most problems with.
+
+
+Scenario Two:
+
+	Mr. Ross would like to give his students some material to review for the upcoming exam.
+Normally, he would hand out paper copies of notes and topics to his students but he thinks that
+this is not helping some of his students. He decides to use the Quiz program to make a deck of 
+questions for the students to review so that they are reviewing the material he wants them to
+review and they can gauge how prepared they are for the exam. Mr. Ross opens the Quiz program
+and chooses to create a deck of questions and labels it 'February Exam'. Once he creates his 
+deck, he can then populate that deck with various types of questions and/or flashcards. This 
+allow Mr. Ross to formulate questions in his own way so that the proper material is given to his
+students to review. When he completes his deck, he can save it and email it to his students to
+add to their quiz program.
+	Mr. Ross does have to ensure that his students have availability to a Windows 10 machine
+and also an internet connection. When the students download the deck from their teacher, they 
+can open the Quiz program and select 'Import Deck' and then find the deck on their machine - most
+likely in their Download Files - and import that deck into their local version of the program.
+The option will have to exist where decks with the same name might have to be renamed to prevent
+one deck from overwriting the other. After the deck has been added, the student will have the 
+option of using that deck in future quizzes.
+
+
+Scenario Three:
+
+	A few students have got together to form a study group. There's a lot of material to 
+cover and everyone having multiple copies of notes and flashcards seems a bit redundant. To help
+streamline their studying, they have decided to task each student with a chapter to cover and
+use the Quiz program to create questions for their upcoming test. When each student has finished
+their chapter, they can export their deck to a USB drive and hand it off to a student, or email
+it to their group.
+	Each of these students does need to have access to a Windows 10 machine with the program 
+on it or some kind of removable storage device as well as ensuring each student makes adequate 
+questions for their section. The students can then run their program, import the decks, and 
+create quizzes from all the decks from all the other students. The Quiz program can keep track of
+the percentage of correct responses from each deck as well as the individual questions in the 
+decks to provide a student with feedback on which section of a large subject matter is proving
+most difficult. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
