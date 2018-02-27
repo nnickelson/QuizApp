@@ -110,7 +110,15 @@ Team members: Ron and Nathan
         
         Name: image_storage
         Type: functional
-        Summary: Each deck stores flashcard pictures in the "Flashcard Pictures" subfolder of that deck.
+        Summary: Each deck stores flashcard pictures in the "Flashcard Pictures" subfolder of that deck
+        
+        Name:Number_Each_FlashCard
+        Type: functional
+        Summary: Each flashcard in a deck is numbered
+        
+        Name: Starting_Number_For_Flashcard
+        Type: functional
+        Summary: The first flashcard in a deck starts at number zero
         
     4. Create quiz question types
     
@@ -124,7 +132,7 @@ Team members: Ron and Nathan
         
         Name: fill_in_the_blank_Question
         Type: functional
-        Summary: Allows user to fill in the blank questions.
+        Summary: Allows user to fill in the blank questions
         
         Name: number_of_blanks_per_question
         Type: functional
