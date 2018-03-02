@@ -71,10 +71,6 @@ Team members: Ron and Nathan
         Name: deck_title_constraints
         Type: constraint
         Summary: The title must start with an upper case alpahbetical character.
-        
-        Name: create_card
-        Type: functional
-        Summary: User can create a flashcard
 
         Name: add_card
         Type: functional
@@ -96,6 +92,10 @@ Team members: Ron and Nathan
         Type: constraint
         Summary: Images can only be on the back of each card.
         
+        Name: modify_card
+        Type: constraint
+        Summary: flashcards can be modifed once created.
+        
         Name: add_question
         Type: functional
         Summary: User can add a question to the deck
@@ -111,14 +111,6 @@ Team members: Ron and Nathan
         Name: image_storage
         Type: functional
         Summary: Each deck stores flashcard pictures in the "Flashcard Pictures" subfolder of that deck
-        
-        Name:Number_Each_FlashCard
-        Type: functional
-        Summary: Each flashcard in a deck is numbered
-        
-        Name: Starting_Number_For_Flashcard
-        Type: functional
-        Summary: The first flashcard in a deck starts at number zero
         
     4. Create quiz question types
     
@@ -218,7 +210,7 @@ Team members: Ron and Nathan
     
         Name: display_quiz_title
         Type: functional
-        Summary: Quiz title is displayed above SEE flash card image
+        Summary: Quiz title is displayed.
     
         Name: current_question_number
         Type: functional
@@ -268,10 +260,6 @@ Team members: Ron and Nathan
         Name: display_quiz_score
         Type: functional
         Summary: Display the quiz score based off a percentage from 0 - 100%
-        
-        Name: display_percentage_grade
-        Type: functional
-        Summary: Display the quiz score based off a percentage from 0 - 100% up to one decimal place
         
         Name: display_which_question_numbers_were_wrong
         Type: functional
