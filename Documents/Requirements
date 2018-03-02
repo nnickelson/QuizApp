@@ -367,26 +367,3 @@ Team members: Ron and Nathan
         Name: Go_To_Import_Export
         Type: functional
         Summary: Takes the user to the import/export deck page.
-        
-        Name: Menu_Postition
-        Type: constraint
-        Summary: The navigation menu is fixed at the top of every page in the application.
-        
-        Name: App_Name_Location
-        Type: constraint
-        Summary: The app name is located inside of the navigation to the far left.
-        
-        
-
-        
-
-
-
-
-        
-
-        
-
-        
- 
-    
