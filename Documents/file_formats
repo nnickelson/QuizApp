@@ -2,11 +2,13 @@ File Formats for Quiz App
 
 1. Quiz Deck
    
-   The Quiz deck is a list of question class objects that is stored in the bin\debug folder as a "filename".json file.  
+   The Quiz deck is a list of question class objects that, when created, is stored in the bin\debug folder as a "filename".json file.  
    It is a text-based file in JSON format that stores the current state of a QuestionDeck object and can be accessed via 
-   the Quiz class, Create Deck, or Edit deck. Once the JSON string is deserialized it will be read into a QuestionDeck object.
+   the TakeQuiz class, CreateDeck, or EditDeck. Once the JSON file string is deserialized it will be read into a QuestionDeck object.
    There can be multiple types of this file.
-   The structure is as follows ( // comments are not present in the actual JSON file ):
+   The structure is as follows -
+   ( // comments are not present in the actual JSON file )
+   ( "***   ***" are descriptions of what is placed inside of that set of quotation marks):
    
    {
          "Name": "*** a string value representing the name of the deck ***",
@@ -59,7 +61,9 @@ File Formats for Quiz App
    bin\debug folder and can be accessed through the CreateQuiz class or TakeQuiz class. It stores the current
    state of a QuizSetting class object. Once the JSON format string is deserialized, it will be read into a
    QuizSetting object for use or modification. There can be multiple types of this file.
-   The structure is as follows ( // comments are not present in the actual JSON file ):
+   The structure is as follows -
+   ( // comments are not present in the actual JSON file )
+   ( "***   ***" are descriptions of what is placed inside of that set of quotation marks):
       
    {
          "QuizName": "*** a string value representing the name of the quiz ***",
