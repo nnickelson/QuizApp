@@ -46,8 +46,7 @@ File Formats for Quiz App
          "QuizScores":               // QuizScores needs to be of type List<double>
          [
                {
-                     "Score": "*** a double representing the quiz score for a quiz taken on date of the same index ***"
-               },
+                     "Score": "*** a double representing the quiz score for a quiz taken on date of the same index ***"               },
                {
                // Should be the same size as the QuizDates array
                }
@@ -62,10 +61,9 @@ File Formats for Quiz App
    state of a QuizSetting class object. Once the JSON format string is deserialized, it will be read into a
    QuizSetting object for use or modification. There can be multiple types of this file.
    The structure is as follows -
-   ( // comments are not present in the actual JSON file )
-   ( "***   ***" are descriptions of what is placed inside of that set of quotation marks):
+   ( // comments are not present in the actual JSON file )   ( "***   ***" are descriptions of what is placed inside of that set of quotation marks):
       
-   {
+    {
          "QuizName": "*** a string value representing the name of the quiz ***",
          "IsTimed": "*** a bool value set to true if timed, false if not ***",
          "QuizMinutes": "*** is null if IsTimed is false, else is a positive integer value representing the number of minutes for a timed quiz ***",
@@ -86,8 +84,8 @@ File Formats for Quiz App
                },
                {
                // As many additional QuizDates as needed in the format above
-               }
-         ]
+                }
+e         ]
          "PastQuizScores":       // PastQuizScores needs to be of type List<double>
          [
                {
@@ -98,16 +96,58 @@ File Formats for Quiz App
                }
          ]
    }
-               
-         
-          
-          
-          
-          
-          
-          
-          
-          
+   
+   
+3. Study deck   
+   
+   The Study deck is a list of flashcard class objects that, when created, is stored in the bin\debug folder titled "MyDecks" which is
+   the parent directory that contains all of the users created decks. Inside the parent directory, each deck the user creates
+   also has a folder which is the name of whatever the specific deck that the user created is called. Each one of those folders contains
+   a text based file in JSON format that stores the string for the front of the cards and back of the cards. The folders also contain
+   another folder titled "Images" that stores all of the Jpeg pictures associated with that deck.Once the JSON file string is deserialized
+   it will be read into a StudyDeck object.
+   
+   Example of JSON format for study deck
+   
+   {
+      "FlashCards": 
+      [
+        {
+          "front": "This can be a phrase, title, or paragraph that is stored as a string",
+           "back": "This can also be a phrase, title, or paragraph that is stored as a string",
+           "image": "This is a string that represents the path to the location of the of the image. 
+                    If this is not provided then this field will simply be an empty string that indicates that there is 
+                    no image associated with that particular flashcard."
+        }
+      ]
+   }
+   
+   
+   Example of directory structure
+   *Note: [ "name" ]  represents a folder,"info.json" represents a file, "pic.jpeg" represents an image.
+  
+  If someone wants to import a deck, they simply need to import the specified deck folder, "Astronomy"
+  for example,  and then drop it into the "MyDecks" folder. Similarly, if they wanted to export a deck, they need but to simply
+  copy the name of the specified deck to wherever they would like to store it. Both of these explanations makes the assumption
+  that a user may want to do the process manually because maybe to them it is faster and more convienet. There will be buttons
+  in the applicaton that users can use to import and export a deck if they do not want to do it manually.
+   
+                         [bin]
+                           |
+                         [debug]
+                           |
+                     [ "MyDecks ]
+               ___________|_______________________          
+               |                                  |
+        [ "Astronomy" ]                        [ "Biology"]
+               |                                    |      
+       _________________                       __________________
+       |                |                      |                 |
+     "info.JSON"    [ "Images" ]              "info.JSON"     [ "Images" ]
+                          |                                       |
+                   _________________________                   __________________
+                   |        |              |                   |                |
+             "Earth.Jpeg"  "Moon.Jpeg"   "Sun.Jpeg"         "Mitosis.Jpeg"   "Meiosis.Jpeg"
           
           
                 
