@@ -26,8 +26,7 @@ File Formats for Quiz App
                            // As many additional possible Answer objects as needed in the format above
                            }
                      ],
-                     "CorrectAnswer": "*** an integer value representing the List index value of the correct answer in PossibleAnswers***",
-                     "NumberOfTimesAsked": "*** an integer value representing the number of times this questions has been asked on a quiz ***",
+                     "CorrectAnswer": "*** an integer value representing the List index value of the correct answer in PossibleAnswers***",                     "NumberOfTimesAsked": "*** an integer value representing the number of times this questions has been asked on a quiz ***",
                      "NumberOfTimesRight": "*** an integer value representing the number of times this question has been answered correctly ***"
                },
                {
