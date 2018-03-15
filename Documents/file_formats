@@ -71,7 +71,7 @@ File Formats for Quiz App
          "Decks":                // Decks needs to be of type List<String>
          [
                {
-                     "DeckName": "*** a string value representing the name of a deck minus the .json file suffix ***"
+"                     "DeckName": "*** a string value representing the name of a deck minus the .json file suffix ***"
                },
                {
                // As many additional deck names as needed in the format above
@@ -136,7 +136,7 @@ e         ]
                            |
                          [debug]
                            |
-                     [ "MyDecks ]
+                     [ "MyDecks" ]
                ___________|_______________________          
                |                                  |
         [ "Astronomy" ]                        [ "Biology"]
