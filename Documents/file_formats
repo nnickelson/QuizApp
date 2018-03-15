@@ -70,7 +70,7 @@ File Formats for Quiz App
          "Decks":                // Decks needs to be of type List<String>
          [
                {
-"                     "DeckName": "*** a string value representing the name of a deck minus the .json file suffix ***"
+                    "DeckName": "*** a string value representing the name of a deck minus the .json file suffix ***"
                },
                {
                // As many additional deck names as needed in the format above
@@ -84,7 +84,7 @@ File Formats for Quiz App
                {
                // As many additional QuizDates as needed in the format above
                 }
-e         ]
+         ]
          "PastQuizScores":       // PastQuizScores needs to be of type List<double>
          [
                {
