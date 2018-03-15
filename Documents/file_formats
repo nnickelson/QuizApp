@@ -4,52 +4,99 @@ File Formats for Quiz App
    
    The Quiz deck is a list of question class objects that is stored in the bin\debug folder as a "filename".json file.  
    It is a text-based file in JSON format that stores the current state of a QuestionDeck object and can be accessed via 
-   the Quiz class, Create Deck, or Edit deck. Once the JSON string is deserialized it will be read into a QuestionDeck object. 
+   the Quiz class, Create Deck, or Edit deck. Once the JSON string is deserialized it will be read into a QuestionDeck object.
+   There can be multiple types of this file.
    The structure is as follows ( // comments are not present in the actual JSON file ):
    
    {
-      "Question":                      // This array is what will populate List<Question> in QuestionDeck which will
-      [                                // vary in size based on each QuestionDeck
-          {
-              "QuestionText": "*** the actual question ****",
-              "QuestionType": "*** choices are 'multiplechoice' 'truefalse' 'fillinblank' ***",
-              "PossibleAnswers":
-              [
-                  // This is an array that will populate the List<Answer> section which will vary in size based on each question
-                  {
-                  "Answer": "*** a possible answer choice to this particular question ***"
-                  },
-                  {
-                  // As many additional possible Answer objects as needed in the format above
-                  }
-              ],
-              "CorrectAnswer": "*** an integer value representing the List index value of the correct answer in PossibleAnswers***",
-              "NumberOfTimesAsked": "*** an integer value representing the number of times this questions has been asked on a quiz ***",
-              "NumberOfTimesRight": "*** an integer value representing the number of times this question has been answered correctly ***"
-         },
-         {
-         // As many additional Question objects as needed in the format above
-         }
-      ],
-      "QuizDates":                  // This is an array that will populate List<Date>
-      [
-          {
-              "DateTaken": "*** a date object ***"
-          },
-          {
-          // As many additional Date objects as needed in the format above
-          }
-      ],
-      "QuizScores":               // This is an array that will populate List<double>
-      [
-          {
-              "Score": "*** a double representing the quiz score for a quiz taken on date of the same index ***"
-          },
-          {
-          // Should have the same number of elements as QuizDates
-          }
-      ]    
-          
+         "Name": "*** a string value representing the name of the deck ***",
+         "Question":                      // This array is what will populate List<Question> in QuestionDeck which will
+         [                                // vary in size based on each QuestionDeck
+               {
+                     "QuestionText": "*** the actual question ****",
+                     "QuestionType": "*** choices are 'multiplechoice' 'truefalse' 'fillinblank' ***",
+                     "PossibleAnswers":
+                     [
+                           // This is an array that will populate the List<Answer> section which will vary in size based on each question
+                           {
+                                 "Answer": "*** a possible answer choice to this particular question ***"
+                           },
+                           {
+                           // As many additional possible Answer objects as needed in the format above
+                           }
+                     ],
+                     "CorrectAnswer": "*** an integer value representing the List index value of the correct answer in PossibleAnswers***",
+                     "NumberOfTimesAsked": "*** an integer value representing the number of times this questions has been asked on a quiz ***",
+                     "NumberOfTimesRight": "*** an integer value representing the number of times this question has been answered correctly ***"
+               },
+               {
+               // As many additional Question objects as needed in the format above
+               }
+         ],
+         "QuizDates":                  // This is an array that will populate List<Date> for past quiz dates
+         [
+               {
+                     "DateTaken": "*** a date object ***"
+               },
+               {
+               // As many additional Date objects as needed in the format above
+               }
+         ],
+         "QuizScores":               // This is an array that will populate List<double> for past quiz scores
+         [
+               {
+                     "Score": "*** a double representing the quiz score for a quiz taken on date of the same index ***"
+               },
+               {
+               // Should be the same size as the QuizDates array
+               }
+         ]    
+   }
+   
+   
+2. Quiz Settings
+   
+   Quiz Settings will be stored as a text-based file in the JSON format. When created, it will be placed in the 
+   bin\debug folder and can be accessed through the CreateQuiz class or TakeQuiz class. It stores the current
+   state of a QuizSetting class object. Once the JSON format string is deserialized, it will be read into a
+   QuizSetting object for use or modification. There can be multiple types of this file.
+   The structure is as follows ( // comments are not present in the actual JSON file ):
+      
+   {
+         "QuizName": "*** a string value representing the name of the quiz ***",
+         "IsTimed": "*** a bool value set to true if timed, false if not ***",
+         "QuizMinutes": "*** is null if IsTimed is false, else is a positive integer value representing the number of minutes for a timed quiz ***",
+         "NumberOfQuestions": "*** an integer value representing the number of questions for this QuizSetting ***"
+         "Decks":                // This is an array that will populate List<String> for the names of decks
+         [
+               {
+                     "DeckName": "*** a string value representing the name of a deck minus the .json file suffix ***"
+               },
+               {
+               // As many additional deck names as needed in the format above
+               }
+         ],
+         "PastQuizDates":        // This an array that will populate List<Date> for past quiz dates
+         [
+               {
+                     "QuizDate": "*** a Date value representing when a quiz was taken ***"
+               },
+               {
+               // As many additional QuizDates as needed in the format above
+               }
+         ]
+         "PastQuizScores":       // This is an array that will populate List<double> for past quiz scores
+         [
+               {
+                     "QuizScore": "*** a double representing a quiz score for the QuizDate of the same index ***"
+               },
+               {
+               // Should be the same size as the PastQuizDates array
+               }
+         ]
+   }
+               
+         
           
           
           
