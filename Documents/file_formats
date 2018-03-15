@@ -10,14 +10,13 @@ File Formats for Quiz App
    
    {
          "Name": "*** a string value representing the name of the deck ***",
-         "Question":                      // This array is what will populate List<Question> in QuestionDeck which will
-         [                                // vary in size based on each QuestionDeck
+         "Questions":                     // Questions needs to be of type List<Question>
+         [                                
                {
                      "QuestionText": "*** the actual question ****",
                      "QuestionType": "*** choices are 'multiplechoice' 'truefalse' 'fillinblank' ***",
-                     "PossibleAnswers":
+                     "PossibleAnswers":   // PossibleAnswers needs to of type List<Answer>      
                      [
-                           // This is an array that will populate the List<Answer> section which will vary in size based on each question
                            {
                                  "Answer": "*** a possible answer choice to this particular question ***"
                            },
@@ -33,7 +32,7 @@ File Formats for Quiz App
                // As many additional Question objects as needed in the format above
                }
          ],
-         "QuizDates":                  // This is an array that will populate List<Date> for past quiz dates
+         "QuizDates":                  // QuizDates needs to be of type List<Date>
          [
                {
                      "DateTaken": "*** a date object ***"
@@ -42,7 +41,7 @@ File Formats for Quiz App
                // As many additional Date objects as needed in the format above
                }
          ],
-         "QuizScores":               // This is an array that will populate List<double> for past quiz scores
+         "QuizScores":               // QuizScores needs to be of type List<double>
          [
                {
                      "Score": "*** a double representing the quiz score for a quiz taken on date of the same index ***"
@@ -67,7 +66,7 @@ File Formats for Quiz App
          "IsTimed": "*** a bool value set to true if timed, false if not ***",
          "QuizMinutes": "*** is null if IsTimed is false, else is a positive integer value representing the number of minutes for a timed quiz ***",
          "NumberOfQuestions": "*** an integer value representing the number of questions for this QuizSetting ***"
-         "Decks":                // This is an array that will populate List<String> for the names of decks
+         "Decks":                // Decks needs to be of type List<String>
          [
                {
                      "DeckName": "*** a string value representing the name of a deck minus the .json file suffix ***"
@@ -76,7 +75,7 @@ File Formats for Quiz App
                // As many additional deck names as needed in the format above
                }
          ],
-         "PastQuizDates":        // This an array that will populate List<Date> for past quiz dates
+         "PastQuizDates":        // PastQuizDates needs to be of type List<Date>
          [
                {
                      "QuizDate": "*** a Date value representing when a quiz was taken ***"
@@ -85,7 +84,7 @@ File Formats for Quiz App
                // As many additional QuizDates as needed in the format above
                }
          ]
-         "PastQuizScores":       // This is an array that will populate List<double> for past quiz scores
+         "PastQuizScores":       // PastQuizScores needs to be of type List<double>
          [
                {
                      "QuizScore": "*** a double representing a quiz score for the QuizDate of the same index ***"
