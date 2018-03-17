@@ -99,7 +99,7 @@ File Formats for Quiz App
    
 3. Study deck   
    
-   The Study deck is a list of flashcard class objects that, when created, is stored in the bin\debug folder titled "MyDecks" which is
+   The Study deck is a list of flashcard class objects that, when created, is stored in the folder titled "MyDecks" which is
    the parent directory that contains all of the users created decks. Inside the parent directory, each deck the user creates
    also has a folder which is the name of whatever the specific deck that the user created is called. Each one of those folders contains
    a text based file in JSON format that stores the string for the front of the cards and back of the cards. The folders also contain
@@ -131,9 +131,8 @@ File Formats for Quiz App
   that a user may want to do the process manually because maybe to them it is faster and more convienet. There will be buttons
   in the applicaton that users can use to import and export a deck if they do not want to do it manually.
    
-                         [bin]
-                           |
-                         [debug]
+                        
+                  [root of quiz directory]
                            |
                      [ "MyDecks" ]
                ___________|_______________________          
