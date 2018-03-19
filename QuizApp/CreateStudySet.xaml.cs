@@ -1,0 +1,110 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+using System.Web.Script.Serialization;
+using System.IO;
+
+
+namespace QuizApp
+{
+    /// <summary>
+    /// Interaction logic for CreateStudySet.xaml
+    /// </summary>
+    public partial class CreateStudySet : Page
+    {
+        StudyDeck Deck = new StudyDeck();
+        string fileName = "";
+        string JSONflashcards;
+        string front = "", back = "";
+        int TotalCards = 0;
+        public CreateStudySet()
+        {
+            InitializeComponent();
+        }
+        // Create serializer object to convert to and from the JSON format
+        JavaScriptSerializer ser = new JavaScriptSerializer();
+
+
+        private void Finishedbutton_Click(object sender, RoutedEventArgs e)
+        {
+            //go back to
+        }
+
+        /* This button will add a card to a set only if the term and definition exist */
+        private void Addbutton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DeckTitletextBox.Text))
+            {
+                if (TotalCards == 0)
+                {
+                    fileName = DeckTitletextBox.Text;
+                    fileName = fileName + ".json";
+
+                    // if the file exists we update it - if it doesn't we'll create it later
+                    if (File.Exists(fileName))
+                    {
+                        // This reads the JSON file as one big long string
+                        JSONflashcards = File.ReadAllText(fileName);
+                    }
+                }
+
+
+                // If both the term and defintion exist then add it to the set
+                if (!String.IsNullOrEmpty(TermtextBox.Text) && !String.IsNullOrEmpty(DefinitiontextBox.Text))
+                {
+                    front = TermtextBox.Text;
+                    back = DefinitiontextBox.Text;
+
+                    fileName = DeckTitletextBox.Text;
+                    fileName = fileName + ".json";
+
+                    Flashcards populateFlashCards = new Flashcards(front, back);
+                    Deck.cards.Add(populateFlashCards);
+
+                    // Reserialize the object and store it as a String
+                    String outputJSON = ser.Serialize(Deck);
+                    // Write that string back to the JSON file
+                    File.WriteAllText(fileName, outputJSON);
+
+                    TotalCards++;
+                    TermtextBox.Text = "";
+                    DefinitiontextBox.Text = "";
+                    CardNumberLabeltextBox.Text = (TotalCards).ToString();
+                }
+                // If the Question and Answer DOES NOT EXIST
+                else if (string.IsNullOrEmpty(TermtextBox.Text) && string.IsNullOrEmpty(DefinitiontextBox.Text))
+                {
+                    TermtextBox.Text = "";
+                    DefinitiontextBox.Text = "";
+                    MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    //If the Question DOES NOT EXIST
+                }
+                else if (string.IsNullOrEmpty(TermtextBox.Text))
+                {
+                    MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                }//If the Answer DOES NOT EXIST
+                else if (string.IsNullOrEmpty(DefinitiontextBox.Text))
+                {
+                    MessageBox.Show("You did not enter a Term! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You must provide a deck title to save to. You only need to do this once and leave the field alone after that", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+    }
+}

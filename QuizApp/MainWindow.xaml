@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:QuizApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    
     <Grid>
-        
+        <Frame Source="/Home.Xaml"/>
     </Grid>
 </Window>

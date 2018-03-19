@@ -1,0 +1,28 @@
+﻿<Page x:Class="QuizApp.CreateStudySet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuizApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="CreateStudySet">
+
+    <Grid Background="#FFECE6E6">
+        <!-- Textboxes-->
+        <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Left" Height="23" Margin="84,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
+        <TextBox IsReadOnly ="True" x:Name="CardNumberLabeltextBox" HorizontalAlignment="Left" Height="23" Margin="84,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1"/>
+        <TextBox x:Name="TermtextBox" HorizontalAlignment="Left" Height="23" Margin="19,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here"/>
+        <TextBox x:Name="DefinitiontextBox" HorizontalAlignment="Left" Height="85" Margin="19,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" Opacity="0.8" BorderThickness="0,0,0,2" AutomationProperties.HelpText="Enter the definintion here" AutomationProperties.IsRequiredForForm="True" VerticalScrollBarVisibility="Auto"/>
+
+        <!-- Label-->
+        <Label x:Name="Termlabel" Content="Term" HorizontalAlignment="Left" Margin="17,121,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="DeckTitleLabel" Content="Deck Title" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="Definitionlabel" Content="Definition" HorizontalAlignment="Left" Margin="17,239,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.123,-0.151"/>
+        <Label x:Name="CardNumberlabel" Content="Card #" HorizontalAlignment="Left" Margin="34,71,0,0" VerticalAlignment="Top"/>
+
+        <!-- Button-->
+        <Button x:Name="Addbutton" Content="Add" HorizontalAlignment="Left" Margin="62,270,0,0" VerticalAlignment="Top" Width="75" Click="Addbutton_Click" BorderThickness="1"/>
+        <Button x:Name="Finishedbutton" Content="Finished" HorizontalAlignment="Left" Margin="168,270,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.059,0.532" Click="Finishedbutton_Click"/>
+    </Grid>
+</Page>
