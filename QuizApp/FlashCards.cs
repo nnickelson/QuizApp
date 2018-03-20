@@ -8,11 +8,11 @@ namespace QuizApp
 {
     class StudyDeck
     {
-        public List<Flashcards> cards { get; set; }
+        public List<Flashcards> MyDeck { get; set; }
 
         public StudyDeck()
         {
-            cards = new List<Flashcards>();
+            MyDeck = new List<Flashcards>();
         }
     }
 
@@ -20,7 +20,7 @@ namespace QuizApp
     {
         private string _term { get; set; }
         private string _definition { get; set; }
-        private string _optionalImage { get; set; }
+        private string _optionalImagePath{ get; set; }
 
 
         public Flashcards(string term, string defintion)
@@ -45,7 +45,7 @@ namespace QuizApp
         }
         public void ModifyCardImage(string updatedOptionalImage)
         {
-            _optionalImage = updatedOptionalImage;
+            _optionalImagePath = updatedOptionalImage;
         }
     }
 }

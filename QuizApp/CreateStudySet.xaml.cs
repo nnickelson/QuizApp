@@ -78,7 +78,8 @@ namespace QuizApp
 
                     // Populate flashcards
                     Flashcards populateFlashCards = new Flashcards(front, back);
-                    Deck.cards.Add(populateFlashCards);
+                    
+                    Deck.MyDeck.Add(populateFlashCards);
 
                     // Reserialize the object and store it as a String
                     string outputJSON = ser.Serialize(Deck);
