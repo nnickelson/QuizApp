@@ -18,19 +18,34 @@ namespace QuizApp
 
     class Flashcards
     {
-        public string Front { get; set; }
-        public string Back { get; set; }
+        private string _term { get; set; }
+        private string _definition { get; set; }
+        private string _optionalImage { get; set; }
 
 
         public Flashcards(string term, string defintion)
         {
-            Front = term;
-            Back = defintion;
+            _term = term;
+            _definition = defintion;
         }
 
         public override string ToString()
         {
-            return string.Format("Term: {0} \n Definition: {1}", Front, Back);
+            return string.Format("Term: {0} \n Definition: {1}", _term, _definition);
+        }
+
+        public void ModifyCardTerm(string updatedTerm)
+        {
+            _term = updatedTerm;
+        }
+
+        public void ModifyCardDefinition(string updatedDefinition)
+        {
+            _definition = updatedDefinition;
+        }
+        public void ModifyCardImage(string updatedOptionalImage)
+        {
+            _optionalImage = updatedOptionalImage;
         }
     }
 }
