@@ -45,7 +45,6 @@ option of using that deck in future quizzes.
 
 
 Scenario Three:
-
 	A few students have got together to form a study group. There's a lot of material to 
 cover and everyone having multiple copies of notes and flashcards seems a bit redundant. To help
 streamline their studying, they have decided to task each student with a chapter to cover and
