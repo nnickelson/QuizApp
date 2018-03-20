@@ -32,6 +32,10 @@ namespace QuizApp
 
             set
             {
+                if (value == "")
+                {
+                    throw new ArgumentException("QuestionText cannot be empty");
+                }
                 questionText = value;
             }
         }
@@ -45,6 +49,10 @@ namespace QuizApp
 
             set
             {
+                if (value == "")
+                {
+                    throw new ArgumentException("QuestionType cannot be empty");
+                }
                 questionType = value;
             }
         }
