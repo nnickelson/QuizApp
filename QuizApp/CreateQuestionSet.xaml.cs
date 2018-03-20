@@ -55,6 +55,13 @@ namespace QuizApp
                     question = TermtextBox.Text;
                     answer = DefinitiontextBox.Text;
 
+                    // Create a root directory and subfolder
+                    string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    // string extension = DeckTitletextBox.Text;
+                    filePath += @"\QuestionDecks\";// + extension;
+                    if (!Directory.Exists(filePath))
+                        Directory.CreateDirectory(filePath);
+
                     fileName = DeckTitletextBox.Text;
                     fileName = fileName + ".json";
 
@@ -64,7 +71,7 @@ namespace QuizApp
                     // Reserialize the object and store it as a String
                     string outputJSON = ser.Serialize(Deck);
                     // Write that string back to the JSON file
-                    File.WriteAllText(fileName, outputJSON);
+                    File.WriteAllText(filePath + fileName, outputJSON);
 
                     TotalCards++;
                     TermtextBox.Text = "";

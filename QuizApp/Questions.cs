@@ -11,17 +11,15 @@ namespace QuizApp
         public string text { get; set; }
         public string answer { get; set; }
 
-        //public Questions() { }
-
         public Questions(string mtext, string manswer)
         {
-            this.text = mtext;
-            this.answer = manswer;
+            text = mtext;
+            answer = manswer;
         }
 
         public override string ToString()
         {
-            return string.Format("Question: {0} \n Answer: {1}", this.text, this.answer);
+            return string.Format("Question: {0} \n Answer: {1}", text, answer);
         }
     }
 

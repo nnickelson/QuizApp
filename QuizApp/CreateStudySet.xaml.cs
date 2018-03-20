@@ -19,9 +19,6 @@ using System.IO;
 
 namespace QuizApp
 {
-    /// <summary>
-    /// Interaction logic for CreateStudySet.xaml
-    /// </summary>
     public partial class CreateStudySet : Page
     {
         StudyDeck Deck = new StudyDeck();
@@ -62,23 +59,35 @@ namespace QuizApp
 
 
                 // If both the term and defintion exist then add it to the set
-                if (!String.IsNullOrEmpty(TermtextBox.Text) && !String.IsNullOrEmpty(DefinitiontextBox.Text))
+                if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {
                     front = TermtextBox.Text;
                     back = DefinitiontextBox.Text;
 
+                    // Create a root directory and subfolder
+                    string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    // string extension = DeckTitletextBox.Text;
+
+                    filePath += @"\StudyDecks\";// + extension;
+                    if (!Directory.Exists(filePath))
+                        Directory.CreateDirectory(filePath);
+
+                    // Create a JSON file
                     fileName = DeckTitletextBox.Text;
                     fileName = fileName + ".json";
 
+                    // Populate flashcards
                     Flashcards populateFlashCards = new Flashcards(front, back);
                     Deck.cards.Add(populateFlashCards);
 
                     // Reserialize the object and store it as a String
-                    String outputJSON = ser.Serialize(Deck);
-                    // Write that string back to the JSON file
-                    File.WriteAllText(fileName, outputJSON);
+                    string outputJSON = ser.Serialize(Deck);
 
-                    TotalCards++;
+                    // Write that string back to the JSON file
+                    File.WriteAllText(filePath + fileName, outputJSON);
+
+                    // increment total cards and reset text boxes
+                    TotalCards++; 
                     TermtextBox.Text = "";
                     DefinitiontextBox.Text = "";
                     CardNumberLabeltextBox.Text = (TotalCards).ToString();
@@ -90,8 +99,8 @@ namespace QuizApp
                     DefinitiontextBox.Text = "";
                     MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    //If the Question DOES NOT EXIST
-                }
+
+                }//If the Question DOES NOT EXIST
                 else if (string.IsNullOrEmpty(TermtextBox.Text))
                 {
                     MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
