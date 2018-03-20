@@ -20,7 +20,7 @@ namespace QuizApp
 {
     public partial class CreateQuestionSet : Page
     {
-        QuestionDeck Deck = new QuestionDeck();
+        QuestionsDeck Deck = new QuestionsDeck();
         string fileName;
         string JSONquestions;
         string question,answer;
@@ -58,8 +58,8 @@ namespace QuizApp
                     fileName = DeckTitletextBox.Text;
                     fileName = fileName + ".json";
 
-                    Questions populateQuestions = new QuizApp.Questions(question, answer);
-                    Deck.Cards.Add(populateQuestions);
+                    Question populateQuestions = new QuizApp.Question();
+                    //Deck.Cards.Add(populateQuestions);
 
                     // Reserialize the object and store it as a String
                     string outputJSON = ser.Serialize(Deck);
