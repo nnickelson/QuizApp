@@ -15,6 +15,9 @@ namespace QuizApp
             //possibly edit
         }
 
+        /// <summary>
+        /// Public properties section
+        /// </summary>
         public bool CorrectAnswer
         {
             get

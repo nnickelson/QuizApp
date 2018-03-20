@@ -60,6 +60,7 @@
     <Compile Include="MultipleChoice.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuestionsDeck.cs" />
+    <Compile Include="Results.cs" />
     <Compile Include="TrueFalse.cs" />
     <Page Include="CreateQuestionSet.xaml">
       <SubType>Designer</SubType>

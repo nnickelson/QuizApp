@@ -15,6 +15,9 @@ namespace QuizApp
             //Possible constructor edit
         }
 
+        /// <summary>
+        /// Public properties section
+        /// </summary>
         public string CorrectAnswer
         {
             get

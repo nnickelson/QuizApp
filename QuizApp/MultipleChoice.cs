@@ -11,6 +11,9 @@ namespace QuizApp
         private List<String> choices;
         private String correctAnswer;
 
+        /// <summary>
+        /// Public properties section
+        /// </summary>
         public List<string> Choices
         {
             get
