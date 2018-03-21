@@ -20,7 +20,7 @@ namespace QuizApp
             this.pastDeckDates = new List<DateTime>();
             this.pastDeckScores = new List<double>();
         }
-         
+
 
         internal List<Question> QuestionList
         {

@@ -13,9 +13,14 @@ namespace QuizApp
         private int correctlyAnswered;
         private int totalAttempts;
 
+        /// <summary>
+        /// totalQuestionsScore Function
+        /// Calculates the total overall score of a particular question
+        /// </summary>
+        /// <returns>double: question score returned</returns>
         public int totalQuestionScore()
         {
-            return (this.correctlyAnswered / this.totalAttempts);
+            return 100*(this.correctlyAnswered / this.totalAttempts);
         }
 
         public override string ToString()
@@ -23,6 +28,9 @@ namespace QuizApp
             return base.ToString();
         }
 
+        /// <summary>
+        /// Public properties section
+        /// </summary>
         public string QuestionText
         {
             get
@@ -32,6 +40,10 @@ namespace QuizApp
 
             set
             {
+                if (value == "")
+                {
+                    throw new ArgumentException("QuestionText cannot be empty");
+                }
                 questionText = value;
             }
         }
@@ -45,6 +57,10 @@ namespace QuizApp
 
             set
             {
+                if (value == "")
+                {
+                    throw new ArgumentException("QuestionType cannot be empty");
+                }
                 questionType = value;
             }
         }
