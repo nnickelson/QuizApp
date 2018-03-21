@@ -24,7 +24,7 @@
                FontSize="30" FontFamily="Georgia" Margin="64,28,45,28" Grid.ColumnSpan="2" Width="191">Deck Builder</Label>
 
         <Button x:Name="NewStudyDeckBtn" Grid.Row="1" Grid.Column="0" Height="80" Width="140" Click="NewStudyDeckBtn_Click">New Study Deck</Button>
-        <Button x:Name="EditStudyDeckBtn" Grid.Row="3" Grid.Column="0" Height="80" Width="140">Edit a Study Deck</Button>
+        <Button x:Name="EditStudyDeckBtn" Grid.Row="3" Grid.Column="0" Height="80" Width="140" Click="EditStudyDeckBtn_Click">Edit a Study Deck</Button>
         <Button x:Name="EditQuizDeckBtn" Grid.Row="3" Grid.Column="2" Height="80" Width="140">Edit a Quiz Deck</Button>
         <Button x:Name="NewQuestionDeckBtn" Grid.Row="1" Grid.Column="2" Height="80" Width="140" Click="NewQuestionDeckBtn_Click">New Question Deck</Button>
     </Grid>
