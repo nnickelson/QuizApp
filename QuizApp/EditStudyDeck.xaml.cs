@@ -28,14 +28,12 @@ namespace QuizApp
             InitializeComponent();
         }
 
-        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+                DeckTitletextBox_Copy.Text = File.ReadAllText(openFileDialog.FileName);
             openFileDialog.Filter = "JSON files (*.JSON)|*.JSON|All files (*.*)|*.*";
-
-            FileToEdit = txtEditor.Text;
         }
     }
 }

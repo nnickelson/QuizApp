@@ -5,14 +5,35 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="470" d:DesignWidth="400"
       Title="EditStudyDeck" Background="#FFFBF9F9">
-    <DockPanel Margin="10" Background="#FFF3F2F2">
-        <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,10,0,10">
-            <Button x:Name="btnOpenFile" Click="btnOpenFile_Click" Content="Open file" />
-        </WrapPanel>
-        <TextBox Name="txtEditor">file should appear here</TextBox>
-    </DockPanel>
+    <Grid Background="#FFF3F2F2" Margin="0,-3,0,3">
 
-  
+
+        <!-- Textboxes-->
+        <TextBox  IsReadOnly ="True" x:Name="CurrentCardNumberLabeltextBox" HorizontalAlignment="Left" Height="23" Margin="113,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1"/>
+        <TextBox  x:Name="TermtextBox" HorizontalAlignment="Left" Height="23" Margin="31,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350"  BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here"/>
+        <TextBox  x:Name="DefinitiontextBox" HorizontalAlignment="Left" Height="130" Margin="31,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" Opacity="0.8" BorderThickness="0,0,0,2" AutomationProperties.HelpText="Enter the definintion here" AutomationProperties.IsRequiredForForm="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox  IsReadOnly ="True" x:Name="DeckTitletextBox_Copy" HorizontalAlignment="Left" Height="20" Width="258"  Margin="123,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
+        <TextBox  IsReadOnly ="True" x:Name="TotalCardNumberLabeltextBox" HorizontalAlignment="Left" Height="23" Margin="253,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1"/>
+
+        <!-- Label-->
+        <Label  x:Name="Termlabel" Content="Term" HorizontalAlignment="Left" Margin="29,206,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="Definitionlabel" Content="Definition" HorizontalAlignment="Left" Margin="29,367,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="CardNumberlabel" Content="Current Card #" HorizontalAlignment="Left" Margin="25,153,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Currently editing" HorizontalAlignment="Left" Margin="22,56,0,0" VerticalAlignment="Top"/>
+
+        <!-- Button-->
+        <Button x:Name="SelectADeckbtn" Content="Select a deck to edit" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="115" Click="SelectADeckbtn_Click"/>
+        <Button x:Name="Deletebtn" Content="Delete" HorizontalAlignment="Left" Margin="38,416,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Left" Margin="215,416,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="296,416,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label  x:Name="CardNumberlabel_Copy" Content="Total Cards" HorizontalAlignment="Left" Margin="185,153,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Savebutton" Content="Save Changes" HorizontalAlignment="Left" Margin="118,416,0,0" VerticalAlignment="Top" Width="92"/>
+
+
+
+    </Grid>
+
+
 </Page>
