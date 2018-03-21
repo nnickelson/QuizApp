@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    class Question
+    public class Question
     {
         private String questionText;
         private String questionType;
@@ -25,7 +25,7 @@ namespace QuizApp
 
         public override string ToString()
         {
-            return base.ToString();
+            return ("Question: {0}-----Answer {1}");
         }
 
         /// <summary>

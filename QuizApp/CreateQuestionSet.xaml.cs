@@ -17,13 +17,19 @@ namespace QuizApp
 {
     public partial class CreateQuestionSet: Page
     {
+
+        /// <summary>
+        /// Private Backing Fields
+        /// </summary>
         private QuestionsDeck questionsDeck;
-        private FillInBlank fillInBlankquestion;
-        private TrueFalse trueFalseQuestion;
-        private MultipleChoice multipleChoiceQuestion;
+        private Question question;
 
         
-
+        /// <summary>
+        /// CreateQuestionSet method
+        /// Initialized the window and makes visible the choose a deck name option
+        /// also initializes the QuestionsDeck
+        /// </summary>
         public CreateQuestionSet()
         {
             InitializeComponent();
@@ -31,12 +37,39 @@ namespace QuizApp
             InitializeVisibility();
         }
 
+
+        /// <summary>
+        /// AddQuestionToDeck_Click
+        /// Once the 'add' button is clicked in the window, this method calls
+        /// the check question method for verification before adding the question to 
+        /// the question deck. After adding the question, all the window's values 
+        /// except the question number and the Question Deck name will be reset.
+        /// </summary>
+        /// <param name="sender">Button even handler</param>
+        /// <param name="e">Button event handler</param>
         private void AddQuestionToDeck_Click(object sender, RoutedEventArgs e)
         {
-           
+            if (checkQuestion(this.Question))
+            {
+                questionsDeck.QuestionList.Add(this.Question);
+            }
+            resetValuesInWindow();
+
+// ************* a check to see if the most recent question has been added properly to the deck. Edit out later **************************///
+            MessageBox.Show(questionsDeck.QuestionList[questionsDeck.QuestionList.Count - 1].ToString());
             
         }
 
+
+        /// <summary>
+        /// SubmitDeckName method
+        /// This method verifies the deck name chosen is not currently being used
+        /// Also verifies that the Deck name string is not empty
+        /// Once verified, it sets the deckname in the QuestionsDeck object
+        /// and allows visibility of other options in the window
+        /// </summary>
+        /// <param name="sender">button event handler</param>
+        /// <param name="e">button even handler</param>
         private void SubmitDeckName(object sender, RoutedEventArgs e)
         {
             if (DeckTitletextBox.Text == "")
@@ -50,23 +83,104 @@ namespace QuizApp
                 throw new ArgumentException("That filename exists");
             }
             this.toggleQuestionChoiceVisibility();
-            this.QuestionsDeck.DeckName = DeckTitletextBox.Text;            
+            this.QuestionsDeck.DeckName = DeckTitletextBox.Text;
+            QuestionNumBox.Text = Convert.ToString(questionsDeck.QuestionList.Count + 1);
         }
 
+        /// <summary>
+        /// fillInTheBlank_Checked method
+        /// Initializes the question as a fill in the blank question
+        /// toggles on the fill in the blank options of the window
+        /// </summary>
+        /// <param name="sender">Button event handler</param>
+        /// <param name="e">Button even handler</param>
         private void fillInTheBlank_Checked(object sender, RoutedEventArgs e)
         {
-            fillInBlankquestion = new FillInBlank();
-            toggleFillInBlankOptionsButtons();
+            this.Question = new FillInBlank();
+            toggleFillInBlankOptionsButtons();    
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="question"></param>
+        /// <returns></returns>
+        private bool checkQuestion(Question question)
+        {
+            if (question is FillInBlank)
+            {
+                return (FillInBlankCheck((FillInBlank)question)); 
+            }
+            if (question is TrueFalse)
+            {
+
+            }
+            if (question is MultipleChoice)
+            {
+
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// FillInBlanksCheck method
+        /// This method checks to see if all textboxes that need to be
+        /// populated are populated. It then fills the in the fields for the
+        /// FillInBlank class object.
+        /// </summary>
+        /// <param name="question">FillInBlank object that is not null</param>
+        /// <returns>TRUE if all fields have been filled, FALSE otherwise</returns>
+        private bool FillInBlankCheck(FillInBlank question)
+        {
+            if (QuestionTextBox.Text == "")
+            {
+                MessageBox.Show("There is no question in the question box!");
+                return false;
+            }
+            else if (AnswerTextBox.Text == "")
+            {
+                MessageBox.Show("There is no answer in the answer box");
+                return false;
+            }
+            question.QuestionText = QuestionTextBox.Text;
+            question.CorrectAnswer = AnswerTextBox.Text;
+            return true;
+        }
+
+        /// <summary>
+        /// Resets the values in all windows  ************will need to be updated as more types of questions are added*******
+        /// </summary>
+        private void resetValuesInWindow()
+        {
+            QuestionTextBox.Text = String.Empty;
+            AnswerTextBox.Text = String.Empty;
+            QuestionNumBox.Text = Convert.ToString(questionsDeck.QuestionList.Count + 1);
+        }
+        
+        /// <summary>
+        /// Checks fill in the blank text boxes for values before allowing
+        /// showing the 'Add' and 'Finished' Buttons
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
+        private void QuestionTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (QuestionTextBox.Text == "" || AnswerTextBox.Text == "")
+            {
+                AddDeckButtonsHide();
+            }
+            else
+            {
+                addDeckButtonsShow();
+            }
         }
 
 
 
 
-
-
-
-
-
+        /// <summary>
+        /// Buttons and Text Boxes visibility Toggles
+        /// </summary>
         private void toggleQuestionChoiceVisibility()
         {
             multipleChoice.Visibility = Visibility.Visible;
@@ -85,10 +199,16 @@ namespace QuizApp
             AnswerText.Visibility = Visibility.Visible;  
         }
 
-        private void addDeckButtonsAvailable()
+        private void addDeckButtonsShow()
         {
             AddQuestionToDeck.Visibility = Visibility.Visible;
             Finishedbutton.Visibility = Visibility.Visible;
+        }
+
+        private void AddDeckButtonsHide()
+        {
+            AddQuestionToDeck.Visibility = Visibility.Hidden;
+            Finishedbutton.Visibility = Visibility.Hidden;
         }
 
         private void InitializeVisibility()
@@ -107,6 +227,10 @@ namespace QuizApp
             multipleChoice.Visibility = Visibility.Hidden;
         }
 
+
+        /// <summary>
+        /// Properties Section
+        /// </summary>
         internal QuestionsDeck QuestionsDeck
         {
             get
@@ -120,46 +244,17 @@ namespace QuizApp
             }
         }
 
-        internal FillInBlank FillInBlankquestion
+        public Question Question
         {
             get
             {
-                return fillInBlankquestion;
+                return question;
             }
 
             set
             {
-                fillInBlankquestion = value;
+                question = value;
             }
         }
-
-        internal TrueFalse TrueFalseQuestion
-        {
-            get
-            {
-                return trueFalseQuestion;
-            }
-
-            set
-            {
-                trueFalseQuestion = value;
-            }
-        }
-
-        internal MultipleChoice MultipleChoiceQuestion
-        {
-            get
-            {
-                return multipleChoiceQuestion;
-            }
-
-            set
-            {
-                multipleChoiceQuestion = value;
-            }
-        }
-
-
-
     }
 }

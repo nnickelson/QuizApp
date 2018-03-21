@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    class FillInBlank
+    class FillInBlank : Question
     {
         private String correctAnswer;
 
         public FillInBlank()
         {
             //Possible constructor edit
+        }
+        public override string ToString()
+        {
+            return String.Format("Question: {0}-----Answer {1}", QuestionText, CorrectAnswer);
         }
 
         /// <summary>
