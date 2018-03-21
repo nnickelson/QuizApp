@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateQuestionSet.xaml.cs">
+      <DependentUpon>CreateQuestionSet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FillInBlank.cs" />
     <Compile Include="MultipleChoice.cs" />
     <Compile Include="Question.cs" />

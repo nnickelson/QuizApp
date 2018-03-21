@@ -22,7 +22,7 @@
         <Label x:Name="CardNumberlabel" Content="Question #" HorizontalAlignment="Left" Margin="12,41,0,0" VerticalAlignment="Top"/>
 
         <!-- Button-->
-        <Button x:Name="Addbutton" Content="Add" HorizontalAlignment="Left" Margin="60,370,0,0" VerticalAlignment="Top" Width="75"  BorderThickness="1" />
+        <Button x:Name="AddQuestionToDeck" Content="Add" HorizontalAlignment="Left" Margin="60,370,0,0" VerticalAlignment="Top" Width="75"  BorderThickness="1" Click="AddQuestionToDeck_Click" />
         <Button x:Name="Finishedbutton" Content="Finished" HorizontalAlignment="Left" Margin="169,370,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.059,0.532" />
     </Grid>
 </Page>
