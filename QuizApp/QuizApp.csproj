@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditStudyDeck.xaml.cs">
+      <DependentUpon>EditStudyDeck.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FillInBlank.cs" />
     <Compile Include="MultipleChoice.cs" />
     <Compile Include="Question.cs" />
@@ -71,6 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeckBuilder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditStudyDeck.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

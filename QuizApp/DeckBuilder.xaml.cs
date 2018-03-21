@@ -37,7 +37,7 @@ namespace QuizApp
 
         private void EditStudyDeckBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/EditStudyDeck.xaml", UriKind.Relative));
         }
     }
 }
