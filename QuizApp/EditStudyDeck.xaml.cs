@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Web.Script.Serialization;
 using System.IO;
 using Microsoft.Win32;
 
@@ -22,7 +23,14 @@ namespace QuizApp
     /// </summary>
     public partial class EditStudyDeck : Page
     {
-        string FileToEdit;
+        StudyDeck Deck = new StudyDeck();
+        string fileName = "";
+        string JSONflashcards;
+        Boolean ImageExist = false;
+
+        // Create serializer object to convert to and from the JSON format
+        JavaScriptSerializer ser = new JavaScriptSerializer();
+
         public EditStudyDeck()
         {
             InitializeComponent();
@@ -30,10 +38,10 @@ namespace QuizApp
 
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-                DeckTitletextBox_Copy.Text = File.ReadAllText(openFileDialog.FileName);
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON|All files (*.*)|*.*";
+           // OpenFileDialog openFileDialog = new OpenFileDialog();
+            //if (openFileDialog.ShowDialog() == true)
+                //currentlyEditing.Text = File.ReadAllText(openFileDialog.FileName);
+           // openFileDialog.Filter = "JSON files (*.JSON)|*.JSON|All files (*.*)|*.*";
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -56,5 +64,11 @@ namespace QuizApp
                 ImageViewer1.Source = bitmap;
             }
         }
+
+        private void Savebutton_Click(object sender, RoutedEventArgs e)
+        {
+        }   
+
+
     }
 }

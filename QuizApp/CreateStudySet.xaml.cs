@@ -27,7 +27,7 @@ namespace QuizApp
         StudyDeck Deck = new StudyDeck();
         string fileName = "";
         string JSONflashcards;
-        int TotalCards = 0;
+        int currentCard = 0;
         Boolean ImageExist = false;
 
         // Create serializer object to convert to and from the JSON format
@@ -68,7 +68,7 @@ namespace QuizApp
                     Directory.CreateDirectory(filePath);
                 //---------------------------------------------------------------------------
 
-                if (TotalCards == 0)
+                if (currentCard == 0)
                 {
                     fileName = DeckTitletextBox.Text;
                     fileName = fileName + ".json";
@@ -86,8 +86,7 @@ namespace QuizApp
 
                 // If both the term and defintion exist then add it to the set
                 if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
-                {
-                 
+                {                 
                     // Populate flashcards
                     if (ImageExist == true)
                     {
@@ -97,8 +96,7 @@ namespace QuizApp
                     {
                         Flashcards populateFlashCards = new Flashcards(TermtextBox.Text, DefinitiontextBox.Text, null);
                         Deck.cards.Add(populateFlashCards);
-                    }
-                  
+                    }          
                    
                     // Reserialize the object and store it as a String
                     string outputJSON = ser.Serialize(Deck);
@@ -107,10 +105,11 @@ namespace QuizApp
                     File.WriteAllText(filePath + fileName, outputJSON);
 
                     // increment total cards and reset text boxes
-                    TotalCards++;              
+                    currentCard++;              
                     TermtextBox.Text = "";
                     DefinitiontextBox.Text = "";
-                    CardNumberLabeltextBox.Text = (TotalCards).ToString();
+                    CardNumberLabeltextBox.Text = (currentCard).ToString();
+                    TotalCardsBox.Text = (Deck.cards.Count).ToString();
                     FileNameLabel.Content = "";
                     ImageExist = false;
                     // reset Image box
@@ -127,7 +126,6 @@ namespace QuizApp
                 else if (string.IsNullOrEmpty(TermtextBox.Text))
                 {
                     MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-
                 }//If the Answer DOES NOT EXIST
                 else if (string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {
@@ -140,6 +138,11 @@ namespace QuizApp
             }
         }
 
+        private void Finishedbutton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(
+                new Uri("/DeckBuilder.xaml", UriKind.Relative));
+        }
     }
 
 }
