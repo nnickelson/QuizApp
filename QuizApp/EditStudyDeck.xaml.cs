@@ -35,5 +35,26 @@ namespace QuizApp
                 DeckTitletextBox_Copy.Text = File.ReadAllText(openFileDialog.FileName);
             openFileDialog.Filter = "JSON files (*.JSON)|*.JSON|All files (*.*)|*.*";
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
+            dlg.InitialDirectory = "c:\\";
+            dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
+            dlg.RestoreDirectory = true;
+
+            if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                String selectedFileName = dlg.FileName;
+                FileNameLabel.Content = selectedFileName;
+
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(selectedFileName);
+                bitmap.EndInit();
+                ImageViewer1.Source = bitmap;
+            }
+        }
     }
 }
