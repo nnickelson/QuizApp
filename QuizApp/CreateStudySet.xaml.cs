@@ -16,7 +16,6 @@ using System.Web.Script.Serialization;
 using System.IO;
 
 namespace QuizApp
-
 {
     public partial class CreateStudySet : Page
     {
@@ -28,17 +27,15 @@ namespace QuizApp
         StudyDeck Deck = new StudyDeck();
         string fileName = "";
         string JSONflashcards;
-        string front = "", back = "";
         int TotalCards = 0;
-
+        Boolean ImageExist = false;
 
         // Create serializer object to convert to and from the JSON format
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
         // This is for the image box
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click_1(object sender, RoutedEventArgs e)
         {
-
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
             dlg.InitialDirectory = "c:\\";
             dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
@@ -46,7 +43,6 @@ namespace QuizApp
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-      
                 String selectedFileName = dlg.FileName;
                 FileNameLabel.Content = selectedFileName;
                 BitmapImage bitmap = new BitmapImage();
@@ -54,6 +50,7 @@ namespace QuizApp
                 bitmap.UriSource = new Uri(selectedFileName);
                 bitmap.EndInit();
                 ImageViewer1.Source = bitmap;
+                ImageExist = true;
             }
         }
 
@@ -77,18 +74,14 @@ namespace QuizApp
                     }
                 }
 
-
                 // If both the term and defintion exist then add it to the set
                 if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {
-                    front = TermtextBox.Text;
-                    back = DefinitiontextBox.Text;
-
                     // Create a root directory and subfolder
                     string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
                     // string extension = DeckTitletextBox.Text;
-                    filePath += @"\StudyDecks\";// + extension;
+                    filePath += @"\StudyDecks\";
                     if (!Directory.Exists(filePath))
                         Directory.CreateDirectory(filePath);
 
@@ -97,8 +90,16 @@ namespace QuizApp
                     fileName = fileName + ".json";
 
                     // Populate flashcards
-                    Flashcards populateFlashCards = new Flashcards(front, back);
-                    Deck.cards.Add(populateFlashCards);
+                    if (ImageExist == true)
+                    {
+                        Flashcards populateFlashCards = new Flashcards(TermtextBox.Text, DefinitiontextBox.Text, FileNameLabel.Content.ToString());
+                        Deck.cards.Add(populateFlashCards);
+                    } else
+                    {
+                        Flashcards populateFlashCards = new Flashcards(TermtextBox.Text, DefinitiontextBox.Text, null);
+                        Deck.cards.Add(populateFlashCards);
+                    }
+                  
                    
                     // Reserialize the object and store it as a String
                     string outputJSON = ser.Serialize(Deck);
@@ -111,6 +112,10 @@ namespace QuizApp
                     TermtextBox.Text = "";
                     DefinitiontextBox.Text = "";
                     CardNumberLabeltextBox.Text = (TotalCards).ToString();
+                    FileNameLabel.Content = "";
+                    ImageExist = false;
+                    // reset Image box
+                    ImageViewer1.Source = null;
                 }
 
                 // If the Question and Answer DOES NOT EXIST
@@ -133,7 +138,6 @@ namespace QuizApp
             else
             {
                 MessageBox.Show("You must provide a deck title to save to. You only need to do this once and leave the field alone after that", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-
             }
         }
 

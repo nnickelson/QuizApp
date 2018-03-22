@@ -26,11 +26,13 @@ namespace QuizApp
 
         public string Front { get; set; }
         public string Back { get; set; }
-        public Flashcards(string term, string defintion)
+        public string images { get; set; }
+
+        public Flashcards(string term, string defintion, string path)
         {
             Front = term;
             Back = defintion;
-
+            images = path;
         }
 
         public override string ToString()
