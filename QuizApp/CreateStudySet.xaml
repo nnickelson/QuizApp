@@ -13,14 +13,14 @@
         <!-- Textboxes-->
         <TextBox  x:Name="DeckTitletextBox" HorizontalAlignment="Left" Height="23" Width="206"  Margin="115,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
         <TextBox  IsReadOnly ="True" x:Name="CardNumberLabeltextBox" HorizontalAlignment="Left" Height="23" Margin="117,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1"/>
-        <TextBox  x:Name="TermtextBox" HorizontalAlignment="Left" Height="23" Margin="33,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here"/>
-        <TextBox  x:Name="DefinitiontextBox" HorizontalAlignment="Left" Height="173" Margin="33,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" Opacity="0.8" BorderThickness="0,0,0,2" AutomationProperties.HelpText="Enter the definintion here" AutomationProperties.IsRequiredForForm="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox  x:Name="TermtextBox" HorizontalAlignment="Left" Height="23" Margin="22,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="359" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here"/>
+        <TextBox  x:Name="DefinitiontextBox" HorizontalAlignment="Left" Height="173" Margin="22,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="359" Opacity="0.8" BorderThickness="0,0,0,2" AutomationProperties.HelpText="Enter the definintion here" AutomationProperties.IsRequiredForForm="True" VerticalScrollBarVisibility="Auto"/>
 
         <!-- Label-->
-        <Label  x:Name="Termlabel" Content="Term" HorizontalAlignment="Left" Margin="31,410,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="Termlabel" Content="Term" HorizontalAlignment="Left" Margin="22,410,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="DeckTitleLabel" Content="Deck Title" HorizontalAlignment="Left" Margin="41,20,0,0" VerticalAlignment="Top" Width="72"/>
-        <Label  x:Name="Definitionlabel" Content="Definition" HorizontalAlignment="Left" Margin="31,621,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.123,-0.151"/>
-        <Label  x:Name="CardNumberlabel" Content="Total Card #" HorizontalAlignment="Left" Margin="34,56,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="Definitionlabel" Content="Definition" HorizontalAlignment="Left" Margin="23,621,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.123,-0.151"/>
+        <Label  x:Name="CardNumberlabel" Content="Cards Added" HorizontalAlignment="Left" Margin="34,56,0,0" VerticalAlignment="Top"/>
 
         <!-- Button-->
         <Button x:Name="Addbutton" Content="Add" HorizontalAlignment="Left" Margin="33,660,0,0" VerticalAlignment="Top" Width="75" Click="Addbutton_Click" BorderThickness="1"/>

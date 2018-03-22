@@ -5,8 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 namespace QuizApp
 
 {
@@ -26,13 +24,14 @@ namespace QuizApp
 
         public string Front { get; set; }
         public string Back { get; set; }
-        public string images { get; set; }
+        public string image { get; set; }
+        public Flashcards() { }
 
         public Flashcards(string term, string defintion, string path)
         {
             Front = term;
             Back = defintion;
-            images = path;
+            image = path;
         }
 
         public override string ToString()

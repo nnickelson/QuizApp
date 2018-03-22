@@ -61,34 +61,33 @@ namespace QuizApp
         {
             if (!string.IsNullOrEmpty(DeckTitletextBox.Text))
             {
+                //-------------- Create a root directory and subfolder on desktop------------
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                filePath += @"\StudyDecks\";
+                if (!Directory.Exists(filePath))
+                    Directory.CreateDirectory(filePath);
+                //---------------------------------------------------------------------------
+
                 if (TotalCards == 0)
                 {
                     fileName = DeckTitletextBox.Text;
                     fileName = fileName + ".json";
               
                     // if the file exists we update it - if it doesn't we'll create it later
-                    if (File.Exists(fileName))
+                    if (File.Exists(filePath + @"\" + fileName))
                     {
-                       // This reads the JSON file as one big long string                    
-                        JSONflashcards = File.ReadAllText(fileName);
+                        // This reads the JSON file as one big long string                    
+                        JSONflashcards = File.ReadAllText(filePath+@"\"+fileName);
+
+                    // // This parses that string back into an object
+                    Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                     }
-                }
+               }
 
                 // If both the term and defintion exist then add it to the set
                 if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {
-                    // Create a root directory and subfolder
-                    string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-                    // string extension = DeckTitletextBox.Text;
-                    filePath += @"\StudyDecks\";
-                    if (!Directory.Exists(filePath))
-                        Directory.CreateDirectory(filePath);
-
-                    // Create a JSON file
-                    fileName = DeckTitletextBox.Text;
-                    fileName = fileName + ".json";
-
+                 
                     // Populate flashcards
                     if (ImageExist == true)
                     {
