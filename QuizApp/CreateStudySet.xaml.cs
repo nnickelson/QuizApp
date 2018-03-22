@@ -39,6 +39,26 @@ namespace QuizApp
             //go back to
         }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
+            dlg.InitialDirectory = "c:\\";
+            dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
+            dlg.RestoreDirectory = true;
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                String selectedFileName = dlg.FileName;
+                FileNameLabel.Content = selectedFileName;
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(selectedFileName);
+                bitmap.EndInit();
+                ImageViewer1.Source = bitmap;
+            }
+        }
+
         /* This button will add a card to a set only if the term and definition exist */
         private void Addbutton_Click(object sender, RoutedEventArgs e)
         {
