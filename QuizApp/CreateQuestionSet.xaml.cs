@@ -49,32 +49,25 @@ namespace QuizApp
                 MessageBox.Show("Deck must have a name");
                 return;
             }
-
-            fillInTheBlank.Visibility = Visibility.Visible;
-            multipleChoice.Visibility = Visibility.Visible;
-            trueFalse.Visibility = Visibility.Visible;
-            QuestionNum.Visibility = Visibility.Visible;
-            QuestionNum.Visibility = Visibility.Visible;
-            AddQuestionToDeck.Visibility = Visibility.Visible;
-            Finishedbutton.Visibility = Visibility.Visible;
+            setVisiblebuttons();
         }
 
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
         {
             chooseGrid("FillinBlank");
-            question = new FillInBlank();
+            this.question = new FillInBlank();
         }
 
         private void trueFalse_Clicked(object sender, RoutedEventArgs e)
         {
             chooseGrid("TrueFalse");
-            question = new TrueFalse();
+            this.question = new TrueFalse();
         }
 
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
         {
             chooseGrid("MultipleChoice");
-            question = new MultipleChoice();
+            this.question = new MultipleChoice();
         }
 
         private void finishedbutton_Click(object sender, ContextMenuEventArgs e)
@@ -84,6 +77,53 @@ namespace QuizApp
 
         private void addQuestionToDeck_Clicked(object sender, RoutedEventArgs e)
         {
+            if (question is FillInBlank)
+                AddToDeck((FillInBlank)question);
+            if (question is MultipleChoice)
+                AddToDeck((MultipleChoice)question);
+            if (question is TrueFalse)
+                AddToDeck((TrueFalse)question);
+            resetGridValues();
+        }
+
+        private void AddToDeck(FillInBlank fillinBlankQuestion)
+        {
+            if (questionTextFIB.Text == "" || answerText.Text == "")
+            {
+                return;
+            }
+            else
+            {
+                fillinBlankQuestion.QuestionText = questionTextFIB.Text;
+                fillinBlankQuestion.CorrectAnswer = answerText.Text;
+                this.questionsDeck.QuestionList.Add(fillinBlankQuestion);
+            }
+        }
+        private void AddToDeck(MultipleChoice multipleChoiceQuestion)
+        {
+
+        }
+        private void AddToDeck(TrueFalse trueFalseQuestion)
+        {
+            if (questionTextTF.Text == "")
+            {
+                return;
+            }
+            else
+            {
+                trueFalseQuestion.QuestionText = questionTextTF.Text;
+                if (trueRadioBtn.IsChecked == true)
+                {
+                    MessageBox.Show("true");
+                    trueFalseQuestion.CorrectAnswer = true;
+                }
+                if (falseRadioBtn.IsChecked == true)
+                {
+                    MessageBox.Show("false");
+                    trueFalseQuestion.CorrectAnswer = false;
+                }
+                this.questionsDeck.QuestionList.Add(trueFalseQuestion);
+            }
 
         }
 
@@ -91,6 +131,9 @@ namespace QuizApp
         private void chooseGrid(string grid)
         {
             resetGridValues();
+            FillinBlankGrid.Visibility = Visibility.Hidden;
+            MultipleChoiceGrid.Visibility = Visibility.Hidden;
+            TrueFalseGrid.Visibility = Visibility.Hidden;
             if (grid == "FillinBlank")
             {
                 FillinBlankGrid.Visibility = Visibility.Visible;
@@ -106,10 +149,7 @@ namespace QuizApp
         }
 
         private void resetGridValues()
-        {
-            FillinBlankGrid.Visibility = Visibility.Hidden;
-            MultipleChoiceGrid.Visibility = Visibility.Hidden;
-            TrueFalseGrid.Visibility = Visibility.Hidden;
+        {   
             questionTextFIB.Text = "";
             questionTextMC.Text = "";
             questionTextTF.Text = "";
@@ -118,6 +158,19 @@ namespace QuizApp
             answerTextMC2.Text = "";
             answerTextMC3.Text = "";
             answerTextMC4.Text = "";
+            QuestionNumBox.Text = Convert.ToString(this.questionsDeck.QuestionList.Count + 1);
+        }
+
+        private void setVisiblebuttons()
+        {
+            fillInTheBlank.Visibility = Visibility.Visible;
+            multipleChoice.Visibility = Visibility.Visible;
+            trueFalse.Visibility = Visibility.Visible;
+            QuestionNum.Visibility = Visibility.Visible;
+            QuestionNumBox.Visibility = Visibility.Visible;
+            AddQuestionToDeck.Visibility = Visibility.Visible;
+            Finishedbutton.Visibility = Visibility.Visible;
+            QuestionNumBox.Text = Convert.ToString(this.questionsDeck.QuestionList.Count + 1);
         }
 
         /// <summary>

@@ -33,8 +33,8 @@
         </Grid>
         <Grid Name="TrueFalseGrid" Background="Goldenrod" HorizontalAlignment="Left" Height="363" Margin="20,106,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
             <TextBox Name="questionTextTF" TextWrapping="Wrap" Text="TextBox" Margin="73,137,74,118" RenderTransformOrigin="0.489,7.226"/>
-            <RadioButton Content="True" HorizontalAlignment="Left" Margin="161,270,0,0" VerticalAlignment="Top"/>
-            <RadioButton Content="False" HorizontalAlignment="Left" Margin="161,322,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="trueRadioBtn" Content="True" HorizontalAlignment="Left" Margin="161,270,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="falseRadioBtn" Content="False" HorizontalAlignment="Left" Margin="161,322,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Grid Name="MultipleChoiceGrid" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
             <TextBox Name="questionTextMC" TextWrapping="Wrap" Text="TextBox" Margin="56,10,91,293" RenderTransformOrigin="0.489,7.226"/>
