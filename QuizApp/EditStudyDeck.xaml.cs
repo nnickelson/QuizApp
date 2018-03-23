@@ -30,6 +30,7 @@ namespace QuizApp
         Flashcards f;
         string fileName;
 
+
         // Create serializer object to convert to and from the JSON format
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
@@ -46,6 +47,18 @@ namespace QuizApp
             {
                 currentlyEditing.Text = openFileDialog.FileName; // get file path
                 fileName = System.IO.Path.GetFileName(currentlyEditing.Text); // get file name only
+
+                //make rest of form visibile
+                button.Visibility = Visibility.Visible;
+                TermtextBox.Visibility = Visibility.Visible;
+                Termlabel.Visibility = Visibility.Visible;
+                DefinitiontextBox.Visibility = Visibility.Visible;
+                Definitionlabel.Visibility = Visibility.Visible;
+                Deletebtn.Visibility = Visibility.Visible;
+                Savebutton.Visibility = Visibility.Visible;
+                NextBtn.Visibility = Visibility.Visible;
+                Previousbtn.Visibility = Visibility.Visible;
+                finish.Visibility = Visibility.Visible;
             }
            
 
@@ -58,6 +71,7 @@ namespace QuizApp
 
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
+                CurrentCardTextbox.Text = (index + 1).ToString();
 
                 if (f.image != null)
                 {
@@ -72,6 +86,7 @@ namespace QuizApp
             }
         }
 
+        
         private void button_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
@@ -100,20 +115,18 @@ namespace QuizApp
                 {
                     f.Front = TermtextBox.Text;
                     f.Back = DefinitiontextBox.Text;
-                    f.image =(FileNameLabel.Content).ToString();
-                    Deck.cards.Insert(index, f);
-
+                    f.image = (ImageViewer1.Source).ToString();
+                    Deck.cards[index] = f;
                 }
                 else
                 {
                     f.Front = TermtextBox.Text;
                     f.Back = DefinitiontextBox.Text;
                     f.image = null;
-                    Deck.cards.Insert(index, f);
+                    Deck.cards[index] = f;
                 }
                 // Reserialize the object and store it as a String
                 string outputJSON = ser.Serialize(Deck);
-
                 // Write that string back to the JSON file
                 File.WriteAllText(currentlyEditing.Text, outputJSON);
             }
@@ -144,6 +157,7 @@ namespace QuizApp
                 f = Deck.cards[index];
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
+                CurrentCardTextbox.Text = (index + 1).ToString();
 
                 if (f.image != null)
                 {
@@ -167,7 +181,7 @@ namespace QuizApp
                 f = Deck.cards[index];
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
-
+                CurrentCardTextbox.Text = (index + 1).ToString();
                 if (f.image != null)
                 {
                     BitmapImage bitmap = new BitmapImage();
@@ -184,10 +198,17 @@ namespace QuizApp
 
         private void Deletebtn_Click(object sender, RoutedEventArgs e)
         {
-            if (index != 0)
+            if (Deck.cards.Count >= 1)
             {
                 Deck.cards.Remove(f);
                 index--;
+                CurrentCardTextbox.Text = (index + 1).ToString();
+                TotalCardstextBox.Text = (Deck.cards.Count).ToString();
+                // Reserialize the object and store it as a String
+                string outputJSON = ser.Serialize(Deck);
+                // Write that string back to the JSON file
+                File.WriteAllText(currentlyEditing.Text, outputJSON);
+                NextBtn_Click(sender,e); // go to previous
             }
         }
 
