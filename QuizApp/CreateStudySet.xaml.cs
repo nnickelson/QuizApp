@@ -83,7 +83,7 @@ namespace QuizApp
                     Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                     }
                }
-
+             
                 // If both the term and defintion exist then add it to the set
                 if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {                 
