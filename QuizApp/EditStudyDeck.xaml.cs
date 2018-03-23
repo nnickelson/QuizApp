@@ -147,11 +147,7 @@ namespace QuizApp
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (index == Deck.cards.Count - 1)
-            {
-                MessageBox.Show("This is the last card in the deck.", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
+            if (index < Deck.cards.Count - 1)
             {
                 index++;
                 f = Deck.cards[index];
@@ -208,13 +204,21 @@ namespace QuizApp
                 string outputJSON = ser.Serialize(Deck);
                 // Write that string back to the JSON file
                 File.WriteAllText(currentlyEditing.Text, outputJSON);
-                NextBtn_Click(sender,e); // go to previous
+
+                if (index  <Deck.cards.Count ) // Go back one card on delete
+                {
+                    Previousbtn_Click(sender, e); 
+                } else
+                {
+                    NextBtn_Click(sender, e); // go forward on card
+                }
             }
         }
 
         private void finish_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(
+               new Uri("/EditStudyDeck.xaml", UriKind.Relative));
         }
     }
 }
