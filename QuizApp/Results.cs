@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    class Results
+    public class Results
     {
         private List<String> correctAnswers;
         private List<String> userAnswers;

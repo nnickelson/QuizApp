@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    class QuestionsDeck
+    public class QuestionsDeck
     {
         private List<Question> questionList;
         private String deckName;

@@ -10,23 +10,45 @@
 
     <Grid Background="#FFECE6E6" Margin="00,0,0,0">
         <!-- Textboxes-->
-        <TextBox x:Name="QuestionTextBox" HorizontalAlignment="Left" Height="130" Margin="19,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here" TextChanged="QuestionTextBox_TextChanged"/>
         <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Left" Height="23" Margin="89,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
-        <TextBox x:Name="AnswerTextBox" HorizontalAlignment="Left" Height="87" Margin="16,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" Opacity="0.8" BorderThickness="0,0,0,2" AutomationProperties.HelpText="Enter the definintion here" AutomationProperties.IsRequiredForForm="True" VerticalScrollBarVisibility="Auto" TextChanged="QuestionTextBox_TextChanged"/>
-        <TextBox x:Name="QuestionNumBox"  IsReadOnly ="True" HorizontalAlignment="Left" Height="23" Margin="89,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1" />
+        <TextBox x:Name="QuestionNumBox"  IsReadOnly ="True" HorizontalAlignment="Left" Height="23" Margin="89,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1" Visibility="Hidden"/>
 
         <!-- Label-->
-        <Label x:Name="QuestionText" Content="Question" HorizontalAlignment="Left" Margin="16,202,0,0" VerticalAlignment="Top"/>
         <Label x:Name="DeckTitleLabel" Content="Deck Title" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Width="72"/>
-        <Label x:Name="AnswerText" Content="Answer" HorizontalAlignment="Left" Margin="16,339,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.123,-0.151"/>
-        <Label x:Name="QuestionNum" Content="Question #" HorizontalAlignment="Left" Margin="12,41,0,0" VerticalAlignment="Top" />
+        <Label x:Name="QuestionNum" Content="Question #" HorizontalAlignment="Left" Margin="12,41,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
 
         <!-- Button-->
-        <Button x:Name="AddQuestionToDeck" Content="Add" HorizontalAlignment="Left" Margin="60,370,0,0" VerticalAlignment="Top" Width="75"  BorderThickness="1" Click="AddQuestionToDeck_Click"/>
-        <Button x:Name="Finishedbutton" Content="Finished" HorizontalAlignment="Left" Margin="169,370,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.059,0.532" />
-        <Button x:Name="SubmitDeck" Content="Click to submit Deck Name" HorizontalAlignment="Left" Margin="328,13,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-0.341,-0.623" Height="23" Click="SubmitDeckName"/>
-        <RadioButton x:Name="fillInTheBlank" Content="Fill in the Blank" HorizontalAlignment="Left" Margin="462,142,0,0" VerticalAlignment="Top" Checked="fillInTheBlank_Checked"/>
-        <RadioButton x:Name="trueFalse" Content="True or False" HorizontalAlignment="Left" Margin="462,176,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="multipleChoice" Content="Multiple Choice" HorizontalAlignment="Left" Margin="462,208,0,0" VerticalAlignment="Top" Height="18"/>
+        <Button x:Name="AddQuestionToDeck" Content="Add" HorizontalAlignment="Left" Margin="20,505,0,0" VerticalAlignment="Top" Width="75"  BorderThickness="1" Visibility="Hidden" Click="addQuestionToDeck_Clicked"/>
+        <Button x:Name="Finishedbutton" Content="Finished" HorizontalAlignment="Left" Margin="382,505,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.059,0.532" Visibility="Hidden" ContextMenuClosing="finishedbutton_Click"/>
+        <Button x:Name="SubmitDeck" Content="Click to submit Deck Name" HorizontalAlignment="Left" Margin="328,13,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-0.341,-0.623" Height="23" Click="submitDeck_Clicked" />
+        <Button x:Name="fillInTheBlank" Content="Fill in the Blank" HorizontalAlignment="Left" Margin="20,83,0,0" VerticalAlignment="Top" Click="fillInTheBlank_Clicked" Visibility="Hidden"/>
+        <Button x:Name="trueFalse" Content="True or False" HorizontalAlignment="Left" Margin="201,83,0,0" VerticalAlignment="Top" Click="trueFalse_Clicked" Visibility="Hidden"/>
+        <Button x:Name="multipleChoice" Content="Multiple Choice" HorizontalAlignment="Left" Margin="355,83,0,0" VerticalAlignment="Top" Height="18" Click="multipleChoice_Clicked" Visibility="Hidden"/>
+        
+        <Grid Name="FillinBlankGrid"  Background="AliceBlue" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
+            <TextBox Name="questionTextFIB" TextWrapping="Wrap" Text="TextBox" Margin="56,146,91,158" RenderTransformOrigin="0.489,7.226"/>
+            <TextBox Name="answerText" TextWrapping="Wrap" Text="TextBox" Margin="56,252,91,51" RenderTransformOrigin="0.489,7.226"/>
+            <TextBlock HorizontalAlignment="Left" Margin="56,98,0,0" TextWrapping="Wrap" Text="Question: " VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.125" Width="87" Height="18"/>
+            <TextBlock HorizontalAlignment="Left" Margin="56,220,0,0" TextWrapping="Wrap" Text="Answer: " VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.125" Width="87" Height="18"/>
+        </Grid>
+        <Grid Name="TrueFalseGrid" Background="Goldenrod" HorizontalAlignment="Left" Height="363" Margin="20,106,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
+            <TextBox Name="questionTextTF" TextWrapping="Wrap" Text="TextBox" Margin="73,137,74,118" RenderTransformOrigin="0.489,7.226"/>
+            <RadioButton Content="True" HorizontalAlignment="Left" Margin="161,270,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="False" HorizontalAlignment="Left" Margin="161,322,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Name="MultipleChoiceGrid" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
+            <TextBox Name="questionTextMC" TextWrapping="Wrap" Text="TextBox" Margin="56,10,91,293" RenderTransformOrigin="0.489,7.226"/>
+            <TextBox Name="answerTextMC1" TextWrapping="Wrap" Text="TextBox" Margin="56,95,91,207" RenderTransformOrigin="0.489,7.226"/>
+            <TextBox Name="answerTextMC2" TextWrapping="Wrap" Text="TextBox" Margin="56,161,91,142" RenderTransformOrigin="0.489,7.226"/>
+            <TextBox Name="answerTextMC3" TextWrapping="Wrap" Text="TextBox" Margin="56,226,91,76" RenderTransformOrigin="0.489,7.226"/>
+            <TextBox Name="answerTextMC4" TextWrapping="Wrap" Text="TextBox" Margin="56,292,91,11" RenderTransformOrigin="0.489,7.226"/>
+            <RadioButton Name="answer1btn" HorizontalAlignment="Left" Margin="27,122,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="answer2btn" HorizontalAlignment="Left" Margin="27,185,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="answer3btn" HorizontalAlignment="Left" Margin="27,251,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="answer4btn" HorizontalAlignment="Left" Margin="27,315,0,0" VerticalAlignment="Top"/>
+
+        </Grid>
+        
+
     </Grid>
 </Page>

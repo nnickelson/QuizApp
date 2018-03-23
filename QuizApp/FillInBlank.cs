@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    class FillInBlank : Question
+    public class FillInBlank : Question
     {
         private String correctAnswer;
 
