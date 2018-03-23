@@ -27,17 +27,26 @@ namespace QuizApp
         
         /// <summary>
         /// CreateQuestionSet method
-        /// Initialized the window and makes visible the choose a deck name option
+        /// Initializes and resizes the window and makes visible the choose a deck name option
         /// also initializes the QuestionsDeck
         /// </summary>
         public CreateQuestionSet()
         {
             InitializeComponent();
             Application.Current.MainWindow.Width = 700;
-            Application.Current.MainWindow.Height = 700;
+            Application.Current.MainWindow.Height = 650;
             this.QuestionsDeck = new QuestionsDeck();
         }
 
+        /// <summary>
+        /// submitDeck_Clicked
+        /// Button Hnadler. When user clicks the Submit Deck button,
+        /// the handler verifies values are in the the text box to assign
+        /// the the questionsDeck.DeckName. Shows message box for an
+        /// empty string
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
         private void submitDeck_Clicked(object sender, RoutedEventArgs e)
         {
             if (DeckTitletextBox.Text != "")
@@ -52,40 +61,83 @@ namespace QuizApp
             setVisiblebuttons();
         }
 
+        //Button Handlers//
+
+        /// <summary>
+        /// fillInTheBlank_Clicked Method
+        /// Sets the Fill in the blank grid to visible
+        /// initializes a new fill in the blank question
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
         {
             chooseGrid("FillinBlank");
             this.question = new FillInBlank();
         }
 
+        /// <summary>
+        /// trueFalse_Clicked Method
+        /// Sets the True False Grid to visible
+        /// Initializes a new True False question
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
         private void trueFalse_Clicked(object sender, RoutedEventArgs e)
         {
             chooseGrid("TrueFalse");
             this.question = new TrueFalse();
         }
 
+        /// <summary>
+        /// multipleChoice_Clicked Method
+        /// Sets the Multiple choice grid to visible
+        /// Initializes a new Multiple Choice questions
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
         {
             chooseGrid("MultipleChoice");
             this.question = new MultipleChoice();
         }
 
+        /// <summary>
+        /// ************************************************************************************************UNFINISHED METHOD
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
         private void finishedbutton_Click(object sender, ContextMenuEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// addQuestionToDeck_Clicked Method
+        /// calls the appropriate method to add a question to a deck
+        /// resets the grids only if a question has been added to the deck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addQuestionToDeck_Clicked(object sender, RoutedEventArgs e)
         {
+            int tempCount = QuestionsDeck.QuestionList.Count;
             if (question is FillInBlank)
                 AddToDeck((FillInBlank)question);
             if (question is MultipleChoice)
                 AddToDeck((MultipleChoice)question);
             if (question is TrueFalse)
                 AddToDeck((TrueFalse)question);
-            resetGridValues();
+            if (tempCount < QuestionsDeck.QuestionList.Count)
+                resetGridValues();
         }
 
+        /// <summary>
+        /// AddToDeck Method
+        /// adds a fill in the blank question to the questionsDeck if the approrpiate fields have values
+        /// returns if not
+        /// </summary>
+        /// <param name="fillinBlankQuestion">type of FillInBlank</param>
         private void AddToDeck(FillInBlank fillinBlankQuestion)
         {
             if (questionTextFIB.Text == "" || answerText.Text == "")
@@ -99,13 +151,25 @@ namespace QuizApp
                 this.questionsDeck.QuestionList.Add(fillinBlankQuestion);
             }
         }
+
+        /// <summary>
+        /// ************************************************************************************************UNFINISHED METHOD
+        /// </summary>
+        /// <param name="multipleChoiceQuestion">type of MultipleChoice</param>
         private void AddToDeck(MultipleChoice multipleChoiceQuestion)
         {
 
         }
+
+        /// <summary>
+        /// AddToDeck Method
+        /// Adds a truefalse question to a questionsDeck if the appropriate fields have values
+        /// returns if not
+        /// </summary>
+        /// <param name="trueFalseQuestion">type of TrueFalse</param>
         private void AddToDeck(TrueFalse trueFalseQuestion)
         {
-            if (questionTextTF.Text == "")
+            if (questionTextTF.Text == "" || (trueRadioBtn.IsChecked == false && falseRadioBtn.IsChecked == false))
             {
                 return;
             }
@@ -127,7 +191,11 @@ namespace QuizApp
 
         }
 
-
+        /// <summary>
+        /// chooseGrid Method
+        /// Sets the approriate grid to 'visible' based on the passed in string
+        /// </summary>
+        /// <param name="grid">string value</param>
         private void chooseGrid(string grid)
         {
             resetGridValues();
@@ -148,6 +216,10 @@ namespace QuizApp
             }
         }
 
+        /// <summary>
+        /// resetGridValues Method
+        /// resets the text box values of all grid text boxes to an empty string
+        /// </summary>
         private void resetGridValues()
         {   
             questionTextFIB.Text = "";
@@ -161,6 +233,10 @@ namespace QuizApp
             QuestionNumBox.Text = Convert.ToString(this.questionsDeck.QuestionList.Count + 1);
         }
 
+        /// <summary>
+        /// setVisibilebuttons Method
+        /// Sets visibility to visible of some buttons once a deck name has been submitted
+        /// </summary>
         private void setVisiblebuttons()
         {
             fillInTheBlank.Visibility = Visibility.Visible;
