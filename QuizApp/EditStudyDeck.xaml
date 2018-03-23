@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="400"
+      d:DesignHeight="790" d:DesignWidth="400"
       Title="EditStudyDeck" Background="#FFFBF9F9">
     <Grid Background="#FFF3F2F2" Margin="0,-3,0,3">
 
@@ -23,14 +23,15 @@
 
         <!-- Button-->
         <Button x:Name="SelectADeckbtn" Content="Select a deck to edit" HorizontalAlignment="Left" Margin="152,28,0,0" VerticalAlignment="Top" Width="115" Click="SelectADeckbtn_Click"/>
-        <Button x:Name="Deletebtn" Content="Delete" HorizontalAlignment="Left" Margin="38,655,0,0" VerticalAlignment="Top" Width="75" Click="Deletebtn_Click"/>
-        <Button x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Left" Margin="215,655,0,0" VerticalAlignment="Top" Width="75" Click="Previousbtn_Click"/>
-        <Button x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="296,655,0,0" VerticalAlignment="Top" Width="75" Click="NextBtn_Click"/>
+        <Button x:Name="Deletebtn" Content="Delete" HorizontalAlignment="Left" Margin="31,648,0,0" VerticalAlignment="Top" Width="75" Click="Deletebtn_Click"/>
+        <Button x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Left" Margin="289,648,0,0" VerticalAlignment="Top" Width="75" Click="Previousbtn_Click"/>
+        <Button x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="209,648,0,0" VerticalAlignment="Top" Width="75" Click="NextBtn_Click"/>
         <Label  x:Name="CardNumberlabel_Copy" Content="Total Cards in Deck" HorizontalAlignment="Left" Margin="22,111,0,0" VerticalAlignment="Top" Width="111"/>
-        <Button x:Name="Savebutton" Content="Save Changes" HorizontalAlignment="Left" Margin="118,655,0,0" VerticalAlignment="Top" Width="92" Click="Savebutton_Click"/>
+        <Button x:Name="Savebutton" Content="Save changes" HorizontalAlignment="Left" Margin="111,648,0,0" VerticalAlignment="Top" Width="84" Click="Savebutton_Click" Height="20"/>
         <Button x:Name="button" Content="Add Image" HorizontalAlignment="Left" Margin="22,172,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <Label x:Name="FileNameLabel" Content="" HorizontalAlignment="Left" Margin="110,166,0,0" VerticalAlignment="Top" Width="271" />
         <Image x:Name="ImageViewer1" HorizontalAlignment="Left" Height="224" Margin="22,197,0,0" VerticalAlignment="Top" Width="359"/>
+        <Button x:Name="finish" Content="Finish" HorizontalAlignment="Left" Margin="165,690,0,0" VerticalAlignment="Top" Width="75" Click="finish_Click"/>
 
     </Grid>
 

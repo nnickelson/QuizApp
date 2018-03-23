@@ -116,17 +116,17 @@ namespace QuizApp
                     ImageViewer1.Source = null;
                 }
 
-                // If the Question and Answer DOES NOT EXIST
+                // If the Term and Definiton DOES NOT EXIST
                 else if (string.IsNullOrEmpty(TermtextBox.Text) && string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {
                     TermtextBox.Text = "";
                     DefinitiontextBox.Text = "";
                     MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-                }//If the Question DOES NOT EXIST
+                }//If the Term DOES NOT EXIST
                 else if (string.IsNullOrEmpty(TermtextBox.Text))
                 {
                     MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-                }//If the Answer DOES NOT EXIST
+                }//If the Definiton DOES NOT EXIST
                 else if (string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {
                     MessageBox.Show("You did not enter a Term! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);

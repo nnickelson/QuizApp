@@ -28,6 +28,7 @@ namespace QuizApp
         string JSONflashcards;
         int index = 0;
         Flashcards f;
+        string fileName;
 
         // Create serializer object to convert to and from the JSON format
         JavaScriptSerializer ser = new JavaScriptSerializer();
@@ -39,23 +40,36 @@ namespace QuizApp
 
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
-           OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
             if (openFileDialog.ShowDialog() == true)
-            { currentlyEditing.Text = openFileDialog.FileName; }
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON|All files (*.*)|*.*";
-            
-            JSONflashcards = File.ReadAllText(currentlyEditing.Text);
-            Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
+            {
+                currentlyEditing.Text = openFileDialog.FileName; // get file path
+                fileName = System.IO.Path.GetFileName(currentlyEditing.Text); // get file name only
+            }
+           
 
-            TotalCardstextBox.Text = (Deck.cards.Count).ToString();
-            f = Deck.cards[index];
-            TermtextBox.Text = f.Front;
-            DefinitiontextBox.Text = f.Back;
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(f.image);
-            bitmap.EndInit();
-            ImageViewer1.Source = bitmap;
+            if (currentlyEditing.Text != "")
+            {
+                JSONflashcards = File.ReadAllText(currentlyEditing.Text);
+                Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
+                TotalCardstextBox.Text = (Deck.cards.Count).ToString();
+                f = Deck.cards[index];
+
+                TermtextBox.Text = f.Front;
+                DefinitiontextBox.Text = f.Back;
+
+                if (f.image != null)
+                {
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(f.image);
+                    bitmap.EndInit();
+                    ImageViewer1.Source = bitmap;
+                }
+                else
+                    ImageViewer1.Source = null;
+            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -64,7 +78,7 @@ namespace QuizApp
             dlg.InitialDirectory = "c:\\";
             dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
             dlg.RestoreDirectory = true;
-            if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 String selectedFileName = dlg.FileName;
                 FileNameLabel.Content = selectedFileName;
@@ -78,49 +92,108 @@ namespace QuizApp
 
         private void Savebutton_Click(object sender, RoutedEventArgs e)
         {
+            // If both the term and defintion exist then add it to the set
+            if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
+            {
+                // update flashcards
+                if (ImageViewer1.Source != null)
+                {
+                    f.Front = TermtextBox.Text;
+                    f.Back = DefinitiontextBox.Text;
+                    f.image =(FileNameLabel.Content).ToString();
+                    Deck.cards.Insert(index, f);
+
+                }
+                else
+                {
+                    f.Front = TermtextBox.Text;
+                    f.Back = DefinitiontextBox.Text;
+                    f.image = null;
+                    Deck.cards.Insert(index, f);
+                }
+                // Reserialize the object and store it as a String
+                string outputJSON = ser.Serialize(Deck);
+
+                // Write that string back to the JSON file
+                File.WriteAllText(currentlyEditing.Text, outputJSON);
+            }
+            // If the term and definiton DOES NOT EXIST
+            else if (string.IsNullOrEmpty(TermtextBox.Text) && string.IsNullOrEmpty(DefinitiontextBox.Text))
+            {
+                MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+            }//If the term DOES NOT EXIST
+            else if (string.IsNullOrEmpty(TermtextBox.Text))
+            {
+                MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+            }//If the Definition DOES NOT EXIST
+            else if (string.IsNullOrEmpty(DefinitiontextBox.Text))
+            {
+                MessageBox.Show("You did not enter a Term! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (index == Deck.cards.Count-1)
+            if (index == Deck.cards.Count - 1)
             {
                 MessageBox.Show("This is the last card in the deck.", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                {
+            {
                 index++;
                 f = Deck.cards[index];
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(f.image);
-                bitmap.EndInit();
-                ImageViewer1.Source = bitmap;
+
+                if (f.image != null)
+                {
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(f.image);
+                    bitmap.EndInit();
+                    ImageViewer1.Source = bitmap;
+                }
+                else
+                    ImageViewer1.Source = null;
             }
-    
+
         }
 
         private void Previousbtn_Click(object sender, RoutedEventArgs e)
         {
             if (index != 0)
-            { 
+            {
                 index--;
                 f = Deck.cards[index];
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(f.image);
-                bitmap.EndInit();
-                ImageViewer1.Source = bitmap;
+
+                if (f.image != null)
+                {
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(f.image);
+                    bitmap.EndInit();
+                    ImageViewer1.Source = bitmap;
+                } else
+                {
+                    ImageViewer1.Source = null;
+                }
             }
         }
 
         private void Deletebtn_Click(object sender, RoutedEventArgs e)
         {
-            Deck.cards.Remove(f);
-            index--;
+            if (index != 0)
+            {
+                Deck.cards.Remove(f);
+                index--;
+            }
+        }
+
+        private void finish_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
