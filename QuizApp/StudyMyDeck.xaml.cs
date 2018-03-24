@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace QuizApp
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for StudyMyDeck.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class StudyMyDeck : Page
     {
-        public Home()
+        public StudyMyDeck()
         {
             InitializeComponent();
-        }
-
-        private void CreateADeckbtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
-        }
-
-        private void StudyADeckbtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate( new Uri("StudyMyDeck.xaml",UriKind.Relative));
         }
     }
 }
