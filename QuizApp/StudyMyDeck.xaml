@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="StudyMyDeck">
 
     <Grid Background="WhiteSmoke">
@@ -13,20 +13,19 @@
         <Label x:Name="Cardlabel" Content="Card" HorizontalAlignment="Left" Margin="11,15,0,0" VerticalAlignment="Top"/>
         <Label x:Name="OutOflabel" Content="out of" HorizontalAlignment="Left" Margin="123,15,0,0" VerticalAlignment="Top" Height="25"/>
         <TextBox IsReadOnly ="true" x:Name="CurrentCardTextbox" HorizontalAlignment="Left" Height="23" Margin="60,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
-        <TextBox IsReadOnly ="true" x:Name="TotalCardsBox" HorizontalAlignment="Left" Height="23" Margin="182,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Grid.ColumnSpan="2"/>
+        <TextBox IsReadOnly ="true" x:Name="TotalCardsBox" HorizontalAlignment="Left" Height="23" Margin="182,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"/>
         <Button x:Name="SelectADeckbtn" Content="Select a Deck" HorizontalAlignment="Left" Margin="309,16,0,0" VerticalAlignment="Top" Width="94" Height="25" Click="SelectADeckbtn_Click"/>
-        <TextBox IsReadOnly ="True" x:Name="DeckTitlebox" HorizontalAlignment="Left" Height="25" Margin="425,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
+        <TextBox IsReadOnly ="True" x:Name="DeckTitlebox" HorizontalAlignment="Left" Height="25" Margin="425,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
         <Rectangle x:Name ="Rectangle1" Rectangle.Visibility ="Hidden" Fill="#FFB3C8DE" HorizontalAlignment="Left" Height="327" Margin="8,76,0,0" Stroke="Black" VerticalAlignment="Top" Width="746" RadiusY="45.382" RadiusX="45.382" />
 
 
-        <Button Button.Visibility ="Hidden" x:Name="Flipbtn" Content="Flip" HorizontalAlignment="Left" Margin="526,459,0,0" VerticalAlignment="Top" Width="75" Click="Flipbtn_Click"/>
-        <Label x:Name="label" HorizontalAlignment="Left" Margin="113,243,0,0" VerticalAlignment="Top" Grid.Column="1" Width="11"/>
-        <Button Button.Visibility ="Hidden" x:Name="Nextbtn" Content="Next" HorizontalAlignment="Left" Margin="192,459,0,0" VerticalAlignment="Top" Width="75" Click="Nextbtn_Click"/>
-        <Button Button.Visibility ="Hidden" x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Left" Margin="90,459,0,0" VerticalAlignment="Top" Width="75" Click="Previousbtn_Click"/>
-        <Button Button.Visibility ="Hidden" x:Name="Finishedbtn" Content="Finished" HorizontalAlignment="Left" Margin="623,459,0,0" VerticalAlignment="Top" Width="75" Click="Finishedbtn_Click"/>
-        <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitionBox" HorizontalAlignment="Left" Height="205" Margin="394,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="342"/>
-        <TextBlock TextBlock.Visibility ="Hidden" FontSize ="60" TextAlignment ="center" x:Name="TermBlock"  Margin="20,200,54,220" Text="TextBlock" />
-        <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Left" Height="238" Margin="20,133,0,0" VerticalAlignment="Top" Width="359"/>
+        <Button Button.Visibility ="Hidden" x:Name="Flipbtn" Content="Flip" HorizontalAlignment="Left" Margin="526,452,0,0" VerticalAlignment="Top" Width="75" Click="Flipbtn_Click" Height="27" FontSize="14"/>
+        <Button Button.Visibility ="Hidden" x:Name="Nextbtn" Content="Next" HorizontalAlignment="Left" Margin="192,452,0,0" VerticalAlignment="Top" Width="75" Click="Nextbtn_Click" Height="27" FontSize="14"/>
+        <Button Button.Visibility ="Hidden" x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Left" Margin="90,452,0,0" VerticalAlignment="Top" Width="75" Click="Previousbtn_Click" Height="27" FontSize="14"/>
+        <Button Button.Visibility ="Hidden" x:Name="Finishedbtn" Content="Finished" HorizontalAlignment="Left" Margin="623,452,0,0" VerticalAlignment="Top" Width="75" Click="Finishedbtn_Click" Height="27" FontSize="14"/>
+        <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitionBox" HorizontalAlignment="Left" Height="203" Margin="394,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="342"/>
+        <TextBlock TextBlock.Visibility ="Hidden" FontSize ="50" TextAlignment ="center" x:Name="TermBlock"  Margin="8,199,66,522">Text</TextBlock>
+        <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Left" Height="243" Margin="20,114,0,0" VerticalAlignment="Top" Width="359"/>
 
 
     </Grid>
