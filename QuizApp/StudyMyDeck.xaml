@@ -5,27 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1200"
       Title="StudyMyDeck">
 
     <Grid Background="WhiteSmoke">
 
-        <Label x:Name="Cardlabel" Content="Card" HorizontalAlignment="Left" Margin="11,15,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="OutOflabel" Content="out of" HorizontalAlignment="Left" Margin="123,15,0,0" VerticalAlignment="Top" Height="25"/>
-        <TextBox IsReadOnly ="true" x:Name="CurrentCardTextbox" HorizontalAlignment="Left" Height="23" Margin="60,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
-        <TextBox IsReadOnly ="true" x:Name="TotalCardsBox" HorizontalAlignment="Left" Height="23" Margin="182,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"/>
-        <Button x:Name="SelectADeckbtn" Content="Select a Deck" HorizontalAlignment="Left" Margin="309,16,0,0" VerticalAlignment="Top" Width="94" Height="25" Click="SelectADeckbtn_Click"/>
-        <TextBox IsReadOnly ="True" x:Name="DeckTitlebox" HorizontalAlignment="Left" Height="25" Margin="425,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
-        <Rectangle x:Name ="Rectangle1" Rectangle.Visibility ="Hidden" Fill="#FFB3C8DE" HorizontalAlignment="Left" Height="327" Margin="8,76,0,0" Stroke="Black" VerticalAlignment="Top" Width="746" RadiusY="45.382" RadiusX="45.382" />
+        <Label x:Name="Cardlabel" Content="Card" HorizontalAlignment="Center" Margin="81,49,1049,0" VerticalAlignment="Top" Width="70" Height="36" RenderTransformOrigin="0.656,0.768" FontSize="24"/>
+        <Label x:Name="OutOflabel" Content="out of" HorizontalAlignment="Center" Margin="252,49,874,0" VerticalAlignment="Top" Height="41" FontSize="24"/>
+        <TextBox IsReadOnly ="true" x:Name="CurrentCardTextbox" HorizontalAlignment="Center" Height="41" Margin="156,49,972,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" TextAlignment="Center" FontSize="24"/>
+        <TextBox IsReadOnly ="true" x:Name="TotalCardsBox" HorizontalAlignment="Center" Height="41" Margin="358,49,760,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" FontSize="24" TextAlignment="Center"/>
+        <Button x:Name="SelectADeckbtn" Content="Select a Deck" HorizontalAlignment="Center" Margin="534,44,486,0" VerticalAlignment="Top" Width="180" Height="46" Click="SelectADeckbtn_Click" FontSize="24"/>
+        <TextBox IsReadOnly ="True" x:Name="DeckTitlebox" HorizontalAlignment="Center" Height="46" Margin="734,44,159,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="24"/>
+        <Rectangle x:Name ="Rectangle1" Rectangle.Visibility ="Hidden" Fill="#FFB3C8DE" HorizontalAlignment="center" VerticalAlignment="Center" Height="467" Margin="34,108,133,225" Stroke="Black"  Width="1033" RadiusY="45.382" RadiusX="45.382" />
 
 
-        <Button Button.Visibility ="Hidden" x:Name="Flipbtn" Content="Flip" HorizontalAlignment="Left" Margin="526,452,0,0" VerticalAlignment="Top" Width="75" Click="Flipbtn_Click" Height="27" FontSize="14"/>
-        <Button Button.Visibility ="Hidden" x:Name="Nextbtn" Content="Next" HorizontalAlignment="Left" Margin="192,452,0,0" VerticalAlignment="Top" Width="75" Click="Nextbtn_Click" Height="27" FontSize="14"/>
-        <Button Button.Visibility ="Hidden" x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Left" Margin="90,452,0,0" VerticalAlignment="Top" Width="75" Click="Previousbtn_Click" Height="27" FontSize="14"/>
-        <Button Button.Visibility ="Hidden" x:Name="Finishedbtn" Content="Finished" HorizontalAlignment="Left" Margin="623,452,0,0" VerticalAlignment="Top" Width="75" Click="Finishedbtn_Click" Height="27" FontSize="14"/>
-        <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitionBox" HorizontalAlignment="Left" Height="203" Margin="394,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="342"/>
-        <TextBlock TextBlock.Visibility ="Hidden" FontSize ="50" TextAlignment ="center" x:Name="TermBlock"  Margin="8,199,66,522">Text</TextBlock>
-        <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Left" Height="243" Margin="20,114,0,0" VerticalAlignment="Top" Width="359"/>
+        <Button Button.Visibility ="Hidden" x:Name="Flipbtn" Content="Flip" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="374,612,690,136"  Width="136" Click="Flipbtn_Click" Height="52" FontSize="24"/>
+        <Button Button.Visibility ="Hidden" x:Name="Nextbtn" Content="Next" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="214,612,850,136"  Width="136" Click="Nextbtn_Click" Height="52" FontSize="24"/>
+        <Button Button.Visibility ="Hidden" x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="58,612,1006,136" Width="136" Click="Previousbtn_Click" Height="52" FontSize="24"/>
+        <Button Button.Visibility ="Hidden" x:Name="Finishedbtn" Content="Finished" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="840,612,159,136" Width="201" Click="Finishedbtn_Click" Height="52" FontSize="24"/>
+        <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitionBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="359" Margin="625,155,159,286" Width="416" FontSize="24"/>
+        <TextBlock TextBlock.Visibility ="Hidden" FontSize ="72" TextAlignment ="center" x:Name="TermBlock"  Margin="34,385,133,336">Text</TextBlock>
+        <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Center" Margin="-19,155,660,286"  Width="359"/>
 
 
     </Grid>
