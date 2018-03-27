@@ -18,31 +18,29 @@ using Microsoft.Win32;
 
 namespace QuizApp
 {
-    /// <summary>
-    /// Interaction logic for StudyMyDeck.xaml
-    /// </summary>
     public partial class StudyMyDeck : Page
     {
+        // Work variables
         StudyDeck Deck = new StudyDeck();
         string JSONflashcards;
         int index = 0;
+        JavaScriptSerializer ser = new JavaScriptSerializer();
         Flashcards f;
-        string fileName;
         String path = "";
         Boolean IsFrontShowing = true;
 
-        // Make the front of the flashcard visible
+        // Make the front of the flashcard visible.
          void makeFrontVisible()
         {
-            // First, turn OFF the back
+            // First, turn OFF the back.
             ImageViewer1.Visibility = Visibility.Hidden;
             DefinitionBox.Visibility = Visibility.Hidden;
 
-            // Then turn ON the front
-           
+            // Then turn ON the front.         
             TermBlock.Visibility = Visibility.Visible;
             Previousbtn.Visibility = Visibility.Visible;           
         }
+        
         // Make the back of the flashcard visible
         void makeBackVisible()
         {
@@ -53,13 +51,13 @@ namespace QuizApp
             ImageViewer1.Visibility = Visibility.Visible;
             DefinitionBox.Visibility = Visibility.Visible;
         }
-        // Create serializer object to convert to and from the JSON format
-        JavaScriptSerializer ser = new JavaScriptSerializer();
+        
         public StudyMyDeck()
         {
             InitializeComponent();
         }
 
+        // This button opens the file explorer so the user can select a study deck to edit.
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -75,37 +73,25 @@ namespace QuizApp
                 Nextbtn.Visibility = Visibility.Visible;
                 Flipbtn.Visibility = Visibility.Visible;
                 Finishedbtn.Visibility = Visibility.Visible;
-
             }
-
 
             if (path != "")
             {
+                // Load the contents of the flashcard
                 JSONflashcards = File.ReadAllText(path);
                 Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                 TotalCardsBox.Text = (Deck.cards.Count).ToString();
                 f = Deck.cards[index];
-
                 TermBlock.Text = f.Front;
                 DefinitionBox.Text = f.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
-
-                if (f.image != null)
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(f.image);
-                    bitmap.EndInit();
-                    ImageViewer1.Source = bitmap;
-                }
-                else
-                    ImageViewer1.Source = null;
+                loadImage();
             }
         }
 
+        // This button loads the next flashcard in the deck.
         private void Nextbtn_Click(object sender, RoutedEventArgs e)
-        {
-           
+        {          
             //  Note: Each time next is hit, always show front of the card and hide back 
             if (index < Deck.cards.Count - 1)
             {
@@ -114,23 +100,13 @@ namespace QuizApp
                 TermBlock.Text = f.Front;
                 DefinitionBox.Text = f.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
-
-                if (f.image != null)
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(f.image);
-                    bitmap.EndInit();
-                    ImageViewer1.Source = bitmap;
-                }
-                else
-                    ImageViewer1.Source = null;
-
+                loadImage();
                 makeFrontVisible();
                 IsFrontShowing = true;
             }
         }
 
+        // This button loads the previous flashcard in the deck.
         private void Previousbtn_Click(object sender, RoutedEventArgs e)
         {
             if (index != 0)
@@ -140,30 +116,20 @@ namespace QuizApp
                 TermBlock.Text = f.Front;
                 DefinitionBox.Text = f.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
-                if (f.image != null)
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(f.image);
-                    bitmap.EndInit();
-                    ImageViewer1.Source = bitmap;
-                }
-                else
-                {
-                    ImageViewer1.Source = null;
-                }
-
+                loadImage();
                 makeFrontVisible();
                 IsFrontShowing = true;
             }
         }
 
+        // This button takese the user back to the home page.
         private void Finishedbtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
                     new Uri("/Home.xaml", UriKind.Relative));
         }
 
+        // This button will alternate between the front and back of the flashcard on each click.
         private void Flipbtn_Click(object sender, RoutedEventArgs e)
         {
             if (IsFrontShowing == false)
@@ -177,6 +143,21 @@ namespace QuizApp
                 IsFrontShowing = false;
             }
         }
+
+        void loadImage()
+        {
+            if (f.image != null)
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(f.image);
+                bitmap.EndInit();
+                ImageViewer1.Source = bitmap;
+            }
+            else
+                ImageViewer1.Source = null;
+        }
+
     }
 
 
