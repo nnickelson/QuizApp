@@ -68,17 +68,7 @@ namespace QuizApp
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
-
-                if (f.image != null)
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(f.image);
-                    bitmap.EndInit();
-                    ImageViewer1.Source = bitmap;
-                }
-                else
-                    ImageViewer1.Source = null;
+                loadImage();
             }
         }
 
@@ -87,7 +77,7 @@ namespace QuizApp
         {
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
             dlg.InitialDirectory = "c:\\";
-            dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
+            dlg.Filter = "Image files (*.jpg)|*.jpg| (*.png)|*.png";
             dlg.RestoreDirectory = true;
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -153,18 +143,9 @@ namespace QuizApp
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
-                
+
                 // Load the image if it exist onto the form.
-                if (f.image != null)
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(f.image);
-                    bitmap.EndInit();
-                    ImageViewer1.Source = bitmap;
-                }
-                else
-                    ImageViewer1.Source = null;
+                loadImage();
             }
 
         }
@@ -183,15 +164,7 @@ namespace QuizApp
                 CurrentCardTextbox.Text = (index + 1).ToString();
 
                 // Load the image if it exist onto the form.
-                if (f.image != null)
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(f.image);
-                    bitmap.EndInit();
-                    ImageViewer1.Source = bitmap;
-                } else
-                    ImageViewer1.Source = null;
+                loadImage();
             }
         }
 
@@ -226,6 +199,20 @@ namespace QuizApp
         {
             NavigationService.Navigate(
                new Uri("/EditStudyDeck.xaml", UriKind.Relative));
+        }
+
+        void loadImage()
+        {
+            if (f.image != null)
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(f.image);
+                bitmap.EndInit();
+                ImageViewer1.Source = bitmap;
+            }
+            else
+                ImageViewer1.Source = null;
         }
     }
 }
