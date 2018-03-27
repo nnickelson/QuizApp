@@ -65,6 +65,7 @@
       <DependentUpon>EditStudyDeck.xaml</DependentUpon>
     </Compile>
     <Compile Include="FillInBlank.cs" />
+    <Compile Include="FillInBlankCanvas.cs" />
     <Compile Include="MultipleChoice.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuestionsDeck.cs" />
@@ -73,6 +74,7 @@
       <DependentUpon>StudyMyDeck.xaml</DependentUpon>
     </Compile>
     <Compile Include="TrueFalse.cs" />
+    <Compile Include="TrueFalseCanvas.cs" />
     <Page Include="CreateQuestionSet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

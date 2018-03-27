@@ -8,7 +8,7 @@
       d:DesignHeight="782.011" d:DesignWidth="943.915"
       Title="CreateQuestionSet">
 
-    <Grid Background="#FFECE6E6" Margin="00,0,0,0">
+    <Grid x:Name="BottomGrid" Background="#FFECE6E6" Margin="00,0,0,0">
         <!-- Textboxes-->
         <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Left" Height="23" Margin="89,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
         <TextBox x:Name="QuestionNumBox"  IsReadOnly ="True" HorizontalAlignment="Left" Height="23" Margin="89,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1" Visibility="Hidden"/>
@@ -25,30 +25,10 @@
         <Button x:Name="trueFalse" Content="True or False" HorizontalAlignment="Left" Margin="201,83,0,0" VerticalAlignment="Top" Click="trueFalse_Clicked" Visibility="Hidden"/>
         <Button x:Name="multipleChoice" Content="Multiple Choice" HorizontalAlignment="Left" Margin="355,83,0,0" VerticalAlignment="Top" Height="18" Click="multipleChoice_Clicked" Visibility="Hidden"/>
         
-        <Grid Name="FillinBlankGrid"  Background="AliceBlue" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
-            <TextBox Name="questionTextFIB" TextWrapping="Wrap" Text="TextBox" Margin="56,146,91,158" RenderTransformOrigin="0.489,7.226"/>
-            <TextBox Name="answerText" TextWrapping="Wrap" Text="TextBox" Margin="56,252,91,51" RenderTransformOrigin="0.489,7.226"/>
-            <TextBlock HorizontalAlignment="Left" Margin="56,98,0,0" TextWrapping="Wrap" Text="Question: " VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.125" Width="87" Height="18"/>
-            <TextBlock HorizontalAlignment="Left" Margin="56,220,0,0" TextWrapping="Wrap" Text="Answer: " VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.125" Width="87" Height="18"/>
-        </Grid>
-        <Grid Name="TrueFalseGrid" Background="Goldenrod" HorizontalAlignment="Left" Height="363" Margin="20,106,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
-            <TextBox Name="questionTextTF" TextWrapping="Wrap" Text="TextBox" Margin="73,137,74,118" RenderTransformOrigin="0.489,7.226"/>
-            <RadioButton Name="trueRadioBtn" Content="True" HorizontalAlignment="Left" Margin="161,270,0,0" VerticalAlignment="Top"/>
-            <RadioButton Name="falseRadioBtn" Content="False" HorizontalAlignment="Left" Margin="161,322,0,0" VerticalAlignment="Top"/>
-        </Grid>
-        <Grid Name="MultipleChoiceGrid" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="437" Visibility="Hidden">
-            <TextBox Name="questionTextMC" TextWrapping="Wrap" Text="TextBox" Margin="56,10,91,293" RenderTransformOrigin="0.489,7.226"/>
-            <TextBox Name="answerTextMC1" TextWrapping="Wrap" Text="TextBox" Margin="56,95,91,207" RenderTransformOrigin="0.489,7.226"/>
-            <TextBox Name="answerTextMC2" TextWrapping="Wrap" Text="TextBox" Margin="56,161,91,142" RenderTransformOrigin="0.489,7.226"/>
-            <TextBox Name="answerTextMC3" TextWrapping="Wrap" Text="TextBox" Margin="56,226,91,76" RenderTransformOrigin="0.489,7.226"/>
-            <TextBox Name="answerTextMC4" TextWrapping="Wrap" Text="TextBox" Margin="56,292,91,11" RenderTransformOrigin="0.489,7.226"/>
-            <RadioButton Name="answer1btn" HorizontalAlignment="Left" Margin="27,122,0,0" VerticalAlignment="Top"/>
-            <RadioButton Name="answer2btn" HorizontalAlignment="Left" Margin="27,185,0,0" VerticalAlignment="Top"/>
-            <RadioButton Name="answer3btn" HorizontalAlignment="Left" Margin="27,251,0,0" VerticalAlignment="Top"/>
-            <RadioButton Name="answer4btn" HorizontalAlignment="Left" Margin="27,315,0,0" VerticalAlignment="Top"/>
-
-        </Grid>
+       
         
-
+        
+        <Grid x:Name="QuestionsCanvasTemplate" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="691">
+        </Grid>
     </Grid>
 </Page>

@@ -23,6 +23,9 @@ namespace QuizApp
         /// </summary>
         private QuestionsDeck questionsDeck;
         private Question question;
+        private FillInBlankCanvas fibCanvas;
+        private TrueFalseCanvas tfCanvas;
+        private bool misClick;
 
         
         /// <summary>
@@ -35,6 +38,7 @@ namespace QuizApp
             InitializeComponent();
             Application.Current.MainWindow.Width = 700;
             Application.Current.MainWindow.Height = 650;
+            misClick = false;
             this.QuestionsDeck = new QuestionsDeck();
         }
 
@@ -72,8 +76,20 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
         {
-            chooseGrid("FillinBlank");
-            this.question = new FillInBlank();
+            if (misClick == true)
+            {
+                misClick = false;
+            }
+            else
+            {
+                QuestionsCanvasTemplate.Children.Clear();
+
+                double height = QuestionsCanvasTemplate.ActualHeight;
+                double width = QuestionsCanvasTemplate.ActualWidth;
+                FibCanvas = new FillInBlankCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
+                this.question = new FillInBlank();
+            }
         }
 
         /// <summary>
@@ -85,8 +101,19 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void trueFalse_Clicked(object sender, RoutedEventArgs e)
         {
-            chooseGrid("TrueFalse");
-            this.question = new TrueFalse();
+            if (misClick == true)
+            {
+                misClick = false;
+            }
+            else
+            {
+                QuestionsCanvasTemplate.Children.Clear();
+                double height = QuestionsCanvasTemplate.ActualHeight;
+                double width = QuestionsCanvasTemplate.ActualWidth;
+                TfCanvas = new TrueFalseCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
+                this.question = new TrueFalse();
+            }
         }
 
         /// <summary>
@@ -98,7 +125,7 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
         {
-            chooseGrid("MultipleChoice");
+
             this.question = new MultipleChoice();
         }
 
@@ -121,15 +148,19 @@ namespace QuizApp
         /// <param name="e"></param>
         private void addQuestionToDeck_Clicked(object sender, RoutedEventArgs e)
         {
-            int tempCount = QuestionsDeck.QuestionList.Count;
             if (question is FillInBlank)
+            {
                 AddToDeck((FillInBlank)question);
+                fillInTheBlank_Clicked(sender, e);
+            }
             if (question is MultipleChoice)
                 AddToDeck((MultipleChoice)question);
             if (question is TrueFalse)
+            {
                 AddToDeck((TrueFalse)question);
-            if (tempCount < QuestionsDeck.QuestionList.Count)
-                resetGridValues();
+                trueFalse_Clicked(sender, e);
+            }
+
         }
 
         /// <summary>
@@ -140,15 +171,17 @@ namespace QuizApp
         /// <param name="fillinBlankQuestion">type of FillInBlank</param>
         private void AddToDeck(FillInBlank fillinBlankQuestion)
         {
-            if (questionTextFIB.Text == "" || answerText.Text == "")
+            if (FibCanvas.Tb1.Text == "" || FibCanvas.Tb2.Text == "")
             {
+                misClick = true;
                 return;
             }
             else
             {
-                fillinBlankQuestion.QuestionText = questionTextFIB.Text;
-                fillinBlankQuestion.CorrectAnswer = answerText.Text;
+                fillinBlankQuestion.QuestionText = FibCanvas.Tb1.Text;
+                fillinBlankQuestion.CorrectAnswer = FibCanvas.Tb2.Text;
                 this.questionsDeck.QuestionList.Add(fillinBlankQuestion);
+                QuestionNumBox.Text = Convert.ToString(questionsDeck.QuestionList.Count + 1);
             }
         }
 
@@ -169,69 +202,31 @@ namespace QuizApp
         /// <param name="trueFalseQuestion">type of TrueFalse</param>
         private void AddToDeck(TrueFalse trueFalseQuestion)
         {
-            if (questionTextTF.Text == "" || (trueRadioBtn.IsChecked == false && falseRadioBtn.IsChecked == false))
+            if (TfCanvas.Tb1.Text == "" || (TfCanvas.ButtonTrue.IsChecked == false && TfCanvas.ButtonFalse.IsChecked == false))
             {
+                misClick = true;
                 return;
             }
             else
             {
-                trueFalseQuestion.QuestionText = questionTextTF.Text;
-                if (trueRadioBtn.IsChecked == true)
+                trueFalseQuestion.QuestionText = TfCanvas.Tb1.Text;
+                if (TfCanvas.ButtonTrue.IsChecked == true)
                 {
                     MessageBox.Show("true");
                     trueFalseQuestion.CorrectAnswer = true;
                 }
-                if (falseRadioBtn.IsChecked == true)
+                if (TfCanvas.ButtonFalse.IsChecked == true)
                 {
                     MessageBox.Show("false");
                     trueFalseQuestion.CorrectAnswer = false;
                 }
                 this.questionsDeck.QuestionList.Add(trueFalseQuestion);
+                QuestionNumBox.Text = Convert.ToString(questionsDeck.QuestionList.Count + 1);
             }
 
         }
 
-        /// <summary>
-        /// chooseGrid Method
-        /// Sets the approriate grid to 'visible' based on the passed in string
-        /// </summary>
-        /// <param name="grid">string value</param>
-        private void chooseGrid(string grid)
-        {
-            resetGridValues();
-            FillinBlankGrid.Visibility = Visibility.Hidden;
-            MultipleChoiceGrid.Visibility = Visibility.Hidden;
-            TrueFalseGrid.Visibility = Visibility.Hidden;
-            if (grid == "FillinBlank")
-            {
-                FillinBlankGrid.Visibility = Visibility.Visible;
-            }
-            if (grid == "MultipleChoice")
-            {
-                MultipleChoiceGrid.Visibility = Visibility.Visible;
-            }
-            if (grid == "TrueFalse")
-            {
-                TrueFalseGrid.Visibility = Visibility.Visible;
-            }
-        }
-
-        /// <summary>
-        /// resetGridValues Method
-        /// resets the text box values of all grid text boxes to an empty string
-        /// </summary>
-        private void resetGridValues()
-        {   
-            questionTextFIB.Text = "";
-            questionTextMC.Text = "";
-            questionTextTF.Text = "";
-            answerText.Text = "";
-            answerTextMC1.Text = "";
-            answerTextMC2.Text = "";
-            answerTextMC3.Text = "";
-            answerTextMC4.Text = "";
-            QuestionNumBox.Text = Convert.ToString(this.questionsDeck.QuestionList.Count + 1);
-        }
+        
 
         /// <summary>
         /// setVisibilebuttons Method
@@ -278,6 +273,30 @@ namespace QuizApp
             }
         }
 
-        
+        public FillInBlankCanvas FibCanvas
+        {
+            get
+            {
+                return fibCanvas;
+            }
+
+            set
+            {
+                fibCanvas = value;
+            }
+        }
+
+        public TrueFalseCanvas TfCanvas
+        {
+            get
+            {
+                return tfCanvas;
+            }
+
+            set
+            {
+                tfCanvas = value;
+            }
+        }
     }
 }
