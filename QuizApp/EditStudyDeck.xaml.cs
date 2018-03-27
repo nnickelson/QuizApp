@@ -18,20 +18,15 @@ using Microsoft.Win32;
 
 namespace QuizApp
 {
-    /// <summary>
-    /// Interaction logic for EditStudyDeck.xaml
-    /// </summary>
-    ///     
+      
     public partial class EditStudyDeck : Page
     {
+        //Work variable
         StudyDeck Deck = new StudyDeck();
         string JSONflashcards;
         int index = 0;
         Flashcards f;
-        string fileName;
-
-
-        // Create serializer object to convert to and from the JSON format
+        string filePath;
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
         public EditStudyDeck()
@@ -39,16 +34,17 @@ namespace QuizApp
             InitializeComponent();
         }
 
+        // This button opens the window explorer and allows the user to select a question deck to edit.
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
             if (openFileDialog.ShowDialog() == true)
             {
-                currentlyEditing.Text = openFileDialog.FileName; // get file path
-                fileName = System.IO.Path.GetFileName(currentlyEditing.Text); // get file name only
+                filePath = openFileDialog.FileName;// Get the files path.
+                currentlyEditing.Text = System.IO.Path.GetFileNameWithoutExtension(filePath); // Get the files name only.
 
-                //make rest of form visibile
+                // Make the rest of form visibile once a deck has been selected.
                 button.Visibility = Visibility.Visible;
                 TermtextBox.Visibility = Visibility.Visible;
                 Termlabel.Visibility = Visibility.Visible;
@@ -61,10 +57,10 @@ namespace QuizApp
                 finish.Visibility = Visibility.Visible;
             }
            
-
-            if (currentlyEditing.Text != "")
+            // If a study deck exist then populate the rest of the form with the appropriate fields.
+            if (filePath != "")
             {
-                JSONflashcards = File.ReadAllText(currentlyEditing.Text);
+                JSONflashcards = File.ReadAllText(filePath);
                 Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                 TotalCardstextBox.Text = (Deck.cards.Count).ToString();
                 f = Deck.cards[index];
@@ -86,7 +82,7 @@ namespace QuizApp
             }
         }
 
-        
+        // This button opens the file explorer and allows the user to select an image for a flashcard.
         private void button_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
@@ -105,12 +101,12 @@ namespace QuizApp
             }
         }
 
+        // This button manually saves and edits made to the current flash card.
         private void Savebutton_Click(object sender, RoutedEventArgs e)
         {
             // If both the term and defintion exist then add it to the set
             if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
             {
-                // update flashcards
                 if (ImageViewer1.Source != null)
                 {
                     f.Front = TermtextBox.Text;
@@ -128,7 +124,7 @@ namespace QuizApp
                 // Reserialize the object and store it as a String
                 string outputJSON = ser.Serialize(Deck);
                 // Write that string back to the JSON file
-                File.WriteAllText(currentlyEditing.Text, outputJSON);
+                File.WriteAllText(filePath, outputJSON);
             }
             // If the term and definiton DOES NOT EXIST
             else if (string.IsNullOrEmpty(TermtextBox.Text) && string.IsNullOrEmpty(DefinitiontextBox.Text))
@@ -145,16 +141,20 @@ namespace QuizApp
             }
         }
 
+        // This button moves to the next flashcard provided it is not the last card in the deck.
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             if (index < Deck.cards.Count - 1)
             {
                 index++;
+                
+                // Load flashcards onto the form.
                 f = Deck.cards[index];
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
-
+                
+                // Load the image if it exist onto the form.
                 if (f.image != null)
                 {
                     BitmapImage bitmap = new BitmapImage();
@@ -169,15 +169,20 @@ namespace QuizApp
 
         }
 
+        // This button moves to the previous flashcard provided it is not the first card in the deck.
         private void Previousbtn_Click(object sender, RoutedEventArgs e)
         {
             if (index != 0)
             {
                 index--;
+
+                // Load flashcards onto the form.
                 f = Deck.cards[index];
                 TermtextBox.Text = f.Front;
                 DefinitiontextBox.Text = f.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
+
+                // Load the image if it exist onto the form.
                 if (f.image != null)
                 {
                     BitmapImage bitmap = new BitmapImage();
@@ -186,12 +191,11 @@ namespace QuizApp
                     bitmap.EndInit();
                     ImageViewer1.Source = bitmap;
                 } else
-                {
                     ImageViewer1.Source = null;
-                }
             }
         }
 
+        // This button deletes the current flashcard from the deck.
         private void Deletebtn_Click(object sender, RoutedEventArgs e)
         {
             if (Deck.cards.Count >= 1)
@@ -200,21 +204,24 @@ namespace QuizApp
                 index--;
                 CurrentCardTextbox.Text = (index + 1).ToString();
                 TotalCardstextBox.Text = (Deck.cards.Count).ToString();
+
                 // Reserialize the object and store it as a String
                 string outputJSON = ser.Serialize(Deck);
-                // Write that string back to the JSON file
-                File.WriteAllText(currentlyEditing.Text, outputJSON);
 
-                if (index  <Deck.cards.Count ) // Go back one card on delete
+                // Write that string back to the JSON file
+                File.WriteAllText(filePath, outputJSON);
+
+                if (index  < Deck.cards.Count ) // Go back one card on delete;
                 {
                     Previousbtn_Click(sender, e); 
                 } else
                 {
-                    NextBtn_Click(sender, e); // go forward on card
+                    NextBtn_Click(sender, e); // Move forward to the next card on delete;
                 }
             }
         }
 
+        // This button takes the user back to the Edit study deck page.
         private void finish_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(

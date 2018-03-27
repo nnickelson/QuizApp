@@ -19,26 +19,26 @@ namespace QuizApp
 {
     public partial class CreateStudySet : Page
     {
-        public CreateStudySet()
-        {
-            InitializeComponent();
-        }
-
+        // Work varibales
         StudyDeck Deck = new StudyDeck();
         string fileName = "";
         string JSONflashcards;
         int currentCard = 0;
         Boolean ImageExist = false;
-
-        // Create serializer object to convert to and from the JSON format
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
-        // This is for the image box
+
+        public CreateStudySet()
+        {
+            InitializeComponent();
+        }
+
+        // This button opens the windows explorer and allows the user to select .JPG or .PNG images.
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
             dlg.InitialDirectory = "c:\\";
-            dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
+            dlg.Filter = "Image files (*.jpg)|*.jpg| (*.png)|*.png";
             dlg.RestoreDirectory = true;
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -54,9 +54,7 @@ namespace QuizApp
             }
         }
 
-
-
-        /* This button will add a card to a set only if the term and definition exist */
+        // This button will add a card to a set only if the term and definition exist.
         private void Addbutton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(DeckTitletextBox.Text))
@@ -78,8 +76,7 @@ namespace QuizApp
                     {
                         // This reads the JSON file as one big long string                    
                         JSONflashcards = File.ReadAllText(filePath+@"\"+fileName);
-
-                    // // This parses that string back into an object
+                    // This parses that string back into an object
                     Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                     }
                }
@@ -138,6 +135,7 @@ namespace QuizApp
             }
         }
 
+        // This button takes the user back to the Deck builder page.
         private void Finishedbutton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
