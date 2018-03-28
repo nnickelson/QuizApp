@@ -65,7 +65,7 @@ namespace QuizApp
                 RootPath += @"\QuizApp\";
                 StudyDecksPath = RootPath+ @"\StudyDecks\";
                 ImagePath = RootPath+ @"\Images\";
-                QuestionsDeckPath = RootPath + @"\Questions\";
+                QuestionsDeckPath = RootPath + @"\QuestionDecks\";
                 if (!Directory.Exists(RootPath))
                 {
                     Directory.CreateDirectory(RootPath);
