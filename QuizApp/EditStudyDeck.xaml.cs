@@ -28,7 +28,7 @@ namespace QuizApp
         Flashcards f;
         string filePath;
         JavaScriptSerializer ser = new JavaScriptSerializer();
-
+       
         public EditStudyDeck()
         {
             InitializeComponent();
@@ -230,9 +230,13 @@ namespace QuizApp
                 bitmap.UriSource = new Uri(f.image);
                 bitmap.EndInit();
                 ImageViewer1.Source = bitmap;
+                FileNameLabel.Content = f.image;
             }
             else
+            {
                 ImageViewer1.Source = null;
+                FileNameLabel.Content = null;
+            }
         }
     }
 }

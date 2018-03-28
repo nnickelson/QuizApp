@@ -10,31 +10,31 @@
     <Grid Background="#FFF3F2F2" Margin="0,-3,0,3">
 
         <!--Images-->
-        <Image   x:Name="ImageViewer1"                          HorizontalAlignment="Center" Margin="282,262,260,0" VerticalAlignment="Top"   Height="275" Width="358"/>
+        <Image   x:Name="ImageViewer1"                          HorizontalAlignment="Center" Margin="140,272,356,0" VerticalAlignment="Top"   Height="278" Width="404" Stretch="Fill"/>
 
         <!-- Textboxes-->
         <TextBox x:Name="TermtextBox"  TextBox.Visibility ="Hidden"   HorizontalAlignment="Center" Margin="22,550,214,0"   VerticalAlignment="Top"  Height="38"  Width="664"  BorderThickness="0,0,0,2" Opacity="0.8" FontSize="22"/>
         <TextBox x:Name="DefinitiontextBox"                    HorizontalAlignment="Center" Margin="22,648,214,0"   VerticalAlignment="Top"  Height="248"  Width="664" Opacity="0.8" BorderThickness="0,0,0,2" VerticalScrollBarVisibility="Auto" TextBox.Visibility ="Hidden" FontSize="22" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True"/>
-        <TextBox x:Name="currentlyEditing"                     HorizontalAlignment="Center" Margin="257,86,296,0"   VerticalAlignment="Top"  Height="39"   Width="347" BorderThickness="0,0,0,1" IsReadOnly ="True" FontSize="22" />
-        <TextBox x:Name="TotalCardstextBox"                    HorizontalAlignment="Center" Margin="257,140,561,0"  VerticalAlignment="Top"  Height="39"  Width="82" BorderThickness="0,0,0,1" IsReadOnly ="True" FontSize="22" />
-        <TextBox x:Name="CurrentCardTextbox"                   HorizontalAlignment="Center" Margin="257,193,561,0"  VerticalAlignment="Top"  Height="39"  Width="82" BorderThickness="0,0,0,1" IsReadOnly ="True" FontSize="22" />
+        <TextBox x:Name="currentlyEditing"                     HorizontalAlignment="Center" Margin="257,70,296,0"   VerticalAlignment="Top"  Height="39"   Width="347" BorderThickness="0,0,0,1" IsReadOnly ="True" FontSize="22" />
+        <TextBox x:Name="TotalCardstextBox"                    HorizontalAlignment="Center" Margin="257,124,561,0"  VerticalAlignment="Top"  Height="39"  Width="82" BorderThickness="0,0,0,1" IsReadOnly ="True" FontSize="22" />
+        <TextBox x:Name="CurrentCardTextbox"                   HorizontalAlignment="Center" Margin="257,177,561,0"  VerticalAlignment="Top"  Height="39"  Width="82" BorderThickness="0,0,0,1" IsReadOnly ="True" FontSize="22" />
 
         <!-- Labels-->
         <Label  x:Name="Termlabel"                              HorizontalAlignment="Center" Margin="22,588,768,0"  VerticalAlignment="Top" Label.Visibility ="Hidden" FontSize="22" Width="110" >Term</Label>
         <Label  x:Name="Definitionlabel"                        HorizontalAlignment="Center" Margin="22,896,773,0"  VerticalAlignment="Top" Label.Visibility ="Hidden" FontSize="22" Height="42">Definition</Label>
-        <Label  x:Name="label"                                  HorizontalAlignment="Center" Margin="22,78,705,0"   VerticalAlignment="Top" FontSize="22">Currently editing</Label>
-        <Label  x:Name="FileNameLabel"                          HorizontalAlignment="Center" Margin="257,262,136,0" VerticalAlignment="Top" Width="507" Height="32" RenderTransformOrigin="0.5,0.5" FontSize="22"></Label>
-        <Label  x:Name="CardNumberlabel_Copy"                   HorizontalAlignment="Center" Margin="22,140,672,0"  VerticalAlignment="Top"  Width="206" FontSize="22">Total Cards in Deck</Label>
-        <Label  x:Name="CurrentCardLabel"                       HorizontalAlignment="Center" Margin="22,193,656,0"  VerticalAlignment="Top"  Width="222" FontSize="22">Current card number</Label>
+        <Label  x:Name="label"                                  HorizontalAlignment="Center" Margin="22,62,705,0"   VerticalAlignment="Top" FontSize="22">Currently editing</Label>
+        <Label  x:Name="FileNameLabel"                          HorizontalAlignment="Center" Margin="193,228,200,0" VerticalAlignment="Top" Width="507" Height="46" RenderTransformOrigin="0.5,0.5" FontSize="22"></Label>
+        <Label  x:Name="CardNumberlabel_Copy"                   HorizontalAlignment="Center" Margin="22,124,672,0"  VerticalAlignment="Top"  Width="206" FontSize="22">Total Cards in Deck</Label>
+        <Label  x:Name="CurrentCardLabel"                       HorizontalAlignment="Center" Margin="22,177,656,0"  VerticalAlignment="Top"  Width="222" FontSize="22">Current card number</Label>
 
         <!-- Buttons-->
         <Button x:Name="finish"                                 HorizontalAlignment="Center" Margin="610,947,186,0" VerticalAlignment="Top" Width="104"  Click="finish_Click" FontSize="22">Finish</Button>
-        <Button x:Name="SelectADeckbtn"                         HorizontalAlignment="Center" Margin="319,24,352,0"  VerticalAlignment="Top" Width="229" Click="SelectADeckbtn_Click" FontSize="22">Select a deck to edit</Button>
+        <Button x:Name="SelectADeckbtn"                         HorizontalAlignment="Center" Margin="319,8,352,0"  VerticalAlignment="Top" Width="229" Click="SelectADeckbtn_Click" FontSize="22">Select a deck to edit</Button>
         <Button x:Name="Deletebtn"   Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="335,947,473,0"  VerticalAlignment="Top" Width="92"  Click="Deletebtn_Click" FontSize="22">Delete</Button>
         <Button x:Name="Previousbtn" Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="15,948,773,0" VerticalAlignment="Top" Width="112"  Click="Previousbtn_Click" FontSize="22">Previous</Button>
         <Button x:Name="NextBtn"     Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="144,948,682,0" VerticalAlignment="Top" Width="74"  Click="NextBtn_Click" FontSize="22" Height="34">Next</Button>
         <Button x:Name="Savebutton"  Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="444,947,306,0" VerticalAlignment="Top" Width="150"  Click="Savebutton_Click" Height="33" FontSize="22">Save Changes</Button>
-        <Button x:Name="button"      Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="22,262,730,0"  VerticalAlignment="Top" Width="148"  Click="button_Click" FontSize="22">Add Image</Button>
+        <Button x:Name="button"      Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="32,233,720,0"  VerticalAlignment="Top" Width="148"  Click="button_Click" FontSize="22">Add Image</Button>
 
 
 
