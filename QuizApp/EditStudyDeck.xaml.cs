@@ -28,7 +28,7 @@ namespace QuizApp
         Flashcards f;
         string filePath;
         JavaScriptSerializer ser = new JavaScriptSerializer();
-
+       
         public EditStudyDeck()
         {
             InitializeComponent();
@@ -58,8 +58,9 @@ namespace QuizApp
             }
            
             // If a study deck exist then populate the rest of the form with the appropriate fields.
-            if (filePath != "")
+            if (File.Exists(filePath))
             {
+                
                 JSONflashcards = File.ReadAllText(filePath);
                 Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                 TotalCardstextBox.Text = (Deck.cards.Count).ToString();
@@ -153,7 +154,7 @@ namespace QuizApp
         // This button moves to the previous flashcard provided it is not the first card in the deck.
         private void Previousbtn_Click(object sender, RoutedEventArgs e)
         {
-            if (index != 0)
+            if (index > 0)
             {
                 index--;
 
@@ -171,7 +172,7 @@ namespace QuizApp
         // This button deletes the current flashcard from the deck.
         private void Deletebtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Deck.cards.Count >= 1)
+            if (Deck.cards.Count > 1) // At least one card in the deck
             {
                 Deck.cards.Remove(f);
                 index--;
@@ -184,13 +185,32 @@ namespace QuizApp
                 // Write that string back to the JSON file
                 File.WriteAllText(filePath, outputJSON);
 
-                if (index  < Deck.cards.Count ) // Go back one card on delete;
+                if (index > 1) // Go back one card on delete;
                 {
-                    Previousbtn_Click(sender, e); 
-                } else
+                    Previousbtn_Click(sender, e);
+                }
+                else
                 {
                     NextBtn_Click(sender, e); // Move forward to the next card on delete;
                 }
+            }
+            else // Delete the deck
+            {
+                File.Delete(filePath);
+                index = 0;
+                button.Visibility = Visibility.Hidden;
+                TermtextBox.Visibility = Visibility.Hidden;
+                Termlabel.Visibility = Visibility.Hidden;
+                DefinitiontextBox.Visibility = Visibility.Hidden;
+                Definitionlabel.Visibility = Visibility.Hidden;
+                Deletebtn.Visibility = Visibility.Hidden;
+                Savebutton.Visibility = Visibility.Hidden;
+                NextBtn.Visibility = Visibility.Hidden;
+                Previousbtn.Visibility = Visibility.Hidden;
+                finish.Visibility = Visibility.Visible;
+                CurrentCardTextbox.Text = "";
+                TotalCardstextBox.Text = "";
+                currentlyEditing.Text = "";
             }
         }
 
@@ -198,7 +218,7 @@ namespace QuizApp
         private void finish_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
-               new Uri("/EditStudyDeck.xaml", UriKind.Relative));
+               new Uri("/DeckBuilder.xaml", UriKind.Relative));
         }
 
         void loadImage()
@@ -210,9 +230,13 @@ namespace QuizApp
                 bitmap.UriSource = new Uri(f.image);
                 bitmap.EndInit();
                 ImageViewer1.Source = bitmap;
+                FileNameLabel.Content = f.image;
             }
             else
+            {
                 ImageViewer1.Source = null;
+                FileNameLabel.Content = null;
+            }
         }
     }
 }

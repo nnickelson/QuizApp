@@ -27,7 +27,6 @@ namespace QuizApp
         Boolean ImageExist = false;
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
-
         public CreateStudySet()
         {
             InitializeComponent();
@@ -59,11 +58,21 @@ namespace QuizApp
         {
             if (!string.IsNullOrEmpty(DeckTitletextBox.Text))
             {
-                //-------------- Create a root directory and subfolder on desktop------------
-                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                filePath += @"\StudyDecks\";
-                if (!Directory.Exists(filePath))
-                    Directory.CreateDirectory(filePath);
+                string RootPath, StudyDecksPath, ImagePath, QuestionsDeckPath;
+                //-------------- Create a root directory and subfolders on desktop if they haven't already been created yet------------
+                RootPath = StudyDecksPath = ImagePath = QuestionsDeckPath= Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                RootPath += @"\QuizApp\";
+                StudyDecksPath = RootPath+ @"\StudyDecks\";
+                ImagePath = RootPath+ @"\Images\";
+                QuestionsDeckPath = RootPath + @"\QuestionDecks\";
+                if (!Directory.Exists(RootPath))
+                {
+                    Directory.CreateDirectory(RootPath);
+                    Directory.CreateDirectory(StudyDecksPath);
+                    Directory.CreateDirectory(ImagePath);
+                    Directory.CreateDirectory(QuestionsDeckPath);
+                }
                 //---------------------------------------------------------------------------
 
                 if (currentCard == 0)
@@ -72,10 +81,10 @@ namespace QuizApp
                     fileName = fileName + ".json";
               
                     // if the file exists we update it - if it doesn't we'll create it later
-                    if (File.Exists(filePath + @"\" + fileName))
+                    if (File.Exists(StudyDecksPath + @"\" + fileName))
                     {
                         // This reads the JSON file as one big long string                    
-                        JSONflashcards = File.ReadAllText(filePath+@"\"+fileName);
+                        JSONflashcards = File.ReadAllText(StudyDecksPath + @"\"+fileName);
                     // This parses that string back into an object
                     Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                     }
@@ -99,7 +108,7 @@ namespace QuizApp
                     string outputJSON = ser.Serialize(Deck);
                     
                     // Write that string back to the JSON file
-                    File.WriteAllText(filePath + fileName, outputJSON);
+                    File.WriteAllText(StudyDecksPath + fileName, outputJSON);
 
                     // increment total cards and reset text boxes
                     currentCard++;              

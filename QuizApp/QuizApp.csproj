@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="FillInBlank.cs" />
     <Compile Include="FillInBlankCanvas.cs" />
+    <Compile Include="Import.xaml.cs">
+      <DependentUpon>Import.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MultipleChoice.cs" />
     <Compile Include="MultipleChoiceCanvas.cs" />
     <Compile Include="QuestionsDeckJSON_IO.cs" />
@@ -94,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Import.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

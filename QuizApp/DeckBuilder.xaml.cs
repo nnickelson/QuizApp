@@ -39,5 +39,10 @@ namespace QuizApp
         {
             NavigationService.Navigate(new Uri("/EditStudyDeck.xaml", UriKind.Relative));
         }
+
+        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Home.xaml", UriKind.Relative));
+        }
     }
 }
