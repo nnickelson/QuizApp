@@ -25,6 +25,7 @@ namespace QuizApp
         private Question question;
         private FillInBlankCanvas fibCanvas;
         private TrueFalseCanvas tfCanvas;
+        private MultipleChoiceCanvas mcCanvas;
         private bool misClick;
 
         
@@ -69,7 +70,7 @@ namespace QuizApp
 
         /// <summary>
         /// fillInTheBlank_Clicked Method
-        /// Sets the Fill in the blank grid to visible
+        /// Adds a Fillin the Blank canvas to the grid area
         /// initializes a new fill in the blank question
         /// </summary>
         /// <param name="sender">button handler</param>
@@ -88,13 +89,13 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-                this.question = new FillInBlank();
+                this.question = new FillInBlank { QuestionType = "Fill In Blank"};
             }
         }
 
         /// <summary>
         /// trueFalse_Clicked Method
-        /// Sets the True False Grid to visible
+        /// Adds a True False cnavas to the grid
         /// Initializes a new True False question
         /// </summary>
         /// <param name="sender">button handler</param>
@@ -112,31 +113,58 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 TfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
-                this.question = new TrueFalse();
+                this.question = new TrueFalse { QuestionType = "true false"};
             }
         }
 
         /// <summary>
         /// multipleChoice_Clicked Method
-        /// Sets the Multiple choice grid to visible
+        /// Adds a Multiple Choice Canvas to the grid
         /// Initializes a new Multiple Choice questions
         /// </summary>
         /// <param name="sender">button handler</param>
         /// <param name="e">button handler</param>
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
         {
-
-            this.question = new MultipleChoice();
+            if (misClick == true)
+            {
+                misClick = false;
+            }
+            else
+            {
+                QuestionsCanvasTemplate.Children.Clear();
+                double height = QuestionsCanvasTemplate.ActualHeight;
+                double width = QuestionsCanvasTemplate.ActualWidth;
+                McCanvas = new MultipleChoiceCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
+                this.question = new MultipleChoice{ QuestionType = "multiple choice" };
+            }
         }
 
         /// <summary>
-        /// ************************************************************************************************UNFINISHED METHOD
+        /// finishedbutton_Click Method
+        /// checks to see that a deck has been named and has at least one question
+        /// If so, then the deck is passed to a method to read into a JSON file
+        /// if not, a message box appears and the method is returned
         /// </summary>
         /// <param name="sender">button handler</param>
         /// <param name="e">button handler</param>
-        private void finishedbutton_Click(object sender, ContextMenuEventArgs e)
+        private void finishedbutton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DeckTitletextBox.Text == "")
+            {
+                MessageBox.Show("The deck doesn't have a name");
+                return;
+            }
+            if (QuestionsDeck.QuestionList.Count < 1)
+            {
+                MessageBox.Show("There are no questions in the deck. Add a question first.");
+                return;
+            }
+            QuestionsDeckJSON_IO reader = new QuestionsDeckJSON_IO();
+            MessageBox.Show("IO reader function");
+            reader.WriteQuestionsDeck(QuestionsDeck);
+            NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
         }
 
         /// <summary>
@@ -154,7 +182,10 @@ namespace QuizApp
                 fillInTheBlank_Clicked(sender, e);
             }
             if (question is MultipleChoice)
+            {
                 AddToDeck((MultipleChoice)question);
+                multipleChoice_Clicked(sender, e);
+            }
             if (question is TrueFalse)
             {
                 AddToDeck((TrueFalse)question);
@@ -164,9 +195,10 @@ namespace QuizApp
         }
 
         /// <summary>
-        /// AddToDeck Method
-        /// adds a fill in the blank question to the questionsDeck if the approrpiate fields have values
-        /// returns if not
+        /// AddToDeck Method - Fill In The Blank
+        /// This method checks to see if the question text boxe and answer text
+        /// box have some values in them. If both are true, the question is added
+        /// to the questions deck, otherwise the mislcick is set to false and the method is returned
         /// </summary>
         /// <param name="fillinBlankQuestion">type of FillInBlank</param>
         private void AddToDeck(FillInBlank fillinBlankQuestion)
@@ -186,30 +218,59 @@ namespace QuizApp
         }
 
         /// <summary>
-        /// ************************************************************************************************UNFINISHED METHOD
+        /// AddToDeck Method - Multiple Choice
+        /// This method checks to see if the question text is filled, at least 2
+        /// answer boxes have text in them, and one of those text boxes has its
+        /// radio button checked. If all are true, then the multiple question
+        /// is added to the question deck, otherwise misclick is set to false and 
+        /// the method returns until all the checks pass
         /// </summary>
         /// <param name="multipleChoiceQuestion">type of MultipleChoice</param>
         private void AddToDeck(MultipleChoice multipleChoiceQuestion)
         {
+            bool answerSet = false;
+            foreach (TextBox answer in McCanvas.AnswerBoxes)
+            {
+                int answerNum = McCanvas.AnswerBoxes.IndexOf(answer);
+                if (answer.Text != "")
+                {
+                    multipleChoiceQuestion.Choices.Add(answer.Text);
+                    if (McCanvas.AnswerButtons[answerNum].IsChecked == true)
+                    {
+                        multipleChoiceQuestion.CorrectAnswer = multipleChoiceQuestion.Choices.Count - 1;
+                        answerSet = true;
+                    }
+                }
+            }
+            if (McCanvas.QuestionBox.Text == "" || multipleChoiceQuestion.Choices.Count < 2 || answerSet == false)
+            {
+                misClick = true;
+                multipleChoiceQuestion.Choices.Clear();
+                return;
+            }
+            multipleChoiceQuestion.QuestionText = McCanvas.QuestionBox.Text;
+            this.questionsDeck.QuestionList.Add(multipleChoiceQuestion);
+            QuestionNumBox.Text = Convert.ToString(questionsDeck.QuestionList.Count + 1);
 
         }
 
         /// <summary>
-        /// AddToDeck Method
-        /// Adds a truefalse question to a questionsDeck if the appropriate fields have values
-        /// returns if not
+        /// AddToDeck Method - True False
+        /// Checks to see if the question text has a value and one of the radio buttons
+        /// has been checked. If so, then the question is added to the questions deck, 
+        /// otherwise misclick is set to false and the method is returned.
         /// </summary>
         /// <param name="trueFalseQuestion">type of TrueFalse</param>
         private void AddToDeck(TrueFalse trueFalseQuestion)
         {
-            if (TfCanvas.Tb1.Text == "" || (TfCanvas.ButtonTrue.IsChecked == false && TfCanvas.ButtonFalse.IsChecked == false))
+            if (TfCanvas.QuestionBox.Text == "" || (TfCanvas.ButtonTrue.IsChecked == false && TfCanvas.ButtonFalse.IsChecked == false))
             {
                 misClick = true;
                 return;
             }
             else
             {
-                trueFalseQuestion.QuestionText = TfCanvas.Tb1.Text;
+                trueFalseQuestion.QuestionText = TfCanvas.QuestionBox.Text;
                 if (TfCanvas.ButtonTrue.IsChecked == true)
                 {
                     MessageBox.Show("true");
@@ -296,6 +357,19 @@ namespace QuizApp
             set
             {
                 tfCanvas = value;
+            }
+        }
+
+        internal MultipleChoiceCanvas McCanvas
+        {
+            get
+            {
+                return mcCanvas;
+            }
+
+            set
+            {
+                mcCanvas = value;
             }
         }
     }

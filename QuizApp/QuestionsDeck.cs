@@ -22,7 +22,7 @@ namespace QuizApp
         }
 
 
-        internal List<Question> QuestionList
+        public List<Question> QuestionList
         {
             get
             {

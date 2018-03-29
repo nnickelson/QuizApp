@@ -9,7 +9,12 @@ namespace QuizApp
     public class MultipleChoice : Question
     {
         private List<String> choices;
-        private String correctAnswer;
+        private int correctAnswer;
+
+        public MultipleChoice()
+        {
+            Choices = new List<String>();
+        }
 
         /// <summary>
         /// Public properties section
@@ -27,7 +32,7 @@ namespace QuizApp
             }
         }
 
-        public string CorrectAnswer
+        public int CorrectAnswer
         {
             get
             {

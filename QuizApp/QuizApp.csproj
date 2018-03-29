@@ -67,6 +67,8 @@
     <Compile Include="FillInBlank.cs" />
     <Compile Include="FillInBlankCanvas.cs" />
     <Compile Include="MultipleChoice.cs" />
+    <Compile Include="MultipleChoiceCanvas.cs" />
+    <Compile Include="QuestionsDeckJSON_IO.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuestionsDeck.cs" />
     <Compile Include="Results.cs" />

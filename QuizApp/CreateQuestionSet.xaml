@@ -19,7 +19,7 @@
 
         <!-- Button-->
         <Button x:Name="AddQuestionToDeck" Content="Add" HorizontalAlignment="Left" Margin="20,505,0,0" VerticalAlignment="Top" Width="75"  BorderThickness="1" Visibility="Hidden" Click="addQuestionToDeck_Clicked"/>
-        <Button x:Name="Finishedbutton" Content="Finished" HorizontalAlignment="Left" Margin="382,505,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.059,0.532" Visibility="Hidden" ContextMenuClosing="finishedbutton_Click"/>
+        <Button x:Name="Finishedbutton" Content="Finished" HorizontalAlignment="Left" Margin="382,505,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.059,0.532" Visibility="Hidden" Click="finishedbutton_Click"/>
         <Button x:Name="SubmitDeck" Content="Click to submit Deck Name" HorizontalAlignment="Left" Margin="328,13,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-0.341,-0.623" Height="23" Click="submitDeck_Clicked" />
         <Button x:Name="fillInTheBlank" Content="Fill in the Blank" HorizontalAlignment="Left" Margin="20,83,0,0" VerticalAlignment="Top" Click="fillInTheBlank_Clicked" Visibility="Hidden"/>
         <Button x:Name="trueFalse" Content="True or False" HorizontalAlignment="Left" Margin="201,83,0,0" VerticalAlignment="Top" Click="trueFalse_Clicked" Visibility="Hidden"/>

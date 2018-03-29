@@ -11,7 +11,7 @@ namespace QuizApp
     public class TrueFalseCanvas
     {
         private Canvas bottomCanvas;
-        private TextBox tb1;
+        private TextBox questionBox;
         private RadioButton buttonTrue, buttonFalse; 
 
         public TrueFalseCanvas(double height, double width)
@@ -22,17 +22,17 @@ namespace QuizApp
             BottomCanvas.Background = new SolidColorBrush(Colors.ForestGreen);
 
             //************************************************************
-            Tb1 = new TextBox();
+            QuestionBox = new TextBox();
 
-            Tb1.Width = BottomCanvas.Width * (0.7);
-            Tb1.Height = BottomCanvas.Height * (0.25);
-            Tb1.FontSize = Convert.ToInt32(Tb1.Height * (0.2));
+            QuestionBox.Width = BottomCanvas.Width * (0.7);
+            QuestionBox.Height = BottomCanvas.Height * (0.25);
+            QuestionBox.FontSize = Convert.ToInt32(QuestionBox.Height * (0.2));
 
-            Canvas.SetTop(Tb1, BottomCanvas.Height * (0.20));
-            Canvas.SetLeft(Tb1, BottomCanvas.Width * (0.15));
+            Canvas.SetTop(QuestionBox, BottomCanvas.Height * (0.20));
+            Canvas.SetLeft(QuestionBox, BottomCanvas.Width * (0.15));
 
-            Tb1.TextWrapping = System.Windows.TextWrapping.Wrap;
-            BottomCanvas.Children.Add(Tb1);
+            QuestionBox.TextWrapping = System.Windows.TextWrapping.Wrap;
+            BottomCanvas.Children.Add(QuestionBox);
 
             
             //**************************************************************
@@ -74,16 +74,16 @@ namespace QuizApp
             }
         }
 
-        public TextBox Tb1
+        public TextBox QuestionBox
         {
             get
             {
-                return tb1;
+                return questionBox;
             }
 
             set
             {
-                tb1 = value;
+                questionBox = value;
             }
         }
 

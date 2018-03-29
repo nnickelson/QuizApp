@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:QuizApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="480" Width="400"
-    WindowStyle="ThreeDBorderWindow"  ResizeMode="CanResize" 
+    WindowStyle="ThreeDBorderWindow"  ResizeMode="CanResize"
     WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    
+
     <Grid>
         <Frame Source="/Home.Xaml"/>
     </Grid>
