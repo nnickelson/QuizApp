@@ -60,6 +60,7 @@ namespace QuizApp
         // This button opens the file explorer so the user can select a study deck to edit.
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
+            index = 0;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
             if (openFileDialog.ShowDialog() == true)

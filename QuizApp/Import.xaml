@@ -9,11 +9,12 @@
       Title="Import">
 
     <Grid Background="#FFFFFBFB">
-        <Button x:Name="QuestionDeck" Content="Question Deck" HorizontalAlignment="Left" Margin="264,430,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="QuestionDeck_Click"/>
-        <Button x:Name="StudyDeck" Content="Study Deck" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="StudyDeck_Click"/>
-        <Button x:Name="ImageDeck" Content="Images" HorizontalAlignment="Left" Margin="514,430,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="ImageDeck_Click"/>
-        <TextBox x:Name="InstructionBox" HorizontalAlignment="Left" Height="314" Margin="10,96,0,0" TextWrapping="Wrap" Text="Step 1) Select the button corresponding to the type of deck or image you would like to import.&#xA;&#xA;Step 2) In the windows explorer, choose the folder you would like to import.&#xA;&#xA;Step 3) Select all of the files in the folder that you wish to import and press save.&#xA;&#xA;Step 4) Repeat steps 1 - 3 as many times as needed. " VerticalAlignment="Top" Width="988" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" FontSize="22"/>
-        <Label x:Name="InstructionLabel" Content="Instructions " HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="170" FontSize="22"/>
-        <Button x:Name="Finish" Content="Finish" HorizontalAlignment="Left" Margin="774,430,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="Finish_Click"/>
+        <Button x:Name="QuestionDeck" Content="Question Deck" HorizontalAlignment="Left" Margin="264,610,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="QuestionDeck_Click"/>
+        <Button x:Name="StudyDeck" Content="Study Deck" HorizontalAlignment="Left" Margin="10,610,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="StudyDeck_Click"/>
+        <Button x:Name="ImageDeck" Content="Images" HorizontalAlignment="Left" Margin="514,610,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="ImageDeck_Click"/>
+        <TextBox x:Name="InstructionBox" HorizontalAlignment="Left" Height="314" Margin="10,122,0,0" TextWrapping="Wrap" Text="Step 1) Select the button corresponding to the type of deck or image you would like to import.&#xA;&#xA;Step 2) In the windows explorer, choose the folder you would like to import.&#xA;&#xA;Step 3) Select all of the files in the folder that you wish to import and press the open button.&#xA;&#xA;Step 4) Repeat steps 1 - 3 as many times as needed. &#xD;&#xA;&#xD;&#xA;Tip: To import multiple files at once, simply highlight all of the files until they are all checked and then press the open button." VerticalAlignment="Top" Width="988" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" FontSize="22"/>
+        <Label x:Name="InstructionLabel" Content="Instructions " HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="170" FontSize="22" FontWeight="SemiBold"/>
+        <Button x:Name="Finish" Content="Finish" HorizontalAlignment="Left" Margin="774,610,0,0" VerticalAlignment="Top" Width="224" Height="70" FontSize="24" Click="Finish_Click"/>
+        <TextBlock TextBlock.Visibility ="hidden" x:Name="textBlock" HorizontalAlignment="Left" Margin="340,498,0,0" TextWrapping="Wrap" Text="Saved Successfully!" VerticalAlignment="Top" FontSize="36" Height="56" Width="356" TextAlignment="Center" FontWeight="Bold"/>
     </Grid>
 </Page>

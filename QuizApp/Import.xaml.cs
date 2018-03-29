@@ -24,7 +24,7 @@ namespace QuizApp
     public partial class Import : Page
     {
         //Work variable
-        string Source, Destination;
+        string Destination;
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
         public Import()
@@ -35,26 +35,35 @@ namespace QuizApp
         // Thus button copies a question deck from the users computer to the questions deck folder.
         private void QuestionDeck_Click(object sender, RoutedEventArgs e)
         {
+            // Hide save message
+            textBlock.Visibility = Visibility.Hidden;
+
             Destination = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             Destination += @"\QuizApp\";
             Destination += @"\QuestionDecks\";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == true)
             {
-                Source = openFileDialog.FileName;// Get the files path.
-                                                               
-                // Copy the file to the destination if it is not already in the specified destination
-                if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
-                    File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                foreach (string Source in openFileDialog.FileNames)
+                {
+                    // Copy the file to the destination if it is not already in the specified destination
+                    if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
+                        File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                }
+                // Show "Saved Successfully message"
+                textBlock.Visibility = Visibility.Visible;
             }
-
         }
 
         // This button copies an image from the users computer to to the images folder.
         private void ImageDeck_Click(object sender, RoutedEventArgs e)
         {
+            // Hide save message
+            textBlock.Visibility = Visibility.Hidden;
+
             Destination = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             Destination += @"\QuizApp\";
             Destination += @"\Images\";
@@ -63,13 +72,18 @@ namespace QuizApp
             dlg.InitialDirectory = "c:\\";
             dlg.Filter = "Image files (*.jpg)|*.jpg| (*.png)|*.png";
             dlg.RestoreDirectory = true;
+            dlg.Multiselect = true;
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                String Source = dlg.FileName;
-                // Copy the file to the destination if it is not already in the specified destination
-                if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
-                    File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                foreach (string Source in dlg.FileNames)
+                {
+                    // Copy the file to the destination if it is not already in the specified destination
+                    if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
+                        File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                }
+                // Show "Saved Successfully message"
+                textBlock.Visibility = Visibility.Visible;
             }
         }
 
@@ -83,19 +97,26 @@ namespace QuizApp
         // This button copies a study deck from the users computer to the study deck folder.
         private void StudyDeck_Click(object sender, RoutedEventArgs e)
         {
+            // Hide save message
+            textBlock.Visibility = Visibility.Hidden;
+
             Destination = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             Destination += @"\QuizApp\";
             Destination += @"\StudyDecks\";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == true)
             {
-                Source = openFileDialog.FileName;// Get the files path.
-                                                
-                // Copy the file to the destination if it is not already in the specified destination
-                if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
-                    File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                foreach (string Source in openFileDialog.FileNames)
+                {
+                    // Copy the file to the destination if it is not already in the specified destination
+                    if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
+                        File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                }
+                // Show "Saved Successfully message"
+                textBlock.Visibility = Visibility.Visible;
             }
         }
     }
