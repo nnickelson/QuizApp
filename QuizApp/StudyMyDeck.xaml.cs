@@ -30,7 +30,7 @@ namespace QuizApp
         Boolean IsFrontShowing = true;
 
         // Make the front of the flashcard visible.
-         void makeFrontVisible()
+        void makeFrontVisible()
         {
             // First, turn OFF the back.
             ImageViewer1.Visibility = Visibility.Hidden;
@@ -38,9 +38,9 @@ namespace QuizApp
 
             // Then turn ON the front.         
             TermBlock.Visibility = Visibility.Visible;
-            Previousbtn.Visibility = Visibility.Visible;           
+            Previousbtn.Visibility = Visibility.Visible;
         }
-        
+
         // Make the back of the flashcard visible
         void makeBackVisible()
         {
@@ -51,7 +51,7 @@ namespace QuizApp
             ImageViewer1.Visibility = Visibility.Visible;
             DefinitionBox.Visibility = Visibility.Visible;
         }
-        
+
         public StudyMyDeck()
         {
             InitializeComponent();
@@ -66,33 +66,35 @@ namespace QuizApp
             if (openFileDialog.ShowDialog() == true)
             {
                 path = openFileDialog.FileName; // get file path
-                DeckTitlebox.Text= System.IO.Path.GetFileNameWithoutExtension(path); // get file name only
-                makeFrontVisible();
 
-                // Show flashcard border and buttons
-                Rectangle1.Visibility = Visibility.Visible;
-                Nextbtn.Visibility = Visibility.Visible;
-                Flipbtn.Visibility = Visibility.Visible;
-                Finishedbtn.Visibility = Visibility.Visible;
-            }
+                if (path.Contains(".StudyDeck"))
+                {
+                    DeckTitlebox.Text = System.IO.Path.GetFileNameWithoutExtension(path); // get file name only
+                    makeFrontVisible();
+                    // Show flashcard border and buttons
+                    Rectangle1.Visibility = Visibility.Visible;
+                    Nextbtn.Visibility = Visibility.Visible;
+                    Flipbtn.Visibility = Visibility.Visible;
+                    Finishedbtn.Visibility = Visibility.Visible;
 
-            if (path != "")
-            {
-                // Load the contents of the flashcard
-                JSONflashcards = File.ReadAllText(path);
-                Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
-                TotalCardsBox.Text = (Deck.cards.Count).ToString();
-                f = Deck.cards[index];
-                TermBlock.Text = f.Front;
-                DefinitionBox.Text = f.Back;
-                CurrentCardTextbox.Text = (index + 1).ToString();
-                loadImage();
+                    // Load the contents of the flashcard
+                    JSONflashcards = File.ReadAllText(path);
+                    Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
+                    TotalCardsBox.Text = (Deck.cards.Count).ToString();
+                    f = Deck.cards[index];
+                    TermBlock.Text = f.Front;
+                    DefinitionBox.Text = f.Back;
+                    CurrentCardTextbox.Text = (index + 1).ToString();
+                    loadImage();
+                }
+                else
+                    MessageBox.Show("Sorry, You can only review a Study Deck on this page.", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         // This button loads the next flashcard in the deck.
         private void Nextbtn_Click(object sender, RoutedEventArgs e)
-        {          
+        {
             //  Note: Each time next is hit, always show front of the card and hide back 
             if (index < Deck.cards.Count - 1)
             {

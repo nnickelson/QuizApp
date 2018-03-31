@@ -12,7 +12,7 @@
         <!--Images-->
 
         <!-- Textboxes-->
-        <TextBox TextBox.Visibility ="Visible" x:Name="DeckTitletextBox"       HorizontalAlignment="Center" Margin="221,27,369,0"  VerticalAlignment="Top"  Height="42" Width="310" BorderThickness="0,0,0,1" FontSize="22"/>
+        <TextBox TextBox.Visibility ="Visible" x:Name="DeckTitletextBox"       HorizontalAlignment="Center" Margin="221,27,343,0"  VerticalAlignment="Top"  Height="42" Width="336" BorderThickness="0,0,0,1" FontSize="22"/>
         <TextBox TextBox.Visibility ="Hidden" x:Name="CardNumberLabeltextBox" HorizontalAlignment="Center" Margin="221,145,541,0"  VerticalAlignment="Top" Width="138" BorderThickness="0,0,0,1" Height="38" IsReadOnly ="True" FontSize="22"/>
         <TextBox TextBox.Visibility ="Hidden" x:Name="TermtextBox"            HorizontalAlignment="Center" Margin="18,586,169,0"  VerticalAlignment="Top" Width="713" AutomationProperties.IsRequiredForForm="True" Height="38" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here" FontSize="22"/>
         <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitiontextBox"      HorizontalAlignment="Center" Margin="18,679,169,0"  VerticalAlignment="Top" Width="713" Opacity="0.8" BorderThickness="0,0,0,2" Height="234" VerticalScrollBarVisibility="Auto" FontSize="22" SpellCheck.IsEnabled="True" AcceptsTab="True" AcceptsReturn="True"/>
@@ -31,8 +31,9 @@
         <Button Button.Visibility ="Hidden" x:Name="button"                  HorizontalAlignment="Center" Margin="18,210,702,0"  VerticalAlignment="Top" Width="180" Click="button_Click_1" FontSize="22" RenderTransformOrigin="-0.376,0.361">Add Image</Button>
         <Label Label.Visibility ="Hidden" x:Name="FileNameLabel" HorizontalAlignment="Center" Margin="225,208,173,0" VerticalAlignment="Top" Height="47" Width="502" FontSize="22"/>
         <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Center" Height="305" Margin="102,274,296,0" VerticalAlignment="Top" Width="502"/>
-       
-        <Button x:Name="Gobtn" Content="Go" HorizontalAlignment="Center" Margin="557,26,169,0" VerticalAlignment="Top" Width="174" Height="42" FontSize="22" Click="Gobtn_Click"/>
+
+        <Button x:Name="Gobtn" Content="Go" HorizontalAlignment="Center" Margin="577,26,149,0" VerticalAlignment="Top" Width="174" Height="42" FontSize="22" Click="Gobtn_Click"/>
+        <TextBlock x:Name="Warning" Text="Note: Do NOT include &quot;.StudyDeck.json&quot; extenstion as part of the deck title." HorizontalAlignment="Center" Margin="92,111,149,0" VerticalAlignment="Top" Width="659" Height="68" FontSize="24" TextWrapping="Wrap" FontWeight="SemiBold" Background="#FFEAE5E5" Foreground="#FFFD0000"/>
 
     </Grid>
 </Page>

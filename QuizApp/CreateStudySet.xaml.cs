@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Web.Script.Serialization;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace QuizApp
 {
@@ -71,6 +72,7 @@ namespace QuizApp
                 {
                     fileName = DeckTitletextBox.Text;
                     fileName = fileName.Trim();
+
 
                     // If the file exists then update it.
                     if (File.Exists(StudyDecksPath + @"\" + fileName + ".StudyDeck.json"))
@@ -141,6 +143,7 @@ namespace QuizApp
                 new Uri("/DeckBuilder.xaml", UriKind.Relative));
         }
 
+        // The purpose of this function is to unhide the rest of the elements in the form.
         void ShowForm()
         {
             TotalCards.Visibility = Visibility.Visible;
@@ -158,6 +161,7 @@ namespace QuizApp
             FileNameLabel.Visibility = Visibility.Visible;
         }
 
+        // The purpose of this function is to check and see if a file already exists as well as if a user provided a valid file name.
         private void Gobtn_Click(object sender, RoutedEventArgs e)
         {
             // check if file exist
@@ -170,26 +174,52 @@ namespace QuizApp
             fileName = DeckTitletextBox.Text;
             fileName = fileName.Trim();
 
-            // Check if file exist
-            if (File.Exists(StudyDecksPath + @"\" + fileName + ".StudyDeck.json"))
+            /* File names cannot contain a period or anyother illegal characters nor can it be a blank space*/
+            if (IsValidFilename(fileName) != true || fileName.Contains(".") || fileName=="")
             {
-                var result = MessageBox.Show("This file already exists. Would you like to add "
-                    + "more cards to this deck?", "Help Window", MessageBoxButton.YesNo);
-
-                if (MessageBoxResult.Yes == result)
-                {
-                    Gobtn.Visibility = Visibility.Hidden;
-                    ShowForm();
-                }
-                else
-                    // clear deck title
-                    DeckTitletextBox.Text = "";                  
+                MessageBox.Show("Sorry, you entered an invalid filename. Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                DeckTitletextBox.Text = "";
             }
             else
             {
-                Gobtn.Visibility = Visibility.Hidden;
-                ShowForm();
+                // Check if file exist
+                if (File.Exists(StudyDecksPath + @"\" + fileName + ".StudyDeck.json"))
+                {
+                    var result = MessageBox.Show("This file already exists. Would you like to add "
+                        + "more cards to this deck?", "Help Window", MessageBoxButton.YesNo);
+
+                    if (MessageBoxResult.Yes == result)
+                    {
+                        Gobtn.Visibility = Visibility.Hidden;
+                        Warning.Visibility = Visibility.Hidden;
+                        ShowForm();
+                    }
+                    else
+                        DeckTitletextBox.Text = "";
+                }
+                else // file dosen't exist
+                {
+                    Gobtn.Visibility = Visibility.Hidden;
+                    Warning.Visibility = Visibility.Hidden;
+                    ShowForm();
+
+                    // This just sets the current card number and total card number to 0 intially unless it exist
+                    TotalCardsBox.Text = currentCard.ToString();
+                    CardNumberLabeltextBox.Text = currentCard.ToString();
+                }
             }
+            
+        }
+
+        // The purpose of this function is to check if a filename is valid or not.
+         bool IsValidFilename(string testName)
+        {
+            string strTheseAreInvalidFileNameChars = new string(System.IO.Path.GetInvalidFileNameChars());
+            Regex regInvalidFileName = new Regex("[" + Regex.Escape(strTheseAreInvalidFileNameChars) + "]");
+
+            if (regInvalidFileName.IsMatch(testName)) { return false; };
+
+            return true;
         }
     }
 

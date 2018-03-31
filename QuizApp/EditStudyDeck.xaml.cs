@@ -47,7 +47,7 @@ namespace QuizApp
                 if (File.Exists(filePath))
                 {
                     // Before the form is populated, make sure it is a StudyDeck and not a QuestionDeck.
-                    if (filePath.Contains("StudyDeck"))
+                    if (filePath.Contains(".StudyDeck"))
                     {
                         currentlyEditing.Text = System.IO.Path.GetFileNameWithoutExtension(filePath); // Get the files name only.
 
