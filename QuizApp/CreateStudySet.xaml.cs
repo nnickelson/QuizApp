@@ -27,6 +27,7 @@ namespace QuizApp
         Boolean ImageExist = false;
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
+
         public CreateStudySet()
         {
             InitializeComponent();
@@ -58,90 +59,79 @@ namespace QuizApp
         {
             if (!string.IsNullOrEmpty(DeckTitletextBox.Text))
             {
+                // Get filepaths so that they may be written to the correct folder. 
                 string RootPath, StudyDecksPath, ImagePath, QuestionsDeckPath;
-                //-------------- Create a root directory and subfolders on desktop if they haven't already been created yet------------
-                RootPath = StudyDecksPath = ImagePath = QuestionsDeckPath= Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
+                RootPath = StudyDecksPath = ImagePath = QuestionsDeckPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 RootPath += @"\QuizApp\";
-                StudyDecksPath = RootPath+ @"\StudyDecks\";
-                ImagePath = RootPath+ @"\Images\";
+                StudyDecksPath = RootPath + @"\StudyDecks\";
+                ImagePath = RootPath + @"\Images\";
                 QuestionsDeckPath = RootPath + @"\QuestionDecks\";
-                if (!Directory.Exists(RootPath))
-                {
-                    Directory.CreateDirectory(RootPath);
-                    Directory.CreateDirectory(StudyDecksPath);
-                    Directory.CreateDirectory(ImagePath);
-                    Directory.CreateDirectory(QuestionsDeckPath);
-                }
-                //---------------------------------------------------------------------------
 
                 if (currentCard == 0)
                 {
                     fileName = DeckTitletextBox.Text;
-                    fileName = fileName + ".json";
-              
-                    // if the file exists we update it - if it doesn't we'll create it later
-                    if (File.Exists(StudyDecksPath + @"\" + fileName))
+                    fileName = fileName.Trim();
+
+                    // If the file exists then update it.
+                    if (File.Exists(StudyDecksPath + @"\" + fileName + ".StudyDeck.json"))
                     {
-                        // This reads the JSON file as one big long string                    
-                        JSONflashcards = File.ReadAllText(StudyDecksPath + @"\"+fileName);
-                    // This parses that string back into an object
-                    Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
+                        // This reads the JSON file as one big long string .                   
+                        JSONflashcards = File.ReadAllText(StudyDecksPath + @"\" + fileName + ".StudyDeck.json");
+                        // This parses that string back into an object.
+                        Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                     }
-               }
-             
-                // If both the term and defintion exist then add it to the set
+                    else // Create a new file.
+                        fileName = fileName + ".StudyDeck.json";
+                }
+
+                // If both the term and defintion exist then add it to the set.
                 if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
-                {                 
-                    // Populate flashcards
+                {
+                    // Populate flashcards.
                     if (ImageExist == true)
                     {
                         Flashcards populateFlashCards = new Flashcards(TermtextBox.Text, DefinitiontextBox.Text, FileNameLabel.Content.ToString());
                         Deck.cards.Add(populateFlashCards);
-                    } else
+                    }
+                    else
                     {
                         Flashcards populateFlashCards = new Flashcards(TermtextBox.Text, DefinitiontextBox.Text, null);
                         Deck.cards.Add(populateFlashCards);
-                    }          
-                   
-                    // Reserialize the object and store it as a String
+                    }
+
+                    // Reserialize the object and store it as a String.
                     string outputJSON = ser.Serialize(Deck);
-                    
-                    // Write that string back to the JSON file
+
+                    // Write that string back to the JSON file.
                     File.WriteAllText(StudyDecksPath + fileName, outputJSON);
 
-                    // increment total cards and reset text boxes
-                    currentCard++;              
+                    // Increment total cards and reset text boxes.
+                    currentCard++;
                     TermtextBox.Text = "";
                     DefinitiontextBox.Text = "";
                     CardNumberLabeltextBox.Text = (currentCard).ToString();
                     TotalCardsBox.Text = (Deck.cards.Count).ToString();
                     FileNameLabel.Content = "";
                     ImageExist = false;
-                    // reset Image box
+                    // Reset Image box.
                     ImageViewer1.Source = null;
                 }
 
-                // If the Term and Definiton DOES NOT EXIST
+                // If the Term and Definiton DOES NOT EXIST.
                 else if (string.IsNullOrEmpty(TermtextBox.Text) && string.IsNullOrEmpty(DefinitiontextBox.Text))
                 {
                     TermtextBox.Text = "";
                     DefinitiontextBox.Text = "";
                     MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-                }//If the Term DOES NOT EXIST
+                } // If the Term DOES NOT EXIST.
                 else if (string.IsNullOrEmpty(TermtextBox.Text))
-                {
                     MessageBox.Show("You did not enter a Definition or an Answer! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-                }//If the Definiton DOES NOT EXIST
+                // If the Definiton DOES NOT EXIST.
                 else if (string.IsNullOrEmpty(DefinitiontextBox.Text))
-                {
                     MessageBox.Show("You did not enter a Term! Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
             }
             else
-            {
                 MessageBox.Show("You must provide a deck title to save to. You only need to do this once and leave the field alone after that", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
         }
 
         // This button takes the user back to the Deck builder page.
@@ -149,6 +139,57 @@ namespace QuizApp
         {
             NavigationService.Navigate(
                 new Uri("/DeckBuilder.xaml", UriKind.Relative));
+        }
+
+        void ShowForm()
+        {
+            TotalCards.Visibility = Visibility.Visible;
+            TotalCardsBox.Visibility = Visibility.Visible;
+            CardNumberlabel.Visibility = Visibility.Visible; ;
+            CardNumberLabeltextBox.Visibility = Visibility.Visible;
+            button.Visibility = Visibility.Visible;
+            TermtextBox.Visibility = Visibility.Visible;
+            Termlabel.Visibility = Visibility.Visible;
+            DefinitiontextBox.Visibility = Visibility.Visible;
+            Definitionlabel.Visibility = Visibility.Visible;
+            Addbutton.Visibility = Visibility.Visible;
+            Finishedbutton.Visibility = Visibility.Visible;
+            ImageViewer1.Visibility = Visibility.Visible;
+            FileNameLabel.Visibility = Visibility.Visible;
+        }
+
+        private void Gobtn_Click(object sender, RoutedEventArgs e)
+        {
+            // check if file exist
+            // Get filepaths. 
+            string RootPath, StudyDecksPath;
+            RootPath = StudyDecksPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            RootPath += @"\QuizApp\";
+            StudyDecksPath = RootPath + @"\StudyDecks\";
+
+            fileName = DeckTitletextBox.Text;
+            fileName = fileName.Trim();
+
+            // Check if file exist
+            if (File.Exists(StudyDecksPath + @"\" + fileName + ".StudyDeck.json"))
+            {
+                var result = MessageBox.Show("This file already exists. Would you like to add "
+                    + "more cards to this deck?", "Help Window", MessageBoxButton.YesNo);
+
+                if (MessageBoxResult.Yes == result)
+                {
+                    Gobtn.Visibility = Visibility.Hidden;
+                    ShowForm();
+                }
+                else
+                    // clear deck title
+                    DeckTitletextBox.Text = "";                  
+            }
+            else
+            {
+                Gobtn.Visibility = Visibility.Hidden;
+                ShowForm();
+            }
         }
     }
 

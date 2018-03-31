@@ -56,7 +56,7 @@ namespace QuizApp
         {
             if (DeckTitletextBox.Text != "")
             {
-                QuestionsDeck.DeckName = DeckTitletextBox.Text;
+                QuestionsDeck.DeckName = (DeckTitletextBox.Text).Trim() + ".QuestionDeck";
             }
             else
             {

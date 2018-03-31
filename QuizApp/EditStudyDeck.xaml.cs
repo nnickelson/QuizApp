@@ -18,7 +18,7 @@ using Microsoft.Win32;
 
 namespace QuizApp
 {
-      
+
     public partial class EditStudyDeck : Page
     {
         //Work variable
@@ -28,13 +28,13 @@ namespace QuizApp
         Flashcards f;
         string filePath;
         JavaScriptSerializer ser = new JavaScriptSerializer();
-       
+
         public EditStudyDeck()
         {
             InitializeComponent();
         }
 
-        // This button opens the window explorer and allows the user to select a question deck to edit.
+        // This button opens the window explorer and allows the user to select a study deck to edit.
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -42,34 +42,43 @@ namespace QuizApp
             if (openFileDialog.ShowDialog() == true)
             {
                 filePath = openFileDialog.FileName;// Get the files path.
-                currentlyEditing.Text = System.IO.Path.GetFileNameWithoutExtension(filePath); // Get the files name only.
+               
+                // If a study deck exist then populate the rest of the form with the appropriate fields.
+                if (File.Exists(filePath))
+                {
+                    // Before the form is populated, make sure it is a StudyDeck and not a QuestionDeck.
+                    if (filePath.Contains("StudyDeck"))
+                    {
+                        currentlyEditing.Text = System.IO.Path.GetFileNameWithoutExtension(filePath); // Get the files name only.
 
-                // Make the rest of form visibile once a deck has been selected.
-                button.Visibility = Visibility.Visible;
-                TermtextBox.Visibility = Visibility.Visible;
-                Termlabel.Visibility = Visibility.Visible;
-                DefinitiontextBox.Visibility = Visibility.Visible;
-                Definitionlabel.Visibility = Visibility.Visible;
-                Deletebtn.Visibility = Visibility.Visible;
-                Savebutton.Visibility = Visibility.Visible;
-                NextBtn.Visibility = Visibility.Visible;
-                Previousbtn.Visibility = Visibility.Visible;
-                finish.Visibility = Visibility.Visible;
-            }
-           
-            // If a study deck exist then populate the rest of the form with the appropriate fields.
-            if (File.Exists(filePath))
-            {
-                
-                JSONflashcards = File.ReadAllText(filePath);
-                Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
-                TotalCardstextBox.Text = (Deck.cards.Count).ToString();
-                f = Deck.cards[index];
+                        // Make the rest of form visibile once a deck has been selected.
+                        button.Visibility = Visibility.Visible;
+                        TermtextBox.Visibility = Visibility.Visible;
+                        Termlabel.Visibility = Visibility.Visible;
+                        DefinitiontextBox.Visibility = Visibility.Visible;
+                        Definitionlabel.Visibility = Visibility.Visible;
+                        Deletebtn.Visibility = Visibility.Visible;
+                        Savebutton.Visibility = Visibility.Visible;
+                        NextBtn.Visibility = Visibility.Visible;
+                        Previousbtn.Visibility = Visibility.Visible;
+                        finish.Visibility = Visibility.Visible;
 
-                TermtextBox.Text = f.Front;
-                DefinitiontextBox.Text = f.Back;
-                CurrentCardTextbox.Text = (index + 1).ToString();
-                loadImage();
+                        JSONflashcards = File.ReadAllText(filePath);
+                        Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
+                        TotalCardstextBox.Text = (Deck.cards.Count).ToString();
+                        f = Deck.cards[index];
+
+                        TermtextBox.Text = f.Front;
+                        DefinitiontextBox.Text = f.Back;
+                        CurrentCardTextbox.Text = (index + 1).ToString();
+                        loadImage();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry, You can only edit a Study Deck on this page. If you need to edit a Question deck"
+                            +" then go back to the deck builder page and click the 'Edit Question Deck' button.", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
             }
         }
 
@@ -138,7 +147,7 @@ namespace QuizApp
             if (index < Deck.cards.Count - 1)
             {
                 index++;
-                
+
                 // Load flashcards onto the form.
                 f = Deck.cards[index];
                 TermtextBox.Text = f.Front;
