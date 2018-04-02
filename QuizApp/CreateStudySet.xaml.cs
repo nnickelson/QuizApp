@@ -220,6 +220,36 @@ namespace QuizApp
 
             return true;
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/EditStudyDeck.xaml", UriKind.Relative));
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new Uri("/CreateStudySet.xaml", UriKind.Relative));
+            showform();
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            // NavigationService.Navigate(new Uri("/CreateStudySet.xaml", UriKind.Relative));
+            showform();
+        }
+
+        void showform()
+        {
+            DeckTitleLabel.Visibility = Visibility.Visible;
+            DeckTitletextBox.Visibility = Visibility.Visible;
+            Warning.Visibility = Visibility.Visible;
+            Gobtn.Visibility = Visibility.Visible;
+
+            //hide
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            button3.Visibility = Visibility.Hidden;
+        }
     }
 
 }

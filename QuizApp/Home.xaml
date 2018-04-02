@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Home">
-
-    <Grid Background="#FFF3EFEF">
+    <ScrollViewer>
+        <Grid Background="#FFF3EFEF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -21,8 +21,9 @@
             <RowDefinition/>
 
         </Grid.RowDefinitions>
+      
 
-        <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+            <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
                FontSize="30" FontFamily="Georgia">Home</Label>
 
         <Button x:Name ="ImportExportbtn" Grid.Row="2"  Height="50" Width="100" Content="Import" Margin="0,15,0,10" Grid.Column="1" Click="ImportExportbtn_Click"/>
@@ -30,5 +31,8 @@
         <Button x:Name ="StudyADeckbtn" Grid.Row="3" Grid.Column="0" Height="50" Width="100" Click="StudyADeckbtn_Click">Study Deck</Button>
         <Button x:Name="TakeAQuizbtn" Grid.Row="3" Grid.Column="2" Height="50" Width="100">Take a quiz</Button>
         <Button x:Name="CreateAQuizbtn" Grid.Row="1" Grid.Column="2" Height="50" Width="100">Create a quiz</Button>
+        
+        
     </Grid>
+    </ScrollViewer>
 </Page>

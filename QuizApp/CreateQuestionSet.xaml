@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="782.011" d:DesignWidth="943.915"
       Title="CreateQuestionSet">
-
-    <Grid x:Name="BottomGrid" Background="#FFECE6E6" Margin="00,0,0,0">
+    <ScrollViewer>
+        <Grid x:Name="BottomGrid" Background="#FFECE6E6" Margin="00,0,0,0">
         <!-- Textboxes-->
         <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Left" Height="23" Margin="89,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
         <TextBox x:Name="QuestionNumBox"  IsReadOnly ="True" HorizontalAlignment="Left" Height="23" Margin="89,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1" Visibility="Hidden"/>
@@ -34,4 +34,5 @@
             
         </Canvas>
     </Grid>
+    </ScrollViewer>
 </Page>
