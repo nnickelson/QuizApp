@@ -7,35 +7,32 @@
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="900"
       Title="DeckBuilder">
+    <ScrollViewer>
+        <Grid Background="#FFF3EFEF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="41*"/>
+                <ColumnDefinition Width="36*"/>
+                <ColumnDefinition Width="39*"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-    <Grid Background="#FFF3EFEF">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="31*"/>
-            <ColumnDefinition Width="41*"/>
-            <ColumnDefinition Width="36*"/>
-            <ColumnDefinition Width="39*"/>
-            <ColumnDefinition Width="33*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
 
 
-
-        <TextBlock x:Name="HomeLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+            <TextBlock x:Name="HomeLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
                FontSize="72" FontFamily="Georgia" TextAlignment="Center" >Deck Builder</TextBlock>
 
-        <Button x:Name="NewStudyDeckBtn" Grid.Column="1" Grid.Row="2" Click="NewStudyDeckBtn_Click"  FontSize="22">
-            <TextBlock TextWrapping="Wrap">Create a new deck OR add cards to an existing deck</TextBlock>
-        </Button>
-        <Button x:Name="EditStudyDeckBtn" Grid.Column="1" Grid.Row="4" Click="EditStudyDeckBtn_Click"  FontSize="22">Edit a Study Deck</Button>
-        <Button x:Name="EditQuizDeckBtn" Grid.Column="3" Grid.Row="4" FontSize="22">Edit a Quiz Deck</Button>
-        <Button x:Name="NewQuestionDeckBtn" Click="NewQuestionDeckBtn_Click" Grid.Column="3" Grid.Row="2" FontSize="22">New Question Deck</Button>
-        <Button x:Name="HomeBtn" Content="Home"  Grid.Column="2" Grid.Row="3"  FontSize="22" Click="HomeBtn_Click"/>
-    </Grid>
+            <Button x:Name="NewStudyDeckBtn" Grid.Column="1" Grid.Row="2" Click="NewStudyDeckBtn_Click"  FontSize="22" Content="Study Deck"/>
+            <Button x:Name="NewQuestionDeckBtn" Click="NewQuestionDeckBtn_Click" Grid.Column="3" Grid.Row="2" FontSize="22" Content=" Question Deck"/>
+            <Button x:Name="HomeBtn" Content="Home"  Grid.Column="2" Grid.Row="3"  FontSize="22" Click="HomeBtn_Click"/>
+        </Grid>
+    </ScrollViewer>
 </Page>
