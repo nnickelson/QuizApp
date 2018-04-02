@@ -50,6 +50,8 @@ namespace QuizApp
                     if (filePath.Contains(".StudyDeck"))
                     {
                         currentlyEditing.Text = System.IO.Path.GetFileNameWithoutExtension(filePath); // Get the files name only.
+                        String[] arr = (currentlyEditing.Text).Split('.');
+                        currentlyEditing.Text = arr[0];
 
                         // Make the rest of form visibile once a deck has been selected.
                         button.Visibility = Visibility.Visible;

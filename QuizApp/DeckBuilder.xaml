@@ -10,11 +10,11 @@
 
     <Grid Background="#FFF3EFEF">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="159*"/>
-            <ColumnDefinition Width="201*"/>
-            <ColumnDefinition Width="180*"/>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="36*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="33*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -30,7 +30,9 @@
         <TextBlock x:Name="HomeLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
                FontSize="72" FontFamily="Georgia" TextAlignment="Center" >Deck Builder</TextBlock>
 
-        <Button x:Name="NewStudyDeckBtn" Grid.Column="1" Grid.Row="2" Click="NewStudyDeckBtn_Click"  FontSize="22">New Study Deck</Button>
+        <Button x:Name="NewStudyDeckBtn" Grid.Column="1" Grid.Row="2" Click="NewStudyDeckBtn_Click"  FontSize="22">
+            <TextBlock TextWrapping="Wrap">Create a new deck OR add cards to an existing deck</TextBlock>
+        </Button>
         <Button x:Name="EditStudyDeckBtn" Grid.Column="1" Grid.Row="4" Click="EditStudyDeckBtn_Click"  FontSize="22">Edit a Study Deck</Button>
         <Button x:Name="EditQuizDeckBtn" Grid.Column="3" Grid.Row="4" FontSize="22">Edit a Quiz Deck</Button>
         <Button x:Name="NewQuestionDeckBtn" Click="NewQuestionDeckBtn_Click" Grid.Column="3" Grid.Row="2" FontSize="22">New Question Deck</Button>
