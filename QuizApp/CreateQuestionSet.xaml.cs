@@ -8,7 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using System.IO;
 using System;
@@ -28,7 +28,6 @@ namespace QuizApp
         private MultipleChoiceCanvas mcCanvas;
         private bool misClick;
         JavaScriptSerializer ser = new JavaScriptSerializer();
-        string fileName;
 
 
         /// <summary>
@@ -56,16 +55,23 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void submitDeck_Clicked(object sender, RoutedEventArgs e)
         {
-            if (DeckTitletextBox.Text != "")
-            {
+            if (DeckTitletextBox.Text != "" && IsValidFilename(DeckTitletextBox.Text))
                 QuestionsDeck.DeckName = (DeckTitletextBox.Text).Trim() + ".QuestionDeck";
-            }
             else
-            {
-                MessageBox.Show("Deck must have a name");
-                return;
-            }
+                MessageBox.Show("Sorry, you entered an invalid deck name. Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                //return;
             setVisiblebuttons();
+        }
+
+        // The purpose of this function is to check if a filename is valid or not.
+        bool IsValidFilename(string testName)
+        {
+            string strTheseAreInvalidFileNameChars = new string(System.IO.Path.GetInvalidFileNameChars());
+            Regex regInvalidFileName = new Regex("[" + Regex.Escape(strTheseAreInvalidFileNameChars) + "]");
+
+            if (regInvalidFileName.IsMatch(testName)) { return false; };
+
+            return true;
         }
 
         //Button Handlers//
@@ -294,12 +300,12 @@ namespace QuizApp
                 trueFalseQuestion.QuestionText = TfCanvas.QuestionBox.Text;
                 if (TfCanvas.ButtonTrue.IsChecked == true)
                 {
-                    MessageBox.Show("true");
+                    //MessageBox.Show("true");
                     trueFalseQuestion.CorrectAnswer = true;
                 }
                 if (TfCanvas.ButtonFalse.IsChecked == true)
                 {
-                    MessageBox.Show("false");
+                    //MessageBox.Show("false");
                     trueFalseQuestion.CorrectAnswer = false;
                 }
                 this.questionsDeck.QuestionList.Add(trueFalseQuestion);
