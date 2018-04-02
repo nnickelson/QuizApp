@@ -50,7 +50,7 @@ namespace QuizApp
             String RootPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             RootPath += @"\QuizApp\";
             String QuestionsDeckPath = RootPath + @"\QuestionDecks\";
-            File.WriteAllText(QuestionsDeckPath + (questionsDeck.DeckName) + ".QuestionDeck.json", outputJSON);
+            File.WriteAllText(QuestionsDeckPath + (questionsDeck.DeckName) + ".QuestionsDeck.json", outputJSON);
             MessageBox.Show("file: " + FileName + " written.");
         }
 
@@ -92,10 +92,12 @@ namespace QuizApp
                     // Before the form is populated, make sure it is a StudyDeck and not a QuestionDeck.
                     if (filePath.Contains(".QuestionsDeck"))
                     {
+                        MessageBox.Show("deck beaing read");
                         JavaScriptSerializer ser = new JavaScriptSerializer();
-                        Deck.DeckName = System.IO.Path.GetFileNameWithoutExtension(filePath);
+                        //Deck.DeckName = System.IO.Path.GetFileNameWithoutExtension(filePath);
                         JSONquestions1 = File.ReadAllText(filePath);
-                        Deck = ser.Deserialize<QuestionsDeck>(JSONquestions1);
+                        QuestionsDeck readDeck = ser.Deserialize<QuestionsDeck>(JSONquestions1);
+                        Deck = readDeck;
                     }
 
                 }

@@ -76,14 +76,16 @@ namespace QuizApp
         private void AddQuestions_btnClick(object sender, RoutedEventArgs e)
         {
             QuestionsDeck = fileOperator.ReadDeck();
-            //MessageBox.Show(QuestionsDeck.DeckName);
+            MessageBox.Show(QuestionsDeck.DeckName);
             editCreateChoice.Visibility = Visibility.Hidden;
+            setVisiblebuttons();
         }
 
         private void NewDeck_BtnClick(object sender, RoutedEventArgs e)
         {
             QuestionsDeck = new QuestionsDeck();
             editCreateChoice.Visibility = Visibility.Hidden;
+            setVisiblebuttons();
         }
 
         /// <summary>
@@ -327,7 +329,8 @@ namespace QuizApp
             QuestionNumBox.Visibility = Visibility.Visible;
             AddQuestionToDeck.Visibility = Visibility.Visible;
             Finishedbutton.Visibility = Visibility.Visible;
-            QuestionNumBox.Text = Convert.ToString(this.questionsDeck.QuestionList.Count + 1);
+            QuestionNumBox.Text = Convert.ToString(QuestionsDeck.QuestionList.Count + 1);
+            DeckTitletextBox.Text = QuestionsDeck.DeckName;
         }
 
         /// <summary>
