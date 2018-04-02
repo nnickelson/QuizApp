@@ -191,7 +191,7 @@ namespace QuizApp
 
             NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
         }
-//*************************************************************************************************************************************//
+
 
 
         /// <summary>
