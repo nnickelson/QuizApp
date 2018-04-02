@@ -69,7 +69,10 @@ namespace QuizApp
 
                 if (path.Contains(".StudyDeck"))
                 {
+                    
                     DeckTitlebox.Text = System.IO.Path.GetFileNameWithoutExtension(path); // get file name only
+                    string [] arr = (DeckTitlebox.Text).Split('.');
+                    DeckTitlebox.Text = arr[0];
                     makeFrontVisible();
                     // Show flashcard border and buttons
                     Rectangle1.Visibility = Visibility.Visible;
