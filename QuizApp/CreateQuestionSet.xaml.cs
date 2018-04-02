@@ -56,11 +56,15 @@ namespace QuizApp
         private void submitDeck_Clicked(object sender, RoutedEventArgs e)
         {
             if (DeckTitletextBox.Text != "" && IsValidFilename(DeckTitletextBox.Text))
+            {
                 QuestionsDeck.DeckName = (DeckTitletextBox.Text).Trim() + ".QuestionDeck";
+                setVisiblebuttons();
+            }
             else
+            {
                 MessageBox.Show("Sorry, you entered an invalid deck name. Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-                //return;
-            setVisiblebuttons();
+                DeckTitletextBox.Text = "";
+            }
         }
 
         // The purpose of this function is to check if a filename is valid or not.
