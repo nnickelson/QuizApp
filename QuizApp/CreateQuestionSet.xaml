@@ -30,9 +30,8 @@
 
         <Grid x:Name="QuestionsCanvasTemplate" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="691">
         </Grid>
-        <Grid x:Name="editCreateChoice" Background="Coral" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
-            <Button Content="AddQuestions" HorizontalAlignment="Left" Margin="170,302,0,0" VerticalAlignment="Top" Width="212" Height="141" Click="AddQuestions_btnClick"/>
-            <Button Content="NewDeck" HorizontalAlignment="Left" Margin="497,302,0,0" VerticalAlignment="Top" Width="212" Height="141" Click="NewDeck_BtnClick"/>
-        </Grid>
+        <Canvas x:Name="editCreateChoice" Background="Coral" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
+            
+        </Canvas>
     </Grid>
 </Page>

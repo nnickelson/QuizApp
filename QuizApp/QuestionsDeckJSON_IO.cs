@@ -92,7 +92,7 @@ namespace QuizApp
                     // Before the form is populated, make sure it is a StudyDeck and not a QuestionDeck.
                     if (filePath.Contains(".QuestionsDeck"))
                     {
-                        MessageBox.Show("deck beaing read");
+                        //MessageBox.Show("deck beaing read");
                         JavaScriptSerializer ser = new JavaScriptSerializer();
                         //Deck.DeckName = System.IO.Path.GetFileNameWithoutExtension(filePath);
                         JSONquestions1 = File.ReadAllText(filePath);

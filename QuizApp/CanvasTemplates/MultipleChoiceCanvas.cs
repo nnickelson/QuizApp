@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace QuizApp
 {
-    class MultipleChoiceCanvas
+    public class MultipleChoiceCanvas
     {
         private Canvas bottomCanvas;
         private TextBox questionBox;

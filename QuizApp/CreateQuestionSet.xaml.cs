@@ -39,8 +39,9 @@ namespace QuizApp
         public CreateQuestionSet()
         {
             InitializeComponent();
-            //Application.Current.MainWindow.Width = 700;
-            //Application.Current.MainWindow.Height = 650;
+            editCreateChoice.Width = Application.Current.MainWindow.ActualWidth;
+            editCreateChoice.Height = Application.Current.MainWindow.ActualHeight;
+            addEditCreateButtons();
             misClick = false;
            
         }
@@ -61,6 +62,9 @@ namespace QuizApp
             {
                 QuestionsDeck.DeckName = (DeckTitletextBox.Text).Trim();
                 setVisiblebuttons();
+                SubmitDeck.Visibility = Visibility.Hidden;
+                DeckTitletextBox.IsReadOnly = true;
+
             }
             else
             {
@@ -73,19 +77,20 @@ namespace QuizApp
         //Button Handlers//
 
 
-        private void AddQuestions_btnClick(object sender, RoutedEventArgs e)
+        private void AddQuestions_btnClick()
         {
             QuestionsDeck = fileOperator.ReadDeck();
             MessageBox.Show(QuestionsDeck.DeckName);
             editCreateChoice.Visibility = Visibility.Hidden;
+            SubmitDeck.Visibility = Visibility.Hidden;
+            DeckTitletextBox.IsReadOnly = true;
             setVisiblebuttons();
         }
 
-        private void NewDeck_BtnClick(object sender, RoutedEventArgs e)
+        private void NewDeck_BtnClick()
         {
             QuestionsDeck = new QuestionsDeck();
             editCreateChoice.Visibility = Visibility.Hidden;
-            setVisiblebuttons();
         }
 
         /// <summary>
@@ -331,6 +336,38 @@ namespace QuizApp
             Finishedbutton.Visibility = Visibility.Visible;
             QuestionNumBox.Text = Convert.ToString(QuestionsDeck.QuestionList.Count + 1);
             DeckTitletextBox.Text = QuestionsDeck.DeckName;
+            
+        }
+
+        private void addEditCreateButtons()
+        {
+            Button editDeckButton = new Button{ Content = "Edit Deck"};
+            Button newDeckButton = new Button { Content = "New Deck" };
+
+            editDeckButton.Click += delegate
+            {
+                AddQuestions_btnClick();
+            };
+
+            newDeckButton.Click += delegate
+            {
+                NewDeck_BtnClick();
+            };
+
+            Canvas.SetTop(editDeckButton, editCreateChoice.Height * (0.33));
+            Canvas.SetLeft(editDeckButton, editCreateChoice.Width * (0.25));
+
+            editDeckButton.Width = editCreateChoice.Width * (0.25);
+            editDeckButton.Height = editCreateChoice.Height * (0.33);
+
+            Canvas.SetTop(newDeckButton, editCreateChoice.Height * (0.33));
+            Canvas.SetLeft(newDeckButton, editCreateChoice.Width * (0.50));
+
+            newDeckButton.Width = editCreateChoice.Width * (0.25);
+            newDeckButton.Height = editCreateChoice.Height * (0.33);
+
+            editCreateChoice.Children.Add(editDeckButton);
+            editCreateChoice.Children.Add(newDeckButton);
         }
 
         /// <summary>
@@ -388,7 +425,7 @@ namespace QuizApp
             }
         }
 
-        internal MultipleChoiceCanvas McCanvas
+        public MultipleChoiceCanvas McCanvas
         {
             get
             {
@@ -400,9 +437,5 @@ namespace QuizApp
                 mcCanvas = value;
             }
         }
-
-        
-
-        
     }
 }
