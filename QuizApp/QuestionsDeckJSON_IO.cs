@@ -13,7 +13,6 @@ namespace QuizApp
     public class QuestionsDeckJSON_IO
     {
         QuestionsDeck Deck = new QuestionsDeck();
-        int duplicate = 0;
         String fileName;
         String JSONquestions;
         String addQuestion;
@@ -37,17 +36,17 @@ namespace QuizApp
                 MessageBox.Show("Deck is not set properly");
                 return;
             }
-
-            fileName = questionsDeck.DeckName + ".json";
-            while (File.Exists(fileName))
-            {
-                fileName = questionsDeck.DeckName + Convert.ToString(duplicate + 1) + ".json";
-            }
-
+            
             Deck = questionsDeck;
             JavaScriptSerializer ser = new JavaScriptSerializer();
             String outputJSON = ser.Serialize(Deck);
-            File.WriteAllText(fileName, outputJSON);
+
+            // Get the rootpath, locate the quiz directory and then the QuestionsDeck subfolder. 
+            // Once that is located, write the JSON file to the destination.
+            String RootPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            RootPath += @"\QuizApp\";
+            String QuestionsDeckPath = RootPath + @"\QuestionDecks\";
+            File.WriteAllText(QuestionsDeckPath + (questionsDeck.DeckName) + ".QuestionDeck.json", outputJSON);
             MessageBox.Show("file: " + fileName + " written.");
         }
     }

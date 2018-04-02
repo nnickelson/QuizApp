@@ -27,9 +27,7 @@ namespace QuizApp
         private TrueFalseCanvas tfCanvas;
         private MultipleChoiceCanvas mcCanvas;
         private bool misClick;
-        JavaScriptSerializer ser = new JavaScriptSerializer();
-        string fileName;
-
+        
 
         /// <summary>
         /// CreateQuestionSet method
@@ -39,8 +37,8 @@ namespace QuizApp
         public CreateQuestionSet()
         {
             InitializeComponent();
-            Application.Current.MainWindow.Width = 700;
-            Application.Current.MainWindow.Height = 650;
+            //Application.Current.MainWindow.Width = 700;
+            //Application.Current.MainWindow.Height = 650;
             misClick = false;
             this.QuestionsDeck = new QuestionsDeck();
         }
@@ -58,7 +56,7 @@ namespace QuizApp
         {
             if (DeckTitletextBox.Text != "")
             {
-                QuestionsDeck.DeckName = (DeckTitletextBox.Text).Trim() + ".QuestionDeck";
+                QuestionsDeck.DeckName = (DeckTitletextBox.Text).Trim();
             }
             else
             {
@@ -153,7 +151,6 @@ namespace QuizApp
         /// <param name="sender">button handler</param>
         /// <param name="e">button handler</param>
         
-        //****************************************************************I made changes here*************************************//
         private void finishedbutton_Click(object sender, RoutedEventArgs e)
         {
             if (DeckTitletextBox.Text == "")
@@ -169,18 +166,8 @@ namespace QuizApp
             }
             else
             {
-                //QuestionsDeckJSON_IO reader = new QuestionsDeckJSON_IO();
-                //MessageBox.Show("IO reader function");
-                string outputJSON = ser.Serialize(questionsDeck);
-
-                //reader.WriteQuestionsDeck(QuestionsDeck);
-
-                // Get the rootpath, locate the quiz directory and then the QuestionsDeck subfolder. 
-                // Once that is located, write the JSON file to the destination.
-                String RootPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                RootPath += @"\QuizApp\";
-                String QuestionsDeckPath = RootPath + @"\QuestionDecks\";
-                File.WriteAllText(QuestionsDeckPath + (DeckTitletextBox.Text)+ ".QuestionDeck.json", outputJSON);
+                QuestionsDeckJSON_IO reader = new QuestionsDeckJSON_IO();
+                reader.WriteQuestionsDeck(QuestionsDeck);   
             }
 
             NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
@@ -392,6 +379,16 @@ namespace QuizApp
             {
                 mcCanvas = value;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            editCreateChoice.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            editCreateChoice.Visibility = Visibility.Hidden;
         }
     }
 }
