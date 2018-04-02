@@ -339,6 +339,11 @@ namespace QuizApp
             
         }
 
+        /// <summary>
+        /// addEditCreateButtons
+        /// Hard coded template which makes edit deck and new deck buttons
+        /// and gives them a function
+        /// </summary>
         private void addEditCreateButtons()
         {
             Button editDeckButton = new Button{ Content = "Edit Deck"};
