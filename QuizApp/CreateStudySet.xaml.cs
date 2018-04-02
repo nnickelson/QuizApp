@@ -28,7 +28,6 @@ namespace QuizApp
         Boolean ImageExist = false;
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
-
         public CreateStudySet()
         {
             InitializeComponent();
