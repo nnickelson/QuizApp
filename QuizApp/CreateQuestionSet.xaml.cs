@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using System.Web.Script.Serialization;
 using System.IO;
 using System;
+using System.Text.RegularExpressions;
 
 namespace QuizApp
 {
@@ -27,7 +28,8 @@ namespace QuizApp
         private TrueFalseCanvas tfCanvas;
         private MultipleChoiceCanvas mcCanvas;
         private bool misClick;
-        
+        QuestionsDeckJSON_IO fileOperator = new QuestionsDeckJSON_IO();
+
 
         /// <summary>
         /// CreateQuestionSet method
@@ -40,7 +42,7 @@ namespace QuizApp
             //Application.Current.MainWindow.Width = 700;
             //Application.Current.MainWindow.Height = 650;
             misClick = false;
-            this.QuestionsDeck = new QuestionsDeck();
+           
         }
 
         /// <summary>
@@ -54,19 +56,35 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void submitDeck_Clicked(object sender, RoutedEventArgs e)
         {
-            if (DeckTitletextBox.Text != "")
+            //MessageBox.Show(Convert.ToString(fileOperator.IsValidFilename(DeckTitletextBox.Text)));
+            if (DeckTitletextBox.Text != "" && fileOperator.IsValidFilename(DeckTitletextBox.Text))
             {
                 QuestionsDeck.DeckName = (DeckTitletextBox.Text).Trim();
+                setVisiblebuttons();
             }
             else
             {
-                MessageBox.Show("Deck must have a name");
-                return;
+                MessageBox.Show("Sorry, you entered an invalid deck name. Please try again", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                DeckTitletextBox.Text = "";
             }
-            setVisiblebuttons();
         }
 
+
         //Button Handlers//
+
+
+        private void AddQuestions_btnClick(object sender, RoutedEventArgs e)
+        {
+            QuestionsDeck = fileOperator.ReadDeck();
+            //MessageBox.Show(QuestionsDeck.DeckName);
+            editCreateChoice.Visibility = Visibility.Hidden;
+        }
+
+        private void NewDeck_BtnClick(object sender, RoutedEventArgs e)
+        {
+            QuestionsDeck = new QuestionsDeck();
+            editCreateChoice.Visibility = Visibility.Hidden;
+        }
 
         /// <summary>
         /// fillInTheBlank_Clicked Method
@@ -166,8 +184,7 @@ namespace QuizApp
             }
             else
             {
-                QuestionsDeckJSON_IO reader = new QuestionsDeckJSON_IO();
-                reader.WriteQuestionsDeck(QuestionsDeck);   
+                fileOperator.WriteQuestionsDeck(QuestionsDeck);   
             }
 
             NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
@@ -281,12 +298,12 @@ namespace QuizApp
                 trueFalseQuestion.QuestionText = TfCanvas.QuestionBox.Text;
                 if (TfCanvas.ButtonTrue.IsChecked == true)
                 {
-                    MessageBox.Show("true");
+                    //MessageBox.Show("true");
                     trueFalseQuestion.CorrectAnswer = true;
                 }
                 if (TfCanvas.ButtonFalse.IsChecked == true)
                 {
-                    MessageBox.Show("false");
+                    //MessageBox.Show("false");
                     trueFalseQuestion.CorrectAnswer = false;
                 }
                 this.questionsDeck.QuestionList.Add(trueFalseQuestion);
@@ -381,14 +398,8 @@ namespace QuizApp
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            editCreateChoice.Visibility = Visibility.Hidden;
-        }
+        
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            editCreateChoice.Visibility = Visibility.Hidden;
-        }
+        
     }
 }
