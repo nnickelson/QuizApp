@@ -7,18 +7,22 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.IO;
 using System.Windows;
+using System.Text.RegularExpressions;
+using Microsoft.Win32;
 
 namespace QuizApp
 {
     public class QuestionsDeckJSON_IO
     {
-        QuestionsDeck Deck = new QuestionsDeck();
-        String fileName;
-        String JSONquestions;
-        String addQuestion;
+        private QuestionsDeck Deck = new QuestionsDeck();
+        private String fileName;
+        private String JSONquestions;
+        //private String addQuestion;
+
+        
 
         public QuestionsDeckJSON_IO() { }
-        
+
         /// <summary>
         /// WriteQuestionsDeck Method
         /// Checks to see if a deck is named and initialized properly.
@@ -36,7 +40,7 @@ namespace QuizApp
                 MessageBox.Show("Deck is not set properly");
                 return;
             }
-            
+
             Deck = questionsDeck;
             JavaScriptSerializer ser = new JavaScriptSerializer();
             String outputJSON = ser.Serialize(Deck);
@@ -47,7 +51,85 @@ namespace QuizApp
             RootPath += @"\QuizApp\";
             String QuestionsDeckPath = RootPath + @"\QuestionDecks\";
             File.WriteAllText(QuestionsDeckPath + (questionsDeck.DeckName) + ".QuestionDeck.json", outputJSON);
-            MessageBox.Show("file: " + fileName + " written.");
+            MessageBox.Show("file: " + FileName + " written.");
+        }
+
+        /// <summary>
+        /// IsValidFileName Method
+        /// This method ensures that deck names and other JSON names have the proper Windows filename
+        /// characters to be stored as files
+        /// </summary>
+        /// <param name="testName">string - cannot be null, cannot have invalid filename chars</param>
+        /// <returns>true if filename valid - false otherwise</returns>
+        public bool IsValidFilename(string testName)
+        {
+            string strTheseAreInvalidFileNameChars = new string(System.IO.Path.GetInvalidFileNameChars());
+            Regex regInvalidFileName = new Regex("[" + Regex.Escape(strTheseAreInvalidFileNameChars) + "]");
+
+            if (regInvalidFileName.IsMatch(testName)) { return false; };
+
+            return true;
+        }
+
+        /// <summary>
+        /// ReadDeck Method
+        /// This method opens an open file dialog to retrieve the filepath of a questionsDeck.
+        /// It then uses this filepath to read the JSON questions deck into questionsDeck object.
+        /// Once it has been read into the object, this method returns that QuestionsDeck object.
+        /// </summary>
+        /// <returns> type of QuestionsDeck</returns>
+        public QuestionsDeck ReadDeck()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string filePath = openFileDialog.FileName;// Get the files path.
+
+                // If a study deck exist then populate the rest of the form with the appropriate fields.
+                if (File.Exists(filePath))
+                {
+                    // Before the form is populated, make sure it is a StudyDeck and not a QuestionDeck.
+                    if (filePath.Contains(".QuestionsDeck"))
+                    {
+                        JavaScriptSerializer ser = new JavaScriptSerializer();
+                        Deck.DeckName = System.IO.Path.GetFileNameWithoutExtension(filePath);
+                        JSONquestions1 = File.ReadAllText(filePath);
+                        Deck = ser.Deserialize<QuestionsDeck>(JSONquestions1);
+                    }
+
+                }
+            }
+            return Deck;
+        }
+
+        /// <summary>
+        /// Properties section
+        /// </summary>
+        public string FileName
+        {
+            get
+            {
+                return fileName;
+            }
+
+            set
+            {
+                fileName = value;
+            }
+        }
+
+        public string JSONquestions1
+        {
+            get
+            {
+                return JSONquestions;
+            }
+
+            set
+            {
+                JSONquestions = value;
+            }
         }
     }
 }
