@@ -53,6 +53,8 @@ namespace QuizApp
         /// </summary>
         /// <param name="sender">button handler</param>
         /// <param name="e">button handler</param>
+        /// 
+        /*******************************   I made changes here******************************************** */
         private void submitDeck_Clicked(object sender, RoutedEventArgs e)
         {
             if (DeckTitletextBox.Text != "" && IsValidFilename(DeckTitletextBox.Text))
@@ -77,6 +79,7 @@ namespace QuizApp
 
             return true;
         }
+        /*************************************************************************************************** */
 
         //Button Handlers//
 
@@ -317,8 +320,6 @@ namespace QuizApp
             }
 
         }
-
-        
 
         /// <summary>
         /// setVisibilebuttons Method
