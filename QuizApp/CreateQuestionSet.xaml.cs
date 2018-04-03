@@ -89,6 +89,11 @@ namespace QuizApp
             setVisiblebuttons();
         }
 
+        /// <summary>
+        /// NewDeck_btnClick
+        /// Initializes a new QuestionsDeck
+        /// Hides the cover canvas to reveal the menu underneath
+        /// </summary>
         private void NewDeck_BtnClick()
         {
             QuestionsDeck = new QuestionsDeck();

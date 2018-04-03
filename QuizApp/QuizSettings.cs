@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    class QuizSettings
+    public class QuizSettings
     {
         /// <summary>
         /// Private Backing Fields
