@@ -61,6 +61,9 @@
     <Compile Include="CreateQuestionSet.xaml.cs">
       <DependentUpon>CreateQuestionSet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateQuiz.xaml.cs">
+      <DependentUpon>CreateQuiz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditStudyDeck.xaml.cs">
       <DependentUpon>EditStudyDeck.xaml</DependentUpon>
     </Compile>
@@ -74,6 +77,7 @@
     <Compile Include="QuestionsDeckJSON_IO.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuestionsDeck.cs" />
+    <Compile Include="QuizSettings.cs" />
     <Compile Include="Results.cs" />
     <Compile Include="StudyMyDeck.xaml.cs">
       <DependentUpon>StudyMyDeck.xaml</DependentUpon>
@@ -81,6 +85,10 @@
     <Compile Include="InheritedQuestionClasses\TrueFalse.cs" />
     <Compile Include="CanvasTemplates\TrueFalseCanvas.cs" />
     <Page Include="CreateQuestionSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateQuiz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

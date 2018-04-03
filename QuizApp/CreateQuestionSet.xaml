@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="782.011" d:DesignWidth="943.915"
       Title="CreateQuestionSet">
-    <ScrollViewer>
+    
         <Grid x:Name="BottomGrid" Background="#FFECE6E6" Margin="00,0,0,0">
             <!-- Textboxes-->
             <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Left" Height="23" Margin="89,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
@@ -24,12 +24,13 @@
             <Button x:Name="fillInTheBlank" Content="Fill in the Blank" HorizontalAlignment="Left" Margin="20,72,0,0" VerticalAlignment="Top" Click="fillInTheBlank_Clicked" Height="40" Width="123" Visibility="Hidden"/>
             <Button x:Name="trueFalse" Content="True or False" HorizontalAlignment="Left" Margin="143,72,0,0" VerticalAlignment="Top" Click="trueFalse_Clicked" Height="40" Width="118" Visibility="Hidden"/>
             <Button x:Name="multipleChoice" Content="Multiple Choice" HorizontalAlignment="Left" Margin="261,72,0,0" VerticalAlignment="Top" Height="40" Click="multipleChoice_Clicked" Width="118" Visibility="Hidden"/>
+        <Button x:Name="backbutton" Content= "&lt;&lt;"  HorizontalAlignment="Left" Width="75" Margin="560,475,0,280.4" Visibility="Hidden"/>
+        <Button x:Name="delete" Content= "Delete"  HorizontalAlignment="Left" Width="75" Margin="635,475,0,280.4" Visibility="Hidden"/>
 
-            <Grid x:Name="QuestionsCanvasTemplate" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="691">
+        <Grid x:Name="QuestionsCanvasTemplate" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="691">
             </Grid>
-            <Canvas x:Name="editCreateChoice" Background="Coral" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
-
+            <Canvas Visibility="Hidden" x:Name="editCreateChoice" Background="Coral" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
             </Canvas>
         </Grid>
-    </ScrollViewer>
+    
 </Page>

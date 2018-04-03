@@ -80,7 +80,9 @@ namespace QuizApp
         private void AddQuestions_btnClick()
         {
             QuestionsDeck = fileOperator.ReadDeck();
-            MessageBox.Show(QuestionsDeck.DeckName);
+            if (QuestionsDeck.DeckName == null)
+                return;
+            //MessageBox.Show("*****" + QuestionsDeck.DeckName + "****");
             editCreateChoice.Visibility = Visibility.Hidden;
             SubmitDeck.Visibility = Visibility.Hidden;
             DeckTitletextBox.IsReadOnly = true;

@@ -30,7 +30,7 @@
         <Button x:Name="CreateADeckbtn" Grid.Row="1" Grid.Column="0" Height="50" Width="100" Click="CreateADeckbtn_Click">Create a Deck</Button>
         <Button x:Name ="StudyADeckbtn" Grid.Row="3" Grid.Column="0" Height="50" Width="100" Click="StudyADeckbtn_Click">Study Deck</Button>
         <Button x:Name="TakeAQuizbtn" Grid.Row="3" Grid.Column="2" Height="50" Width="100">Take a quiz</Button>
-        <Button x:Name="CreateAQuizbtn" Grid.Row="1" Grid.Column="2" Height="50" Width="100">Create a quiz</Button>
+        <Button x:Name="CreateAQuizbtn" Grid.Row="1" Grid.Column="2" Height="50" Width="100" Click="CreateQuizbtn_Click">Create a quiz</Button>
         
         
     </Grid>
