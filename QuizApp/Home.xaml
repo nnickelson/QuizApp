@@ -5,34 +5,136 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="Home">
     <ScrollViewer>
-        <Grid Background="#FFF3EFEF">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+        <Grid Background="#dfe3ee">
+            <Label Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+               FontSize="48" FontFamily="Georgia" Margin="328,99,291,787" Width="164">Home</Label>
 
-        </Grid.RowDefinitions>
-      
+            <!-- Add a button click here. click="Nextbtn_Click"  -->
+            <Button              
+                    x:Name="TakeAQuizbtn" 
+                     Button.Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="Here you can take the quizzes you created" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="559,486,103,345">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="alarm-clock_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
-            <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
-               FontSize="30" FontFamily="Georgia">Home</Label>
+            <Button Click="StudyADeckbtn_Click"   
+                    x:Name ="StudyADeckbtn" 
+                     Button.Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="Here you can study the study decks that you created" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="122,500,540,351">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="book-open-bookmark_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
-        <Button x:Name ="ImportExportbtn" Grid.Row="2"  Height="50" Width="100" Content="Import" Margin="0,15,0,10" Grid.Column="1" Click="ImportExportbtn_Click"/>
-        <Button x:Name="CreateADeckbtn" Grid.Row="1" Grid.Column="0" Height="50" Width="100" Click="CreateADeckbtn_Click">Create a Deck</Button>
-        <Button x:Name ="StudyADeckbtn" Grid.Row="3" Grid.Column="0" Height="50" Width="100" Click="StudyADeckbtn_Click">Study Deck</Button>
-        <Button x:Name="TakeAQuizbtn" Grid.Row="3" Grid.Column="2" Height="50" Width="100">Take a quiz</Button>
-        <Button x:Name="CreateAQuizbtn" Grid.Row="1" Grid.Column="2" Height="50" Width="100" Click="CreateQuizbtn_Click">Create a quiz</Button>
-        
-        
-    </Grid>
+
+
+            <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
+            <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
+            <Label x:Name="label1" Content="Take a Test" HorizontalAlignment="Center" Margin="582,582,134,343" VerticalAlignment="Center"/>
+            <Label x:Name="label2" Content="Study a deck" HorizontalAlignment="Center" Margin="149,574,557,351" VerticalAlignment="Center"/>
+            
+            <Button Click="CreateADeckbtn_Click"   
+                x:Name="CreateADeckbtn"          
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="Here you can create a study deck or question deck" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="122,260,540,571">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="toggle-expand_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Label x:Name="label3" Content="Create a deck" HorizontalAlignment="Center" Margin="144,345,557,580" VerticalAlignment="Center"/>
+
+            <Button Click="ImportExportbtn_Click"   
+                x:Name ="ImportExportbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="Here you can import another users: study deck, images, and/or question deck" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="339,390,323,441">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="inbox_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Label x:Name="label4" Content="Import a deck" HorizontalAlignment="Center" Margin="358,482,342,443" VerticalAlignment="Center"/>
+            <Button  
+                Click="CreateQuizbtn_Click"
+                x:Name="CreateAQuizbtn"  
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="Here you can create a quiz" Width="120"  RenderTransformOrigin="0.5,0.5" Margin="564,260,99,570">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="pen_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <Label x:Name="label5" Content="Label" Height="100" Width="100"/>
+            </Button>
+            <Label x:Name="label6" Content="Create a quiz" HorizontalAlignment="Center" Margin="582,345,122,580" VerticalAlignment="Center"/>
+
+
+        </Grid>
     </ScrollViewer>
 </Page>

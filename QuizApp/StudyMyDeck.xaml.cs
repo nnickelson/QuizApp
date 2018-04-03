@@ -79,6 +79,9 @@ namespace QuizApp
                     Nextbtn.Visibility = Visibility.Visible;
                     Flipbtn.Visibility = Visibility.Visible;
                     Finishedbtn.Visibility = Visibility.Visible;
+                    CurrentCardTextbox.Visibility = Visibility.Visible;
+                    backslash.Visibility = Visibility.Visible;
+                    TotalCardsBox.Visibility = Visibility.Visible;
 
                     // Load the contents of the flashcard
                     JSONflashcards = File.ReadAllText(path);

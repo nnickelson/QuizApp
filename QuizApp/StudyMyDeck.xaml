@@ -126,9 +126,9 @@
                 </Button.Template>
             </Button>
 
-            <Label x:Name="CurrentCardTextbox" Content="0" HorizontalAlignment="Center" Margin="86,107,657,0" VerticalAlignment="Top" FontSize="22" Width="40" Height="46"/>
-            <Label x:Name="backslash" Content="/" HorizontalAlignment="Center" Margin="126,103,639,0" VerticalAlignment="Top" FontSize="24"/>
-            <Label x:Name="TotalCardsBox" Content="0" HorizontalAlignment="center" Margin="158,107,585,0" VerticalAlignment="Top" FontSize="22" Height="46" Width="40"/>
+            <Label Label.Visibility ="Hidden" x:Name="CurrentCardTextbox" Content="0" HorizontalAlignment="Center" Margin="86,107,657,0" VerticalAlignment="Top" FontSize="22" Width="40" Height="46"/>
+            <Label Label.Visibility="Hidden" x:Name="backslash" Content="/" HorizontalAlignment="Center" Margin="126,103,639,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label Label.Visibility="Hidden" x:Name="TotalCardsBox" Content="0" HorizontalAlignment="center" Margin="158,107,585,0" VerticalAlignment="Top" FontSize="22" Height="46" Width="40"/>
             <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
 
         </Grid>
