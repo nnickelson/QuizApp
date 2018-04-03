@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="400"
+        Title="MainWindow" Height="auto" Width="auto"
     WindowStyle="ThreeDBorderWindow"  ResizeMode="CanResize"
     WindowStartupLocation="CenterScreen" WindowState="Maximized">
 

@@ -38,7 +38,7 @@ namespace QuizApp
 
             // Then turn ON the front.         
             TermBlock.Visibility = Visibility.Visible;
-            Previousbtn.Visibility = Visibility.Visible;
+           Previousbtn.Visibility = Visibility.Visible;
         }
 
         // Make the back of the flashcard visible
@@ -83,11 +83,11 @@ namespace QuizApp
                     // Load the contents of the flashcard
                     JSONflashcards = File.ReadAllText(path);
                     Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
-                    TotalCardsBox.Text = (Deck.cards.Count).ToString();
+                    TotalCardsBox.Content = (Deck.cards.Count).ToString();
                     f = Deck.cards[index];
                     TermBlock.Text = f.Front;
                     DefinitionBox.Text = f.Back;
-                    CurrentCardTextbox.Text = (index + 1).ToString();
+                    CurrentCardTextbox.Content = (index + 1).ToString();
                     loadImage();
                 }
                 else
@@ -105,7 +105,7 @@ namespace QuizApp
                 f = Deck.cards[index];
                 TermBlock.Text = f.Front;
                 DefinitionBox.Text = f.Back;
-                CurrentCardTextbox.Text = (index + 1).ToString();
+                CurrentCardTextbox.Content = (index + 1).ToString();
                 loadImage();
                 makeFrontVisible();
                 IsFrontShowing = true;
@@ -121,7 +121,7 @@ namespace QuizApp
                 f = Deck.cards[index];
                 TermBlock.Text = f.Front;
                 DefinitionBox.Text = f.Back;
-                CurrentCardTextbox.Text = (index + 1).ToString();
+                CurrentCardTextbox.Content = (index + 1).ToString();
                 loadImage();
                 makeFrontVisible();
                 IsFrontShowing = true;
