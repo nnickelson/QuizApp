@@ -51,7 +51,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="theBorder"
-                                Value="#dfe3ee"/>
+                                Value="#f6f6f6"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -74,7 +74,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="theBorder"
-                                Value="#dfe3ee"/>
+                                Value="#f6f6f6"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -97,7 +97,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="theBorder"
-                                Value="#dfe3ee"/>
+                                Value="#f6f6f6"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -128,7 +128,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="theBorder"
-                                Value="#dfe3ee"/>
+                                Value="#f6f6f6"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -152,7 +152,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="theBorder"
-                                Value="#dfe3ee"/>
+                                Value="#f6f6f6"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

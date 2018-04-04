@@ -59,6 +59,7 @@
                 </Button.Template>
                 <Label x:Name="label4" Content="Label" Height="100" Width="100"/>
             </Button>
+            
             <Label x:Name="label5" Content="Question decks" HorizontalAlignment="Center" Margin="610,312,87,571" VerticalAlignment="Center"/>
             <Button Click="HomeBtn_Click"  
                  x:Name="HomeBtn"          
