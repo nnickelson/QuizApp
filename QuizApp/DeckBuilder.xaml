@@ -5,34 +5,91 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="900"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="DeckBuilder">
     <ScrollViewer>
-        <Grid Background="#FFF3EFEF">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="31*"/>
-                <ColumnDefinition Width="41*"/>
-                <ColumnDefinition Width="36*"/>
-                <ColumnDefinition Width="39*"/>
-                <ColumnDefinition Width="33*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Grid Background="#dfe3ee">
+            <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
+            <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
+            <Label x:Name="label1" Content="Deck Builder" HorizontalAlignment="Center" Margin="262,85,235,0" VerticalAlignment="Top" Width="286" Height="82" FontSize="48"/>
 
+            <Button Click="NewStudyDeckBtn_Click"  
+                 x:Name="NewStudyDeckBtn"         
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="Here you can create a study deck, edit a study deck, or add more cards to an exisiting study deck" Width="120"  RenderTransformOrigin="0.5,0.5" Margin="96,239,567,567">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="document-edit_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <Label x:Name="label2" Content="Label" Height="100" Width="100"/>
+            </Button>
+            <Label x:Name="label3" Content="Study Decks" HorizontalAlignment="Center" Margin="120,312,595,571" VerticalAlignment="Center"/>
 
+            <Button Click="NewQuestionDeckBtn_Click"  
+               x:Name="NewQuestionDeckBtn"         
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="Here you can create a Question deck to use to create quizzes" Width="120"  RenderTransformOrigin="0.5,0.5" Margin="576,239,87,567">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="question-balloon_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <Label x:Name="label4" Content="Label" Height="100" Width="100"/>
+            </Button>
+            <Label x:Name="label5" Content="Question decks" HorizontalAlignment="Center" Margin="610,312,87,571" VerticalAlignment="Center"/>
+            <Button Click="HomeBtn_Click"  
+                 x:Name="HomeBtn"          
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                ToolTip="This button will take you back to the home page" Width="120"  RenderTransformOrigin="0.5,0.5" Margin="332,239,331,567">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="home_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Label x:Name="label6" Content="Home" HorizontalAlignment="Center" Margin="369,316,372,567" VerticalAlignment="Center"/>
 
-            <TextBlock x:Name="HomeLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
-               FontSize="72" FontFamily="Georgia" TextAlignment="Center" >Deck Builder</TextBlock>
+            <!--
+            
+            <Button x:Name="NewStudyDeckBtn" Click="NewStudyDeckBtn_Click"  FontSize="22" Content="Study Deck"/>
+            <Button x:Name="NewQuestionDeckBtn" Click="NewQuestionDeckBtn_Click" FontSize="12" Content=" Question Deck" Margin="467,60,0,279"/>
+            <Button x:Name="HomeBtn" Content="Home"  FontSize="12" Click="HomeBtn_Click" Margin="156,90,294,492" />
+       -->
 
-            <Button x:Name="NewStudyDeckBtn" Grid.Column="1" Grid.Row="2" Click="NewStudyDeckBtn_Click"  FontSize="22" Content="Study Deck"/>
-            <Button x:Name="NewQuestionDeckBtn" Click="NewQuestionDeckBtn_Click" Grid.Column="3" Grid.Row="2" FontSize="22" Content=" Question Deck"/>
-            <Button x:Name="HomeBtn" Content="Home"  Grid.Column="2" Grid.Row="3"  FontSize="22" Click="HomeBtn_Click"/>
         </Grid>
     </ScrollViewer>
 </Page>

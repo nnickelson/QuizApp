@@ -57,8 +57,6 @@ namespace QuizApp
             }
             //---------------------------------------------------------------------------
             NavigationService.Navigate(new Uri("Import.xaml", UriKind.Relative));
-
-
         }
 
         private void CreateQuizbtn_Click(object sender, RoutedEventArgs e)
