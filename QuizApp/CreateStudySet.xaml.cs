@@ -27,6 +27,7 @@ namespace QuizApp
         int currentCard = 0;
         Boolean ImageExist = false;
         JavaScriptSerializer ser = new JavaScriptSerializer();
+        string temp;
 
         public CreateStudySet()
         {
@@ -44,7 +45,7 @@ namespace QuizApp
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 String selectedFileName = dlg.FileName;
-                FileNameLabel.Content = selectedFileName;
+                temp = selectedFileName;
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(selectedFileName);
@@ -91,7 +92,7 @@ namespace QuizApp
                     // Populate flashcards.
                     if (ImageExist == true)
                     {
-                        Flashcards populateFlashCards = new Flashcards(TermtextBox.Text, DefinitiontextBox.Text, FileNameLabel.Content.ToString());
+                        Flashcards populateFlashCards = new Flashcards(TermtextBox.Text, DefinitiontextBox.Text, temp);
                         Deck.cards.Add(populateFlashCards);
                     }
                     else
@@ -112,7 +113,7 @@ namespace QuizApp
                     DefinitiontextBox.Text = "";
                     CardNumberLabeltextBox.Text = (currentCard).ToString();
                     TotalCardsBox.Text = (Deck.cards.Count).ToString();
-                    FileNameLabel.Content = "";
+                    temp = "";
                     ImageExist = false;
                     // Reset Image box.
                     ImageViewer1.Source = null;
@@ -145,6 +146,7 @@ namespace QuizApp
         // The purpose of this function is to unhide the rest of the elements in the form.
         void ShowForm()
         {
+            rect1.Visibility = Visibility.Visible;
             TotalCards.Visibility = Visibility.Visible;
             TotalCardsBox.Visibility = Visibility.Visible;
             CardNumberlabel.Visibility = Visibility.Visible; ;
@@ -157,7 +159,7 @@ namespace QuizApp
             Addbutton.Visibility = Visibility.Visible;
             Finishedbutton.Visibility = Visibility.Visible;
             ImageViewer1.Visibility = Visibility.Visible;
-            FileNameLabel.Visibility = Visibility.Visible;
+           
         }
 
         // The purpose of this function is to check and see if a file already exists as well as if a user provided a valid file name.
@@ -223,18 +225,36 @@ namespace QuizApp
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            button3.Visibility = Visibility.Hidden;
+            label1.Visibility = Visibility.Hidden;
+            label2.Visibility = Visibility.Hidden;
+            label3.Visibility = Visibility.Hidden;
             NavigationService.Navigate(new Uri("/EditStudyDeck.xaml", UriKind.Relative));
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             //NavigationService.Navigate(new Uri("/CreateStudySet.xaml", UriKind.Relative));
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            button3.Visibility = Visibility.Hidden;
+            label1.Visibility = Visibility.Hidden;
+            label2.Visibility = Visibility.Hidden;
+            label3.Visibility = Visibility.Hidden;
             showform();
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
             // NavigationService.Navigate(new Uri("/CreateStudySet.xaml", UriKind.Relative));
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            button3.Visibility = Visibility.Hidden;
+            label1.Visibility = Visibility.Hidden;
+            label2.Visibility = Visibility.Hidden;
+            label3.Visibility = Visibility.Hidden;
             showform();
         }
 
@@ -244,6 +264,7 @@ namespace QuizApp
             DeckTitletextBox.Visibility = Visibility.Visible;
             Warning.Visibility = Visibility.Visible;
             Gobtn.Visibility = Visibility.Visible;
+            
 
             //hide
             button1.Visibility = Visibility.Hidden;

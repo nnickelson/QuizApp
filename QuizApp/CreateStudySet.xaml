@@ -5,38 +5,174 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="990" d:DesignWidth="900"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="CreateStudySet">
 
-    <Grid Background="#FFECE6E6">
-        <!--Images-->
+    <ScrollViewer>
+        <Grid Background="#dfe3ee">
 
-        <!-- Textboxes-->
-        <TextBox TextBox.Visibility ="Hidden" x:Name="DeckTitletextBox"       HorizontalAlignment="Center" Margin="221,27,343,0"  VerticalAlignment="Top"  Height="42" Width="336" BorderThickness="0,0,0,1" FontSize="22"/>
-        <TextBox TextBox.Visibility ="Hidden" x:Name="CardNumberLabeltextBox" HorizontalAlignment="Center" Margin="221,145,541,0"  VerticalAlignment="Top" Width="138" BorderThickness="0,0,0,1" Height="38" IsReadOnly ="True" FontSize="22"/>
-        <TextBox TextBox.Visibility ="Hidden" x:Name="TermtextBox"            HorizontalAlignment="Center" Margin="18,586,169,0"  VerticalAlignment="Top" Width="713" AutomationProperties.IsRequiredForForm="True" Height="38" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here" FontSize="22"/>
-        <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitiontextBox"      HorizontalAlignment="Center" Margin="18,679,169,0"  VerticalAlignment="Top" Width="713" Opacity="0.8" BorderThickness="0,0,0,2" Height="234" VerticalScrollBarVisibility="Auto" FontSize="22" SpellCheck.IsEnabled="True" AcceptsTab="True" AcceptsReturn="True"/>
-        <TextBox TextBox.Visibility ="Hidden"  x:Name="TotalCardsBox"          HorizontalAlignment="Center" Margin="221,85,541,0"  VerticalAlignment="Top" Width="138" BorderThickness="0,0,0,1" IsReadOnly ="True" Height="39" FontSize="22"/>
+            <!-- These were all orginally hidden-->
+            <Rectangle x:Name="rect1" Rectangle.Visibility="Hidden" Fill="#f6f6f6" HorizontalAlignment="Center" Height="630" Margin="198,124,157,0" Stroke="Black" VerticalAlignment="Top" Width="428"/>
+            <Image   x:Name="ImageViewer1"                          HorizontalAlignment="Center" Margin="285,318,244,0" VerticalAlignment="Top"   Height="148" Width="254" Stretch="Fill"/>
 
-        <!-- Labels-->
-        <Label  Label.Visibility ="Hidden" x:Name="Termlabel"               HorizontalAlignment="Center" Margin="18,624,810,0"  VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.536,0.47" Width="72">Term</Label>
-        <Label  Label.Visibility ="Hidden" x:Name="DeckTitleLabel"          HorizontalAlignment="Center" Margin="7,27,780,0"   VerticalAlignment="Top" Width="113" FontSize="22" Height="42">Deck Title</Label>
-        <Label  Label.Visibility ="Hidden" x:Name="Definitionlabel"         HorizontalAlignment="Center" Margin="18,918,773,0"  VerticalAlignment="Top" RenderTransformOrigin="0.123,-0.151" FontSize="22" Width="109">Definition</Label>
-        <Label  Label.Visibility ="Hidden" x:Name="CardNumberlabel"         HorizontalAlignment="Center" Margin="11,145,720,0"   VerticalAlignment="Top" Height="51" FontSize="22" Width="169">Cards Added</Label>
-        <Label  Label.Visibility ="Hidden" x:Name="TotalCards"              HorizontalAlignment="Center" Margin="7,85,684,0"   VerticalAlignment="Top" Width="209" FontSize="22">Total Cards in Deck</Label>
+            <TextBox TextBox.Visibility ="Hidden" x:Name="DeckTitletextBox"       HorizontalAlignment="Center" Margin="340,151,186,0"  VerticalAlignment="Top"  Height="23" Width="257" BorderThickness="0,0,0,1"/>
+            <TextBox TextBox.Visibility ="Hidden" x:Name="CardNumberLabeltextBox" HorizontalAlignment="Center" Margin="340,187,335,0"  VerticalAlignment="Top" Width="108" BorderThickness="0,0,0,1" Height="21" IsReadOnly ="True"/>
+            <TextBox TextBox.Visibility ="Hidden" x:Name="TermtextBox"            HorizontalAlignment="Center" Margin="226,488,209,0"  VerticalAlignment="Top" Width="348" AutomationProperties.IsRequiredForForm="True" Height="25" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here"/>
+            <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitiontextBox"      HorizontalAlignment="Center" Margin="226,544,209,0"  VerticalAlignment="Top" Width="348" Opacity="0.8" BorderThickness="0,0,0,2" Height="103" VerticalScrollBarVisibility="Auto" FontSize="12" SpellCheck.IsEnabled="True" AcceptsTab="True" AcceptsReturn="True"/>
+            <TextBox TextBox.Visibility ="Hidden"  x:Name="TotalCardsBox"         HorizontalAlignment="Center" Margin="340,222,335,0"  VerticalAlignment="Top" Width="108" BorderThickness="0,0,0,1" IsReadOnly ="True" Height="21" FontSize="12"/>
 
-        <!-- Buttons-->
-        <Button Button.Visibility ="Hidden"  x:Name="Addbutton"               HorizontalAlignment="Center" Margin="468,949,332,0"  VerticalAlignment="Top" Width="100" Click="Addbutton_Click" BorderThickness="1" FontSize="22">Add</Button>
-        <Button Button.Visibility ="Hidden" x:Name="Finishedbutton"          HorizontalAlignment="Center" Margin="594,949,171,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="-0.059,0.532" Click="Finishedbutton_Click" FontSize="22" >Finished</Button>
-        <Button Button.Visibility ="Hidden" x:Name="button"                  HorizontalAlignment="Center" Margin="18,210,702,0"  VerticalAlignment="Top" Width="180" Click="button_Click_1" FontSize="22" RenderTransformOrigin="-0.376,0.361">Add Image</Button>
-        <Label Label.Visibility ="Hidden" x:Name="FileNameLabel" HorizontalAlignment="Center" Margin="225,208,173,0" VerticalAlignment="Top" Height="47" Width="502" FontSize="22"/>
-        <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Center" Height="305" Margin="102,274,296,0" VerticalAlignment="Top" Width="502"/>
 
-        <Button Button.Visibility ="Hidden" x:Name="Gobtn" Content="Go" HorizontalAlignment="Center" Margin="577,26,149,0" VerticalAlignment="Top" Width="174" Height="42" FontSize="22" Click="Gobtn_Click"/>
-        <TextBlock TextBlock.Visibility ="Hidden" x:Name="Warning" Text="Note: Do NOT include &quot;.StudyDeck.json&quot; extenstion as part of the deck title." HorizontalAlignment="Center" Margin="92,111,149,0" VerticalAlignment="Top" Width="659" Height="68" FontSize="24" TextWrapping="Wrap" FontWeight="SemiBold" Background="#FFEAE5E5" Foreground="#FFFD0000"/>
-        <Button x:Name="button1" Content="Edit Study Deck" HorizontalAlignment="Left" Margin="158,248,0,0" VerticalAlignment="Top" Width="168" Height="73" Click="button1_Click"/>
-        <Button x:Name="button2" Content="Create New Study Deck" HorizontalAlignment="Left" Margin="401,248,0,0" VerticalAlignment="Top" Width="136" Height="73" Click="button2_Click"/>
-        <Button x:Name="button3" Content="Add more cards to an existing deck" HorizontalAlignment="Left" Margin="609,255,0,0" VerticalAlignment="Top" Width="210" Height="71" Click="button3_Click"/>
+            <Label  Label.Visibility ="Hidden" x:Name="Termlabel"               HorizontalAlignment="Center" Margin="226,513,485,0"  VerticalAlignment="Top" RenderTransformOrigin="0.536,0.47" Width="72">Term</Label>
+            <Label  Label.Visibility ="Hidden" x:Name="DeckTitleLabel"          HorizontalAlignment="Center" Margin="254,151,459,0"   VerticalAlignment="Top" Width="70" Height="23">Deck Title</Label>
+            <Label  Label.Visibility ="Hidden" x:Name="Definitionlabel"         HorizontalAlignment="Center" Margin="226,647,448,0"  VerticalAlignment="Top" RenderTransformOrigin="0.123,-0.151" Width="109">Definition</Label>
+            <Label  Label.Visibility ="Hidden" x:Name="CardNumberlabel"         HorizontalAlignment="Center" Margin="243,187,448,0"   VerticalAlignment="Top" Height="30" Width="92">Cards Added</Label>
+            <Label  Label.Visibility ="Hidden" x:Name="TotalCards"              HorizontalAlignment="Center" Margin="214,222,459,0"   VerticalAlignment="Top" Width="110" Height="30">Total Cards in Deck</Label>
 
-    </Grid>
+
+            <Button Button.Visibility ="Hidden" x:Name="button"                  HorizontalAlignment="Center" Margin="347,285,338,0"  VerticalAlignment="Top" Width="98" Click="button_Click_1" RenderTransformOrigin="-0.376,0.361">Add Image</Button>
+
+            <Button Button.Visibility ="Hidden" x:Name="Gobtn" Content="Go" HorizontalAlignment="Center" Margin="602,151,101,0" VerticalAlignment="Top" Width="80" Height="23" Click="Gobtn_Click"/>
+            <TextBlock TextBlock.Visibility ="Hidden" x:Name="Warning" Text="Note: Do NOT include &quot;.StudyDeck.json&quot; extenstion as part of the deck title." HorizontalAlignment="Center" Margin="264,196,101,0" VerticalAlignment="Top" Width="418" Height="26" TextWrapping="Wrap" FontWeight="SemiBold" Background="#dfe3ee"  Foreground="#FFFD0000"/>
+
+
+
+            <!-- These were all orginally hidden-->
+            <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
+            <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
+
+
+
+            <!-- unhide when ndone editing-->
+            <Button Click="button1_Click"  
+               x:Name="button1"          
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="Here you can edit an exisiting study deck" Width="120"  RenderTransformOrigin="0.5,0.5" Margin="90,187,573,0" Height="120">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="scissors_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Click="button2_Click"   
+               x:Name="button2"          
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                      VerticalAlignment="Top"
+                ToolTip="Here you can create a new study deck" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="337,187,325,0" Height="118">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="document_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Click="button3_Click"  
+                x:Name="button3"        
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="Here you can add more cards to an exisitng deck" Width="120"  RenderTransformOrigin="0.5,0.5" Margin="586,194,77,0" Height="109">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="toggle-expand-alt_blue.png" Height="95"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+            <!-- Remember to unhide-->
+            <Label Label.Visibility ="Visible" x:Name="label1" Content="Edit Study Deck" HorizontalAlignment="Center" Margin="106,279,585,0" VerticalAlignment="Top"/>
+            <Label Visibility ="Visible" x:Name="label2" Content="New Study Deck" HorizontalAlignment="Center" Margin="349,281,338,0" VerticalAlignment="Top"/>
+            <Label Visibility ="Visible" x:Name="label3" Content="Add more cards to exisiting deck" HorizontalAlignment="Center" Margin="564,281,35,0" VerticalAlignment="Top"/>
+            <Button Click="Finishedbutton_Click"   
+                x:Name="Finishedbutton"
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button will return you to the deck builder page" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="515,677,214,0">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.575"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="Stop.png" Height="35" HorizontalAlignment="Center" Margin="0,-2,0,-7" Width="50"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#f6f6f6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Click="Addbutton_Click"   
+                x:Name="Addbutton" 
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button add a new card to your deck" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="461,681,268,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="toggle-expand-alt_blue.png" Height="45" HorizontalAlignment="Center" Margin="0,-2,0,-7" Width="50"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#f6f6f6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+        </Grid>
+    </ScrollViewer>
 </Page>
