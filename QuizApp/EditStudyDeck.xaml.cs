@@ -94,7 +94,7 @@ namespace QuizApp
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 String selectedFileName = dlg.FileName;
-                FileNameLabel.Content = selectedFileName;
+       
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(selectedFileName);
@@ -241,12 +241,12 @@ namespace QuizApp
                 bitmap.UriSource = new Uri(f.image);
                 bitmap.EndInit();
                 ImageViewer1.Source = bitmap;
-                FileNameLabel.Content = f.image;
+              
             }
             else
             {
                 ImageViewer1.Source = null;
-                FileNameLabel.Content = null;
+               
             }
         }
     }
