@@ -17,7 +17,7 @@
                     x:Name="TakeAQuizbtn" 
                      Button.Visibility="Visible"
                 HorizontalAlignment="Center"
-                ToolTip="Here you can take the quizzes you created" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="559,486,103,345">
+                ToolTip="Here you can take the quizzes you created" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="559,486,103,345" Click="TakeAQuizbtn_Click">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"

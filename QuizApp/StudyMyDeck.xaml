@@ -9,13 +9,17 @@
       Title="StudyMyDeck">
     <ScrollViewer>
         <Grid Background="#dfe3ee">
-            <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140*"/>
+                <ColumnDefinition Width="121*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto" Grid.ColumnSpan="2"/>
 
-            <Rectangle Rectangle.Visibility ="Hidden" x:Name="Rectangle1" HorizontalAlignment="Center" Height="430" Margin="47,199,27,0" VerticalAlignment="Top" Width="709" Fill="#f6f6f6" RadiusY="41.5" RadiusX="41.5"/>
+            <Rectangle Rectangle.Visibility ="Hidden" x:Name="Rectangle1" HorizontalAlignment="Center" Height="430" Margin="47,199,27,0" VerticalAlignment="Top" Width="709" Fill="#f6f6f6" RadiusY="41.5" RadiusX="41.5" Grid.ColumnSpan="2"/>
 
 
-            <Button  x:Name="SelectADeckbtn" Content="Select a Deck" HorizontalAlignment="Center" Margin="336,108,283,0" VerticalAlignment="Top" Width="164" Height="37" Click="SelectADeckbtn_Click" FontSize="24"/>
-            <TextBox IsReadOnly ="True" x:Name="DeckTitlebox" HorizontalAlignment="Center" Height="37" Margin="512,108,27,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" FontSize="24"  />
+            <Button  x:Name="SelectADeckbtn" Content="Select a Deck" HorizontalAlignment="Center" Margin="336,108,283,0" VerticalAlignment="Top" Width="164" Height="37" Click="SelectADeckbtn_Click" FontSize="24" Grid.ColumnSpan="2"/>
+            <TextBox IsReadOnly ="True" x:Name="DeckTitlebox" HorizontalAlignment="Center" Height="37" Margin="78,108,41,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" FontSize="24" Grid.Column="1"  />
 
             <!--
             <Button Button.Visibility ="Visible" x:Name="Flipbtn" Content="Flip" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="374,612,690,136"  Width="136" Click="Flipbtn_Click" Height="52" FontSize="24"/>
@@ -24,9 +28,9 @@
             
             <Button Button.Visibility ="Visible" x:Name="Previousbtn" Content="Previous" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="58,612,1006,136" Width="136" Click="Previousbtn_Click" Height="52" FontSize="24"/>
             -->
-            <TextBox IsReadOnly ="True" TextBox.Visibility ="Hidden" x:Name="DefinitionBox" HorizontalAlignment="Center" VerticalAlignment="Top"  Height="299" Margin="417,248,60,0" Width="306" FontSize="24"  BorderBrush="#f6f6f6" Background="#f6f6f6" TextWrapping="Wrap" TextAlignment="Center"/>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextBlock.Visibility ="Hidden" FontSize ="72" TextAlignment ="center" x:Name="TermBlock"  Margin="47,354,27,0" TextWrapping="Wrap" Width="709">Text</TextBlock>
-            <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="116,250,355,0"  Width="312" Height="299"  Stretch="Fill" >
+            <TextBox IsReadOnly ="True" TextBox.Visibility ="Hidden" x:Name="DefinitionBox" HorizontalAlignment="Center" VerticalAlignment="Top"  Height="299" Margin="4,248,53,0" Width="306" FontSize="24"  BorderBrush="#f6f6f6" Background="#f6f6f6" TextWrapping="Wrap" TextAlignment="Center" Grid.Column="1"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextBlock.Visibility ="Hidden" FontSize ="72" TextAlignment ="center" x:Name="TermBlock"  Margin="47,354,27,0" TextWrapping="Wrap" Width="709" Grid.ColumnSpan="2" Height="96">Text</TextBlock>
+            <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100,250,8,0"  Width="312" Height="299"  Stretch="Fill" >
 
             </Image>
 
@@ -34,7 +38,7 @@
                     x:Name="Nextbtn"
                      Button.Visibility="Hidden"
                 HorizontalAlignment="Center"
-                ToolTip="Next flashcard" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="382,648,347,237">
+                ToolTip="Next flashcard" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="366,648,0,237">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -56,7 +60,7 @@
                     Button.Visibility="Hidden"
                x:Name="Previousbtn"
                 HorizontalAlignment="Center"
-                ToolTip="Previous flashcard" Height="54" Width="54"  RenderTransformOrigin="-0.179,1.074" Margin="300,649,429,236">
+                ToolTip="Previous flashcard" Width="54"  RenderTransformOrigin="-0.179,1.074" Margin="286,649,80,236">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>
@@ -86,7 +90,7 @@
                      Button.Visibility="Hidden"
                     x:Name="Flipbtn"
                 HorizontalAlignment="Center"
-                ToolTip="Flip the flashcard" Height ="54" Width="54" RenderTransformOrigin="0.5,0.5" Margin="462,648,267,237">
+                ToolTip="Flip the flashcard" Width="54" RenderTransformOrigin="0.5,0.5" Margin="28,648,281,237" Grid.Column="1">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -108,7 +112,7 @@
                      Button.Visibility="Hidden"
                     x:Name="Finishedbtn"
                 HorizontalAlignment="Center"
-                ToolTip="Go back to Home screen"  Height="54" Width="54" RenderTransformOrigin="0.5,0.5" Margin="669,648,60,237">
+                ToolTip="Go back to Home screen" Width="54" RenderTransformOrigin="0.5,0.5" Margin="234,648,75,237" Grid.Column="1">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -126,10 +130,144 @@
                 </Button.Template>
             </Button>
 
-            <Label Label.Visibility ="Hidden" x:Name="CurrentCardTextbox" Content="0" HorizontalAlignment="Center" Margin="86,107,657,0" VerticalAlignment="Top" FontSize="22" Width="40" Height="46"/>
-            <Label Label.Visibility="Hidden" x:Name="backslash" Content="/" HorizontalAlignment="Center" Margin="126,103,639,0" VerticalAlignment="Top" FontSize="24"/>
-            <Label Label.Visibility="Hidden" x:Name="TotalCardsBox" Content="0" HorizontalAlignment="center" Margin="158,107,585,0" VerticalAlignment="Top" FontSize="22" Height="46" Width="40"/>
-            <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
+            <Label Label.Visibility ="Hidden" x:Name="CurrentCardTextbox" Content="0" HorizontalAlignment="Center" Margin="72,107,308,0" VerticalAlignment="Top" FontSize="22" Width="40" Height="46"/>
+            <Label Label.Visibility="Hidden" x:Name="backslash" Content="/" HorizontalAlignment="Center" Margin="114,103,294,0" VerticalAlignment="Top" FontSize="24" Height="42" Width="12"/>
+            <Label Label.Visibility="Hidden" x:Name="TotalCardsBox" Content="0" HorizontalAlignment="center" Margin="144,107,236,0" VerticalAlignment="Top" FontSize="22" Height="46" Width="40"/>
+            <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24" Height="42"/>
+            <Button Click="HomeBtn_Click"  
+                x:Name="HomeBtn_Copy"          
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                ToolTip="This button will take you back to the home page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,24,0" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="home_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="StudyADeckbtn_Click"   
+                x:Name ="StudyADeckbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                ToolTip="This button will take you back to the study a deck page"  Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,77,0" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="book-open-bookmark_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="CreateADeckbtn_Click"   
+                x:Name="CreateADeckbtn"          
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                ToolTip="This will button will take you to the deck builder page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,129,0" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="toggle-expand_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="ImportExportbtn_Click"   
+                x:Name ="ImportExportbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the import deck page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,182,0" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="inbox_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button  
+                Click="CreateQuizbtn_Click"
+                x:Name="CreateAQuizbtn"  
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the create a quiz page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,236,0" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="pen_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <Label x:Name="label7" Content="Label" Height="100" Width="100"/>
+            </Button>
+            <Button              
+                x:Name="TakeAQuizbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the test page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,289,0" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="alarm-clock_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
         </Grid>
     </ScrollViewer>

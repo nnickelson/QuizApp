@@ -271,6 +271,32 @@ namespace QuizApp
             button2.Visibility = Visibility.Hidden;
             button3.Visibility = Visibility.Hidden;
         }
+
+        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(
+               new Uri("/Home.xaml", UriKind.Relative));
+        }
+
+        private void StudyADeckbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("StudyMyDeck.xaml", UriKind.Relative));
+        }
+
+        private void CreateADeckbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
+        }
+
+        private void ImportExportbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Import.xaml", UriKind.Relative));
+        }
+
+        private void CreateQuizbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("CreateQuiz.xaml", UriKind.Relative));
+        }
     }
 
 }
