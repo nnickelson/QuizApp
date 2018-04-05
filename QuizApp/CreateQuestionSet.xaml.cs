@@ -170,6 +170,7 @@ namespace QuizApp
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
                 this.question = new MultipleChoice{ QuestionType = "multiple choice" };
+               
             }
         }
 
@@ -242,7 +243,7 @@ namespace QuizApp
         /// <param name="fillinBlankQuestion">type of FillInBlank</param>
         private void AddToDeck(FillInBlank fillinBlankQuestion)
         {
-            if (FibCanvas.Tb1.Text == "" || FibCanvas.Tb2.Text == "")
+            if (fibCanvas.Tb1.Text == "" || FibCanvas.Tb2.Text == "")
             {
                 misClick = true;
                 return;
@@ -341,6 +342,13 @@ namespace QuizApp
             QuestionNumBox.Visibility = Visibility.Visible;
             AddQuestionToDeck.Visibility = Visibility.Visible;
             Finishedbutton.Visibility = Visibility.Visible;
+
+            //rect2.Visibility = Visibility.Visible;
+
+            delete.Visibility = Visibility.Visible;
+            NextBtn.Visibility = Visibility.Visible;
+            Previousbtn.Visibility = Visibility.Visible;
+
             QuestionNumBox.Text = Convert.ToString(QuestionsDeck.QuestionList.Count + 1);
             DeckTitletextBox.Text = QuestionsDeck.DeckName;
             
@@ -448,6 +456,43 @@ namespace QuizApp
             {
                 mcCanvas = value;
             }
+        }
+
+        private void TakeAQuizbtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateQuizbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("CreateQuiz.xaml", UriKind.Relative));
+        }
+
+        private void ImportExportbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Import.xaml", UriKind.Relative));
+        }
+
+        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(
+                    new Uri("/Home.xaml", UriKind.Relative));
+        }
+
+        private void StudyADeckbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("StudyMyDeck.xaml", UriKind.Relative));
+        }
+
+        private void CreateADeckbtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
+        }
+
+        private void NextBtn_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

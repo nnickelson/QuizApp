@@ -20,7 +20,10 @@ namespace QuizApp
             BottomCanvas = new Canvas();
             BottomCanvas.Height = height * (1.0);
             BottomCanvas.Width = width * (1.0);
-            BottomCanvas.Background = new SolidColorBrush(Colors.ForestGreen);
+            //BottomCanvas.Background = new SolidColorBrush(Colors.ForestGreen);
+            SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+            mySolidColorBrush.Color = Color.FromRgb(246, 246, 246);
+            BottomCanvas.Background = mySolidColorBrush;
 
             //*****************************************************************
             QuestionBox = new TextBox();

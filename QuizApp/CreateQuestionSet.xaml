@@ -5,32 +5,307 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizApp"
       mc:Ignorable="d" 
-      d:DesignHeight="782.011" d:DesignWidth="943.915"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="CreateQuestionSet">
-    
-        <Grid x:Name="BottomGrid" Background="#FFECE6E6" Margin="00,0,0,0">
-            <!-- Textboxes-->
-            <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Left" Height="23" Margin="89,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
-            <TextBox x:Name="QuestionNumBox"  IsReadOnly ="True" HorizontalAlignment="Left" Height="23" Margin="89,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" BorderThickness="0,0,0,1" Visibility="Hidden"/>
 
-            <!-- Label-->
-            <Label x:Name="DeckTitleLabel" Content="Deck Title" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Width="72"/>
-            <Label x:Name="QuestionNum" Content="Question #" HorizontalAlignment="Left" Margin="12,41,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+    <ScrollViewer>
+        <Grid x:Name="BottomGrid" Background="#dfe3ee" >
 
-            <!-- Button-->
-            <Button x:Name="AddQuestionToDeck" Content="Add" HorizontalAlignment="Left" Margin="20,475,0,0" VerticalAlignment="Top" Width="82"  BorderThickness="1" Click="addQuestionToDeck_Clicked" Visibility="Hidden" Height="44"/>
-            <Button x:Name="Finishedbutton" Content="Finished" HorizontalAlignment="Left" Margin="102,475,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="-0.059,0.532" Click="finishedbutton_Click" Visibility="Hidden" Height="44"/>
-            <Button x:Name="SubmitDeck" Content="Click to submit Deck Name" HorizontalAlignment="Left" Margin="328,13,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-0.341,-0.623" Height="23" Click="submitDeck_Clicked" />
-            <Button x:Name="fillInTheBlank" Content="Fill in the Blank" HorizontalAlignment="Left" Margin="20,72,0,0" VerticalAlignment="Top" Click="fillInTheBlank_Clicked" Height="40" Width="123" Visibility="Hidden"/>
-            <Button x:Name="trueFalse" Content="True or False" HorizontalAlignment="Left" Margin="143,72,0,0" VerticalAlignment="Top" Click="trueFalse_Clicked" Height="40" Width="118" Visibility="Hidden"/>
-            <Button x:Name="multipleChoice" Content="Multiple Choice" HorizontalAlignment="Left" Margin="261,72,0,0" VerticalAlignment="Top" Height="40" Click="multipleChoice_Clicked" Width="118" Visibility="Hidden"/>
-        <Button x:Name="backbutton" Content= "&lt;&lt;"  HorizontalAlignment="Left" Width="75" Margin="560,475,0,280.4" Visibility="Hidden"/>
-        <Button x:Name="delete" Content= "Delete"  HorizontalAlignment="Left" Width="75" Margin="635,475,0,280.4" Visibility="Hidden"/>
+            <Rectangle x:Name ="rect2" Rectangle.Visibility ="Hidden"  Fill="#3a5998" HorizontalAlignment="Left" Height="363" Stroke="Black" VerticalAlignment="Top" Width="691" RadiusY="37" RadiusX="37" Margin="51,232,0,0"/>
 
-        <Grid x:Name="QuestionsCanvasTemplate" Background="Crimson" HorizontalAlignment="Left" Height="363" Margin="20,112,0,0" VerticalAlignment="Top" Width="691">
+            <Rectangle x:Name ="rect3" Fill="#F6f6f6" HorizontalAlignment="Center" Height="401" Margin="27,232,24,0" Stroke="Black" VerticalAlignment="Top" Width="732" RadiusY="48.5" RadiusX="48.5"/>
+
+            <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Center" Height="24" Margin="102,104,483,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
+            <TextBox x:Name="QuestionNumBox"  IsReadOnly ="True" HorizontalAlignment="Center" Height="23" Margin="102,136,619,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" BorderThickness="0,0,0,1" Visibility="Visible"/>
+
+            <Label x:Name="DeckTitleLabel" Content="Deck Title" HorizontalAlignment="Center" Margin="20,102,681,0" VerticalAlignment="Top" Width="82"/>
+            <Label x:Name="QuestionNum" Content="Question #" HorizontalAlignment="Center" Margin="20,133,695,0" VerticalAlignment="Top" Visibility="Visible"/>
+
+
+            <!-- Hidden Intially -->
+            <!-- -->
+
+            <Button x:Name="SubmitDeck" Content="Save deck name" HorizontalAlignment="Center" Margin="305,105,379,0" VerticalAlignment="Top" Width="99" RenderTransformOrigin="-0.341,-0.623" Height="23" Click="submitDeck_Clicked" />
+
+            <!-- Hidden Intially -->
+            <Button x:Name="fillInTheBlank" Content="Fill in the Blank" HorizontalAlignment="Center" Margin="418,194,271,0" VerticalAlignment="Top" Click="fillInTheBlank_Clicked" Height="40" Width="94" Visibility="Hidden"/>
+            <Button x:Name="trueFalse" Content="True or False" HorizontalAlignment="Center" Margin="512,194,174,0" VerticalAlignment="Top" Click="trueFalse_Clicked" Height="40" Width="97" Visibility="Hidden"/>
+            <Button x:Name="multipleChoice" Content="Multiple Choice" HorizontalAlignment="Center" Margin="609,194,77,0" VerticalAlignment="Top" Height="40" Click="multipleChoice_Clicked" Width="97" Visibility="Hidden"/>
+            <!-- -->
+
+            <Grid x:Name="QuestionsCanvasTemplate"  Background="#f6f6f6"  HorizontalAlignment="Center" Height="362" Margin="51,252,41,0" VerticalAlignment="Top" Width="691">
             </Grid>
-            <Canvas x:Name="editCreateChoice" Background="White" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
+
+            <!-- -Navigation menu stuff-->
+            <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
+            <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24" Height="42"/>
+            <Button Click="HomeBtn_Click"  
+                x:Name="HomeBtn_Copy"          
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you back to the home page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,24,0" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="home_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="StudyADeckbtn_Click"   
+                x:Name ="StudyADeckbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you back to the study a deck page"  Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,77,0" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="book-open-bookmark_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="CreateADeckbtn_Click"   
+                x:Name="CreateADeckbtn"          
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This will button will take you to the deck builder page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,129,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="toggle-expand_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="ImportExportbtn_Click"   
+                x:Name ="ImportExportbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the import deck page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,182,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="inbox_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button  
+                Click="CreateQuizbtn_Click"
+                x:Name="CreateAQuizbtn"  
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the create a quiz page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,236,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="pen_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <Label x:Name="label7" Content="Label" Height="100" Width="100"/>
+            </Button>
+            <Button              
+                x:Name="TakeAQuizbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the test page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,289,0" Click="TakeAQuizbtn_Click" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="alarm-clock_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Delete button-->
+            <Button   
+                x:Name="delete"        
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="102,652,625,0" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="bin_red.png" Height="50"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Add button-->
+            <Button Click="addQuestionToDeck_Clicked" 
+                x:Name="AddQuestionToDeck"       
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="579,652,148,0" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="button-add_blue.png"  Height="55"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Finish button-->
+            <Button Click="finishedbutton_Click" 
+                x:Name="Finishedbutton"      
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="635,652,92,0" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="Stop.png" Height="35"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Next button-->
+            <Button 
+                x:Name="NextBtn"       
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="418,652,309,0" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="PlayK0HMMNQT.png" Height="35"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Previous button-->
+            <Button 
+                x:Name="Previousbtn"       
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button will delete the current question from the question set" Width="54" Height="44" RenderTransformOrigin="0.5,0.5" Margin="302,652,427,0"  >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="PlayK0HMMNQT.png" Height="35"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+          
+        <Canvas x:Name="editCreateChoice" Background="#dfe3ee" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
             </Canvas>
+            
         </Grid>
-    
+    </ScrollViewer>
+
 </Page>
