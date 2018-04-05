@@ -345,9 +345,9 @@ namespace QuizApp
 
             //rect2.Visibility = Visibility.Visible;
 
-            delete.Visibility = Visibility.Visible;
-            NextBtn.Visibility = Visibility.Visible;
-            Previousbtn.Visibility = Visibility.Visible;
+            //delete.Visibility = Visibility.Visible;
+           // NextBtn.Visibility = Visibility.Visible;
+            //Previousbtn.Visibility = Visibility.Visible;
 
             QuestionNumBox.Text = Convert.ToString(QuestionsDeck.QuestionList.Count + 1);
             DeckTitletextBox.Text = QuestionsDeck.DeckName;
@@ -366,7 +366,11 @@ namespace QuizApp
 
             editDeckButton.Click += delegate
             {
+                Previousbtn.Visibility = Visibility.Visible;
+                NextBtn.Visibility = Visibility.Visible;
+                delete.Visibility = Visibility.Visible;
                 AddQuestions_btnClick();
+                
             };
 
             newDeckButton.Click += delegate
@@ -491,6 +495,11 @@ namespace QuizApp
         }
 
         private void NextBtn_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Previousbtn_Click(object sender, RoutedEventArgs e)
         {
 
         }

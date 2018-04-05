@@ -180,7 +180,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="102,652,625,0" >
+                ToolTip="This button will delete a question from the deck" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="102,652,625,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -204,7 +204,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="579,652,148,0" >
+                ToolTip="This button will add a question to your deck" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="579,652,148,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -228,7 +228,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="635,652,92,0" >
+                ToolTip="This button will take you back to the deck builder page" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="635,652,92,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -252,7 +252,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will delete the current question from the question set" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="418,652,309,0" >
+                ToolTip="This button will display the next question in the deck" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="418,652,309,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -276,7 +276,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will delete the current question from the question set" Width="54" Height="44" RenderTransformOrigin="0.5,0.5" Margin="302,652,427,0"  >
+                ToolTip="This button will display the previous question in the deck" Width="54" Height="44" RenderTransformOrigin="0.5,0.5" Margin="302,652,427,0" Click="Previousbtn_Click"  >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>
@@ -302,8 +302,10 @@
                 </Button.Template>
             </Button>
           
+            
         <Canvas x:Name="editCreateChoice" Background="#dfe3ee" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
             </Canvas>
+            
             
         </Grid>
     </ScrollViewer>
