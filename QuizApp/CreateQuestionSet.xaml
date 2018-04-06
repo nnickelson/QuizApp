@@ -303,7 +303,8 @@
             </Button>
           
             
-        <Canvas x:Name="editCreateChoice" Background="#dfe3ee" HorizontalAlignment="Left" Height="762" Margin="0,0,0,0" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
+            
+        <Canvas x:Name="editCreateChoice" Background="#dfe3ee" HorizontalAlignment="Left" Height="762" Margin="-20,73,-141,-35" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
             </Canvas>
             
             

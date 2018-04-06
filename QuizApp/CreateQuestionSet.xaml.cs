@@ -76,7 +76,6 @@ namespace QuizApp
 
         //Button Handlers//
 
-
         private void AddQuestions_btnClick()
         {
             QuestionsDeck = fileOperator.ReadDeck();
@@ -174,7 +173,6 @@ namespace QuizApp
             }
         }
 
-
         /// <summary>
         /// finishedbutton_Click Method
         /// checks to see that a deck has been named and has at least one question
@@ -204,7 +202,6 @@ namespace QuizApp
 
             NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
         }
-
 
 
         /// <summary>
@@ -327,8 +324,7 @@ namespace QuizApp
 
         }
 
-        
-
+       
         /// <summary>
         /// setVisibilebuttons Method
         /// Sets visibility to visible of some buttons once a deck name has been submitted
@@ -342,16 +338,8 @@ namespace QuizApp
             QuestionNumBox.Visibility = Visibility.Visible;
             AddQuestionToDeck.Visibility = Visibility.Visible;
             Finishedbutton.Visibility = Visibility.Visible;
-
-            //rect2.Visibility = Visibility.Visible;
-
-            //delete.Visibility = Visibility.Visible;
-           // NextBtn.Visibility = Visibility.Visible;
-            //Previousbtn.Visibility = Visibility.Visible;
-
             QuestionNumBox.Text = Convert.ToString(QuestionsDeck.QuestionList.Count + 1);
-            DeckTitletextBox.Text = QuestionsDeck.DeckName;
-            
+            DeckTitletextBox.Text = QuestionsDeck.DeckName;          
         }
 
         /// <summary>
@@ -378,17 +366,17 @@ namespace QuizApp
                 NewDeck_BtnClick();
             };
 
-            Canvas.SetTop(editDeckButton, editCreateChoice.Height * (0.33));
+            Canvas.SetTop(editDeckButton, editCreateChoice.Height * (0.33)); // 0.33
             Canvas.SetLeft(editDeckButton, editCreateChoice.Width * (0.25));
 
-            editDeckButton.Width = editCreateChoice.Width * (0.25);
-            editDeckButton.Height = editCreateChoice.Height * (0.33);
+            editDeckButton.Width = editCreateChoice.Width * (0.095); // 0.25
+            editDeckButton.Height = editCreateChoice.Height * (0.093); //0.33
 
             Canvas.SetTop(newDeckButton, editCreateChoice.Height * (0.33));
             Canvas.SetLeft(newDeckButton, editCreateChoice.Width * (0.50));
 
-            newDeckButton.Width = editCreateChoice.Width * (0.25);
-            newDeckButton.Height = editCreateChoice.Height * (0.33);
+            newDeckButton.Width = editCreateChoice.Width * (0.095); // 0.25
+            newDeckButton.Height = editCreateChoice.Height * (0.093); //0.33
 
             editCreateChoice.Children.Add(editDeckButton);
             editCreateChoice.Children.Add(newDeckButton);
@@ -462,6 +450,7 @@ namespace QuizApp
             }
         }
 
+        // NEED TO ADD NAV LINK HERE
         private void TakeAQuizbtn_Click(object sender, RoutedEventArgs e)
         {
 
