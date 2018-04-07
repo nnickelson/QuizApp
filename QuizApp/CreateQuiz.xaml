@@ -14,8 +14,8 @@
                 <Grid Background="#FFE5E5E5">
                     <ListBox x:Name="QuizDecks" HorizontalAlignment="Left" Height="166" Margin="10,31,0,0" VerticalAlignment="Top" Width="94"/>
                     <ListBox x:Name="AddedToList" HorizontalAlignment="Left" Height="166" Margin="195,31,0,0" VerticalAlignment="Top" Width="89"/>
-                    <Button x:Name="AddTo" Content="&gt;&gt;&gt;" HorizontalAlignment="Left" Margin="118,75,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.778,0.521" ToolTip="Add Deck" Click="Button_Click"/>
-                    <Button x:Name="DeleteFrom" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="118,122,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.778,0.521" ToolTip="Remove Deck" Click="Button_Click_1"/>
+                    <Button x:Name="AddTo" Content="&gt;&gt;&gt;" HorizontalAlignment="Left" Margin="118,75,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.778,0.521" ToolTip="Add Deck" Click="AddDeckToList"/>
+                    <Button x:Name="DeleteFrom" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="118,122,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.778,0.521" ToolTip="Remove Deck" Click="DeleteDeckFromList"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="QuizSettingsTab" Header="Quiz Settings">

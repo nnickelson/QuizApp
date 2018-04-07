@@ -20,6 +20,13 @@ namespace QuizApp
         private List<QuestionsDeck> includedDecks;
 
 
+        public QuizSettings()
+        {
+            PastQuizDates = new List<DateTime>();
+            PastQuizScores = new List<double>();
+            IncludedDecks = new List<QuestionsDeck>();
+        }
+
         /// <summary>
         /// Public Properties
         /// </summary>

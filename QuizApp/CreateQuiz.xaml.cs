@@ -44,8 +44,8 @@ namespace QuizApp
 
         
         /// <summary>
-        /// SetFontSize
-        /// Adjusts the fontsize of Xaml textboxes and text blocks
+        /// SetTabTemplate Method
+        /// Initializes the UI configurations of the current page
         /// </summary>
         public void SetTabTemplate()
         {
@@ -68,7 +68,13 @@ namespace QuizApp
             AddTo.Margin = new Thickness(Width1 * (0.40), Height1 * (0.1), 0, 0);
             DeleteFrom.Margin = new Thickness(Width1 * (0.40), Height1 * (0.15), 0, 0);
         }
-
+        
+        /// <summary>
+        /// PopulateListBox Method
+        /// This method calls a method from QuestionsDeckJSON_IO
+        /// It goes to the desktop file and reads all decks that are there and 
+        /// adds them to the xaml listbox for selection
+        /// </summary>
         public void PopulateListBox()
         {
             deckList = fileOperator.QuestionsDeckReturn();
@@ -174,17 +180,78 @@ namespace QuizApp
                 QuizSettings.IsTimed = false;
                 QuizSettings.QuizMinutes = -1;
             }
+            if (QuizSettings.IncludedDecks.Count < 1)
+            {
+                MessageBox.Show("You have no decks for your quiz");
+                return;
+            }
+            fileOperator.WriteQuizSettings(QuizSettings);
+            NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// AddDeckToList Method
+        /// This method adds the selected QuestionsDeck to the QuizSettings
+        /// if the deckName does not exist in the list of QuizSettings QuestionsDecks
+        /// It also populates the left listbox with the decks added.
+        /// If no listbox item is selected or the deck is already included,
+        /// the method returns and does nothing.
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
+        private void AddDeckToList(object sender, RoutedEventArgs e)
         {
-            // MessageBox.Show(Convert.ToString(  QuizDecks.SelectedItem)  );
-
+            if (QuizDecks.SelectedItem == null)
+                return;
+            else
+            {
+                foreach (var deck in QuizSettings.IncludedDecks)
+                {
+                    if (deck.DeckName == Convert.ToString(QuizDecks.SelectedItem))
+                    {
+                        MessageBox.Show("This deck is already included");
+                        return;
+                    }
+                }
+                int index = QuizDecks.Items.IndexOf(QuizDecks.SelectedItem);
+                AddedToList.Items.Add(QuizDecks.SelectedItem);
+                QuizSettings.IncludedDecks.Add(deckList[index]);
+            }
+            MessageBox.Show("Number of Decks = " + Convert.ToString(QuizSettings.IncludedDecks.Count));
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// DeleteDeckFromList Method
+        /// If a user changes their mind and does not want a deck included in their QuizSettings
+        /// this button removes that deck from the IncludedDecks list in QuizSettings.
+        /// It also removes the name of the deck from the right-side List box
+        /// If no item is selected from the listbox, the method returns without changing anything.
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
+        private void DeleteDeckFromList(object sender, RoutedEventArgs e)
         {
-
+            if (AddedToList.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {   
+                foreach(QuestionsDeck deck in QuizSettings.IncludedDecks)
+                {
+                    if(deck.DeckName == Convert.ToString(AddedToList.SelectedItem))
+                    {
+                        QuizSettings.IncludedDecks.Remove(deck);
+                        MessageBox.Show("Deck Removed");
+                        break;
+                    }
+                    if (QuizSettings.IncludedDecks.Count == 0)
+                        break;
+                }
+                AddedToList.Items.Remove(AddedToList.SelectedItem);
+                MessageBox.Show("Number of Decks = " + Convert.ToString(QuizSettings.IncludedDecks.Count));
+            }
+            
         }
 
         //**********************************************************************************//

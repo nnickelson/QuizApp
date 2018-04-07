@@ -14,7 +14,8 @@ namespace QuizApp
 {
     public class QuestionsDeckJSON_IO
     {
-        private QuestionsDeck Deck = new QuestionsDeck();
+        private QuestionsDeck deck;
+        private QuizSettings quizSettings;
         private String fileName;
         private String JSONquestions;
         private List<QuestionsDeck> deckList;
@@ -22,7 +23,12 @@ namespace QuizApp
 
         
 
-        public QuestionsDeckJSON_IO() { }
+        public QuestionsDeckJSON_IO()
+        {
+            Deck = new QuestionsDeck();
+            QuizSettings = new QuizSettings();
+            DeckList = new List<QuestionsDeck>();
+        }
 
         /// <summary>
         /// WriteQuestionsDeck Method
@@ -100,12 +106,17 @@ namespace QuizApp
                         QuestionsDeck readDeck = ser.Deserialize<QuestionsDeck>(JSONquestions1);
                         Deck = readDeck;
                     }
-
                 }
             }
             return Deck;
         }
-
+        
+        /// <summary>
+        /// QuestionsDeckReturn Method
+        /// This method opens the QuizApp folder on the desktop and reads all the available
+        /// QuestionsDeck objects into a List<QuestionsDeck> 
+        /// </summary>
+        /// <returns>List<QuestionsDeck> data type</returns>
         public List<QuestionsDeck> QuestionsDeckReturn()
         {
             DeckList = new List<QuestionsDeck>();
@@ -122,10 +133,96 @@ namespace QuizApp
             return DeckList;
         }
 
+        public void WriteQuizSettings (QuizSettings setQuizSettings)
+        {
+            if (setQuizSettings == null || setQuizSettings.QuizName == "")
+            {
+                MessageBox.Show("You have to name your quiz");
+                return;
+            }
+            QuizSettings = setQuizSettings;
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+            String outputJSON = ser.Serialize(QuizSettings);
+
+            // Get the rootpath, locate the quiz directory and then the QuestionsDeck subfolder. 
+            // Once that is located, write the JSON file to the destination.
+            String RootPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            RootPath += @"\QuizApp\";
+            String QuizSettingsPath = RootPath + @"\QuizSettings\";
+            File.WriteAllText(QuizSettingsPath + setQuizSettings.QuizName + ".QuizSettings.json", outputJSON);
+            MessageBox.Show("file: " + FileName + " written.");
+
+        }
+
         /// <summary>
         /// Properties section
         /// </summary>
         public string FileName
+        {
+            get
+            {
+                return FileName1;
+            }
+
+            set
+            {
+                FileName1 = value;
+            }
+        }
+
+        public string JSONquestions1
+        {
+            get
+            {
+                return JSONquestions2;
+            }
+
+            set
+            {
+                JSONquestions2 = value;
+            }
+        }
+
+        public List<QuestionsDeck> DeckList
+        {
+            get
+            {
+                return DeckList1;
+            }
+
+            set
+            {
+                DeckList1 = value;
+            }
+        }
+
+        public QuestionsDeck Deck
+        {
+            get
+            {
+                return deck;
+            }
+
+            set
+            {
+                deck = value;
+            }
+        }
+
+        public QuizSettings QuizSettings
+        {
+            get
+            {
+                return quizSettings;
+            }
+
+            set
+            {
+                quizSettings = value;
+            }
+        }
+
+        public string FileName1
         {
             get
             {
@@ -138,7 +235,7 @@ namespace QuizApp
             }
         }
 
-        public string JSONquestions1
+        public string JSONquestions2
         {
             get
             {
@@ -151,7 +248,7 @@ namespace QuizApp
             }
         }
 
-        public List<QuestionsDeck> DeckList
+        public List<QuestionsDeck> DeckList1
         {
             get
             {
