@@ -39,23 +39,6 @@ namespace QuizApp
 
         private void ImportExportbtn_Click(object sender, RoutedEventArgs e)
         {
-            // Create Root directory and subfolders if they do not exist yet
-            string RootPath, StudyDecksPath, ImagePath, QuestionsDeckPath;
-            //-------------- Create a root directory and subfolders on desktop if they haven't already been created yet------------
-            RootPath = StudyDecksPath = ImagePath = QuestionsDeckPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            RootPath += @"\QuizApp\";
-            StudyDecksPath = RootPath + @"\StudyDecks\";
-            ImagePath = RootPath + @"\Images\";
-            QuestionsDeckPath = RootPath + @"\QuestionDecks\";
-            if (!Directory.Exists(RootPath))
-            {
-                Directory.CreateDirectory(RootPath);
-                Directory.CreateDirectory(StudyDecksPath);
-                Directory.CreateDirectory(ImagePath);
-                Directory.CreateDirectory(QuestionsDeckPath);
-            }
-            //---------------------------------------------------------------------------
             NavigationService.Navigate(new Uri("Import.xaml", UriKind.Relative));
         }
 
@@ -66,7 +49,7 @@ namespace QuizApp
 
         private void TakeAQuizbtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/Test.xaml", UriKind.Relative));
         }
     }
 }
