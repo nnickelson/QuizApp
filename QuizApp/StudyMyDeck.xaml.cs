@@ -196,7 +196,7 @@ namespace QuizApp
 
         private void TakeAQuizbtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("Test.xaml", UriKind.Relative));
         }
     }
 

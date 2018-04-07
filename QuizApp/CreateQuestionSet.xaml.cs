@@ -453,7 +453,7 @@ namespace QuizApp
         // NEED TO ADD NAV LINK HERE
         private void TakeAQuizbtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("Test.xaml", UriKind.Relative));
         }
 
         private void CreateQuizbtn_Click(object sender, RoutedEventArgs e)
