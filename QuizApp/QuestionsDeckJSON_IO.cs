@@ -17,6 +17,7 @@ namespace QuizApp
         private QuestionsDeck Deck = new QuestionsDeck();
         private String fileName;
         private String JSONquestions;
+        private List<QuestionsDeck> deckList;
         //private String addQuestion;
 
         
@@ -105,6 +106,22 @@ namespace QuizApp
             return Deck;
         }
 
+        public List<QuestionsDeck> QuestionsDeckReturn()
+        {
+            DeckList = new List<QuestionsDeck>();
+            String RootPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            RootPath += @"\QuizApp\QuestionDecks";
+            String[] allFiles = Directory.GetFiles(RootPath, "*.*", SearchOption.AllDirectories);
+            foreach (var file in allFiles)
+            {
+                JavaScriptSerializer ser = new JavaScriptSerializer();
+                JSONquestions1 = File.ReadAllText(file);
+                QuestionsDeck readDeck = ser.Deserialize<QuestionsDeck>(JSONquestions1);
+                DeckList.Add(readDeck);
+            }
+            return DeckList;
+        }
+
         /// <summary>
         /// Properties section
         /// </summary>
@@ -131,6 +148,19 @@ namespace QuizApp
             set
             {
                 JSONquestions = value;
+            }
+        }
+
+        public List<QuestionsDeck> DeckList
+        {
+            get
+            {
+                return deckList;
+            }
+
+            set
+            {
+                deckList = value;
             }
         }
     }

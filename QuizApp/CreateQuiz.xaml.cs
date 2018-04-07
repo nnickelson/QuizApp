@@ -23,7 +23,8 @@ namespace QuizApp
         private double height;
         private double width;
         private QuizSettings quizSettings;
-        QuestionsDeckJSON_IO fileOperator = new QuestionsDeckJSON_IO();
+        private List<QuestionsDeck> deckList = new List<QuestionsDeck>();
+        private QuestionsDeckJSON_IO fileOperator = new QuestionsDeckJSON_IO();
 
         /// <summary>
         /// CreateQuiz Constructor
@@ -36,7 +37,8 @@ namespace QuizApp
             CreateQuizTabControl.Width = Width1;
             CreateQuizTabControl.Height = Height1 * (0.85);
             NumberOfMinutesTextBox.Visibility = Visibility.Hidden;
-            SetFontSize();
+            SetTabTemplate();
+            PopulateListBox();
             QuizSettings = new QuizSettings();
         }
 
@@ -45,7 +47,7 @@ namespace QuizApp
         /// SetFontSize
         /// Adjusts the fontsize of Xaml textboxes and text blocks
         /// </summary>
-        public void SetFontSize()
+        public void SetTabTemplate()
         {
             //MessageBox.Show(Convert.ToString(QuizSettingsTab.Height));
             double textHeight = Height1 / 25;
@@ -58,6 +60,22 @@ namespace QuizApp
             NumberOfMinutesTextBox.FontSize = textHeight;
             YesButton.FontSize = textHeight * (0.75);
             NoButton.FontSize = textHeight * (0.75);
+
+            QuizDecks.Width = Width1 * (0.25);
+            AddedToList.Width = Width1 * (0.25);
+            AddedToList.Margin = new Thickness(Width1 * (0.05), Height1 * (0.05), Width1 * (0.15), 10);
+            AddedToList.Margin = new Thickness(Width1 * (0.55), Height1 * (0.05), Width1 * (0.15), 10);
+            AddTo.Margin = new Thickness(Width1 * (0.40), Height1 * (0.1), 0, 0);
+            DeleteFrom.Margin = new Thickness(Width1 * (0.40), Height1 * (0.15), 0, 0);
+        }
+
+        public void PopulateListBox()
+        {
+            deckList = fileOperator.QuestionsDeckReturn();
+            foreach ( var deck in deckList)
+            {
+                QuizDecks.Items.Add(deck.DeckName);
+            }
         }
         
         /// <summary>
@@ -156,11 +174,18 @@ namespace QuizApp
                 QuizSettings.IsTimed = false;
                 QuizSettings.QuizMinutes = -1;
             }
+        }
 
-            
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //**********************************************************************************//
         public double Height1
         {
