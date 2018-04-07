@@ -22,7 +22,6 @@
             <Image Image.Visibility ="Hidden" x:Name="ImageViewer1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="95,248,376,0"  Width="312" Height="299"  Stretch="Fill" >
 
             </Image>
-
             <Button Click="Nextbtn_Click"    
                     x:Name="Nextbtn"
                      Button.Visibility="Hidden"
@@ -75,6 +74,7 @@
                 </Button.Template>
             </Button>
 
+   
             <Button Click="Flipbtn_Click"  
                      Button.Visibility="Hidden"
                     x:Name="Flipbtn"
@@ -119,30 +119,25 @@
                 </Button.Template>
             </Button>
 
+            
+       
             <Label Label.Visibility ="Hidden" x:Name="CurrentCardTextbox" Content="0" HorizontalAlignment="Center" Margin="126,107,631,0" VerticalAlignment="Top" FontSize="22" Width="26" Height="46"/>
             <Label Label.Visibility="Hidden" x:Name="backslash" Content="/" HorizontalAlignment="Center" Margin="166,103,595,0" VerticalAlignment="Top" FontSize="24" Height="46" Width="22"/>
             <Label Label.Visibility="Hidden" x:Name="TotalCardsBox" Content="0" HorizontalAlignment="center" Margin="202,107,555,0" VerticalAlignment="Top" FontSize="22" Height="46" Width="26"/>
             <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24" Height="42"/>
-
-
-
-
-
-
-            <!-- Nav menu-->
-
+            <!-- Nav Menu-->
             <Button Click="HomeBtn_Click"  
                 x:Name="HomeBtn_Copy"          
                 Visibility="Visible"
                 HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
+                VerticalAlignment="Top"
                 ToolTip="This button will take you back to the home page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,24,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="home_blue.png" Height="45"/>
+                            <Image Source="PngFiles/home_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -157,14 +152,14 @@
                 x:Name ="StudyADeckbtn" 
                 Visibility="Visible"
                 HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
+                VerticalAlignment="Top"
                 ToolTip="This button will take you back to the study a deck page"  Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,77,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="book-open-bookmark_blue.png" Height="45"/>
+                            <Image Source="PngFiles/book-open-bookmark_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -179,14 +174,14 @@
                 x:Name="CreateADeckbtn"          
                 Visibility="Visible"
                 HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
+                VerticalAlignment="Top"
                 ToolTip="This will button will take you to the deck builder page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,129,0">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="toggle-expand_blue.png" Height="45"/>
+                            <Image Source="PngFiles/toggle-expand_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -208,7 +203,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="inbox_blue.png" Height="45"/>
+                            <Image Source="PngFiles/inbox_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -231,7 +226,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="pen_blue.png" Height="45"/>
+                            <Image Source="PngFiles/pen_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -254,7 +249,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="alarm-clock_blue.png" Height="45"/>
+                            <Image Source="PngFiles/alarm-clock_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">

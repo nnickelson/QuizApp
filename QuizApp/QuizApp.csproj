@@ -278,7 +278,15 @@
   <ItemGroup>
     <Resource Include="PngFiles\button-add_blue.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="arrange_transform_flip_horizontal_interface_UI-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PlayK0HMMNQT.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
