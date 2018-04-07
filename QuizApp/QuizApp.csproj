@@ -167,110 +167,111 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Button-Next-icon.png" />
+    <Resource Include="PngFiles\Button-Next-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Button-Refresh-icon.png" />
+    <Resource Include="PngFiles\Button-Refresh-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="sport_badges-11-32.png" />
+    <Resource Include="PngFiles\sport_badges-11-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="10-32.png" />
+    <Resource Include="PngFiles\10-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Button-Close-icon.png" />
+    <Resource Include="PngFiles\Button-Close-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="books_reading_study-32.png" />
+    <Resource Include="PngFiles\books_reading_study-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="home-32.png" />
+    <Resource Include="PngFiles\home-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="plus-sign-32.png" />
+    <Resource Include="PngFiles\plus-sign-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button_31.png" />
+    <Resource Include="PngFiles\button_31.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button_32.png" />
+    <Resource Include="PngFiles\button_32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Button-Play-icon.png" />
+    <Resource Include="PngFiles\Button-Play-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Button-Play.png" />
+    <Resource Include="PngFiles\Button-Play.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button-play_blue.png" />
+    <Resource Include="PngFiles\button-play_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button-synchronize_blue.png" />
+    <Resource Include="PngFiles\button-synchronize_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button-cross_blue.png" />
+    <Resource Include="PngFiles\button-cross_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PlayK0HMMNQT.png" />
+    <Resource Include="PngFiles\PlayK0HMMNQT.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="refresh_48.png" />
+    <Resource Include="PngFiles\refresh_48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="arrange_transform_flip_horizontal_interface_UI-64.png" />
+    <Resource Include="PngFiles\arrange_transform_flip_horizontal_interface_UI-64.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Stop.png" />
+    <Resource Include="PngFiles\Stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="alarm-clock_blue.png" />
+    <Resource Include="PngFiles\alarm-clock_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="book-open-bookmark_blue.png" />
+    <Resource Include="PngFiles\book-open-bookmark_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="home_blue.png" />
+    <Resource Include="PngFiles\home_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="arrow-right_blue.png" />
+    <Resource Include="PngFiles\arrow-right_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="toggle-expand_blue.png" />
+    <Resource Include="PngFiles\toggle-expand_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="inbox_blue.png" />
+    <Resource Include="PngFiles\inbox_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pen_blue.png" />
+    <Resource Include="PngFiles\pen_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="document-edit_blue.png" />
+    <Resource Include="PngFiles\document-edit_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="question-balloon_blue.png" />
+    <Resource Include="PngFiles\question-balloon_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bin_blue.png" />
+    <Resource Include="PngFiles\bin_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bin_red.png" />
+    <Resource Include="PngFiles\bin_red.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="floppy-disk_blue.png" />
+    <Resource Include="PngFiles\floppy-disk_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="scissors_blue.png" />
+    <Resource Include="PngFiles\scissors_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="toggle-expand-alt_blue.png" />
+    <Resource Include="PngFiles\toggle-expand-alt_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="document_blue.png" />
+    <Resource Include="PngFiles\document_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button-add_blue.png" />
+    <Resource Include="PngFiles\button-add_blue.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

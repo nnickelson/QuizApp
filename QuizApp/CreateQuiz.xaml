@@ -11,7 +11,12 @@
     <Grid>
         <TabControl x:Name="CreateQuizTabControl" HorizontalAlignment="Left" Height="264" VerticalAlignment="Top" Width="300">
             <TabItem x:Name="QuizDeckTab" Header="Quiz Decks">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <ListBox HorizontalAlignment="Left" Height="166" Margin="10,31,0,0" VerticalAlignment="Top" Width="94"/>
+                    <ListBox HorizontalAlignment="Left" Height="166" Margin="195,31,0,0" VerticalAlignment="Top" Width="89"/>
+                    <Button Content="&gt;&gt;&gt;" HorizontalAlignment="Left" Margin="118,75,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.778,0.521" ToolTip="Add Deck"/>
+                    <Button Content="&lt;&lt;&lt;" HorizontalAlignment="Left" Margin="118,122,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.778,0.521" ToolTip="Remove Deck"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="QuizSettingsTab" Header="Quiz Settings">
                 <Grid Background="#FFE5E5E5" x:Name="Tab2Grid">

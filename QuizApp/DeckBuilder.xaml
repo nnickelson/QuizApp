@@ -23,7 +23,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="document-edit_blue.png" Height="95"/>
+                            <Image Source="PngFiles\document-edit_blue.png" Height="95"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -47,7 +47,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="question-balloon_blue.png" Height="95"/>
+                            <Image Source="PngFiles\question-balloon_blue.png" Height="95"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -71,7 +71,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="home_blue.png" Height="95"/>
+                            <Image Source="PngFiles\home_blue.png" Height="95"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -94,7 +94,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="home_blue.png" Height="45"/>
+                            <Image Source="PngFiles\home_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -116,7 +116,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="book-open-bookmark_blue.png" Height="45"/>
+                            <Image Source="PngFiles\book-open-bookmark_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -138,7 +138,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="toggle-expand_blue.png" Height="45"/>
+                            <Image Source="PngFiles\toggle-expand_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -160,7 +160,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="inbox_blue.png" Height="45"/>
+                            <Image Source="PngFiles\inbox_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -183,7 +183,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="pen_blue.png" Height="45"/>
+                            <Image Source="PngFiles\pen_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -206,7 +206,7 @@
                         <Border x:Name="theBorder"
                             BorderBrush="Transparent"
                             BorderThickness="2">
-                            <Image Source="alarm-clock_blue.png" Height="45"/>
+                            <Image Source="PngFiles\alarm-clock_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
