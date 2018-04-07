@@ -25,7 +25,7 @@ namespace QuizApp
         public MainWindow()
         {
             InitializeComponent();
-            string RootPath, StudyDecksPath, ImagePath, QuestionsDeckPath;
+            string RootPath, StudyDecksPath, ImagePath, QuestionsDeckPath, QuizSettings;
             //-------------- Create a root directory and subfolders on desktop if they haven't already been created yet------------
             RootPath = StudyDecksPath = ImagePath = QuestionsDeckPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
@@ -33,12 +33,14 @@ namespace QuizApp
             StudyDecksPath = RootPath + @"\StudyDecks\";
             ImagePath = RootPath + @"\Images\";
             QuestionsDeckPath = RootPath + @"\QuestionDecks\";
+            QuizSettings = RootPath + @"\QuizSettings\";
             if (!Directory.Exists(RootPath))
             {
                 Directory.CreateDirectory(RootPath);
                 Directory.CreateDirectory(StudyDecksPath);
                 Directory.CreateDirectory(ImagePath);
                 Directory.CreateDirectory(QuestionsDeckPath);
+                Directory.CreateDirectory(QuizSettings);
             }
             //---------------------------------------------------------------------------
         }
