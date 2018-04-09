@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,8 +8,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using System.Web.Script.Serialization;
 using System.IO;
+using System;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
 using Microsoft.Win32;
 
 namespace QuizApp
@@ -27,6 +27,83 @@ namespace QuizApp
         string JSONflashcards;
         JavaScriptSerializer ser = new JavaScriptSerializer();
         QuestionsDeck Choosen = new QuestionsDeck();
+
+        private QuestionsDeck questionsDeck;
+        private Question question;
+        private FillInBlankCanvas fibCanvas;
+        private TrueFalseCanvas tfCanvas;
+        private MultipleChoiceCanvas mcCanvas;
+        private bool misClick;
+        Random rnd = new Random();
+
+        int CurrPos = 0;
+
+        private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (misClick == true)
+            {
+                misClick = false;
+            }
+            else
+            {
+                QuestionsCanvasTemplate.Children.Clear();
+
+                double height = QuestionsCanvasTemplate.ActualHeight;
+                double width = QuestionsCanvasTemplate.ActualWidth;
+                FibCanvas = new FillInBlankCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
+                this.question = new FillInBlank { QuestionType = "Fill In Blank" };
+            }
+        }
+
+        /// <summary>
+        /// trueFalse_Clicked Method
+        /// Adds a True False cnavas to the grid
+        /// Initializes a new True False question
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
+        private void trueFalse_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (misClick == true)
+            {
+                misClick = false;
+            }
+            else
+            {
+                QuestionsCanvasTemplate.Children.Clear();
+                double height = QuestionsCanvasTemplate.ActualHeight;
+                double width = QuestionsCanvasTemplate.ActualWidth;
+                TfCanvas = new TrueFalseCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
+                this.question = new TrueFalse { QuestionType = "true false" };
+            }
+        }
+
+        /// <summary>
+        /// multipleChoice_Clicked Method
+        /// Adds a Multiple Choice Canvas to the grid
+        /// Initializes a new Multiple Choice questions
+        /// </summary>
+        /// <param name="sender">button handler</param>
+        /// <param name="e">button handler</param>
+        private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (misClick == true)
+            {
+                misClick = false;
+            }
+            else
+            {
+                QuestionsCanvasTemplate.Children.Clear();
+                double height = QuestionsCanvasTemplate.ActualHeight;
+                double width = QuestionsCanvasTemplate.ActualWidth;
+                McCanvas = new MultipleChoiceCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
+                this.question = new MultipleChoice { QuestionType = "multiple choice" };
+
+            }
+        }
 
 
         public static List<T> Randomize<T>(List<T> list)
@@ -71,66 +148,13 @@ namespace QuizApp
             NavigationService.Navigate(new Uri("Test.xaml", UriKind.Relative));
         }
 
-        /*
-        private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
-        {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
-                QuestionsCanvasTemplate.Children.Clear();
 
-                double height = QuestionsCanvasTemplate.ActualHeight;
-                double width = QuestionsCanvasTemplate.ActualWidth;
-                FibCanvas = new FillInBlankCanvas(height, width);
-                QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-                this.question = new FillInBlank { QuestionType = "Fill In Blank" };
-            }
-        }
 
-        private void trueFalse_Clicked(object sender, RoutedEventArgs e)
-        {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
-                QuestionsCanvasTemplate.Children.Clear();
-                double height = QuestionsCanvasTemplate.ActualHeight;
-                double width = QuestionsCanvasTemplate.ActualWidth;
-                TfCanvas = new TrueFalseCanvas(height, width);
-                QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
-                this.question = new TrueFalse { QuestionType = "true false" };
-            }
-        }
-
-        private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
-        {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
-                QuestionsCanvasTemplate.Children.Clear();
-                double height = QuestionsCanvasTemplate.ActualHeight;
-                double width = QuestionsCanvasTemplate.ActualWidth;
-                McCanvas = new MultipleChoiceCanvas(height, width);
-                QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
-                this.question = new MultipleChoice { QuestionType = "multiple choice" };
-
-            }
-        }
-        */
-
-        // This button opens the window explorer and allows the user to select a study deck to edit.
+        // This button opens the window explorer and allows the user to select a quiz setting  to edit.
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
             String filePath;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
             if (openFileDialog.ShowDialog() == true)
             {
@@ -144,7 +168,7 @@ namespace QuizApp
                     {
                         // Hide top layer
                         SelectADeckbtn.Visibility = Visibility.Hidden;
-                        TopLayer.Visibility = Visibility.Hidden;                   
+                        TopLayer.Visibility = Visibility.Hidden;
 
                         JSONflashcards = File.ReadAllText(filePath);
                         Deck = ser.Deserialize<QuizSettings>(JSONflashcards);
@@ -155,10 +179,9 @@ namespace QuizApp
                         // Get the quiz name
                         TestName.Text = Deck.QuizName;
 
-                        /* *************************************************************************************************** */
 
-                        // Shuffle the question decks randomly and select the deck at index [0] to pull questions from.
-                        Random rnd = new Random();
+                        // shuffle the decks
+                    
                         for (int i = 1; i < Deck.IncludedDecks.Count; i++)
                         {
                             int pos = rnd.Next(i + 1);
@@ -168,25 +191,7 @@ namespace QuizApp
                         }
 
                         Choosen = Deck.IncludedDecks[0];
-
-                        // Now shuffle questions in that deck 
-                        for (int i = 1; i < Choosen.QuestionList.Count(); i++)
-                        {
-                            int pos = rnd.Next(i + 1);
-                            var x = Choosen.QuestionList[i];
-                            Choosen.QuestionList[i] = Choosen.QuestionList[pos];
-                            Choosen.QuestionList[pos] = x;
-                        }
-
-                        // determine the question type and display the apporiate canvas
-                        for (int i = 0; i < Choosen.QuestionList.Count(); i++)
-                        {
-                           
-                        }
-
-                        
-                       // tBox.Text = Choosen.QuestionList[0].QuestionText;
-                        /* ************************************************************************************************** */
+                        NextBtn_Click(sender, e);
                     }
                     else
                     {
@@ -197,7 +202,165 @@ namespace QuizApp
             }
         }
 
-        
 
+        void DisplayQuestion(Question ques)
+        {
+            QuestionsCanvasTemplate.Children.Clear();
+            double height = QuestionsCanvasTemplate.ActualHeight;
+            double width = QuestionsCanvasTemplate.ActualWidth;
+
+            if (ques.QuestionType == "Fill In Blank")
+            {
+                FibCanvas = new FillInBlankCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
+
+            }
+
+            if (ques.QuestionType == "true false")
+            {
+                tfCanvas = new TrueFalseCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(tfCanvas.BottomCanvas);
+            }
+
+            if (ques.QuestionType == "multiple choice")
+            {
+                McCanvas = new MultipleChoiceCanvas(height, width);
+                QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
+            }
+        }
+
+
+
+
+
+        private void NextBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // MessageBox.Show("This is the question type: " + Choosen.QuestionList[0].QuestionType, "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            // shuffle deck
+            for (int i = 1; i < Deck.IncludedDecks.Count; i++)
+            {
+                int pos = rnd.Next(i + 1);
+                var x = Deck.IncludedDecks[i];
+                Deck.IncludedDecks[i] = Deck.IncludedDecks[pos];
+                Deck.IncludedDecks[pos] = x;
+            }
+
+            // pick deck
+            Choosen = Deck.IncludedDecks[0];
+
+            // shuffle question
+            for (int i = 1; i < Choosen.QuestionList.Count; i++)
+            {
+                int pos = rnd.Next(i + 1);
+                var x = Choosen.QuestionList[i];
+                Choosen.QuestionList[i] = Choosen.QuestionList[pos];
+                Choosen.QuestionList[pos] = x;
+            }
+
+
+            if (CurrPos < Deck.NumberOfQuestions)
+            {
+                CurrPos++;
+                CurrentQuestion.Content = Convert.ToString(CurrPos);
+                DisplayQuestion(Choosen.QuestionList[0]);
+                
+               
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /***********************************************************************/
+        public QuestionsDeck QuestionsDeck
+        {
+            get
+            {
+                return questionsDeck;
+            }
+
+            set
+            {
+                questionsDeck = value;
+            }
+        }
+
+        public Question Question
+        {
+            get
+            {
+                return question;
+            }
+
+            set
+            {
+                question = value;
+            }
+        }
+
+        public FillInBlankCanvas FibCanvas
+        {
+            get
+            {
+                return fibCanvas;
+            }
+
+            set
+            {
+                fibCanvas = value;
+            }
+        }
+
+        public TrueFalseCanvas TfCanvas
+        {
+            get
+            {
+                return tfCanvas;
+            }
+
+            set
+            {
+                tfCanvas = value;
+            }
+        }
+
+        public MultipleChoiceCanvas McCanvas
+        {
+            get
+            {
+                return mcCanvas;
+            }
+
+            set
+            {
+                mcCanvas = value;
+            }
+        }
+        /*************************************************************************/
     }
 }
