@@ -213,6 +213,8 @@ namespace QuizApp
             {
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
+                FibCanvas.Tb1.Text = ques.QuestionText;
+                FibCanvas.Tb1.IsReadOnly = true;
 
             }
 
@@ -220,15 +222,25 @@ namespace QuizApp
             {
                 tfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(tfCanvas.BottomCanvas);
+                TfCanvas.QuestionBox.Text = ques.QuestionText;
+                tfCanvas.QuestionBox.IsReadOnly = true;
+
             }
 
             if (ques.QuestionType == "multiple choice")
             {
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
+                McCanvas.QuestionBox.Text = ques.QuestionText;
+                McCanvas.QuestionBox.IsReadOnly = true;
             }
         }
 
+
+        void DisplayMcQuestions()
+        {
+
+        }
 
 
 
