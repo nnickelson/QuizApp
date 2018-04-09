@@ -9,6 +9,8 @@
       Title="Test">
     <ScrollViewer>
         <Grid Background="#dfe3ee">
+
+            <!-- Navigation menu  -->
             <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
             <Button Click="HomeBtn_Click"  
                 x:Name="HomeBtn_Copy"          
@@ -145,6 +147,29 @@
                 </Button.Template>
             </Button>
             <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
+            <Rectangle x:Name ="rect3" Fill="#F6f6f6" HorizontalAlignment="Center" Height="401" Margin="27,232,24,0" Stroke="Black" VerticalAlignment="Top" Width="732" RadiusY="48.5" RadiusX="48.5"/>
+
+
+            <!--
+            <Grid x:Name="QuestionsCanvasTemplate"  Background="#f6f6f6"  HorizontalAlignment="Center" Height="362" Margin="51,252,41,0" VerticalAlignment="Top" Width="691"/>
+-->
+            <TextBlock x:Name="TestName" Text="Test Name Here" HorizontalAlignment="Center" Margin="171,132,61,0" VerticalAlignment="Top" Width="551" FontSize="24" TextAlignment="Center"/>
+            <Label x:Name="CurrentQuestion" Content="0" HorizontalAlignment="Center" Margin="72,132,687,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="BackSlash" Content="/" HorizontalAlignment="Center" Margin="99,132,661,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="TotalQuestions" Content="0" HorizontalAlignment="Center" Margin="127,132,633,0" VerticalAlignment="Top" FontSize="24"/>
+          
+            <!--
+            <TextBox x:Name="tBox" HorizontalAlignment="Left" Height="255" Margin="188,286,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
+-->
+
+            
+            <Canvas x:Name="TopLayer" Background="#dfe3ee" HorizontalAlignment="Stretch" Height="762" Margin="-20,73,-141,-35" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
+                <Button x:Name="SelectADeckbtn" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="159" Click="SelectADeckbtn_Click" FontSize="16" Content="Select a quiz setting" Canvas.Left="334" Canvas.Top="292" Height="45"/>
+            </Canvas>
+
+
+
+
         </Grid>
     </ScrollViewer>
 </Page>
