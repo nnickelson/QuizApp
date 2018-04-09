@@ -143,7 +143,7 @@ namespace QuizApp
                 return;
             }
 
-            // Checks if Number of Minutes is a valid integer
+            // Checks if Number of Questions is a valid integer
             if (!int.TryParse(NumberOfQuestionsTextBox.Text, out parsedValue))
             {
                 MessageBox.Show("Number of Questions is not an integer.");
@@ -153,6 +153,10 @@ namespace QuizApp
             {
                 MessageBox.Show("You have to have at least 1 question for you quiz.");
                 return;
+            }
+            else
+            {
+                QuizSettings.NumberOfQuestions = Convert.ToInt32(NumberOfQuestionsTextBox.Text);
             }
 
             // Checks if Number of Minutes is a valid integer
