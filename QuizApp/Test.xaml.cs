@@ -247,6 +247,7 @@ namespace QuizApp
                     else
                     {
                         McCanvas.AnswerBoxes[i].Visibility = Visibility.Hidden;
+
                         McCanvas.AnswerButtons[i].Visibility = Visibility.Hidden;
                     }
                 }
@@ -285,7 +286,7 @@ namespace QuizApp
 
             // shuffle deck
             
-            /*
+            
             for (int i = 1; i < Deck.IncludedDecks.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
@@ -293,12 +294,12 @@ namespace QuizApp
                 Deck.IncludedDecks[i] = Deck.IncludedDecks[pos];
                 Deck.IncludedDecks[pos] = x;
             }
-            */
+            
 
             // pick deck
             Choosen = Deck.IncludedDecks[0];
 
-            /*
+            
             // shuffle question
             for (int i = 1; i < Choosen.QuestionList.Count; i++)
             {
@@ -307,7 +308,7 @@ namespace QuizApp
                 Choosen.QuestionList[i] = Choosen.QuestionList[pos];
                 Choosen.QuestionList[pos] = x;
             }
-            */
+            
             
 
             if (CurrPos < Deck.NumberOfQuestions)
