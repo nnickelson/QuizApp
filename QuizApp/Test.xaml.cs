@@ -208,6 +208,8 @@ namespace QuizApp
             QuestionsCanvasTemplate.Children.Clear();
             double height = QuestionsCanvasTemplate.ActualHeight;
             double width = QuestionsCanvasTemplate.ActualWidth;
+            MessageBox.Show("This is the question type: " + (ques).GetType(), "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+
 
             if (ques.QuestionType == "Fill In Blank")
             {
@@ -233,15 +235,47 @@ namespace QuizApp
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
                 McCanvas.QuestionBox.Text = ques.QuestionText;
                 McCanvas.QuestionBox.IsReadOnly = true;
+
+                MultipleChoice temp = (MultipleChoice)ques;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if (i < temp.Choices.Count)
+                    {
+                        McCanvas.AnswerBoxes[i].Text = temp.Choices[i];
+                    }
+                    else
+                    {
+                        McCanvas.AnswerBoxes[i].Visibility = Visibility.Hidden;
+                        McCanvas.AnswerButtons[i].Visibility = Visibility.Hidden;
+                    }
+                }
+
+                // MultipleChoice temp = (MultipleChoice)ques;
+
+
+                // DisplayMcQuestions(temp) ;
             }
         }
 
 
-        void DisplayMcQuestions()
+        /*
+        void DisplayMcQuestions(MultipleChoice ques)
         {
-
+            for (int i = 0; i < 5; i++)
+            {
+                if (i < ques.Choices.Count)
+                {
+                    McCanvas.AnswerBoxes[i].Text = ques.Choices[i];
+                }
+                else
+                {
+                    McCanvas.AnswerBoxes[i].Visibility = Visibility.Hidden;
+                    McCanvas.AnswerButtons[i].Visibility = Visibility.Hidden;
+                }
+            }
         }
-
+        */
 
 
 
@@ -250,6 +284,8 @@ namespace QuizApp
             // MessageBox.Show("This is the question type: " + Choosen.QuestionList[0].QuestionType, "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // shuffle deck
+            
+            /*
             for (int i = 1; i < Deck.IncludedDecks.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
@@ -257,10 +293,12 @@ namespace QuizApp
                 Deck.IncludedDecks[i] = Deck.IncludedDecks[pos];
                 Deck.IncludedDecks[pos] = x;
             }
+            */
 
             // pick deck
             Choosen = Deck.IncludedDecks[0];
 
+            /*
             // shuffle question
             for (int i = 1; i < Choosen.QuestionList.Count; i++)
             {
@@ -269,12 +307,16 @@ namespace QuizApp
                 Choosen.QuestionList[i] = Choosen.QuestionList[pos];
                 Choosen.QuestionList[pos] = x;
             }
-
+            */
+            
 
             if (CurrPos < Deck.NumberOfQuestions)
             {
                 CurrPos++;
                 CurrentQuestion.Content = Convert.ToString(CurrPos);
+                //(Choosen.QuestionList[0]).GetType();
+
+                
                 DisplayQuestion(Choosen.QuestionList[0]);
                 
                
