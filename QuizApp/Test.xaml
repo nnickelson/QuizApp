@@ -147,22 +147,22 @@
                 </Button.Template>
             </Button>
             <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
-            <Rectangle x:Name ="rect3" Fill="#F6f6f6" HorizontalAlignment="Center" Height="401" Margin="27,232,24,0" Stroke="Black" VerticalAlignment="Top" Width="732" RadiusY="48.5" RadiusX="48.5"/>
+            <Rectangle x:Name ="rect3" Fill="#F6f6f6" HorizontalAlignment="Center" Height="401" Margin="27,316,24,0" Stroke="Black" VerticalAlignment="Top" Width="732" RadiusY="48.5" RadiusX="48.5"/>
 
 
-            
-            <Grid x:Name="QuestionsCanvasTemplate"  Background="#f6f6f6"  HorizontalAlignment="Center" Height="362" Margin="51,252,41,0" VerticalAlignment="Top" Width="691"/>
 
-            <TextBlock x:Name="TestName" Text="Test Name Here" HorizontalAlignment="Center" Margin="171,132,61,0" VerticalAlignment="Top" Width="551" FontSize="24" TextAlignment="Center"/>
-            <Label x:Name="CurrentQuestion" Content="0" HorizontalAlignment="Center" Margin="72,132,687,0" VerticalAlignment="Top" FontSize="24"/>
-            <Label x:Name="BackSlash" Content="/" HorizontalAlignment="Center" Margin="99,132,661,0" VerticalAlignment="Top" FontSize="24"/>
-            <Label x:Name="TotalQuestions" Content="0" HorizontalAlignment="Center" Margin="127,132,633,0" VerticalAlignment="Top" FontSize="24"/>
+            <Grid x:Name="QuestionsCanvasTemplate"  Background="#f6f6f6"  HorizontalAlignment="Center" Height="362" Margin="50,336,43,0" VerticalAlignment="Top" Width="690"/>
+
+            <TextBlock x:Name="TestName" Text="Test Name Here" HorizontalAlignment="Center" Margin="114,85,118,0" VerticalAlignment="Top" Width="551" FontSize="36" TextAlignment="Center"/>
+            <Label x:Name="CurrentQuestion" Content="0" HorizontalAlignment="Center" Margin="94,269,665,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="BackSlash" Content="/" HorizontalAlignment="Center" Margin="122,269,641,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="TotalQuestions" Content="0" HorizontalAlignment="Center" Margin="146,269,613,0" VerticalAlignment="Top" FontSize="24"/>
             <Button Click="NextBtn_Click"    
                 x:Name="NextBtn"
                 Visibility="Visible"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="Next flashcard" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="517,638,212,0">
+                ToolTip="Next flashcard" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="547,722,182,0">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -179,17 +179,37 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+            <Button Click="finish_Click"   
+                x:Name="finish" 
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ToolTip="This button will return you to the deck builder page" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="606,722,123,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="PngFiles/Stop.png" Height="35" HorizontalAlignment="Center" Margin="0,-2,0,-7" Width="50"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#f6f6f6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Label x:Name="Incorrect" Content="Incorrect:" HorizontalAlignment="Center" Margin="556,269,118,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="IncorrectNumber" Content="0" HorizontalAlignment="Center" Margin="665,269,95,0" VerticalAlignment="Top" FontSize="24"/>
+            <TextBox x:Name="tb" HorizontalAlignment="Center" Height="36" Margin="298,192,289,0" TextWrapping="Wrap" Text="Time Goes Here" VerticalAlignment="Top" Width="196" FontSize="24"/>
 
-            <!--
-            <TextBox x:Name="tBox" HorizontalAlignment="Left" Height="255" Margin="188,286,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
--->
 
             
-            
-            <Canvas x:Name="TopLayer" Background="#dfe3ee" HorizontalAlignment="Stretch" Height="762" Margin="-20,73,-141,-35" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
+            <Canvas x:Name="TopLayer" Background="#dfe3ee" HorizontalAlignment="Stretch" Height="750" Margin="-20,85,-141,-35" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
                 <Button x:Name="SelectADeckbtn" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="159" Click="SelectADeckbtn_Click" FontSize="16" Content="Select a quiz setting" Canvas.Left="334" Canvas.Top="292" Height="45"/>
             </Canvas>
-
 
 
         </Grid>
