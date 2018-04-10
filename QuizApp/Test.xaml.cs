@@ -239,7 +239,6 @@ namespace QuizApp
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             Question temp = new Question();
-            // MessageBox.Show("This is the question type: " + Choosen.QuestionList[0].QuestionType, "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // shuffle the decks         
             for (int i = 1; i < QuizDecks.IncludedDecks.Count; i++)
@@ -326,8 +325,6 @@ namespace QuizApp
             }
             return randomizedList;
         }
-
-
 
 
 
