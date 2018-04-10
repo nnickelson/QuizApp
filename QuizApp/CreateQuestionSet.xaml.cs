@@ -23,7 +23,7 @@ namespace QuizApp
         /// Private Backing Fields
         /// </summary>
         private QuestionsDeck questionsDeck;
-        private Question question;
+        private Question deckQuestion;
         private FillInBlankCanvas fibCanvas;
         private TrueFalseCanvas tfCanvas;
         private MultipleChoiceCanvas mcCanvas;
@@ -120,7 +120,8 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-                this.question = new FillInBlank { QuestionType = "Fill In Blank"};
+                this.DeckQuestion = new Question("FIB");
+          
             }
         }
 
@@ -144,7 +145,8 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 TfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
-                this.question = new TrueFalse { QuestionType = "true false"};
+                this.DeckQuestion = new Question("TF");
+
             }
         }
 
@@ -162,14 +164,13 @@ namespace QuizApp
                 misClick = false;
             }
             else
-            {
+            {   
                 QuestionsCanvasTemplate.Children.Clear();
                 double height = QuestionsCanvasTemplate.ActualHeight;
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
-                this.question = new MultipleChoice{ QuestionType = "multiple choice" };
-               
+                this.DeckQuestion = new Question("MC");
             }
         }
 
@@ -213,19 +214,20 @@ namespace QuizApp
         /// <param name="e"></param>
         private void addQuestionToDeck_Clicked(object sender, RoutedEventArgs e)
         {
-            if (question is FillInBlank)
+            if (DeckQuestion.typeQuestion == Question.QuestionType.FillInBlank)
             {
-                AddToDeck((FillInBlank)question);
+                FIBAddToDeck(DeckQuestion);
                 fillInTheBlank_Clicked(sender, e);
             }
-            if (question is MultipleChoice)
+            if (DeckQuestion.typeQuestion == Question.QuestionType.MultipleChoice)
             {
-                AddToDeck((MultipleChoice)question);
+                MessageBox.Show("Name = " + Convert.ToString(DeckQuestion.typeQuestion));
+                MCAddToDeck(DeckQuestion);
                 multipleChoice_Clicked(sender, e);
             }
-            if (question is TrueFalse)
+            if (DeckQuestion.typeQuestion == Question.QuestionType.TrueFalse)
             {
-                AddToDeck((TrueFalse)question);
+                TFAddToDeck(DeckQuestion);
                 trueFalse_Clicked(sender, e);
             }
 
@@ -238,7 +240,7 @@ namespace QuizApp
         /// to the questions deck, otherwise the mislcick is set to false and the method is returned
         /// </summary>
         /// <param name="fillinBlankQuestion">type of FillInBlank</param>
-        private void AddToDeck(FillInBlank fillinBlankQuestion)
+        private void FIBAddToDeck(Question fillinBlankQuestion)
         {
             if (fibCanvas.Tb1.Text == "" || FibCanvas.Tb2.Text == "")
             {
@@ -248,7 +250,7 @@ namespace QuizApp
             else
             {
                 fillinBlankQuestion.QuestionText = FibCanvas.Tb1.Text;
-                fillinBlankQuestion.CorrectAnswer = FibCanvas.Tb2.Text;
+                fillinBlankQuestion.FIBAnswers.CorrectAnswer = FibCanvas.Tb2.Text;
                 this.questionsDeck.QuestionList.Add(fillinBlankQuestion);
                 QuestionNumBox.Text = Convert.ToString(questionsDeck.QuestionList.Count + 1);
             }
@@ -263,7 +265,7 @@ namespace QuizApp
         /// the method returns until all the checks pass
         /// </summary>
         /// <param name="multipleChoiceQuestion">type of MultipleChoice</param>
-        private void AddToDeck(MultipleChoice multipleChoiceQuestion)
+        private void MCAddToDeck(Question multipleChoiceQuestion)
         {
             bool answerSet = false;
             foreach (TextBox answer in McCanvas.AnswerBoxes)
@@ -271,18 +273,18 @@ namespace QuizApp
                 int answerNum = McCanvas.AnswerBoxes.IndexOf(answer);
                 if (answer.Text != "")
                 {
-                    multipleChoiceQuestion.Choices.Add(answer.Text);
+                    multipleChoiceQuestion.MCAnswers.Choices.Add(answer.Text);
                     if (McCanvas.AnswerButtons[answerNum].IsChecked == true)
                     {
-                        multipleChoiceQuestion.CorrectAnswer = multipleChoiceQuestion.Choices.Count - 1;
+                        multipleChoiceQuestion.MCAnswers.CorrectAnswer = multipleChoiceQuestion.MCAnswers.Choices.Count - 1;
                         answerSet = true;
                     }
                 }
             }
-            if (McCanvas.QuestionBox.Text == "" || multipleChoiceQuestion.Choices.Count < 2 || answerSet == false)
+            if (McCanvas.QuestionBox.Text == "" || multipleChoiceQuestion.MCAnswers.Choices.Count < 2 || answerSet == false)
             {
                 misClick = true;
-                multipleChoiceQuestion.Choices.Clear();
+                multipleChoiceQuestion.MCAnswers.Choices.Clear();
                 return;
             }
             multipleChoiceQuestion.QuestionText = McCanvas.QuestionBox.Text;
@@ -298,7 +300,7 @@ namespace QuizApp
         /// otherwise misclick is set to false and the method is returned.
         /// </summary>
         /// <param name="trueFalseQuestion">type of TrueFalse</param>
-        private void AddToDeck(TrueFalse trueFalseQuestion)
+        private void TFAddToDeck(Question trueFalseQuestion)
         {
             if (TfCanvas.QuestionBox.Text == "" || (TfCanvas.ButtonTrue.IsChecked == false && TfCanvas.ButtonFalse.IsChecked == false))
             {
@@ -311,12 +313,12 @@ namespace QuizApp
                 if (TfCanvas.ButtonTrue.IsChecked == true)
                 {
                     //MessageBox.Show("true");
-                    trueFalseQuestion.CorrectAnswer = true;
+                    trueFalseQuestion.TFAnswers.CorrectAnswer = true;
                 }
                 if (TfCanvas.ButtonFalse.IsChecked == true)
                 {
                     //MessageBox.Show("false");
-                    trueFalseQuestion.CorrectAnswer = false;
+                    trueFalseQuestion.TFAnswers.CorrectAnswer = false;
                 }
                 this.questionsDeck.QuestionList.Add(trueFalseQuestion);
                 QuestionNumBox.Text = Convert.ToString(questionsDeck.QuestionList.Count + 1);
@@ -398,16 +400,16 @@ namespace QuizApp
             }
         }
 
-        public Question Question
+        public Question DeckQuestion
         {
             get
             {
-                return question;
+                return deckQuestion;
             }
 
             set
             {
-                question = value;
+                deckQuestion = value;
             }
         }
 

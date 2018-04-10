@@ -23,37 +23,27 @@ namespace QuizApp
     /// </summary>
     public partial class Test : Page
     {
-        QuizSettings Deck = new QuizSettings();
-        string JSONflashcards;
+        QuizSettings QuizDecks = new QuizSettings();
+        string JSONquestion;
         JavaScriptSerializer ser = new JavaScriptSerializer();
-        QuestionsDeck Choosen = new QuestionsDeck();
+        QuestionsDeck Chosen = new QuestionsDeck();
 
         private QuestionsDeck questionsDeck;
         private Question question;
         private FillInBlankCanvas fibCanvas;
         private TrueFalseCanvas tfCanvas;
         private MultipleChoiceCanvas mcCanvas;
-        private bool misClick;
         Random rnd = new Random();
 
         int CurrPos = 0;
 
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
         {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
-                QuestionsCanvasTemplate.Children.Clear();
-
-                double height = QuestionsCanvasTemplate.ActualHeight;
-                double width = QuestionsCanvasTemplate.ActualWidth;
-                FibCanvas = new FillInBlankCanvas(height, width);
-                QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-                this.question = new FillInBlank { QuestionType = "Fill In Blank" };
-            }
+            QuestionsCanvasTemplate.Children.Clear();
+            double height = QuestionsCanvasTemplate.ActualHeight;
+            double width = QuestionsCanvasTemplate.ActualWidth;
+            FibCanvas = new FillInBlankCanvas(height, width);
+            QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
         }
 
         /// <summary>
@@ -65,19 +55,12 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void trueFalse_Clicked(object sender, RoutedEventArgs e)
         {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
-                QuestionsCanvasTemplate.Children.Clear();
-                double height = QuestionsCanvasTemplate.ActualHeight;
-                double width = QuestionsCanvasTemplate.ActualWidth;
-                TfCanvas = new TrueFalseCanvas(height, width);
-                QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
-                this.question = new TrueFalse { QuestionType = "true false" };
-            }
+            QuestionsCanvasTemplate.Children.Clear();
+            double height = QuestionsCanvasTemplate.ActualHeight;
+            double width = QuestionsCanvasTemplate.ActualWidth;
+            TfCanvas = new TrueFalseCanvas(height, width);
+            QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
+            //this.question = new TrueFalse { QuestionType = "true false" };
         }
 
         /// <summary>
@@ -88,36 +71,15 @@ namespace QuizApp
         /// <param name="sender">button handler</param>
         /// <param name="e">button handler</param>
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
-        {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
+        {   
                 QuestionsCanvasTemplate.Children.Clear();
                 double height = QuestionsCanvasTemplate.ActualHeight;
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
-                this.question = new MultipleChoice { QuestionType = "multiple choice" };
-
-            }
         }
 
 
-        public static List<T> Randomize<T>(List<T> list)
-        {
-            List<T> randomizedList = new List<T>();
-            Random rnd = new Random();
-            while (list.Count > 0)
-            {
-                int index = rnd.Next(0, list.Count); //pick a random item from the master list
-                randomizedList.Add(list[index]); //place it at the end of the randomized list
-                list.RemoveAt(index);
-            }
-            return randomizedList;
-        }
 
         public Test()
         {
@@ -170,28 +132,20 @@ namespace QuizApp
                         SelectADeckbtn.Visibility = Visibility.Hidden;
                         TopLayer.Visibility = Visibility.Hidden;
 
-                        JSONflashcards = File.ReadAllText(filePath);
-                        Deck = ser.Deserialize<QuizSettings>(JSONflashcards);
+                        JSONquestion = File.ReadAllText(filePath);
+                        QuizDecks = ser.Deserialize<QuizSettings>(JSONquestion);
 
                         // Get total questions
-                        TotalQuestions.Content = Convert.ToInt32(Deck.NumberOfQuestions);
+                        TotalQuestions.Content = QuizDecks.NumberOfQuestions;
 
                         // Get the quiz name
-                        TestName.Text = Deck.QuizName;
+                        TestName.Text = QuizDecks.QuizName;
 
-
-                        // shuffle the decks
-                    
-                        for (int i = 1; i < Deck.IncludedDecks.Count; i++)
+                        for (int i = 0; i < QuizDecks.NumberOfQuestions; i++)
                         {
-                            int pos = rnd.Next(i + 1);
-                            var x = Deck.IncludedDecks[i];
-                            Deck.IncludedDecks[i] = Deck.IncludedDecks[pos];
-                            Deck.IncludedDecks[pos] = x;
+                            Question nextQuestion = RandomQuestion(QuizDecks.IncludedDecks);
+                            DisplayQuestion(nextQuestion);
                         }
-
-                        Choosen = Deck.IncludedDecks[0];
-                        NextBtn_Click(sender, e);
                     }
                     else
                     {
@@ -208,10 +162,8 @@ namespace QuizApp
             QuestionsCanvasTemplate.Children.Clear();
             double height = QuestionsCanvasTemplate.ActualHeight;
             double width = QuestionsCanvasTemplate.ActualWidth;
-            MessageBox.Show("This is the question type: " + (ques).GetType(), "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
-            if (ques.QuestionType == "Fill In Blank")
+            
+            if (ques.typeQuestion == Question.QuestionType.FillInBlank)
             {
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
@@ -220,29 +172,26 @@ namespace QuizApp
 
             }
 
-            if (ques.QuestionType == "true false")
+            if (ques.typeQuestion == Question.QuestionType.TrueFalse)
             {
                 tfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(tfCanvas.BottomCanvas);
                 TfCanvas.QuestionBox.Text = ques.QuestionText;
                 tfCanvas.QuestionBox.IsReadOnly = true;
-
             }
 
-            if (ques.QuestionType == "multiple choice")
+            if (ques.typeQuestion == Question.QuestionType.MultipleChoice)
             {
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
                 McCanvas.QuestionBox.Text = ques.QuestionText;
                 McCanvas.QuestionBox.IsReadOnly = true;
 
-                MultipleChoice temp = (MultipleChoice)ques;
-
                 for (int i = 0; i < 5; i++)
                 {
-                    if (i < temp.Choices.Count)
+                    if (i < ques.MCAnswers.Choices.Count)
                     {
-                        McCanvas.AnswerBoxes[i].Text = temp.Choices[i];
+                        McCanvas.AnswerBoxes[i].Text = ques.MCAnswers.Choices[i];
                     }
                     else
                     {
@@ -251,34 +200,17 @@ namespace QuizApp
                         McCanvas.AnswerButtons[i].Visibility = Visibility.Hidden;
                     }
                 }
-
-                // MultipleChoice temp = (MultipleChoice)ques;
-
-
-                // DisplayMcQuestions(temp) ;
             }
         }
 
-
-        /*
-        void DisplayMcQuestions(MultipleChoice ques)
+        public Question RandomQuestion(List<QuestionsDeck> deckList)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                if (i < ques.Choices.Count)
-                {
-                    McCanvas.AnswerBoxes[i].Text = ques.Choices[i];
-                }
-                else
-                {
-                    McCanvas.AnswerBoxes[i].Visibility = Visibility.Hidden;
-                    McCanvas.AnswerButtons[i].Visibility = Visibility.Hidden;
-                }
-            }
+            int deckNum = rnd.Next(deckList.Count);
+            int questionNum = rnd.Next(deckList[deckNum].QuestionList.Count);
+            return deckList[deckNum].QuestionList[questionNum];
         }
-        */
 
-
+ //*******************************************************HERE****************************************************************************
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -287,67 +219,57 @@ namespace QuizApp
             // shuffle deck
             
             
-            for (int i = 1; i < Deck.IncludedDecks.Count; i++)
+            for (int i = 1; i < QuizDecks.IncludedDecks.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
-                var x = Deck.IncludedDecks[i];
-                Deck.IncludedDecks[i] = Deck.IncludedDecks[pos];
-                Deck.IncludedDecks[pos] = x;
+                var x = QuizDecks.IncludedDecks[i];
+                QuizDecks.IncludedDecks[i] = QuizDecks.IncludedDecks[pos];
+                QuizDecks.IncludedDecks[pos] = x;
             }
             
 
             // pick deck
-            Choosen = Deck.IncludedDecks[0];
+            Chosen = QuizDecks.IncludedDecks[0];
 
             
             // shuffle question
-            for (int i = 1; i < Choosen.QuestionList.Count; i++)
+            for (int i = 1; i < Chosen.QuestionList.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
-                var x = Choosen.QuestionList[i];
-                Choosen.QuestionList[i] = Choosen.QuestionList[pos];
-                Choosen.QuestionList[pos] = x;
+                var x = Chosen.QuestionList[i];
+                Chosen.QuestionList[i] = Chosen.QuestionList[pos];
+                Chosen.QuestionList[pos] = x;
             }
             
             
 
-            if (CurrPos < Deck.NumberOfQuestions)
+            if (CurrPos < QuizDecks.NumberOfQuestions)
             {
                 CurrPos++;
                 CurrentQuestion.Content = Convert.ToString(CurrPos);
                 //(Choosen.QuestionList[0]).GetType();
 
                 
-                DisplayQuestion(Choosen.QuestionList[0]);
+                DisplayQuestion(Chosen.QuestionList[0]);
                 
                
             }
         }
 
+        public static List<T> Randomize<T>(List<T> list)
+        {
+            List<T> randomizedList = new List<T>();
+            Random rnd = new Random();
+            while (list.Count > 0)
+            {
+                int index = rnd.Next(0, list.Count); //pick a random item from the master list
+                randomizedList.Add(list[index]); //place it at the end of the randomized list
+                list.RemoveAt(index);
+            }
+            return randomizedList;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*******************************************************************TO HERE *********************************************/
 
 
 

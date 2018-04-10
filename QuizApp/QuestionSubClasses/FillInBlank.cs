@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    public class FillInBlank : Question
+    public class FillInBlank
     {
         private String correctAnswer;
 
@@ -16,7 +16,7 @@ namespace QuizApp
         }
         public override string ToString()
         {
-            return String.Format("Question: {0}-----Answer {1}", QuestionText, CorrectAnswer);
+            return String.Format("{0}-----Answer", CorrectAnswer);
         }
 
         /// <summary>
