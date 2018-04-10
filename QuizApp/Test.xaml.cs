@@ -15,6 +15,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Microsoft.Win32;
+using System.Windows.Threading;
 
 namespace QuizApp
 {
@@ -34,6 +35,9 @@ namespace QuizApp
         private TrueFalseCanvas tfCanvas;
         private MultipleChoiceCanvas mcCanvas;
         Random rnd = new Random();
+
+        DispatcherTimer _timer;
+        TimeSpan _time;
 
         int CurrPos = 0;
 
@@ -78,8 +82,6 @@ namespace QuizApp
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
         }
-
-
 
         public Test()
         {
@@ -146,6 +148,22 @@ namespace QuizApp
                             Question nextQuestion = RandomQuestion(QuizDecks.IncludedDecks);
                             DisplayQuestion(nextQuestion);
                         }
+
+                        // If the quiz is timed then start the timer
+                        if (QuizDecks.IsTimed)
+                        {
+                            _time = TimeSpan.FromMinutes(QuizDecks.QuizMinutes);
+
+                            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+                            {
+                                tb.Text = _time.ToString("c");
+                                if (_time == TimeSpan.Zero) _timer.Stop();
+                                _time = _time.Add(TimeSpan.FromSeconds(-1));
+                            }, Application.Current.Dispatcher);
+
+                            _timer.Start();
+
+                        }
                     }
                     else
                     {
@@ -169,7 +187,6 @@ namespace QuizApp
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
                 FibCanvas.Tb1.Text = ques.QuestionText;
                 FibCanvas.Tb1.IsReadOnly = true;
-
             }
 
             if (ques.typeQuestion == Question.QuestionType.TrueFalse)
@@ -216,9 +233,7 @@ namespace QuizApp
         {
             // MessageBox.Show("This is the question type: " + Choosen.QuestionList[0].QuestionType, "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            // shuffle deck
-            
-            
+            // shuffle the decks         
             for (int i = 1; i < QuizDecks.IncludedDecks.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
@@ -228,11 +243,11 @@ namespace QuizApp
             }
             
 
-            // pick deck
+            // pick a deck from the collection
             Chosen = QuizDecks.IncludedDecks[0];
 
             
-            // shuffle question
+            // shuffle question in the selected deck
             for (int i = 1; i < Chosen.QuestionList.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
@@ -247,12 +262,10 @@ namespace QuizApp
             {
                 CurrPos++;
                 CurrentQuestion.Content = Convert.ToString(CurrPos);
-                //(Choosen.QuestionList[0]).GetType();
-
+                DisplayQuestion(Chosen.QuestionList[0]);  
                 
-                DisplayQuestion(Chosen.QuestionList[0]);
-                
-               
+                // check if the question is correct or wrong
+                        
             }
         }
 
@@ -337,6 +350,11 @@ namespace QuizApp
             {
                 mcCanvas = value;
             }
+        }
+
+        private void finish_Click(object sender, RoutedEventArgs e)
+        {
+
         }
         /*************************************************************************/
     }
