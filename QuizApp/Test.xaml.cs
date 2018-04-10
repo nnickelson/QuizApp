@@ -15,7 +15,6 @@ using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Microsoft.Win32;
-using System.Windows.Threading;
 
 namespace QuizApp
 {
@@ -37,12 +36,7 @@ namespace QuizApp
         private bool misClick;
         Random rnd = new Random();
 
-        int CurrPos = 0;           // This is used as the index to move through decks
-        int Total_Incorrect = 0;   // This is the number of incorrect questions so far;
-        double Final_Score = 0.0;  // This will hold the final score the user recievse as decimal
-
-        DispatcherTimer _timer;
-        TimeSpan _time;
+        int CurrPos = 0;
 
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
         {
@@ -198,22 +192,6 @@ namespace QuizApp
 
                         Choosen = Deck.IncludedDecks[0];
                         NextBtn_Click(sender, e);
-
-                        // Start Timer
-                        if (Deck.IsTimed)
-                        {
-                     
-                            _time = TimeSpan.FromSeconds(Deck.QuizMinutes/0.01667);
-
-                            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-                            {
-                                tb.Text = _time.ToString("c");
-                                if (_time == TimeSpan.Zero) _timer.Stop();
-                                _time = _time.Add(TimeSpan.FromSeconds(-1));
-                            }, Application.Current.Dispatcher);
-
-                            _timer.Start();
-                        }
                     }
                     else
                     {
@@ -223,9 +201,6 @@ namespace QuizApp
                 }
             }
         }
-
-        // Timer function
-
 
 
         void DisplayQuestion(Question ques)
@@ -309,7 +284,9 @@ namespace QuizApp
         {
             // MessageBox.Show("This is the question type: " + Choosen.QuestionList[0].QuestionType, "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            // Shuffle all decks.    
+            // shuffle deck
+            
+            
             for (int i = 1; i < Deck.IncludedDecks.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
@@ -319,11 +296,11 @@ namespace QuizApp
             }
             
 
-            // This is the deck that was choosen.
+            // pick deck
             Choosen = Deck.IncludedDecks[0];
 
             
-            // Shuffle questions in selected deck.
+            // shuffle question
             for (int i = 1; i < Choosen.QuestionList.Count; i++)
             {
                 int pos = rnd.Next(i + 1);
@@ -333,26 +310,18 @@ namespace QuizApp
             }
             
             
-            // Display the questions and answer choices
+
             if (CurrPos < Deck.NumberOfQuestions)
             {
                 CurrPos++;
                 CurrentQuestion.Content = Convert.ToString(CurrPos);
+                //(Choosen.QuestionList[0]).GetType();
+
+                
                 DisplayQuestion(Choosen.QuestionList[0]);
+                
+               
             }
-
-            // Compare current answer to correct answer 
-            
-               /* if they do not match then increment the number of incorrect answers 
-                * else increment correct answers */
-
-        }
-
-
-        // This button submits the test.
-        private void finish_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
 
@@ -447,8 +416,6 @@ namespace QuizApp
                 mcCanvas = value;
             }
         }
-
-   
         /*************************************************************************/
     }
 }
