@@ -120,8 +120,8 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-                this.DeckQuestion = new Question();
-                DeckQuestion.getQuestionType = Question.QuestionType.FillInBlank;
+                this.DeckQuestion = new Question("FIB");
+          
             }
         }
 
@@ -145,8 +145,7 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 TfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
-                this.DeckQuestion = new Question();
-                DeckQuestion.getQuestionType = Question.QuestionType.TrueFalse;
+                this.DeckQuestion = new Question("TF");
 
             }
         }
@@ -171,8 +170,7 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
-                this.DeckQuestion = new Question();
-                DeckQuestion.getQuestionType = Question.QuestionType.MultipleChoice;
+                this.DeckQuestion = new Question("MC");
             }
         }
 
@@ -216,17 +214,18 @@ namespace QuizApp
         /// <param name="e"></param>
         private void addQuestionToDeck_Clicked(object sender, RoutedEventArgs e)
         {
-            if (DeckQuestion.getQuestionType == Question.QuestionType.FillInBlank)
+            if (DeckQuestion.typeQuestion == Question.QuestionType.FillInBlank)
             {
                 FIBAddToDeck(DeckQuestion);
                 fillInTheBlank_Clicked(sender, e);
             }
-            if (DeckQuestion.getQuestionType == Question.QuestionType.MultipleChoice)
+            if (DeckQuestion.typeQuestion == Question.QuestionType.MultipleChoice)
             {
+                MessageBox.Show("Name = " + Convert.ToString(DeckQuestion.typeQuestion));
                 MCAddToDeck(DeckQuestion);
                 multipleChoice_Clicked(sender, e);
             }
-            if (DeckQuestion.getQuestionType == Question.QuestionType.TrueFalse)
+            if (DeckQuestion.typeQuestion == Question.QuestionType.TrueFalse)
             {
                 TFAddToDeck(DeckQuestion);
                 trueFalse_Clicked(sender, e);

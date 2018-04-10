@@ -40,20 +40,11 @@ namespace QuizApp
 
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
         {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
-                QuestionsCanvasTemplate.Children.Clear();
-
-                double height = QuestionsCanvasTemplate.ActualHeight;
-                double width = QuestionsCanvasTemplate.ActualWidth;
-                FibCanvas = new FillInBlankCanvas(height, width);
-                QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-                this.question = new ;
-            }
+            QuestionsCanvasTemplate.Children.Clear();
+            double height = QuestionsCanvasTemplate.ActualHeight;
+            double width = QuestionsCanvasTemplate.ActualWidth;
+            FibCanvas = new FillInBlankCanvas(height, width);
+            QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
         }
 
         /// <summary>
@@ -65,19 +56,12 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void trueFalse_Clicked(object sender, RoutedEventArgs e)
         {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
-                QuestionsCanvasTemplate.Children.Clear();
-                double height = QuestionsCanvasTemplate.ActualHeight;
-                double width = QuestionsCanvasTemplate.ActualWidth;
-                TfCanvas = new TrueFalseCanvas(height, width);
-                QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
-                this.question = new TrueFalse { QuestionType = "true false" };
-            }
+            QuestionsCanvasTemplate.Children.Clear();
+            double height = QuestionsCanvasTemplate.ActualHeight;
+            double width = QuestionsCanvasTemplate.ActualWidth;
+            TfCanvas = new TrueFalseCanvas(height, width);
+            QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
+            //this.question = new TrueFalse { QuestionType = "true false" };
         }
 
         /// <summary>
@@ -88,16 +72,12 @@ namespace QuizApp
         /// <param name="sender">button handler</param>
         /// <param name="e">button handler</param>
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
-        {
-            
-            
+        {   
                 QuestionsCanvasTemplate.Children.Clear();
                 double height = QuestionsCanvasTemplate.ActualHeight;
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
-                this.question = new ;
-
         }
 
 
@@ -206,7 +186,7 @@ namespace QuizApp
             MessageBox.Show("This is the question type: " + (ques).GetType(), "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
-            if (ques.getQuestionType == Question.QuestionType.FillInBlank)
+            if (ques.typeQuestion == Question.QuestionType.FillInBlank)
             {
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
@@ -215,7 +195,7 @@ namespace QuizApp
 
             }
 
-            if (ques.getQuestionType == Question.QuestionType.TrueFalse)
+            if (ques.typeQuestion == Question.QuestionType.TrueFalse)
             {
                 tfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(tfCanvas.BottomCanvas);
@@ -224,7 +204,7 @@ namespace QuizApp
 
             }
 
-            if (ques.getQuestionType == Question.QuestionType.MultipleChoice)
+            if (ques.typeQuestion == Question.QuestionType.MultipleChoice)
             {
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);

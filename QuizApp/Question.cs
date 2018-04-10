@@ -14,10 +14,31 @@ namespace QuizApp
         private MultipleChoice mCAnswers;
         private TrueFalse tFAnswers;
         private FillInBlank fIBAnswers;
+        public QuestionType typeQuestion { get; set; }
 
-        public QuestionType getQuestionType { get; set; }
 
         public enum QuestionType { MultipleChoice, FillInBlank, TrueFalse }
+
+        public Question() { }
+
+        public Question(string typeQuestion)
+        {
+            if (typeQuestion == "MC")
+            {
+                MCAnswers = new MultipleChoice();
+                this.typeQuestion = QuestionType.MultipleChoice;
+            }
+            else if (typeQuestion == "TF")
+            {
+                TFAnswers = new TrueFalse();
+                this.typeQuestion = QuestionType.TrueFalse;
+            }
+            else if (typeQuestion == "FIB")
+            {
+                FIBAnswers = new FillInBlank();
+                this.typeQuestion = QuestionType.FillInBlank;
+            }
+        }
 
         /// <summary>
         /// totalQuestionsScore Function
