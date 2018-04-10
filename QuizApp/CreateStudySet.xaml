@@ -215,51 +215,6 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-           
-            <Button Click="CreateADeckbtn_Click"   
-                x:Name="CreateADeckbtn"          
-                Visibility="Visible"
-                HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                ToolTip="This will button will take you to the deck builder page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="612,18,121,871">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border x:Name="theBorder"
-                            BorderBrush="Transparent"
-                            BorderThickness="2">
-                            <Image Source="PngFiles\toggle-expand_blue.png" Height="45"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" TargetName="theBorder"
-                                    Value="#3a5998"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button Click="ImportExportbtn_Click"   
-                x:Name ="ImportExportbtn" 
-                Visibility="Visible"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                ToolTip="This button will take you to the import deck page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,174,0">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border x:Name="theBorder"
-                            BorderBrush="Transparent"
-                            BorderThickness="2">
-                            <Image Source="PngFiles\inbox_blue.png" Height="45"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" TargetName="theBorder"
-                                    Value="#3a5998"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
             <Button  
                 Click="CreateQuizbtn_Click"
                 x:Name="CreateAQuizbtn"  
@@ -296,6 +251,50 @@
                             BorderBrush="Transparent"
                             BorderThickness="2">
                             <Image Source="PngFiles\alarm-clock_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="ImportExportbtn_Click"   
+                x:Name ="ImportExportbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the import deck page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,172,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="PngFiles/inbox_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="CreateADeckbtn_Click"   
+                x:Name="CreateADeckbtn"          
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This will button will take you to the deck builder page" Width="50" Height="50" RenderTransformOrigin="0.5,0.5" Margin="0,18,119,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="PngFiles/toggle-expand_blue.png" Height="45"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">

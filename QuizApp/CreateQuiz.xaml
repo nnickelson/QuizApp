@@ -191,6 +191,28 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+            <Button              
+                x:Name="TakeAQuizbtn" 
+                Visibility="Visible"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ToolTip="This button will take you to the test page" Width="50" Height="50"  RenderTransformOrigin="0.5,0.5" Margin="0,18,289,0" Click="TakeAQuizbtn_Click" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="PngFiles/alarm-clock_blue.png" Height="45"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
         </Grid>
     </ScrollViewer>
