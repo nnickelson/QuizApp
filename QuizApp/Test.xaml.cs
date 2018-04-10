@@ -52,7 +52,7 @@ namespace QuizApp
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-                this.question = new FillInBlank { QuestionType = "Fill In Blank" };
+                this.question = new ;
             }
         }
 
@@ -89,20 +89,15 @@ namespace QuizApp
         /// <param name="e">button handler</param>
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
         {
-            if (misClick == true)
-            {
-                misClick = false;
-            }
-            else
-            {
+            
+            
                 QuestionsCanvasTemplate.Children.Clear();
                 double height = QuestionsCanvasTemplate.ActualHeight;
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
-                this.question = new MultipleChoice { QuestionType = "multiple choice" };
+                this.question = new ;
 
-            }
         }
 
 
@@ -211,7 +206,7 @@ namespace QuizApp
             MessageBox.Show("This is the question type: " + (ques).GetType(), "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
-            if (ques.QuestionType == "Fill In Blank")
+            if (ques.getQuestionType == Question.QuestionType.FillInBlank)
             {
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
@@ -220,7 +215,7 @@ namespace QuizApp
 
             }
 
-            if (ques.QuestionType == "true false")
+            if (ques.getQuestionType == Question.QuestionType.TrueFalse)
             {
                 tfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(tfCanvas.BottomCanvas);
@@ -229,20 +224,18 @@ namespace QuizApp
 
             }
 
-            if (ques.QuestionType == "multiple choice")
+            if (ques.getQuestionType == Question.QuestionType.MultipleChoice)
             {
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
                 McCanvas.QuestionBox.Text = ques.QuestionText;
                 McCanvas.QuestionBox.IsReadOnly = true;
 
-                MultipleChoice temp = (MultipleChoice)ques;
-
                 for (int i = 0; i < 5; i++)
                 {
-                    if (i < temp.Choices.Count)
+                    if (i < ques.MCAnswers.Choices.Count)
                     {
-                        McCanvas.AnswerBoxes[i].Text = temp.Choices[i];
+                        McCanvas.AnswerBoxes[i].Text = ques.MCAnswers.Choices[i];
                     }
                     else
                     {

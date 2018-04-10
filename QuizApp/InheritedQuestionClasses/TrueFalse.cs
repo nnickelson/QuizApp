@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    public class TrueFalse : Question
+    public class TrueFalse
     {
         private bool correctAnswer;
 

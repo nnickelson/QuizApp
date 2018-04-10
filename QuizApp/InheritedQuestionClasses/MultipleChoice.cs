@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp
 {
-    public class MultipleChoice : Question
+    public class MultipleChoice
     {
         private List<String> choices;
         private int correctAnswer;

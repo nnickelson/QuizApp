@@ -9,9 +9,15 @@ namespace QuizApp
     public class Question
     {
         private String questionText;
-        private String questionType;
         private int correctlyAnswered;
         private int totalAttempts;
+        private MultipleChoice mCAnswers;
+        private TrueFalse tFAnswers;
+        private FillInBlank fIBAnswers;
+
+        public QuestionType getQuestionType { get; set; }
+
+        public enum QuestionType { MultipleChoice, FillInBlank, TrueFalse }
 
         /// <summary>
         /// totalQuestionsScore Function
@@ -48,23 +54,6 @@ namespace QuizApp
             }
         }
 
-        public string QuestionType
-        {
-            get
-            {
-                return questionType;
-            }
-
-            set
-            {
-                if (value == "")
-                {
-                    throw new ArgumentException("QuestionType cannot be empty");
-                }
-                questionType = value;
-            }
-        }
-
         public int CorrectlyAnswered
         {
             get
@@ -90,5 +79,45 @@ namespace QuizApp
                 totalAttempts = value;
             }
         }
+
+        public MultipleChoice MCAnswers
+        {
+            get
+            {
+                return mCAnswers;
+            }
+
+            set
+            {
+                mCAnswers = value;
+            }
+        }
+
+        public TrueFalse TFAnswers
+        {
+            get
+            {
+                return tFAnswers;
+            }
+
+            set
+            {
+                tFAnswers = value;
+            }
+        }
+
+        public FillInBlank FIBAnswers
+        {
+            get
+            {
+                return fIBAnswers;
+            }
+
+            set
+            {
+                fIBAnswers = value;
+            }
+        }
+
     }
 }
