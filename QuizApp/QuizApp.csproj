@@ -67,12 +67,12 @@
     <Compile Include="EditStudyDeck.xaml.cs">
       <DependentUpon>EditStudyDeck.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InheritedQuestionClasses\FillInBlank.cs" />
+    <Compile Include="QuestionSubClasses\FillInBlank.cs" />
     <Compile Include="CanvasTemplates\FillInBlankCanvas.cs" />
     <Compile Include="Import.xaml.cs">
       <DependentUpon>Import.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InheritedQuestionClasses\MultipleChoice.cs" />
+    <Compile Include="QuestionSubClasses\MultipleChoice.cs" />
     <Compile Include="CanvasTemplates\MultipleChoiceCanvas.cs" />
     <Compile Include="QuestionsDeckJSON_IO.cs" />
     <Compile Include="Question.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="StudyMyDeck.xaml.cs">
       <DependentUpon>StudyMyDeck.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InheritedQuestionClasses\TrueFalse.cs" />
+    <Compile Include="QuestionSubClasses\TrueFalse.cs" />
     <Compile Include="CanvasTemplates\TrueFalseCanvas.cs" />
     <Compile Include="Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
