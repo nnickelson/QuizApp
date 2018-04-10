@@ -40,7 +40,7 @@ namespace QuizApp
         DispatcherTimer _timer;
         TimeSpan _time;
 
-        int CurrPos = 0;
+        int CurrPos = 1;
 
         int Total_Correct = 0;
 
@@ -152,7 +152,7 @@ namespace QuizApp
                             DisplayQuestion(nextQuestion);
                         }
 
-                        CurrPos++;
+                      
                         CurrentQuestion.Content = Convert.ToString(CurrPos);
 
                         // If the quiz is timed then start the timer
@@ -265,7 +265,7 @@ namespace QuizApp
 
 
 
-            if (CurrPos < QuizDecks.NumberOfQuestions)
+            if (CurrPos <= QuizDecks.NumberOfQuestions)
             {
 
                 CurrentQuestion.Content = Convert.ToString(CurrPos);
