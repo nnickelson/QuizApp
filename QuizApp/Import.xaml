@@ -9,15 +9,15 @@
       Title="Import">
     <ScrollViewer>
         <Grid Background="#dfe3ee">
-            <Button x:Name="QuestionDeck" Content="Question Deck" HorizontalAlignment="Center" Margin="138,309,555,0" VerticalAlignment="Top" Width="90" Height="26" Click="QuestionDeck_Click" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="QuestionDeck" Content="Question Deck" HorizontalAlignment="Center" Margin="10,437,683,0" VerticalAlignment="Top" Width="90" Height="26" Click="QuestionDeck_Click" RenderTransformOrigin="0.5,0.5">
 
             </Button>
-            <Button x:Name="StudyDeck" Content="Study Deck" HorizontalAlignment="Center" Margin="253,309,428,0" VerticalAlignment="Top" Width="102" Height="26" Click="StudyDeck_Click"/>
-            <Button x:Name="ImageDeck" Content="Images" HorizontalAlignment="Center" Margin="384,309,309,0" VerticalAlignment="Top" Width="90" Height="26" Click="ImageDeck_Click" IsCancel="True"/>
-            <TextBox IsReadOnly="True" x:Name="InstructionBox" HorizontalAlignment="Center" Height="160" Margin="138,136,180,0" TextWrapping="Wrap" Text="Step 1) Select the button corresponding to the type of deck or image you would like to import.&#xA;&#xA;Step 2) In the windows explorer, choose the folder you would like to import.&#xA;&#xA;Step 3) Select all of the files in the folder that you wish to import and press the open button.&#xA;&#xA;Step 4) Repeat steps 1 - 3 as many times as needed. &#xD;&#xA;&#xD;&#xA;Tip: To import multiple files at once, simply highlight all of the files until they are all checked and then press the open button." VerticalAlignment="Top" Width="465" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Background="#dfe3ee" BorderBrush="#FF040404"/>
+            <Button x:Name="StudyDeck" Content="Study Deck" HorizontalAlignment="Center" Margin="132,437,549,0" VerticalAlignment="Top" Width="102" Height="26" Click="StudyDeck_Click"/>
+            <Button x:Name="ImageDeck" Content="Images" HorizontalAlignment="Center" Margin="270,437,423,0" VerticalAlignment="Top" Width="90" Height="26" Click="ImageDeck_Click" IsCancel="True"/>
+            <TextBox IsReadOnly="True" x:Name="InstructionBox" HorizontalAlignment="Center" Height="202" Margin="10,198,128,0" TextWrapping="Wrap" Text="Step 1) Select the button corresponding to the type of deck or image you would like to import.&#xA;&#xA;Step 2) In the windows explorer, choose the folder you would like to import.&#xA;&#xA;Step 3) Select all of the files in the folder that you wish to import and press the open button.&#xA;&#xA;Step 4) Repeat steps 1 - 3 as many times as needed. &#xD;&#xA;&#xD;&#xA;Tip: To import multiple files at once, simply highlight all of the files until they are all checked and then press the open button." VerticalAlignment="Top" Width="645" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Background="#dfe3ee"  FontSize="14"/>
 
-            <Label x:Name="InstructionLabel" Content="Instructions " HorizontalAlignment="Center" Margin="138,105,561,0" VerticalAlignment="Top" Width="84" FontWeight="SemiBold"/>
-            <Button x:Name="Finish" Content="Finish" HorizontalAlignment="Center" Margin="501,309,180,0" VerticalAlignment="Top" Width="102" Height="26" FontSize="11" Click="Finish_Click"/>
+            <Label x:Name="InstructionLabel" Content="Instructions " HorizontalAlignment="Center" Margin="10,129,641,0" VerticalAlignment="Top" Width="132" FontWeight="SemiBold" FontSize="22"/>
+            <Button x:Name="Finish" Content="Finish" HorizontalAlignment="Center" Margin="400,437,281,0" VerticalAlignment="Top" Width="102" Height="26" FontSize="11" Click="Finish_Click"/>
             <TextBlock TextBlock.Visibility ="hidden" x:Name="textBlock" HorizontalAlignment="Center" Margin="340,498,0,0" TextWrapping="Wrap" Text="Saved Successfully!" VerticalAlignment="Top" FontSize="36" Height="56" Width="356" TextAlignment="Center" FontWeight="Bold"/>
 
 
@@ -89,7 +89,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-           
+
             <Button Click="ImportExportbtn_Click"   
                 x:Name ="ImportExportbtn" 
                 Visibility="Visible"
