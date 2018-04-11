@@ -162,7 +162,6 @@ namespace QuizApp
             }
         }
 
-
         void DisplayQuestion(Question ques)
         {
             QuestionsCanvasTemplate.Children.Clear();
@@ -215,7 +214,6 @@ namespace QuizApp
             int questionNum = rnd.Next(deckList[deckNum].QuestionList.Count);
             return deckList[deckNum].QuestionList[questionNum];
         }
-
 
        public Question Shuffle()
         {
@@ -283,8 +281,6 @@ namespace QuizApp
             }
         }
 
-        Boolean flag = false;
-
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             if (CurrPos == QuizDecks.NumberOfQuestions +1)
@@ -306,10 +302,7 @@ namespace QuizApp
 
                 CurrentQuestion.Content = Convert.ToString(CurrPos);
                 DisplayQuestion(temp); // display canvas
-                CurrPos++;   
-            
-
-      
+                CurrPos++;       
         }
 
         public static List<T> Randomize<T>(List<T> list)
@@ -325,9 +318,6 @@ namespace QuizApp
             return randomizedList;
         }
 
-
-
-        /***********************************************************************/
         public QuestionsDeck QuestionsDeck
         {
             get
@@ -395,15 +385,18 @@ namespace QuizApp
 
         private void finish_Click(object sender, RoutedEventArgs e)
         {
-            // 1) calculate final score
-            
+            ResultLayer.Visibility = Visibility.Visible;
+            Score.Content = finalScore();
         }
 
-        double finalScore(int TotalCorrect)
+        double finalScore()
         {
-            CheckAnswer();
-            return (TotalCorrect / QuizDecks.NumberOfQuestions) * 100;
+            return  Math.Round(( Convert.ToDouble(Total_Correct)/ Convert.ToDouble(QuizDecks.NumberOfQuestions) ) * Convert.ToDouble(100), 1);
         }
-        /*************************************************************************/
+
+        private void ReturnHome_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Home.xaml", UriKind.Relative));
+        }
     }
 }
