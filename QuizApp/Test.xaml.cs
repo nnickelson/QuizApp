@@ -35,13 +35,13 @@ namespace QuizApp
         private TrueFalseCanvas tfCanvas;
         private MultipleChoiceCanvas mcCanvas;
         Random rnd = new Random();
+        Question temp = new Question();
 
 
         DispatcherTimer _timer;
         TimeSpan _time;
 
         int CurrPos = 1;
-
         int Total_Correct = 0;
 
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
@@ -53,13 +53,6 @@ namespace QuizApp
             QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
         }
 
-        /// <summary>
-        /// trueFalse_Clicked Method
-        /// Adds a True False cnavas to the grid
-        /// Initializes a new True False question
-        /// </summary>
-        /// <param name="sender">button handler</param>
-        /// <param name="e">button handler</param>
         private void trueFalse_Clicked(object sender, RoutedEventArgs e)
         {
             QuestionsCanvasTemplate.Children.Clear();
@@ -70,13 +63,6 @@ namespace QuizApp
             //this.question = new TrueFalse { QuestionType = "true false" };
         }
 
-        /// <summary>
-        /// multipleChoice_Clicked Method
-        /// Adds a Multiple Choice Canvas to the grid
-        /// Initializes a new Multiple Choice questions
-        /// </summary>
-        /// <param name="sender">button handler</param>
-        /// <param name="e">button handler</param>
         private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
         {
             QuestionsCanvasTemplate.Children.Clear();
@@ -145,15 +131,10 @@ namespace QuizApp
 
                         // Get the quiz name
                         TestName.Text = QuizDecks.QuizName;
-
-                        for (int i = 0; i < QuizDecks.NumberOfQuestions; i++)
-                        {
-                            Question nextQuestion = RandomQuestion(QuizDecks.IncludedDecks);
-                            DisplayQuestion(nextQuestion);
-                        }
-
-                      
-                        CurrentQuestion.Content = Convert.ToString(CurrPos);
+                                      
+                        //temp = Shuffle();
+                       // CurrentQuestion.Content = Convert.ToString(CurrPos);
+                       // DisplayQuestion(temp); // display canvas
 
                         // If the quiz is timed then start the timer
                         if (QuizDecks.IsTimed)
@@ -170,6 +151,7 @@ namespace QuizApp
                             _timer.Start();
 
                         }
+                        NextBtn_Click(sender, e);
                     }
                     else
                     {
@@ -234,16 +216,14 @@ namespace QuizApp
             return deckList[deckNum].QuestionList[questionNum];
         }
 
-        //*******************************************************HERE****************************************************************************
 
-        private void NextBtn_Click(object sender, RoutedEventArgs e)
+       public Question Shuffle()
         {
-            Question temp = new Question();
-
+            int pos = 0;
             // shuffle the decks         
             for (int i = 1; i < QuizDecks.IncludedDecks.Count; i++)
             {
-                int pos = rnd.Next(i + 1);
+                pos = rnd.Next(i + 1);
                 var x = QuizDecks.IncludedDecks[i];
                 QuizDecks.IncludedDecks[i] = QuizDecks.IncludedDecks[pos];
                 QuizDecks.IncludedDecks[pos] = x;
@@ -257,60 +237,79 @@ namespace QuizApp
             // shuffle question in the selected deck
             for (int i = 1; i < Chosen.QuestionList.Count; i++)
             {
-                int pos = rnd.Next(i + 1);
+                pos = rnd.Next(i + 1);
                 var x = Chosen.QuestionList[i];
                 Chosen.QuestionList[i] = Chosen.QuestionList[pos];
-                temp = Chosen.QuestionList[pos] = x;
+                Chosen.QuestionList[pos] = x;
+            }
+
+            return Chosen.QuestionList[pos];
+        }
+
+        void CheckAnswer ()
+        {
+            // check if the question is correct or wrong
+            /***********************************************************************************************************/
+            if (temp.typeQuestion == Question.QuestionType.TrueFalse) // Check if true & false answer is right
+            {
+                if (tfCanvas.ButtonTrue.IsChecked == true && temp.TFAnswers.CorrectAnswer)
+                    Total_Correct++;
+                else if (tfCanvas.ButtonFalse.IsChecked == true && !temp.TFAnswers.CorrectAnswer)
+                    Total_Correct++;
             }
 
 
-
-            if (CurrPos <= QuizDecks.NumberOfQuestions)
+            else if (temp.typeQuestion == Question.QuestionType.MultipleChoice) // check if MC answer choice is  correct
             {
+                int i = 0;
+                foreach (var Button in McCanvas.AnswerButtons)
+                {
+                    if (Button.IsChecked == true)
+                    {
+                        if (i == temp.MCAnswers.CorrectAnswer)
+                            Total_Correct++;
+                    }
+                    i++;
+                }
+            }
+            else if (temp.typeQuestion == Question.QuestionType.FillInBlank)
+            {
+                if ((FibCanvas.Tb2.Text).Trim().ToLower() == (temp.FIBAnswers.CorrectAnswer).Trim().ToLower())
+                    Total_Correct++;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        Boolean flag = false;
+
+        private void NextBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrPos == QuizDecks.NumberOfQuestions +1)
+            {
+                CheckAnswer();
+                CorrectNumber.Content = Total_Correct; // answer
+                NextBtn.Visibility = Visibility.Hidden;
+                return;
+            }
+
+            if ( CurrPos - 1 != 0 )
+            {
+                
+                CheckAnswer();
+                CorrectNumber.Content = Total_Correct; // answer
+            }
+
+            temp = Shuffle();
 
                 CurrentQuestion.Content = Convert.ToString(CurrPos);
-                DisplayQuestion(Chosen.QuestionList[0]); // display canvas
-
-                // check if the question is correct or wrong
-                /***********************************************************************************************************/
-                if (temp.typeQuestion == Question.QuestionType.TrueFalse) // Check if true & false answer is right
-                {
-                    if (tfCanvas.ButtonTrue.IsChecked == true && temp.TFAnswers.CorrectAnswer)
-                        Total_Correct++;
-                    else if (tfCanvas.ButtonFalse.IsChecked == true && !temp.TFAnswers.CorrectAnswer)
-                        Total_Correct++;
-
-                }
-
-                else if (temp.typeQuestion == Question.QuestionType.MultipleChoice) // check if MC answer choice is  correct
-                {
-                    int i = 0;
-                    foreach (var Button in McCanvas.AnswerButtons)
-                    {
-                        if (Button.IsChecked == true)
-                        {
-                            if (i == temp.MCAnswers.CorrectAnswer)
-                                Total_Correct++;
-                        }
-                        i++;
-                    }
-                }
-                else if (temp.typeQuestion == Question.QuestionType.FillInBlank)
-                {
-                    if ((FibCanvas.Tb2.Text).Trim().ToLower() == (temp.FIBAnswers.CorrectAnswer).Trim().ToLower())
-                        Total_Correct++;
-                }
-                else
-                {
-                    return;
-                }
-
-                /****************************************************************************************************************/
-                CorrectNumber.Content = Total_Correct; // answer
+                DisplayQuestion(temp); // display canvas
                 CurrPos++;   
-            }
+            
 
-           // CorrectNumber.Content = Convert.ToString(CurrPos);
+      
         }
 
         public static List<T> Randomize<T>(List<T> list)
@@ -397,11 +396,12 @@ namespace QuizApp
         private void finish_Click(object sender, RoutedEventArgs e)
         {
             // 1) calculate final score
-
+            
         }
 
         double finalScore(int TotalCorrect)
         {
+            CheckAnswer();
             return (TotalCorrect / QuizDecks.NumberOfQuestions) * 100;
         }
         /*************************************************************************/
