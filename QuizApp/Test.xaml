@@ -212,9 +212,10 @@
             </Canvas>
 
             <Canvas Visibility ="Hidden" x:Name="ResultLayer"  Background="#dfe3ee" HorizontalAlignment="Stretch" Height="750" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536" Canvas.Left="-20" Canvas.Top="85" Margin="-20,98,-141,-48">
-                <Button x:Name="ReturnHome" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="159"  FontSize="16" Content="Return Home" Canvas.Left="251" Canvas.Top="325" Height="45" Click="ReturnHome_Click"/>
+                <Button x:Name="ReturnHome" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="159"  FontSize="16" Content="Return Home" Canvas.Left="181" Canvas.Top="277" Height="45" Click="ReturnHome_Click"/>
                 <Label x:Name="Score" Content="Label" Canvas.Left="327" Canvas.Top="154" FontSize="48" Height="74"/>
                 <Label x:Name="label1" Content="Your Score:" Canvas.Left="62" Canvas.Top="154" FontSize="48" Width="260"/>
+                <Label x:Name="label2" Content="%" Canvas.Left="454" Canvas.Top="154" FontSize="48" Width="54"/>
             </Canvas>
 
 

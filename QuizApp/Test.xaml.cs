@@ -43,6 +43,7 @@ namespace QuizApp
 
         int CurrPos = 1;
         int Total_Correct = 0;
+        double countdown;
 
         private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
         {
@@ -131,10 +132,6 @@ namespace QuizApp
 
                         // Get the quiz name
                         TestName.Text = QuizDecks.QuizName;
-                                      
-                        //temp = Shuffle();
-                       // CurrentQuestion.Content = Convert.ToString(CurrPos);
-                       // DisplayQuestion(temp); // display canvas
 
                         // If the quiz is timed then start the timer
                         if (QuizDecks.IsTimed)
@@ -143,14 +140,23 @@ namespace QuizApp
 
                             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                             {
-                                tb.Text = _time.ToString("c");
-                                if (_time == TimeSpan.Zero) _timer.Stop();
-                                _time = _time.Add(TimeSpan.FromSeconds(-1));
+                                {
+                                    tb.Text = _time.ToString("c");
+                                    if (_time == TimeSpan.Zero)
+                                    {
+                                        _timer.Stop();
+                                        finish_Click(sender, e);
+                                    }
+                                    _time = _time.Add(TimeSpan.FromSeconds(-1));
+                                }
                             }, Application.Current.Dispatcher);
 
+                        
                             _timer.Start();
 
                         }
+
+                       
                         NextBtn_Click(sender, e);
                     }
                     else

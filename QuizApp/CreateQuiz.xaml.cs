@@ -165,12 +165,12 @@ namespace QuizApp
                 
                 if (!int.TryParse(NumberOfMinutesTextBox.Text, out parsedValue))
                 {
-                    MessageBox.Show("Number of Minutes is not an integer.");
+                    MessageBox.Show("Sorry, the number of minutes is must be a natural number (1 or more).");
                     return;
                 }
-                else if (Convert.ToInt32(NumberOfMinutesTextBox.Text) < 5)
+                else if (Convert.ToInt32(NumberOfMinutesTextBox.Text) < 1)
                 {
-                    MessageBox.Show("Number of Minutes needs to be at 5.");
+                    MessageBox.Show("Sorry, The lowest time you can set is 1 minute.");
                     return;
                 }
                 else
@@ -221,7 +221,7 @@ namespace QuizApp
                 AddedToList.Items.Add(QuizDecks.SelectedItem);
                 QuizSettings.IncludedDecks.Add(deckList[index]);
             }
-            MessageBox.Show("Number of Decks = " + Convert.ToString(QuizSettings.IncludedDecks.Count));
+            //MessageBox.Show("Number of Decks = " + Convert.ToString(QuizSettings.IncludedDecks.Count));
         }
 
         /// <summary>
