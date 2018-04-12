@@ -272,9 +272,11 @@ namespace QuizApp
 
             lastQuestion = temp;
             temp = Shuffle();
+            int x = 0;
             while (lastQuestion.QuestionText == temp.QuestionText)
             {
                 temp = Shuffle();
+                x++; if (x > 3) break;
             }
 
             CurrentQuestion.Content = Convert.ToString(CurrPos);
