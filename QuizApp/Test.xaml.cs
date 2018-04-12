@@ -68,6 +68,7 @@ namespace QuizApp
         {
             quizReader = new QuestionsDeckJSON_IO();
             QuizDecks = quizReader.ReadQuizSettings();
+            if (QuizDecks.QuizName == null || QuizDecks.QuizName == "") { return; }
             SelectADeckbtn.Visibility = Visibility.Hidden;
             TopLayer.Visibility = Visibility.Hidden;
             // Get total questions
@@ -264,7 +265,7 @@ namespace QuizApp
                 CorrectNumber.Content = Total_Correct; // answer
             }
 
-            if (CurrPos == QuizDecks.NumberOfQuestions)
+            if (CurrPos-1 == QuizDecks.NumberOfQuestions)
             {
                 QuizFinished();
             }
