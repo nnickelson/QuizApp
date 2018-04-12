@@ -19,15 +19,17 @@ namespace QuizApp
         private String fileName;
         private String JSONquestions;
         private List<QuestionsDeck> deckList;
+        JavaScriptSerializer ser;
         //private String addQuestion;
 
-        
+
 
         public QuestionsDeckJSON_IO()
         {
             Deck = new QuestionsDeck();
             QuizSettings = new QuizSettings();
             DeckList = new List<QuestionsDeck>();
+            ser = new JavaScriptSerializer();
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace QuizApp
             }
 
             Deck = questionsDeck;
-            JavaScriptSerializer ser = new JavaScriptSerializer();
+            //JavaScriptSerializer ser = new JavaScriptSerializer();
             String outputJSON = ser.Serialize(Deck);
 
             // Get the rootpath, locate the quiz directory and then the QuestionsDeck subfolder. 
@@ -100,7 +102,7 @@ namespace QuizApp
                     if (filePath.Contains(".QuestionsDeck"))
                     {
                         //MessageBox.Show("deck beaing read");
-                        JavaScriptSerializer ser = new JavaScriptSerializer();
+                        //JavaScriptSerializer ser = new JavaScriptSerializer();
                         //Deck.DeckName = System.IO.Path.GetFileNameWithoutExtension(filePath);
                         JSONquestions1 = File.ReadAllText(filePath);
                         QuestionsDeck readDeck = ser.Deserialize<QuestionsDeck>(JSONquestions1);
@@ -125,7 +127,7 @@ namespace QuizApp
             String[] allFiles = Directory.GetFiles(RootPath, "*.*", SearchOption.AllDirectories);
             foreach (var file in allFiles)
             {
-                JavaScriptSerializer ser = new JavaScriptSerializer();
+                //JavaScriptSerializer ser = new JavaScriptSerializer();
                 JSONquestions1 = File.ReadAllText(file);
                 QuestionsDeck readDeck = ser.Deserialize<QuestionsDeck>(JSONquestions1);
                 DeckList.Add(readDeck);
@@ -151,8 +153,69 @@ namespace QuizApp
             String QuizSettingsPath = RootPath + @"\QuizSettings\";
             File.WriteAllText(QuizSettingsPath + setQuizSettings.QuizName + ".QuizSettings.json", outputJSON);
             MessageBox.Show("file: " + FileName + " written.");
+        }
+
+        public QuizSettings ReadQuizSettings()
+        {
+            String filePath;
+            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                filePath = openFileDialog.FileName;// Get the files path.
+
+                // If a study deck exist then populate the rest of the form with the appropriate fields.
+                if (File.Exists(filePath))
+                {
+                    // Before the form is populated, make sure it is a Quiz setting
+                    if (filePath.Contains(".QuizSettings"))
+                    {
+                        JSONquestions = File.ReadAllText(filePath);
+                        QuizSettings = ser.Deserialize<QuizSettings>(JSONquestions);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry, You can only select a Quiz Setting on this page. If you need to create a Quiz setting"
+                            + " then go back to the Quiz settings page.", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
+            return QuizSettings;
+        }
+
+        // Get total questions
+        //TotalQuestions.Content = QuizDecks.NumberOfQuestions;
+
+        // Get the quiz name
+        //TestName.Text = QuizDecks.QuizName;
+
+        // If the quiz is timed then start the timer
+        /**********************************************
+        if (QuizDecks.IsTimed)
+        {
+            _time = TimeSpan.FromMinutes(QuizDecks.QuizMinutes);
+
+            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                {
+                    tb.Text = _time.ToString("c");
+                    if (_time == TimeSpan.Zero)
+                    {
+                        _timer.Stop();
+                        finish_Click(sender, e);
+                    }
+                    _time = _time.Add(TimeSpan.FromSeconds(-1));
+                }
+            }, Application.Current.Dispatcher);
+
+
+            _timer.Start();
 
         }
+        ************************************************************/
+
+        //NextBtn_Click(sender, e);
+
 
         /// <summary>
         /// Properties section

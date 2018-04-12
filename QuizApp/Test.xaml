@@ -179,7 +179,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Click="finish_Click"   
+            <Button   
                 x:Name="finish" 
                 Visibility="Visible"
                 HorizontalAlignment="Center"
