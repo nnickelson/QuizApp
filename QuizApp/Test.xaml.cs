@@ -24,24 +24,25 @@ namespace QuizApp
     /// </summary>
     public partial class Test : Page
     {
-        QuizSettings QuizDecks = new QuizSettings();
-        QuestionsDeckJSON_IO quizReader;
-        QuestionsDeck Chosen = new QuestionsDeck();
+        private QuizSettings quizDecks;
+        private QuestionsDeck chosen;
+        private Question temp;
+        private Question lastQuestion;
+        //private QuestionsDeck questionsDeck;
+        //private Question question;
 
-        private QuestionsDeck questionsDeck;
-        private Question question;
+
         private FillInBlankCanvas fibCanvas;
         private TrueFalseCanvas tfCanvas;
         private MultipleChoiceCanvas mcCanvas;
-        Random rnd = new Random();
-        Question temp = new Question();
-        Question lastQuestion = new Question();
+        private Random rnd = new Random();
+        private QuestionsDeckJSON_IO quizReader;
 
         DispatcherTimer _timer;
         TimeSpan _time;
 
-        int CurrPos = 1;
-        int Total_Correct = 0;
+        private int CurrPos;
+        private int Total_Correct;
         //double countdown;
 
         /// <summary>
@@ -50,6 +51,8 @@ namespace QuizApp
         public Test()
         {
             InitializeComponent();
+            CurrPos = 1;
+            Total_Correct = 0;
         }
 
         
@@ -215,23 +218,23 @@ namespace QuizApp
         private void CheckAnswer ()
         {
             //Check True False answer
-            if (temp.typeQuestion == Question.QuestionType.TrueFalse) // Check if true & false answer is right
+            if (Temp.typeQuestion == Question.QuestionType.TrueFalse) // Check if true & false answer is right
             {
-                if (tfCanvas.ButtonTrue.IsChecked == true && temp.TFAnswers.CorrectAnswer)
+                if (tfCanvas.ButtonTrue.IsChecked == true && Temp.TFAnswers.CorrectAnswer)
                     Total_Correct++;
-                else if (tfCanvas.ButtonFalse.IsChecked == true && !temp.TFAnswers.CorrectAnswer)
+                else if (tfCanvas.ButtonFalse.IsChecked == true && !Temp.TFAnswers.CorrectAnswer)
                     Total_Correct++;
             }
 
             //Check Multiple Choice asnwer
-            else if (temp.typeQuestion == Question.QuestionType.MultipleChoice) // check if MC answer choice is  correct
+            else if (Temp.typeQuestion == Question.QuestionType.MultipleChoice) // check if MC answer choice is  correct
             {
                 int i = 0;
                 foreach (var Button in McCanvas.AnswerButtons)
                 {
                     if (Button.IsChecked == true)
                     {
-                        if (i == temp.MCAnswers.CorrectAnswer)
+                        if (i == Temp.MCAnswers.CorrectAnswer)
                             Total_Correct++;
                     }
                     i++;
@@ -239,9 +242,9 @@ namespace QuizApp
             }
 
             // Check Fill In The Blank answer
-            else if (temp.typeQuestion == Question.QuestionType.FillInBlank)
+            else if (Temp.typeQuestion == Question.QuestionType.FillInBlank)
             {
-                if ((FibCanvas.Tb2.Text).Trim().ToLower() == (temp.FIBAnswers.CorrectAnswer).Trim().ToLower())
+                if ((FibCanvas.Tb2.Text).Trim().ToLower() == (Temp.FIBAnswers.CorrectAnswer).Trim().ToLower())
                     Total_Correct++;
             }
         }
@@ -269,18 +272,25 @@ namespace QuizApp
             {
                 QuizFinished();
             }
-
-            lastQuestion = temp;
-            temp = Shuffle();
-            int x = 0;
-            while (lastQuestion.QuestionText == temp.QuestionText)
+            
+            if (CurrPos - 1 > 1)
             {
-                temp = Shuffle();
-                x++; if (x > 3) break;
+                int x = 0;
+                LastQuestion = Temp;
+                Temp = Shuffle();
+                while (LastQuestion.QuestionText == Temp.QuestionText)
+                {
+                    Temp = Shuffle();
+                    x++; if (x > 3) break;
+                }
+            }
+            else
+            {
+                Temp = Shuffle();
             }
 
             CurrentQuestion.Content = Convert.ToString(CurrPos);
-            DisplayQuestion(temp); // display canvas
+            DisplayQuestion(Temp); // display canvas
             CurrPos++;       
         }
 
@@ -336,31 +346,6 @@ namespace QuizApp
 
         //**************************** PUBLIC PROPERTIES SECTION *****************************/
 
-        public QuestionsDeck QuestionsDeck
-        {
-            get
-            {
-                return questionsDeck;
-            }
-
-            set
-            {
-                questionsDeck = value;
-            }
-        }
-
-        public Question Question
-        {
-            get
-            {
-                return question;
-            }
-
-            set
-            {
-                question = value;
-            }
-        }
 
         public FillInBlankCanvas FibCanvas
         {
@@ -399,7 +384,59 @@ namespace QuizApp
             {
                 mcCanvas = value;
             }
-        }       
+        }
+
+        public QuizSettings QuizDecks
+        {
+            get
+            {
+                return quizDecks;
+            }
+
+            set
+            {
+                quizDecks = value;
+            }
+        }
+
+        public QuestionsDeck Chosen
+        {
+            get
+            {
+                return chosen;
+            }
+
+            set
+            {
+                chosen = value;
+            }
+        }
+
+        public Question Temp
+        {
+            get
+            {
+                return temp;
+            }
+
+            set
+            {
+                temp = value;
+            }
+        }
+
+        public Question LastQuestion
+        {
+            get
+            {
+                return lastQuestion;
+            }
+
+            set
+            {
+                lastQuestion = value;
+            }
+        }
     }
 
     /******************************************* NO REFERENCES TO THIS CODE ... POSSIBLE REMOVAL ?

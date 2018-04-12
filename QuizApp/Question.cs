@@ -14,7 +14,7 @@ namespace QuizApp
         private MultipleChoice mCAnswers;
         private TrueFalse tFAnswers;
         private FillInBlank fIBAnswers;
-        public QuestionType typeQuestion { get; set; }
+        public QuestionType typeQuestion;
 
 
         public enum QuestionType { MultipleChoice, FillInBlank, TrueFalse }
@@ -140,5 +140,6 @@ namespace QuizApp
             }
         }
 
+        
     }
 }
