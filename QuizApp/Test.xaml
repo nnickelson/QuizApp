@@ -179,28 +179,6 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button   
-                x:Name="finish" 
-                Visibility="Visible"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                ToolTip="This button will return you to the deck builder page" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="606,722,123,0">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border x:Name="theBorder"
-                            BorderBrush="Transparent"
-                            BorderThickness="2">
-                            <Image Source="PngFiles/Stop.png" Height="35" HorizontalAlignment="Center" Margin="0,-2,0,-7" Width="50"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" TargetName="theBorder"
-                                    Value="#f6f6f6"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
             <Label x:Name="correct" Content="Correct:" HorizontalAlignment="Center" Margin="556,269,118,0" VerticalAlignment="Top" FontSize="24"/>
             <Label x:Name="CorrectNumber" Content="0" HorizontalAlignment="Center" Margin="665,269,95,0" VerticalAlignment="Top" FontSize="24"/>
             <TextBox IsReadOnly="True" x:Name="tb" HorizontalAlignment="Center" Height="36" Margin="298,192,289,0" TextWrapping="Wrap" Text="Time Goes Here" VerticalAlignment="Top" Width="196" FontSize="24"/>

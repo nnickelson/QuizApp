@@ -21,6 +21,8 @@ namespace QuizApp
         private List<QuestionsDeck> deckList;
         JavaScriptSerializer ser;
         //private String addQuestion;
+        //
+       
 
 
 
@@ -42,9 +44,19 @@ namespace QuizApp
         /// Then it takes the questionsDeck object and reads it into a JSON file
         /// </summary>
         /// <param name="questionsDeck">QuestionsDeck object - cannot be null</param>
-        public void WriteQuestionsDeck(QuestionsDeck questionsDeck)
+        /// 
+        public bool IsValidDeck (QuestionsDeck questionsDeck)
         {
             if (questionsDeck == null || questionsDeck.DeckName == "")
+            {              
+                return false;
+            }
+            else
+                return true;
+        }
+        public void WriteQuestionsDeck(QuestionsDeck questionsDeck)
+        {
+            if ( !IsValidDeck(questionsDeck))
             {
                 MessageBox.Show("Deck is not set properly");
                 return;
