@@ -122,30 +122,15 @@ File Formats for Quiz App
    }
    
    
-   Example of directory structure
-   *Note: [ "name" ]  represents a folder,"info.json" represents a file, "pic.jpeg" represents an image.
+   Example of how directory for quiz app is structured
   
-  If someone wants to import a deck, they simply need to import the specified deck folder, "Astronomy"
-  for example,  and then drop it into the "MyDecks" folder. Similarly, if they wanted to export a deck, they need but to simply
-  copy the name of the specified deck to wherever they would like to store it. Both of these explanations makes the assumption
-  that a user may want to do the process manually because maybe to them it is faster and more convienet. There will be buttons
-  in the applicaton that users can use to import and export a deck if they do not want to do it manually.
    
                         
                   [root of quiz directory]
                            |
-                     [ "MyDecks" ]
-               ___________|_______________________          
-               |                                  |
-        [ "Astronomy" ]                        [ "Biology"]
-               |                                    |      
-       _________________                       __________________
-       |                |                      |                 |
-     "info.JSON"    [ "Images" ]              "info.JSON"     [ "Images" ]
-                          |                                       |
-                   _________________________                   __________________
-                   |        |              |                   |                |
-             "Earth.Jpeg"  "Moon.Jpeg"   "Sun.Jpeg"         "Mitosis.Jpeg"   "Meiosis.Jpeg"
-          
-          
+                     [ QuizApp ]
+                            |
+          _____________________________________________________________
+          |                |                       |                  |
+       [ Images ]      [QuestionDecks]          [Quizsettings]    [StudyDecks]
                 
