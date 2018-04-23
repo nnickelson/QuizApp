@@ -153,16 +153,16 @@
 
             <Grid x:Name="QuestionsCanvasTemplate"  Background="#f6f6f6"  HorizontalAlignment="Center" Height="362" Margin="50,336,43,0" VerticalAlignment="Top" Width="690"/>
 
-            <TextBlock x:Name="TestName" Text="Test Name Here" HorizontalAlignment="Center" Margin="114,85,118,0" VerticalAlignment="Top" Width="551" FontSize="36" TextAlignment="Center"/>
-            <Label x:Name="CurrentQuestion" Content="" HorizontalAlignment="Center" Margin="94,269,665,0" VerticalAlignment="Top" FontSize="24"/>
-            <Label x:Name="BackSlash" Content="/" HorizontalAlignment="Center" Margin="122,269,641,0" VerticalAlignment="Top" FontSize="24"/>
-            <Label x:Name="TotalQuestions" Content="" HorizontalAlignment="Center" Margin="146,269,613,0" VerticalAlignment="Top" FontSize="24"/>
+            <TextBlock x:Name="TestName" Text="Test Name Here" HorizontalAlignment="Center" Margin="78,115,77,0" VerticalAlignment="Top" Width="628" FontSize="36" TextAlignment="Center"/>
+            <Label x:Name="CurrentQuestion" Content="" HorizontalAlignment="Center" Margin="77,269,696,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="BackSlash" Content="/" HorizontalAlignment="Center" Margin="94,269,669,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="TotalQuestions" Content="" HorizontalAlignment="Center" Margin="121,269,652,0" VerticalAlignment="Top" FontSize="24"/>
             <Button Click="NextBtn_Click"    
                 x:Name="NextBtn"
                 Visibility="Visible"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="Next flashcard" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="547,722,182,0">
+                ToolTip="Next Question" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="652,717,77,0">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -173,21 +173,23 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="theBorder"
-                                    Value="#f6f6f6"/>
+                                    Value="#dfe3ee"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Label x:Name="correct" Content="Correct:" HorizontalAlignment="Center" Margin="556,269,118,0" VerticalAlignment="Top" FontSize="24"/>
-            <Label x:Name="CorrectNumber" Content="0" HorizontalAlignment="Center" Margin="665,269,95,0" VerticalAlignment="Top" FontSize="24"/>
-            <TextBox IsReadOnly="True" x:Name="tb" HorizontalAlignment="Center" Height="36" Margin="298,192,289,0" TextWrapping="Wrap" Text="Time Goes Here" VerticalAlignment="Top" Width="196" FontSize="24"/>
+            <Label x:Name="correct" Content="Correct:" HorizontalAlignment="Center" Margin="577,269,113,0" VerticalAlignment="Top" FontSize="24"/>
+            <Label x:Name="CorrectNumber" Content="0" HorizontalAlignment="Center" Margin="679,269,81,0" VerticalAlignment="Top" FontSize="24"/>
+            <TextBox Background="{x:Null}" Visibility="Hidden" IsReadOnly="True" x:Name="tb" HorizontalAlignment="Center" Height="30" Margin="332,275,357,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" FontSize="22" BorderBrush="{x:Null}" Text="00:00:00" RenderTransformOrigin="0.765,1.316"/>
 
-
+            
             <Canvas x:Name="TopLayer" Background="#dfe3ee" HorizontalAlignment="Stretch" Height="750" Margin="-20,85,-141,-35" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536">
                 <Button x:Name="SelectADeckbtn" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="159" Click="SelectADeckbtn_Click" FontSize="16" Content="Select a quiz setting" Canvas.Left="334" Canvas.Top="292" Height="45"/>
-
             </Canvas>
+
+           
+
 
             <Canvas Visibility ="Hidden" x:Name="ResultLayer"  Background="#dfe3ee" HorizontalAlignment="Stretch" Height="750" VerticalAlignment="Top" Width="944" RenderTransformOrigin="-0.768,-0.536" Canvas.Left="-20" Canvas.Top="85" Margin="-20,98,-141,-48">
                 <Button x:Name="ReturnHome" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="159"  FontSize="16" Content="Return Home" Canvas.Left="181" Canvas.Top="277" Height="45" Click="ReturnHome_Click"/>

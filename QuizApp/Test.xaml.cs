@@ -97,6 +97,7 @@ namespace QuizApp
             // If the quiz is timed then start the timer
             if (QuizDecks.IsTimed)
             {
+                tb.Visibility = Visibility.Visible;
                 _time = TimeSpan.FromMinutes(QuizDecks.QuizMinutes);
 
                 _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
@@ -138,6 +139,7 @@ namespace QuizApp
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
                 FibCanvas.Tb1.Text = ques.QuestionText;
                 FibCanvas.Tb1.IsReadOnly = true;
+                
             }
 
             // Sets the QuestionsCanvasTemplate to True False Template Canvas
