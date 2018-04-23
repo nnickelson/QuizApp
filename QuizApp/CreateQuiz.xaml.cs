@@ -190,7 +190,7 @@ namespace QuizApp
                 return;
             }
             fileOperator.WriteQuizSettings(QuizSettings);
-            NavigationService.Navigate(new Uri("/DeckBuilder.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Home.xaml", UriKind.Relative));
         }
 
         /// <summary>
