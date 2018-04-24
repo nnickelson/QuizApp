@@ -246,14 +246,14 @@ namespace QuizApp
                     if(deck.DeckName == Convert.ToString(AddedToList.SelectedItem))
                     {
                         QuizSettings.IncludedDecks.Remove(deck);
-                        MessageBox.Show("Deck Removed");
+                       // MessageBox.Show("Deck Removed");
                         break;
                     }
                     if (QuizSettings.IncludedDecks.Count == 0)
                         break;
                 }
                 AddedToList.Items.Remove(AddedToList.SelectedItem);
-                MessageBox.Show("Number of Decks = " + Convert.ToString(QuizSettings.IncludedDecks.Count));
+                //MessageBox.Show("Number of Decks = " + Convert.ToString(QuizSettings.IncludedDecks.Count));
             }
             
         }

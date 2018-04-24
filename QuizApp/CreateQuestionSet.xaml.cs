@@ -221,7 +221,7 @@ namespace QuizApp
             }
             if (DeckQuestion.typeQuestion == Question.QuestionType.MultipleChoice)
             {
-                MessageBox.Show("Name = " + Convert.ToString(DeckQuestion.typeQuestion));
+                //MessageBox.Show("Name = " + Convert.ToString(DeckQuestion.typeQuestion));
                 MCAddToDeck(DeckQuestion);
                 multipleChoice_Clicked(sender, e);
             }

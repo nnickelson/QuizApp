@@ -10,6 +10,7 @@ namespace QuizApp
 {
     public class MultipleChoiceCanvas
     {
+        int fontsize = 16;
         private Canvas bottomCanvas;
         private TextBox questionBox;
         private List<TextBox> answerBoxes;
@@ -24,16 +25,21 @@ namespace QuizApp
             SolidColorBrush mySolidColorBrush = new SolidColorBrush();
             mySolidColorBrush.Color = Color.FromRgb(246, 246, 246);
             BottomCanvas.Background = mySolidColorBrush;
+            
 
             //*****************************************************************
             QuestionBox = new TextBox();
 
-            QuestionBox.Width = BottomCanvas.Width * (0.7);
-            QuestionBox.Height = BottomCanvas.Height * (0.15);
-            QuestionBox.FontSize = Convert.ToInt32(QuestionBox.Height * (0.30));
+            QuestionBox.BorderBrush = mySolidColorBrush;
+            QuestionBox.Background = mySolidColorBrush; 
 
-            Canvas.SetTop(QuestionBox, BottomCanvas.Height * (0.10));
-            Canvas.SetLeft(QuestionBox, BottomCanvas.Width * (0.15));
+            QuestionBox.Width = BottomCanvas.Width * (0.9);
+            QuestionBox.Height = BottomCanvas.Height * (0.30);
+            QuestionBox.FontSize = fontsize;
+            QuestionBox.BorderThickness = new System.Windows.Thickness(0);
+
+            Canvas.SetTop(QuestionBox, BottomCanvas.Height * (0.05));
+            Canvas.SetLeft(QuestionBox, BottomCanvas.Width * (0.05));
 
             QuestionBox.TextWrapping = System.Windows.TextWrapping.Wrap;
             BottomCanvas.Children.Add(QuestionBox);
@@ -41,26 +47,35 @@ namespace QuizApp
             //****************************************************************
             answerBoxes = new List<TextBox>();
             answerButtons = new List<RadioButton>();
+            
             for (int i = 0; i < 5; i++)
             {
                 TextBox tb = new TextBox();
-                tb.Width = BottomCanvas.Width * (0.7);
-                tb.Height = BottomCanvas.Height * (0.10);
-                tb.FontSize = Convert.ToInt32(tb.Height * (0.30));
 
-                Canvas.SetTop(tb, BottomCanvas.Height * (0.35 + 0.13*i));
-                Canvas.SetLeft(tb, BottomCanvas.Width * (0.15));
+                tb.Background = mySolidColorBrush;
+                tb.BorderBrush = mySolidColorBrush;
+                tb.BorderThickness = new System.Windows.Thickness (0);
+                tb.IsReadOnly = true;
+               
+
+                tb.Width = BottomCanvas.Width * (0.9);
+                tb.Height = BottomCanvas.Height * (0.10);
+                tb.FontSize = fontsize;//Convert.ToInt32(tb.Height * (0.30));
+
+                Canvas.SetTop(tb, BottomCanvas.Height * (0.47 + 0.13*i));
+                Canvas.SetLeft(tb, BottomCanvas.Width * (0.10));
                 tb.TextWrapping = System.Windows.TextWrapping.Wrap;
                 answerBoxes.Add(tb);
                 BottomCanvas.Children.Add(answerBoxes[i]);
 
                 RadioButton rb = new RadioButton();
-                Canvas.SetTop(rb, BottomCanvas.Height * (0.38 + 0.13 * i));
-                Canvas.SetLeft(rb, BottomCanvas.Width * (0.10));
+                Canvas.SetTop(rb, BottomCanvas.Height * (0.48 + 0.13 * i));
+                Canvas.SetLeft(rb, BottomCanvas.Width * (0.05));
                 AnswerButtons.Add(rb);
                 BottomCanvas.Children.Add(AnswerButtons[i]);
             }
 
+            /*
             TextBlock qblock = new TextBlock { Text = "Question: "};
             qblock.FontSize = Convert.ToInt32(BottomCanvas.Height * (0.05));
             Canvas.SetTop(qblock, BottomCanvas.Height * (0.02));
@@ -77,6 +92,7 @@ namespace QuizApp
 
             BottomCanvas.Children.Add(qblock);
             BottomCanvas.Children.Add(ablock);
+            */
         }
 
         public Canvas BottomCanvas

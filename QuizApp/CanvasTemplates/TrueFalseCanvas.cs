@@ -10,6 +10,7 @@ namespace QuizApp
 {
     public class TrueFalseCanvas
     {
+        int fontSize = 16;
         private Canvas bottomCanvas;
         private TextBox questionBox;
         private RadioButton buttonTrue, buttonFalse; 
@@ -29,37 +30,44 @@ namespace QuizApp
             //************************************************************
             QuestionBox = new TextBox();
 
-            QuestionBox.Width = BottomCanvas.Width * (0.7);
-            QuestionBox.Height = BottomCanvas.Height * (0.25);
-            QuestionBox.FontSize = Convert.ToInt32(QuestionBox.Height * (0.2));
+            QuestionBox.Width = BottomCanvas.Width * (0.9);
+            QuestionBox.Height = BottomCanvas.Height * (0.30);
+            QuestionBox.FontSize = fontSize;        // Convert.ToInt32(QuestionBox.Height * (0.2));
 
-            Canvas.SetTop(QuestionBox, BottomCanvas.Height * (0.20));
-            Canvas.SetLeft(QuestionBox, BottomCanvas.Width * (0.15));
+            QuestionBox.BorderThickness = new System.Windows.Thickness(0);
+
+            QuestionBox.BorderBrush = null;
+            QuestionBox.Background = mySolidColorBrush;
+
+            Canvas.SetTop(QuestionBox, BottomCanvas.Height * (0.05));
+            Canvas.SetLeft(QuestionBox, BottomCanvas.Width * (0.05));
 
             QuestionBox.TextWrapping = System.Windows.TextWrapping.Wrap;
             BottomCanvas.Children.Add(QuestionBox);
 
             
             //**************************************************************
+            /*
             TextBlock block1 = new TextBlock();
             block1.FontSize = Convert.ToInt32(BottomCanvas.Height * (0.10));
             Canvas.SetTop(block1, BottomCanvas.Height * (0.05));
             Canvas.SetLeft(block1, BottomCanvas.Width * (0.15));
             block1.Text = "Question: ";
             BottomCanvas.Children.Add(block1);
+            */
 
             //**************************************************************
 
             ButtonTrue = new RadioButton { Content = "True" };
-            ButtonTrue.FontSize = Convert.ToInt32(BottomCanvas.Height * (0.10));
+            ButtonTrue.FontSize = fontSize;
             Canvas.SetTop(ButtonTrue, BottomCanvas.Height * (0.55));
-            Canvas.SetLeft(ButtonTrue, BottomCanvas.Width * (0.15));
+            Canvas.SetLeft(ButtonTrue, BottomCanvas.Width * (0.05));
 
             //*************************************************************
             ButtonFalse = new RadioButton { Content = "False" };
-            ButtonFalse.FontSize = Convert.ToInt32(BottomCanvas.Height * (0.10));
+            ButtonFalse.FontSize = fontSize;
             Canvas.SetTop(ButtonFalse, BottomCanvas.Height * (0.75));
-            Canvas.SetLeft(ButtonFalse, BottomCanvas.Width * (0.15));
+            Canvas.SetLeft(ButtonFalse, BottomCanvas.Width * (0.05));
 
             BottomCanvas.Children.Add(ButtonTrue);
             BottomCanvas.Children.Add(ButtonFalse);
