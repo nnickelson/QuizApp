@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Microsoft.Win32;
 using System.Windows.Threading;
+using System.Windows.Media;
 
 namespace QuizApp
 {
@@ -24,6 +25,9 @@ namespace QuizApp
     /// </summary>
     public partial class Test : Page
     {
+
+  
+
         private QuizSettings quizDecks;
         private QuestionsDeck chosen;
         private Question temp;
@@ -138,6 +142,9 @@ namespace QuizApp
                 FibCanvas = new FillInBlankCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
                 FibCanvas.Tb1.Text = ques.QuestionText;
+
+                FibCanvas.Tb1.Background = new SolidColorBrush(Color.FromRgb(246, 246, 246));
+                FibCanvas.Tb1.BorderThickness = new System.Windows.Thickness(0);
                 FibCanvas.Tb1.IsReadOnly = true;
                 
             }
@@ -149,6 +156,10 @@ namespace QuizApp
                 tfCanvas = new TrueFalseCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(tfCanvas.BottomCanvas);
                 TfCanvas.QuestionBox.Text = ques.QuestionText;
+
+                TfCanvas.QuestionBox.Background = new SolidColorBrush(Color.FromRgb(246, 246, 246));
+
+                TfCanvas.QuestionBox.BorderThickness = new System.Windows.Thickness(0);
                 tfCanvas.QuestionBox.IsReadOnly = true;
             }
 
@@ -159,18 +170,27 @@ namespace QuizApp
                 McCanvas = new MultipleChoiceCanvas(height, width);
                 QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
                 McCanvas.QuestionBox.Text = ques.QuestionText;
+                McCanvas.QuestionBox.BorderThickness = new System.Windows.Thickness(0);
                 McCanvas.QuestionBox.IsReadOnly = true;
+
+                McCanvas.QuestionBox.Background = new SolidColorBrush(Color.FromRgb(246, 246, 246));
 
                 for (int i = 0; i < 5; i++)
                 {
                     if (i < ques.MCAnswers.Choices.Count)
                     {
                         McCanvas.AnswerBoxes[i].Text = ques.MCAnswers.Choices[i];
+                        McCanvas.AnswerBoxes[i].BorderThickness = new System.Windows.Thickness(0);
+                        McCanvas.AnswerBoxes[i].IsReadOnly = true;
+                        McCanvas.AnswerBoxes[i].Background = new SolidColorBrush(Color.FromRgb(246, 246, 246));
                     }
                     else
                     {
                         McCanvas.AnswerBoxes[i].Visibility = Visibility.Hidden;
                         McCanvas.AnswerButtons[i].Visibility = Visibility.Hidden;
+                        McCanvas.AnswerBoxes[i].BorderThickness = new System.Windows.Thickness(0);
+                        McCanvas.AnswerBoxes[i].IsReadOnly = true;
+                        McCanvas.AnswerBoxes[i].Background = new SolidColorBrush(Color.FromRgb(246, 246, 246));
                     }
                 }
             }
@@ -463,61 +483,5 @@ namespace QuizApp
        }
        *****************************************************************************************/
 
-    /****************************************************************
-            String filePath;
-            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                filePath = openFileDialog.FileName;// Get the files path.
-
-                // If a study deck exist then populate the rest of the form with the appropriate fields.
-                if (File.Exists(filePath))
-                {
-                    // Before the form is populated, make sure it is a Quiz setting
-                    if (filePath.Contains(".QuizSettings"))
-                    {
-                        // Hide top layer
-                        
-
-                        JSONquestion = File.ReadAllText(filePath);
-                        //QuizDecks = ser.Deserialize<QuizSettings>(JSONquestion);                       
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sorry, You can only select a Quiz Setting on this page. If you need to create a Quiz setting"
-                            + " then go back to the Quiz settings page.", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                }
-            }
-            *****************************************************************************************/
-
-    /***********************************************************************************************************
-        private void fillInTheBlank_Clicked(object sender, RoutedEventArgs e)
-        {
-            QuestionsCanvasTemplate.Children.Clear();
-            double height = QuestionsCanvasTemplate.ActualHeight;
-            double width = QuestionsCanvasTemplate.ActualWidth;
-            FibCanvas = new FillInBlankCanvas(height, width);
-            QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
-        }
-
-        private void trueFalse_Clicked(object sender, RoutedEventArgs e)
-        {
-            QuestionsCanvasTemplate.Children.Clear();
-            double height = QuestionsCanvasTemplate.ActualHeight;
-            double width = QuestionsCanvasTemplate.ActualWidth;
-            TfCanvas = new TrueFalseCanvas(height, width);
-            QuestionsCanvasTemplate.Children.Add(TfCanvas.BottomCanvas);
-        }
-
-        private void multipleChoice_Clicked(object sender, RoutedEventArgs e)
-        {
-            QuestionsCanvasTemplate.Children.Clear();
-            double height = QuestionsCanvasTemplate.ActualHeight;
-            double width = QuestionsCanvasTemplate.ActualWidth;
-            McCanvas = new MultipleChoiceCanvas(height, width);
-            QuestionsCanvasTemplate.Children.Add(McCanvas.BottomCanvas);
-        }
-        *****************************************************************************/
+  
 }

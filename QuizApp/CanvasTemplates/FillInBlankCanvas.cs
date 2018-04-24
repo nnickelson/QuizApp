@@ -31,10 +31,10 @@ namespace QuizApp
             Tb1.Height = BottomCanvas.Height * (0.30);
             Tb1.FontSize = fontsize;
 
-            Tb1.BorderThickness = new System.Windows.Thickness(0);
+            //Tb1.BorderThickness = new System.Windows.Thickness(0);
 
-            Tb1.Background = mySolidColorBrush;
-            Tb1.BorderBrush = null;
+            //Tb1.Background = mySolidColorBrush;
+           // Tb1.BorderBrush = null;
 
             Canvas.SetTop(Tb1, BottomCanvas.Height * (0.05));
             Canvas.SetLeft(Tb1, BottomCanvas.Width * (0.05));

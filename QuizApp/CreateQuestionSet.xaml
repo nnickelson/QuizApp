@@ -11,9 +11,10 @@
     <ScrollViewer>
         <Grid x:Name="BottomGrid" Background="#dfe3ee" >
 
-            <Rectangle x:Name ="rect2" Rectangle.Visibility ="Hidden"  Fill="#3a5998" HorizontalAlignment="Left" Height="363" Stroke="Black" VerticalAlignment="Top" Width="691" RadiusY="37" RadiusX="37" Margin="51,232,0,0"/>
+            <Rectangle x:Name ="rect2" Rectangle.Visibility ="Hidden"
+                       Fill="#3a5998" HorizontalAlignment="Left" Height="382" Stroke="Black" VerticalAlignment="Top" Width="691" RadiusY="37" RadiusX="37" Margin="51,232,0,0"/>
 
-            <Rectangle x:Name ="rect3" Fill="#F6f6f6" HorizontalAlignment="Center" Height="401" Margin="27,232,24,0" Stroke="Black" VerticalAlignment="Top" Width="732" RadiusY="48.5" RadiusX="48.5"/>
+            <Rectangle x:Name ="rect3" Fill="#F6f6f6" HorizontalAlignment="Center" Height="420" Margin="27,232,24,0" Stroke="Black" VerticalAlignment="Top" Width="732" RadiusY="48.5" RadiusX="48.5"/>
 
             <TextBox x:Name="DeckTitletextBox" HorizontalAlignment="Center" Height="24" Margin="102,104,483,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" AutomationProperties.IsRequiredForForm="True" BorderThickness="0,0,0,1"/>
             <TextBox x:Name="QuestionNumBox"  IsReadOnly ="True" HorizontalAlignment="Center" Height="23" Margin="102,136,619,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" BorderThickness="0,0,0,1" Visibility="Visible"/>
@@ -182,7 +183,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will add a question to your deck" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="579,652,148,0" >
+                ToolTip="This button will add a question to your deck" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="579,657,148,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -206,7 +207,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will take you back to the deck builder page" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="635,652,92,0" >
+                ToolTip="This button will take you back to the deck builder page" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="656,657,71,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -230,7 +231,7 @@
                 Visibility="Hidden"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="This button will display the next question in the deck" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="418,652,309,0" >
+                ToolTip="This button will display the next question in the deck" Width="56" Height="44" RenderTransformOrigin="0.5,0.5" Margin="456,661,271,0" >
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"

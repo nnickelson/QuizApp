@@ -34,10 +34,10 @@ namespace QuizApp
             QuestionBox.Height = BottomCanvas.Height * (0.30);
             QuestionBox.FontSize = fontSize;        // Convert.ToInt32(QuestionBox.Height * (0.2));
 
-            QuestionBox.BorderThickness = new System.Windows.Thickness(0);
+            //QuestionBox.BorderThickness = new System.Windows.Thickness(0);
 
-            QuestionBox.BorderBrush = null;
-            QuestionBox.Background = mySolidColorBrush;
+            //QuestionBox.BorderBrush = null;
+            //QuestionBox.Background = mySolidColorBrush;
 
             Canvas.SetTop(QuestionBox, BottomCanvas.Height * (0.05));
             Canvas.SetLeft(QuestionBox, BottomCanvas.Width * (0.05));

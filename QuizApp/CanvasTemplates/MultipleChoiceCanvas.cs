@@ -30,13 +30,13 @@ namespace QuizApp
             //*****************************************************************
             QuestionBox = new TextBox();
 
-            QuestionBox.BorderBrush = mySolidColorBrush;
-            QuestionBox.Background = mySolidColorBrush; 
+            //QuestionBox.BorderBrush = mySolidColorBrush;
+            //QuestionBox.Background = mySolidColorBrush; 
 
-            QuestionBox.Width = BottomCanvas.Width * (0.9);
+            QuestionBox.Width = BottomCanvas.Width * (0.92);
             QuestionBox.Height = BottomCanvas.Height * (0.30);
             QuestionBox.FontSize = fontsize;
-            QuestionBox.BorderThickness = new System.Windows.Thickness(0);
+           // QuestionBox.BorderThickness = new System.Windows.Thickness(0);
 
             Canvas.SetTop(QuestionBox, BottomCanvas.Height * (0.05));
             Canvas.SetLeft(QuestionBox, BottomCanvas.Width * (0.05));
@@ -52,18 +52,18 @@ namespace QuizApp
             {
                 TextBox tb = new TextBox();
 
-                tb.Background = mySolidColorBrush;
-                tb.BorderBrush = mySolidColorBrush;
-                tb.BorderThickness = new System.Windows.Thickness (0);
-                tb.IsReadOnly = true;
+                //tb.Background = mySolidColorBrush;
+               // tb.BorderBrush = mySolidColorBrush;
+               // tb.BorderThickness = new System.Windows.Thickness (0);
+               // tb.IsReadOnly = true;
                
 
                 tb.Width = BottomCanvas.Width * (0.9);
-                tb.Height = BottomCanvas.Height * (0.10);
+                tb.Height = BottomCanvas.Height * (0.09);
                 tb.FontSize = fontsize;//Convert.ToInt32(tb.Height * (0.30));
 
                 Canvas.SetTop(tb, BottomCanvas.Height * (0.47 + 0.13*i));
-                Canvas.SetLeft(tb, BottomCanvas.Width * (0.10));
+                Canvas.SetLeft(tb, BottomCanvas.Width * (0.08));
                 tb.TextWrapping = System.Windows.TextWrapping.Wrap;
                 answerBoxes.Add(tb);
                 BottomCanvas.Children.Add(answerBoxes[i]);

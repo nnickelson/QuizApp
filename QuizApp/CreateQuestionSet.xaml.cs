@@ -119,6 +119,7 @@ namespace QuizApp
                 double height = QuestionsCanvasTemplate.ActualHeight;
                 double width = QuestionsCanvasTemplate.ActualWidth;
                 FibCanvas = new FillInBlankCanvas(height, width);
+             
                 QuestionsCanvasTemplate.Children.Add(FibCanvas.BottomCanvas);
                 this.DeckQuestion = new Question("FIB");
           
@@ -302,6 +303,7 @@ namespace QuizApp
         /// <param name="trueFalseQuestion">type of TrueFalse</param>
         private void TFAddToDeck(Question trueFalseQuestion)
         {
+          //  TfCanvas.QuestionBox.BorderThickness = new System.Windows.Thickness(2);
             if (TfCanvas.QuestionBox.Text == "" || (TfCanvas.ButtonTrue.IsChecked == false && TfCanvas.ButtonFalse.IsChecked == false))
             {
                 misClick = true;
