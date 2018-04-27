@@ -18,7 +18,7 @@
 
             <!-- Textboxes-->
             <TextBox x:Name="TermtextBox"  TextBox.Visibility ="Hidden"   HorizontalAlignment="Center" Margin="216,466,195,0"   VerticalAlignment="Top"  Height="23"  Width="372"  BorderThickness="0,0,0,2" Opacity="0.8"/>
-            <TextBox x:Name="DefinitiontextBox"                    HorizontalAlignment="Center" Margin="216,530,195,0"   VerticalAlignment="Top"  Height="122"  Width="372" Opacity="0.8" BorderThickness="0,0,0,2" VerticalScrollBarVisibility="Auto" TextBox.Visibility ="Hidden" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True"/>
+            <TextBox x:Name="DefinitiontextBox"                    HorizontalAlignment="Center" Margin="216,530,195,0"   VerticalAlignment="Top"  Height="122"  Width="372" Opacity="0.8" BorderThickness="0,0,0,2" VerticalScrollBarVisibility="Auto" TextBox.Visibility ="Hidden" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" TextWrapping="Wrap"/>
             <TextBox x:Name="currentlyEditing"                     HorizontalAlignment="Center" Margin="365,193,197,0"   VerticalAlignment="Top"  Height="26"   Width="221" BorderThickness="0,0,0,1" IsReadOnly ="True" />
             <TextBox x:Name="TotalCardstextBox"                    HorizontalAlignment="Center" Margin="364,230,366,0"  VerticalAlignment="Top"  Height="22"  Width="53" BorderThickness="0,0,0,1" IsReadOnly ="True" />
             <TextBox x:Name="CurrentCardTextbox"                   HorizontalAlignment="Center" Margin="364,261,366,0"  VerticalAlignment="Top"  Height="22"  Width="53" BorderThickness="0,0,0,1" IsReadOnly ="True" />
@@ -293,16 +293,6 @@
                 </Button.Template>
             </Button>
 
-
-            <!-- Button       
-        <Button   HorizontalAlignment="Center" Margin="376,671,287,0"  VerticalAlignment="Top" Width="137"  Click="Deletebtn_Click" FontSize="22">Delete</Button>
-        <Button Button.Visibility="Visible" HorizontalAlignment="Center" Margin="85,671,591,0" VerticalAlignment="Top" Width="124"  Click="Previousbtn_Click" FontSize="22">Previous</Button>
-        <Button     Button.Visibility="Visible" HorizontalAlignment="Center" Margin="85,741,591,0" VerticalAlignment="Top" Width="124"  Click="NextBtn_Click" FontSize="22" Height="34">Next</Button>
-        <Button x:Name="Savebutton"  Button.Visibility="Visible" HorizontalAlignment="Center" Margin="419,742,244,0" VerticalAlignment="Top" Width="137"  Click="Savebutton_Click" Height="33" FontSize="22">Save Changes</Button>
-       
-        <Label x:Name="label_Copy" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
-        <Button                                 HorizontalAlignment="Center" Margin="556,645,140,0" VerticalAlignment="Top" Width="104"  Click="finish_Click" FontSize="22">Finish</Button>
-       -->
 
 
 

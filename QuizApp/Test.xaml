@@ -162,7 +162,7 @@
                 Visibility="Visible"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                ToolTip="Next Question" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="648,736,81,0">
+                ToolTip="Next Question" Height="54" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="372,736,357,0">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
