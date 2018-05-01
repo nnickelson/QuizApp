@@ -12,13 +12,13 @@
         <Grid Background="#dfe3ee">
 
             <!-- These were all orginally hidden-->
-            <Rectangle x:Name="rect1" Rectangle.Visibility="Hidden" Fill="#f6f6f6" HorizontalAlignment="Center" Height="630" Margin="198,124,157,0" Stroke="Black" VerticalAlignment="Top" Width="428"/>
+            <Rectangle x:Name="rect1" Rectangle.Visibility="Hidden" Fill="#f6f6f6" HorizontalAlignment="Center" Height="630" Margin="198,124,157,0" Stroke="Black" VerticalAlignment="Top" Width="428" RadiusY="24" RadiusX="24"/>
             <Image   x:Name="ImageViewer1"                          HorizontalAlignment="Center" Margin="285,318,244,0" VerticalAlignment="Top"   Height="148" Width="254" Stretch="Fill"/>
 
             <TextBox TextBox.Visibility ="Hidden" x:Name="DeckTitletextBox"       HorizontalAlignment="Center" Margin="340,151,186,0"  VerticalAlignment="Top"  Height="23" Width="257" BorderThickness="0,0,0,1"/>
             <TextBox TextBox.Visibility ="Hidden" x:Name="CardNumberLabeltextBox" HorizontalAlignment="Center" Margin="340,187,335,0"  VerticalAlignment="Top" Width="108" BorderThickness="0,0,0,1" Height="21" IsReadOnly ="True"/>
             <TextBox TextBox.Visibility ="Hidden" x:Name="TermtextBox"            HorizontalAlignment="Center" Margin="226,488,209,0"  VerticalAlignment="Top" Width="348" AutomationProperties.IsRequiredForForm="True" Height="25" BorderThickness="0,0,0,2" Opacity="0.8" AutomationProperties.HelpText="Enter Term here"/>
-            <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitiontextBox"      HorizontalAlignment="Center" Margin="226,544,209,0"  VerticalAlignment="Top" Width="348" Opacity="0.8" BorderThickness="0,0,0,2" Height="103" VerticalScrollBarVisibility="Auto" FontSize="12" SpellCheck.IsEnabled="True" AcceptsTab="True" AcceptsReturn="True"/>
+            <TextBox TextBox.Visibility ="Hidden" x:Name="DefinitiontextBox"      HorizontalAlignment="Center" Margin="226,544,209,0"  VerticalAlignment="Top" Width="348" Opacity="0.8" BorderThickness="0,0,0,2" Height="103" VerticalScrollBarVisibility="Auto" FontSize="12" SpellCheck.IsEnabled="True" AcceptsTab="True" AcceptsReturn="True" TextWrapping="Wrap"/>
             <TextBox TextBox.Visibility ="Hidden"  x:Name="TotalCardsBox"         HorizontalAlignment="Center" Margin="340,222,335,0"  VerticalAlignment="Top" Width="108" BorderThickness="0,0,0,1" IsReadOnly ="True" Height="21" FontSize="12"/>
 
 

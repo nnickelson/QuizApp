@@ -10,14 +10,14 @@
     <ScrollViewer>
         <Grid Background="#dfe3ee">
             <Label Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"
-               FontSize="48" FontFamily="Georgia" Margin="328,99,291,787" Width="164">Home</Label>
+               FontSize="48" FontFamily="Georgia" Margin="337,132,302,768" Width="144">Home</Label>
 
             <!-- Add a button click here. click="Nextbtn_Click"  -->
             <Button              
                     x:Name="TakeAQuizbtn" 
                      Button.Visibility="Visible"
                 HorizontalAlignment="Center"
-                ToolTip="Here you can take the quizzes you created" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="559,486,103,345" Click="TakeAQuizbtn_Click">
+                ToolTip="Here you can take the quizzes you created" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="568,501,94,350" Click="TakeAQuizbtn_Click">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -39,7 +39,7 @@
                     x:Name ="StudyADeckbtn" 
                      Button.Visibility="Visible"
                 HorizontalAlignment="Center"
-                ToolTip="Here you can study the study decks that you created" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="122,500,540,351">
+                ToolTip="Here you can study the study decks that you created" Width="122"  RenderTransformOrigin="0.5,0.5" Margin="127,501,534,350">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -59,14 +59,14 @@
 
             <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
             <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
-            <Label x:Name="label1" Content="Take a Test" HorizontalAlignment="Center" Margin="582,582,134,343" VerticalAlignment="Center"/>
+            <Label x:Name="label1" Content="Take a Test" HorizontalAlignment="Center" Margin="596,583,120,356" VerticalAlignment="Center"/>
             <Label x:Name="label2" Content="Study a deck" HorizontalAlignment="Center" Margin="149,574,557,351" VerticalAlignment="Center"/>
-            
+
             <Button Click="CreateADeckbtn_Click"   
                 x:Name="CreateADeckbtn"          
                 Visibility="Visible"
                 HorizontalAlignment="Center"
-                ToolTip="Here you can create a study deck or question deck" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="122,260,540,571">
+                ToolTip="Here you can create a study deck or question deck" Width="121"  RenderTransformOrigin="0.975,0.517" Margin="138,291,524,574">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -83,13 +83,13 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Label x:Name="label3" Content="Create a deck" HorizontalAlignment="Center" Margin="144,345,557,580" VerticalAlignment="Center"/>
+            <Label x:Name="label3" Content="Create a deck" HorizontalAlignment="Center" Margin="149,362,552,563" VerticalAlignment="Center"/>
 
             <Button Click="ImportExportbtn_Click"   
                 x:Name ="ImportExportbtn" 
                 Visibility="Visible"
                 HorizontalAlignment="Center"
-                ToolTip="Here you can import another users: study deck, images, and/or question deck" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="339,390,323,441">
+                ToolTip="Here you can import another users: study deck, images, and/or question deck" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="349,390,313,441">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -106,13 +106,13 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Label x:Name="label4" Content="Import a deck" HorizontalAlignment="Center" Margin="358,482,342,443" VerticalAlignment="Center"/>
+            <Label x:Name="label4" Content="Import a deck" HorizontalAlignment="Center" Margin="368,482,332,443" VerticalAlignment="Center"/>
             <Button  
                 Click="CreateQuizbtn_Click"
                 x:Name="CreateAQuizbtn"  
                 Visibility="Visible"
                 HorizontalAlignment="Center"
-                ToolTip="Here you can create a quiz" Width="120"  RenderTransformOrigin="0.5,0.5" Margin="564,260,99,570">
+                ToolTip="Here you can create a quiz" Width="121"  RenderTransformOrigin="0.5,0.5" Margin="568,281,94,570">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
@@ -130,7 +130,7 @@
                 </Button.Template>
                 <Label x:Name="label5" Content="Label" Height="100" Width="100"/>
             </Button>
-            <Label x:Name="label6" Content="Create a quiz" HorizontalAlignment="Center" Margin="582,345,122,580" VerticalAlignment="Center"/>
+            <Label x:Name="label6" Content="Create a quiz" HorizontalAlignment="Center" Margin="592,369,112,570" VerticalAlignment="Center"/>
 
 
         </Grid>

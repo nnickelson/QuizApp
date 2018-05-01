@@ -11,7 +11,7 @@
     <ScrollViewer>
         <Grid Background="#dfe3ee">
             <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto"/>
-            <Rectangle Fill="#f6f6f6" HorizontalAlignment="Center" Height="630" Margin="199,118,173,0" Stroke="Black" VerticalAlignment="Top" Width="428"/>
+            <Rectangle Fill="#f6f6f6" HorizontalAlignment="Center" Height="630" Margin="195,118,160,0" Stroke="Black" VerticalAlignment="Top" Width="428" RadiusY="24" RadiusX="24"/>
 
             <!--Images-->
             <Image   x:Name="ImageViewer1"                          HorizontalAlignment="Center" Margin="285,318,244,0" VerticalAlignment="Top"   Height="148" Width="254" Stretch="Fill"/>

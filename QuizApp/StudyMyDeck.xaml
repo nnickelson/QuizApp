@@ -125,7 +125,9 @@
             <Label Label.Visibility="Hidden" x:Name="backslash" Content="/" HorizontalAlignment="Center" Margin="166,103,595,0" VerticalAlignment="Top" FontSize="24" Height="46" Width="22"/>
             <Label Label.Visibility="Hidden" x:Name="TotalCardsBox" Content="0" HorizontalAlignment="center" Margin="202,107,555,0" VerticalAlignment="Top" FontSize="22" Height="46" Width="26"/>
             <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24" Height="42"/>
-            <!-- Nav Menu-->
+            
+            
+            <!-- Nav Menu buttons below-->
             <Button Click="HomeBtn_Click"  
                 x:Name="HomeBtn_Copy"          
                 Visibility="Visible"

@@ -3,164 +3,164 @@ Project Quiz App Requirements
 Team members: Ron and Nathan
 
     1. Preliminary Constraints
-    
+[MET]    
         Name: platform_resolution
         Type: constraint
         Summary: Must work on 1080p monitors.
-
+[MET]
         Name: platform_os
         Type: constraint
         Summary: The target platform operating system is Windows 10.
-        
+[MET]        
         Name: integrated_development_environemnt 
         Type: constraint
         Summary: The primary IDE is Visual Studio 2015 Enterprise
-        
+[MET]       
         Name: format_language
         Type: constraint
         Summary: The primary programming language of the software is C#
-        
+[MET]        
         Name: format_graphical_user_interface_framework 
         Type: constraint
         Summary: The primary GUI framework is Microsoft's extensible Application Markup Language (XAML).
-        
+[MET]        
         Name: image_type
         Type: constraint
         Summary: Image types are JPEG.
-        
+[MET]       
         Name: character_encoding
         Type: constraint
         Summary: UTF-8-character encoding.
-
+[MET]
         Name: primary_language
         Type: constraint
         Summary: English is the primary language.
     
     2. Home page buttons
-    
+[MET]    
         Name: create_deck_button
         Type: functional
         Summary: Main menu button that takes user to the create deck submenu.
-
+[MET]
         Name: create_quiz_button
         Type: functional
         Summary: Main menu button that takes user to a create quiz submenu.
-
+[MET]
         Name: take_quiz_button
         Type: functional
         Summary: Main menu button that takes user to a take quiz submenu.
-
+[MET]
         Name: study_quiz_button
         Type: functional
         Summary: Main menu button that takes user to a study quiz submenu.
-
+[MET]
         Name: import_deck_button
         Type: functional
         Summary: Main menu button that takes user to an import deck submenu.
-
+[MET]
         Name: export_deck_button
         Type: functional
         Summary: Main menu button that takes user to an export deck submenu.
     
     3. Create a Deck  
-          [MET]
+[MET]
         Name: deck_title
         Type: functional
         Summary: Create a title for a deck.
         
-          [Not MET ]
+[MET]
         Name: deck_title_constraints
         Type: constraint
-        Summary: The title must start with an upper case alpahbetical character.
-             [MET]
+        Summary: The title must be a valid C# file name.
+[MET]
         Name: add_card
         Type: functional
         Summary: User can add a flashcard to a deck.
         
-          [MET]
+[MET]
         Name: delete_card
         Type: functional
-        Summary: Certain cards may be removed from the deck they belong to if necessary.
+        Summary: cards may be removed from the study deck they belong to if necessary.
         
-          [MET]
+[MET]
         Name: add_picture
         Type: functional
         Summary: Images can be added to the back of each card.
         
-          [MET]
+[MET]
         Name: remove_picture
         Type: functional
         Summary: Images can be removed from the back of each card to make room for text.
         
-          [MET]
+[MET]
         Name: image_location
         Type: constraint
         Summary: Images can only be on the back of each card.
         
-          [MET]
+[MET]
         Name: modify_card
         Type: constraint
         Summary: flashcards can be modifed once created.
         
-          [MET]
+[MET]
         Name: add_question
         Type: functional
         Summary: User can add a question to the deck
         
-          [NOT MET]
+[NOT MET]
         Name: delete_question
         Type: functional
         Summary: User can delete a question from a deck
         
-          [MET]
+[MET]
         Name: deck_storage
         Type: functional
         Summary: Each deck has a JSON file that stores the questions for that deck
         
-          [MET]
+[MET]
         Name: image_storage
         Type: functional
         Summary: Each deck stores flashcard pictures in the "Images" subfolder of that deck
         
     4. Create quiz question types
     
-            [MET]
+[MET]
         Name: multiple_choice_question
         Type: functional
         Summary: Allows user to create multiple choice questions
         
-          [MET]
+[MET]
         Name: radio_button_limit_multiple_choice
         Type: constraint
         Summary: Allows user to create multiple choice questions
-          [MET]
+[MET]
         Name: fill_in_the_blank_Question
         Type: functional
         Summary: Allows user to create fill in the blank questions
 
-          [MET]
+[MET]
         Name: true_or_false_question
         Type: functional
         Summary: Allows user to create true or false questions
 
-        [MET]
+[MET]
         Name: deck_choice
         Type: functional
         Summary: Must add question to an existing deck or create a new deck to add the question to
         
-        [NOT MET]
+[NOT MET]
         Name: question_stats
         Type: functional
         Summary: Keeps a running tally for a questions on how many times it has been answered correctly
         
-        [MET]
+[MET]
         Name: question_storage
         Type: constraint
         Summary: Questions of a deck are stored in the deck's JSON file
         
     5. Create the actual quiz
     
-    [MET]
+[MET]
         Name: choose_total_questions
         Type: functional
         Summary: Get the total number of questions
@@ -169,53 +169,53 @@ Team members: Ron and Nathan
         Type: functional
         Summary: Choose the deck or decks from where the questions are drawn
         
-        [MET]
+[MET]
         Name: timed_mode
         Type: functional
         Summary: Choose timed or untimed mode for quiz
         
-        [NOT MET]
+[NOT MET]
         Name: optional_checkbox_to_randomize_questions
         Type: functional
         Summary: Randomizes the order of the questions
         
-        [MET]
+[MET]
         Name: quiz_title
         Type: functional
         Summary: Give the quiz a title
         
-        [MET]
+[MET]
         Name: finish_creating_quiz
         Type: functional
         Summary: Store quiz settings to the quiz folder
     
         
     6. Start a Quiz
-        [MET] 
+[MET] 
         Name: load_quizzes_on_startup
         Type: functional
         Summary: Load quizzes from "MyQuizzes" folder on start up
         
-        [MET]
+[MET]
         Name: load_quiz_timer
         Type: functional
         Summary: Get the allotted time for the quiz
-        [MET]
+[MET]
         Name: start_quiz_timer
         Type: functional
         Summary: Start counting down the timer once the quiz starts
-        [MET]
+[MET]
         Name: choose_quiz_to_take
         Type: functional
         Summary: Allows user to choose a quiz to take
         
     7. Navigating Quiz
-        [MET]
+[MET]
         Name: next_quiz_question
         Type: functional
         Summary: Move forward to the next quiz question
         
-        [NOT MET]
+[NOT MET]
         Name: previous_quiz_question
         Type: functional
         Summary: Move backward to the previous quiz question
@@ -223,22 +223,22 @@ Team members: Ron and Nathan
   
     8. Quiz in progress
     
-            [MET]
+ [MET]
         Name: display_quiz_title
         Type: functional
         Summary: Quiz title is displayed.
        
-            [MET]
+ [MET]
         Name: current_question_number
         Type: functional
         Summary: Display the current quiz number out of the total questions in the top left corner (ex: 1/10)
         
-            [MET]
+ [MET]
         Name: remaining_time
         Type: functional
         Summary: Display the current time left in the quiz in the top right corner
         
-            [MET]
+ [MET]
         Name: quiz_time_exceeded
         Type: functional
         Summary: Once the countdown time reaches zero, automatically submit the quiz.
@@ -246,136 +246,135 @@ Team members: Ron and Nathan
   
    9. Submit the quiz
    
-            [MET]
+ [MET]
         Name: submit_quiz
         Type: functional
         Summary: Save all answer choices
            
-           [NOT MET]
+ [NOT MET]
         Name: check_if_all_questions_answered
         Type: constraint
         Summary: Check if the user has answered all questions, provided the time limit is not exceeded.
         
-          [NOT MET]
+ [NOT MET]
         Name: Display_unanswered_question_numbers
         Type: constraint
         Summary: Tell the user the question numbers they have not answered if they did not answer all of the questions
         
-           [NOT MET]
+ [NOT MET]
         Name: are_you_sure
         Type: functional
         Summary: Pop-up that verifies if the user really wants to submit the quiz provided the time limit is not exceeded
            
-           [MET]
+ [MET]
         Name: score_quiz
         Type: functional
         Summary: Calculate number of correct answers out of total questions
          
     10. Quiz Results page
     
-           [MET]
+ [MET]
         Name: get_quiz_score
         Type: functional
         Summary: Get the quiz score once it has been scored
-            [MET]
+ [MET]
         Name: display_quiz_score
         Type: functional
         Summary: Display the quiz score based off a percentage from 0 - 100%
         
-        [MET] ( except user knows as they progress through quiz)
+ [MET] ( except user knows as they progress through quiz)
         
         Name: display_which_question_numbers_were_wrong
         Type: functional
         Summary: Show question number of which questions are wrong
         
-        [MET]
+ [MET]
         Name: go_back_to_take_a_quiz_page
         Type: functional
         Summary: Returns the user back to the take a quiz page
         
-        [MET]
+ [MET]
         Name: quiz_storage
         Type: functional
         Summary: Information on individual quiz settings and scoring are stored in the quiz folder's JSON file
 
         
-    11. Choose a study deck
-    
-   [MET] ( Used windows file explorer so this was not needed )
+    11. Choose a study deck    
+[MET] ( Used windows file explorer so this was not needed )
         Name: load_decks_on_startup
         Type: functional
         Summary: Load all the users created decks from "MyDecks" folder on startup
         
-        [MET]
+[MET]
         Name: choose_a_deck_to_study
         Type: functional
         Summary: Select one deck the user would like to study
         
-        [MET] ( Used windows file explorer so this was not needed )
+[MET] ( Used windows file explorer so this was not needed )
         Name: sort_alphaNumerically
         type: functional
         Summary: Sort the given list of strings alpha-numerically.
 
         
-    12. Navigate a selected study deck
-    
-    [NOT MET]
+    12. Navigate a selected study deck    
+[NOT MET]
         Name: go_to_last_flashcard
         Type: functional
         Summary: Allows the user to jump to the last flash card in the deck
         
-         [NOT MET]
+[NOT MET]
         Name: go_to_first_flashcard
         Type: functional
-        Summary: Allows the user to jump to the first flash card in the deck
+         Summary: Allows the user to jump to the first flash card in the deck
         
-         [ MET]
+[MET]
         Name: go_to_next_flashcard
         Type: functional
         Summary: Move forward to the next flash card
         
-         [ MET]
+[MET]
         Name: go_to_previous_flashcard
         Type: functional
         Summary: Move backward to the previous flash card
         
-         [ MET]
+[MET]
         Name: flip_flashcard
         Type: functional
         Summary: Flip flashcard to the opposite side
        
-        [MET]
+[MET]
         Name: finished_studying
         Type: functional
         Summary: Return to "choose a deck to study" page
     
-    13. Import/Export Decks and Quizzes
-    
-     [ MET]
+    13. Import/Export Decks and Quizzes    
+[MET]
         Name: import_Deck
         Type: functional
         Summary: A deck file representing a set of flashcards will be placed on the "MyDecks" folder to be loaded on start up.
 
- [ MET]
+[MET]
         Name: export_Deck
         Type: functional
         Summary: Deck files can be exported to the "MyDecks" folder. 
 
         
     14. Navigation Menu
-     [ MET]
+[MET]
         Name: Return_Home
         Type: functional
         Summary: Returns the user back to the homepage.
- [ MET]
+        
+[MET]
         Name: Go_To_Create_Deck
         Type: functional
         Summary: Takes the user to the create a deck page. 
- [NOT MET]   
+        
+[MET]  ( but uses the file explorer to navigate to a list of created decks organized in folders ) 
         Name: My_Deck
         Type: functional
         Summary: Takes the user to a list of their created decks organized from left to right in alphabetical order (a - z).
-        
+[MET]       
         Name: Go_To_Import_Export
         Type: functional
         Summary: Takes the user to the import/export deck page.

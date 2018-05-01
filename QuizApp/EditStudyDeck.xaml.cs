@@ -222,6 +222,7 @@ namespace QuizApp
                 CurrentCardTextbox.Text = "";
                 TotalCardstextBox.Text = "";
                 currentlyEditing.Text = "";
+                ImageViewer1.Source = null;
             }
         }
 

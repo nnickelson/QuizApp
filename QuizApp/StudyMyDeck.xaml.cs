@@ -98,6 +98,33 @@ namespace QuizApp
             }
         }
 
+  
+        // This button loads the first card in the deck
+        private void First_Click(object sender, RoutedEventArgs e)
+        {
+            index = 0;
+            f = Deck.cards[index];
+            TermBlock.Text = f.Front;
+            DefinitionBox.Text = f.Back;
+            CurrentCardTextbox.Content = (index + 1).ToString();
+            loadImage();
+            makeFrontVisible();
+            IsFrontShowing = true;
+        }
+
+        // This button loads the last card in the deck
+        private void Last_Click(object sender, RoutedEventArgs e)
+        {
+            index = Deck.cards.Count - 1;
+            f = Deck.cards[index];
+            TermBlock.Text = f.Front;
+            DefinitionBox.Text = f.Back;
+            CurrentCardTextbox.Content = (index + 1).ToString();
+            loadImage();
+            makeFrontVisible();
+            IsFrontShowing = true;
+        }
+
         // This button loads the next flashcard in the deck.
         private void Nextbtn_Click(object sender, RoutedEventArgs e)
         {
@@ -198,6 +225,8 @@ namespace QuizApp
         {
             NavigationService.Navigate(new Uri("Test.xaml", UriKind.Relative));
         }
+
+ 
     }
 
 
