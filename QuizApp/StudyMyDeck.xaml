@@ -262,7 +262,6 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
 
         </Grid>
     </ScrollViewer>
