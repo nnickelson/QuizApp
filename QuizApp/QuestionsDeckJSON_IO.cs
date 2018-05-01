@@ -21,11 +21,7 @@ namespace QuizApp
         private List<QuestionsDeck> deckList;
         JavaScriptSerializer ser;
         //private String addQuestion;
-        //
        
-
-
-
         public QuestionsDeckJSON_IO()
         {
             Deck = new QuestionsDeck();
@@ -195,40 +191,6 @@ namespace QuizApp
             return QuizSettings;
         }
 
-        // Get total questions
-        //TotalQuestions.Content = QuizDecks.NumberOfQuestions;
-
-        // Get the quiz name
-        //TestName.Text = QuizDecks.QuizName;
-
-        // If the quiz is timed then start the timer
-        /**********************************************
-        if (QuizDecks.IsTimed)
-        {
-            _time = TimeSpan.FromMinutes(QuizDecks.QuizMinutes);
-
-            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                {
-                    tb.Text = _time.ToString("c");
-                    if (_time == TimeSpan.Zero)
-                    {
-                        _timer.Stop();
-                        finish_Click(sender, e);
-                    }
-                    _time = _time.Add(TimeSpan.FromSeconds(-1));
-                }
-            }, Application.Current.Dispatcher);
-
-
-            _timer.Start();
-
-        }
-        ************************************************************/
-
-        //NextBtn_Click(sender, e);
-
-
         /// <summary>
         /// Properties section
         /// </summary>
@@ -236,12 +198,12 @@ namespace QuizApp
         {
             get
             {
-                return FileName1;
+                return fileName;
             }
 
             set
             {
-                FileName1 = value;
+                fileName = value;
             }
         }
 
@@ -249,12 +211,12 @@ namespace QuizApp
         {
             get
             {
-                return JSONquestions2;
+                return JSONquestions;
             }
 
             set
             {
-                JSONquestions2 = value;
+                JSONquestions = value;
             }
         }
 
@@ -262,12 +224,12 @@ namespace QuizApp
         {
             get
             {
-                return DeckList1;
+                return deckList;
             }
 
             set
             {
-                DeckList1 = value;
+                deckList = value;
             }
         }
 
@@ -297,44 +259,9 @@ namespace QuizApp
             }
         }
 
-        public string FileName1
-        {
-            get
-            {
-                return fileName;
-            }
+        
 
-            set
-            {
-                fileName = value;
-            }
-        }
-
-        public string JSONquestions2
-        {
-            get
-            {
-                return JSONquestions;
-            }
-
-            set
-            {
-                JSONquestions = value;
-            }
-        }
-
-        public List<QuestionsDeck> DeckList1
-        {
-            get
-            {
-                return deckList;
-            }
-
-            set
-            {
-                deckList = value;
-            }
-        }
+ 
     }
 }
 

@@ -78,7 +78,6 @@
     <Compile Include="Question.cs" />
     <Compile Include="QuestionsDeck.cs" />
     <Compile Include="QuizSettings.cs" />
-    <Compile Include="Results.cs" />
     <Compile Include="StudyMyDeck.xaml.cs">
       <DependentUpon>StudyMyDeck.xaml</DependentUpon>
     </Compile>
