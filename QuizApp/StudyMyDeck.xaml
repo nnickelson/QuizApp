@@ -12,7 +12,7 @@
 
             <Rectangle Fill="#3a5998" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="TOP" Width="Auto" />
 
-            <Rectangle Rectangle.Visibility ="Hidden" x:Name="Rectangle1" HorizontalAlignment="Center" Height="430" Margin="47,199,27,0" VerticalAlignment="Top" Width="709" Fill="#f6f6f6" RadiusY="41.5" RadiusX="41.5" Grid.ColumnSpan="2"/>
+            <Rectangle Rectangle.Visibility ="Visible" x:Name="Rectangle1" HorizontalAlignment="Center" Height="430" Margin="47,199,27,0" VerticalAlignment="Top" Width="709" Fill="#f6f6f6" RadiusY="41.5" RadiusX="41.5" Grid.ColumnSpan="2"/>
 
             <Button  x:Name="SelectADeckbtn" Content="Select a Deck" HorizontalAlignment="Center" Margin="548,108,71,0" VerticalAlignment="Top" Width="164" Height="37" Click="SelectADeckbtn_Click" FontSize="24"/>
             <TextBox IsReadOnly ="True" x:Name="DeckTitlebox" HorizontalAlignment="Center" Height="37" Margin="78,108,41,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" FontSize="24"  />
@@ -24,7 +24,7 @@
             </Image>
             <Button Click="Nextbtn_Click"    
                     x:Name="Nextbtn"
-                     Button.Visibility="Hidden"
+                     Button.Visibility="Visible"
                 HorizontalAlignment="Center"
                 ToolTip="Next flashcard" Width="54"  RenderTransformOrigin="0.5,0.5" Margin="401,640,328,245">
                 <Button.Template>
@@ -45,7 +45,7 @@
             </Button>
 
             <Button Click="Previousbtn_Click"
-                    Button.Visibility="Hidden"
+                    Button.Visibility="Visible"
                x:Name="Previousbtn"
                 HorizontalAlignment="Center"
                 ToolTip="Previous flashcard" Width="54"  RenderTransformOrigin="-0.179,1.074" Margin="320,640,409,245">
@@ -76,7 +76,7 @@
 
    
             <Button Click="Flipbtn_Click"  
-                     Button.Visibility="Hidden"
+                     Button.Visibility="Visible"
                     x:Name="Flipbtn"
                 HorizontalAlignment="Center"
                 ToolTip="Flip the flashcard" Width="54" RenderTransformOrigin="0.5,0.5" Margin="526,640,203,245" >
@@ -98,7 +98,7 @@
             </Button>
 
             <Button Click="Finishedbtn_Click"  
-                     Button.Visibility="Hidden"
+                     Button.Visibility="Visible"
                     x:Name="Finishedbtn"
                 HorizontalAlignment="Center"
                 ToolTip="Go back to Home screen" Width="54" RenderTransformOrigin="0.5,0.5" Margin="604,640,125,245" >
@@ -125,7 +125,9 @@
             <Label Label.Visibility="Hidden" x:Name="backslash" Content="/" HorizontalAlignment="Center" Margin="166,103,595,0" VerticalAlignment="Top" FontSize="24" Height="46" Width="22"/>
             <Label Label.Visibility="Hidden" x:Name="TotalCardsBox" Content="0" HorizontalAlignment="center" Margin="202,107,555,0" VerticalAlignment="Top" FontSize="22" Height="46" Width="26"/>
             <Label x:Name="label" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24" Height="42"/>
-            <!-- Nav Menu-->
+            
+            
+            <!-- Nav Menu buttons below-->
             <Button Click="HomeBtn_Click"  
                 x:Name="HomeBtn_Copy"          
                 Visibility="Visible"
@@ -255,6 +257,40 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="theBorder"
                                     Value="#3a5998"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="First" Content="Button" HorizontalAlignment="Left" Margin="10,640,0,0" VerticalAlignment="Top" Width="75" Click="First_Click"/>
+            
+            <Button x:Name="Last" Content="Button" HorizontalAlignment="Left" Margin="350,739,0,0" VerticalAlignment="Top" Width="74" Click="Last_Click"/>
+            <Button Click="Previousbtn_Click"
+                Visibility="Visible"
+                x:Name="Previousbtn_Copy"
+                HorizontalAlignment="Center"
+                ToolTip="Previous flashcard" Width="54"  RenderTransformOrigin="-0.179,1.074" Margin="179,694,550,191">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="76.048"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+               
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="2">
+                            <Image Source="FirstLast.png" Height="55"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="theBorder"
+                                    Value="#dfe3ee"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
