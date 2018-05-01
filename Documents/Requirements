@@ -299,8 +299,7 @@ Team members: Ron and Nathan
         Summary: Information on individual quiz settings and scoring are stored in the quiz folder's JSON file
 
         
-    11. Choose a study deck
-    
+    11. Choose a study deck    
 [MET] ( Used windows file explorer so this was not needed )
         Name: load_decks_on_startup
         Type: functional
@@ -371,11 +370,11 @@ Team members: Ron and Nathan
         Type: functional
         Summary: Takes the user to the create a deck page. 
         
- [MET]  ( but uses the file explorer to navigate to a list of created decks organized in folders ) 
+[MET]  ( but uses the file explorer to navigate to a list of created decks organized in folders ) 
         Name: My_Deck
         Type: functional
         Summary: Takes the user to a list of their created decks organized from left to right in alphabetical order (a - z).
-        
+[MET]       
         Name: Go_To_Import_Export
         Type: functional
         Summary: Takes the user to the import/export deck page.
