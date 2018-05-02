@@ -33,7 +33,7 @@
             <Label x:Name="label_Copy" Content="QuizApp" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="112" Foreground="White" FontSize="24"/>
 
             <Button x:Name="SelectADeckbtn"                         HorizontalAlignment="Center" Margin="364,142,260,0"  VerticalAlignment="Top" Width="159" Click="SelectADeckbtn_Click" FontSize="16">Select a deck to edit</Button>
-            <Button x:Name="button"      Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="364,293,349,0"  VerticalAlignment="Top" Width="70"  Click="button_Click">Add Image</Button>
+            <Button x:Name="button"      Button.Visibility="Hidden" HorizontalAlignment="Center" Margin="364,293,349,0"  VerticalAlignment="Top" Width="70"  Click="SelectImagebtn_Click">Add Image</Button>
 
             <Button Click="Deletebtn_Click"   
            x:Name="Deletebtn" 
@@ -58,7 +58,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Click="finish_Click"   
+            <Button Click="Finishbtn_Click"   
             x:Name="finish" 
             Visibility="Hidden"
             HorizontalAlignment="Center"
@@ -135,7 +135,7 @@
                 </Button.Template>
             </Button>
 
-            <Button  Click="Savebutton_Click"    
+            <Button  Click="Savebtn_Click"    
                  
             x:Name="Savebutton" 
             Visibility="Hidden"

@@ -25,7 +25,7 @@ namespace QuizApp
         StudyDeck Deck = new StudyDeck();
         string JSONflashcards;
         int index = 0;
-        Flashcards f;
+        Flashcards flashCard;
         string filePath;
         JavaScriptSerializer ser = new JavaScriptSerializer();
 
@@ -68,10 +68,10 @@ namespace QuizApp
                         JSONflashcards = File.ReadAllText(filePath);
                         Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                         TotalCardstextBox.Text = (Deck.cards.Count).ToString();
-                        f = Deck.cards[index];
+                        flashCard = Deck.cards[index];
 
-                        TermtextBox.Text = f.Front;
-                        DefinitiontextBox.Text = f.Back;
+                        TermtextBox.Text = flashCard.Front;
+                        DefinitiontextBox.Text = flashCard.Back;
                         CurrentCardTextbox.Text = (index + 1).ToString();
                         loadImage();
                     }
@@ -85,7 +85,7 @@ namespace QuizApp
         }
 
         // This button opens the file explorer and allows the user to select an image for a flashcard.
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void SelectImagebtn_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
             dlg.InitialDirectory = "c:\\";
@@ -104,24 +104,24 @@ namespace QuizApp
         }
 
         // This button manually saves and edits made to the current flash card.
-        private void Savebutton_Click(object sender, RoutedEventArgs e)
+        private void Savebtn_Click(object sender, RoutedEventArgs e)
         {
             // If both the term and defintion exist then add it to the set
             if (!string.IsNullOrEmpty(TermtextBox.Text) && !string.IsNullOrEmpty(DefinitiontextBox.Text))
             {
                 if (ImageViewer1.Source != null)
                 {
-                    f.Front = TermtextBox.Text;
-                    f.Back = DefinitiontextBox.Text;
-                    f.image = (ImageViewer1.Source).ToString();
-                    Deck.cards[index] = f;
+                    flashCard.Front = TermtextBox.Text;
+                    flashCard.Back = DefinitiontextBox.Text;
+                    flashCard.image = (ImageViewer1.Source).ToString();
+                    Deck.cards[index] = flashCard;
                 }
                 else
                 {
-                    f.Front = TermtextBox.Text;
-                    f.Back = DefinitiontextBox.Text;
-                    f.image = null;
-                    Deck.cards[index] = f;
+                    flashCard.Front = TermtextBox.Text;
+                    flashCard.Back = DefinitiontextBox.Text;
+                    flashCard.image = null;
+                    Deck.cards[index] = flashCard;
                 }
                 // Reserialize the object and store it as a String
                 string outputJSON = ser.Serialize(Deck);
@@ -151,9 +151,9 @@ namespace QuizApp
                 index++;
 
                 // Load flashcards onto the form.
-                f = Deck.cards[index];
-                TermtextBox.Text = f.Front;
-                DefinitiontextBox.Text = f.Back;
+                flashCard = Deck.cards[index];
+                TermtextBox.Text = flashCard.Front;
+                DefinitiontextBox.Text = flashCard.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
 
                 // Load the image if it exist onto the form.
@@ -170,9 +170,9 @@ namespace QuizApp
                 index--;
 
                 // Load flashcards onto the form.
-                f = Deck.cards[index];
-                TermtextBox.Text = f.Front;
-                DefinitiontextBox.Text = f.Back;
+                flashCard = Deck.cards[index];
+                TermtextBox.Text = flashCard.Front;
+                DefinitiontextBox.Text = flashCard.Back;
                 CurrentCardTextbox.Text = (index + 1).ToString();
 
                 // Load the image if it exist onto the form.
@@ -185,7 +185,7 @@ namespace QuizApp
         {
             if (Deck.cards.Count > 1) // At least one card in the deck
             {
-                Deck.cards.Remove(f);
+                Deck.cards.Remove(flashCard);
                 index--;
                 CurrentCardTextbox.Text = (index + 1).ToString();
                 TotalCardstextBox.Text = (Deck.cards.Count).ToString();
@@ -227,7 +227,7 @@ namespace QuizApp
         }
 
         // This button takes the user back to the Edit study deck page.
-        private void finish_Click(object sender, RoutedEventArgs e)
+        private void Finishbtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
                new Uri("/CreateStudySet.xaml", UriKind.Relative));
@@ -235,11 +235,11 @@ namespace QuizApp
 
         void loadImage()
         {
-            if (f.image != null)
+            if (flashCard.image != null)
             {
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.UriSource = new Uri(f.image);
+                bitmap.UriSource = new Uri(flashCard.image);
                 bitmap.EndInit();
                 ImageViewer1.Source = bitmap;
               
