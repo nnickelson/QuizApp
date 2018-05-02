@@ -12,7 +12,7 @@ namespace QuizApp
     {
         private Canvas bottomCanvas;
         private TextBox tb1, tb2;
-        int fontsize = 16;
+        private int fontsize = 16;
 
         public FillInBlankCanvas(double height, double width)
         {

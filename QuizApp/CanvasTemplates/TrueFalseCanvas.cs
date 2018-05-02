@@ -10,7 +10,7 @@ namespace QuizApp
 {
     public class TrueFalseCanvas
     {
-        int fontSize = 16;
+        private int fontSize = 16;
         private Canvas bottomCanvas;
         private TextBox questionBox;
         private RadioButton buttonTrue, buttonFalse; 

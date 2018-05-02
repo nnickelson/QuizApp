@@ -10,7 +10,7 @@ namespace QuizApp
 {
     public class MultipleChoiceCanvas
     {
-        int fontsize = 16;
+        private int fontsize = 16;
         private Canvas bottomCanvas;
         private TextBox questionBox;
         private List<TextBox> answerBoxes;
