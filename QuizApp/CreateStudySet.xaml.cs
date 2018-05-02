@@ -223,7 +223,7 @@ namespace QuizApp
             return true;
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void EditStudyDeckButton_Click(object sender, RoutedEventArgs e)
         {
             button1.Visibility = Visibility.Hidden;
             button2.Visibility = Visibility.Hidden;
