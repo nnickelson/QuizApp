@@ -68,7 +68,7 @@ namespace QuizApp
             RootPath += @"\QuizApp\";
             String QuestionsDeckPath = RootPath + @"\QuestionDecks\";
             File.WriteAllText(QuestionsDeckPath + (questionsDeck.DeckName) + ".QuestionsDeck.json", outputJSON);
-            MessageBox.Show("file: " + FileName + " written.");
+            //MessageBox.Show("file: " + FileName + " written.");
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace QuizApp
         {
             String filePath;
             Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            openFileDialog.Filter = "JSON files (*QuizSettings.JSON)|*QuizSettings.JSON";
             if (openFileDialog.ShowDialog() == true)
             {
                 filePath = openFileDialog.FileName;// Get the files path.
