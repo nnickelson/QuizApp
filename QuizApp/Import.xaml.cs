@@ -26,6 +26,7 @@ namespace QuizApp
         //Work variable
         string Destination;
         JavaScriptSerializer ser = new JavaScriptSerializer();
+        string filePath;
 
         public Import()
         {
@@ -43,18 +44,27 @@ namespace QuizApp
             Destination += @"\QuestionDecks\";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            openFileDialog.Filter = "JSON files (*QuestionsDeck.JSON)|*QuestionsDeck.JSON";
             openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == true)
             {
-                foreach (string Source in openFileDialog.FileNames)
+                filePath = openFileDialog.FileName;// Get the files path.
+                if (filePath.Contains(".QuestionsDeck"))
                 {
-                    // Copy the file to the destination if it is not already in the specified destination
-                    if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
-                        File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                    foreach (string Source in openFileDialog.FileNames)
+                    {
+                        // Copy the file to the destination if it is not already in the specified destination
+                        if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
+                            File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                    }
+                    // Show "Saved Successfully message"
+                    textBlock.Visibility = Visibility.Visible;
                 }
-                // Show "Saved Successfully message"
-                textBlock.Visibility = Visibility.Visible;
+                else
+                {
+                    MessageBox.Show("This button only allows you to import Question Decks."
+                            + " Please try again or choose another option", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
@@ -105,18 +115,26 @@ namespace QuizApp
             Destination += @"\StudyDecks\";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            openFileDialog.Filter = "JSON files (*StudyDeck.JSON)|*StudyDeck.JSON";
             openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == true)
             {
-                foreach (string Source in openFileDialog.FileNames)
+                filePath = openFileDialog.FileName;// Get the files path.
+                if (filePath.Contains(".StudyDeck"))
                 {
-                    // Copy the file to the destination if it is not already in the specified destination
-                    if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
-                        File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                    foreach (string Source in openFileDialog.FileNames)
+                    {
+                        // Copy the file to the destination if it is not already in the specified destination
+                        if (!File.Exists(Destination + System.IO.Path.GetFileName(Source)))
+                            File.Copy(Source, Destination + System.IO.Path.GetFileName(Source));
+                    }
+                    // Show "Saved Successfully message"
+                    textBlock.Visibility = Visibility.Visible;
+                } else
+                {
+                    MessageBox.Show("This button only allows you to import Study Decks."
+                        + " Please try again or choose another option", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                // Show "Saved Successfully message"
-                textBlock.Visibility = Visibility.Visible;
             }
         }
 

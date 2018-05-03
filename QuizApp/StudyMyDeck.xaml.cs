@@ -62,7 +62,7 @@ namespace QuizApp
         {
             index = 0;
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            openFileDialog.Filter = "JSON files (*StudyDeck.JSON)|*StudyDeck.JSON";
             if (openFileDialog.ShowDialog() == true)
             {
                 path = openFileDialog.FileName; // get file path

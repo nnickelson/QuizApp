@@ -38,7 +38,7 @@ namespace QuizApp
         private void SelectADeckbtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.JSON)|*.JSON";
+            openFileDialog.Filter = "JSON files (*StudyDeck.JSON)|*StudyDeck.JSON";
             if (openFileDialog.ShowDialog() == true)
             {
                 filePath = openFileDialog.FileName;// Get the files path.

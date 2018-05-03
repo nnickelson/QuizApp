@@ -158,6 +158,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+            <Button x:Name="StudyDeck_Copy" Content="Study Deck" HorizontalAlignment="Center" Margin="132,437,549,0" VerticalAlignment="Top" Width="102" Height="26" Click="StudyDeck_Click"/>
         </Grid>
     </ScrollViewer>
 </Page>

@@ -66,7 +66,7 @@
                 x:Name="CreateADeckbtn"          
                 Visibility="Visible"
                 HorizontalAlignment="Center"
-                ToolTip="Here you can create a study deck or question deck" Width="121"  RenderTransformOrigin="0.975,0.517" Margin="138,291,524,574">
+                ToolTip="Here you can create a study deck or question deck" Width="121"  RenderTransformOrigin="0.975,0.517" Margin="128,291,534,574">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="theBorder"
