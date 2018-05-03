@@ -43,7 +43,7 @@
 
 
             <!-- unhide when ndone editing-->
-            <Button Click="EditStudyDeckButton_Click"  
+            <Button Click="button1_Click"  
                x:Name="button1"          
                 Visibility="Visible"
                 HorizontalAlignment="Center"

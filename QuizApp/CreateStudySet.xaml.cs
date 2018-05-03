@@ -63,22 +63,24 @@ namespace QuizApp
                 // Get filepaths so that they may be written to the correct folder. 
                 string RootPath, StudyDecksPath, ImagePath, QuestionsDeckPath;
                 RootPath = StudyDecksPath = ImagePath = QuestionsDeckPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                RootPath += @"\QuizApp\";
-                StudyDecksPath = RootPath + @"\StudyDecks\";
-                ImagePath = RootPath + @"\Images\";
-                QuestionsDeckPath = RootPath + @"\QuestionDecks\";
+                RootPath += @"\QuizApp";
+                StudyDecksPath = RootPath + @"\StudyDecks";
+                ImagePath = RootPath + @"\Images";
 
+                string filePath = StudyDecksPath + @"\" + fileName + ".StudyDeck.json";
                 if (currentCard == 0)
                 {
                     fileName = DeckTitletextBox.Text;
                     fileName = fileName.Trim();
 
-
+                    
                     // If the file exists then update it.
-                    if (File.Exists(StudyDecksPath + @"\" + fileName + ".StudyDeck.json"))
+                    if (File.Exists(filePath))
                     {
                         // This reads the JSON file as one big long string .                   
-                        JSONflashcards = File.ReadAllText(StudyDecksPath + @"\" + fileName + ".StudyDeck.json");
+                        JSONflashcards = File.ReadAllText(filePath);
+
+                        //MessageBox.Show("Input path: " + filePath, "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
                         // This parses that string back into an object.
                         Deck = ser.Deserialize<StudyDeck>(JSONflashcards);
                     }
@@ -105,8 +107,10 @@ namespace QuizApp
                     string outputJSON = ser.Serialize(Deck);
 
                     // Write that string back to the JSON file.
-                    File.WriteAllText(StudyDecksPath + fileName, outputJSON);
+                    File.WriteAllText(filePath, outputJSON);
+                    //MessageBox.Show("Output path: " + filePath, "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                    //  MessageBox.Show("Reserialize object and store it", "Help Window", MessageBoxButton.OK, MessageBoxImage.Information);
                     // Increment total cards and reset text boxes.
                     currentCard++;
                     TermtextBox.Text = "";
@@ -223,7 +227,7 @@ namespace QuizApp
             return true;
         }
 
-        private void EditStudyDeckButton_Click(object sender, RoutedEventArgs e)
+        private void button1_Click(object sender, RoutedEventArgs e)
         {
             button1.Visibility = Visibility.Hidden;
             button2.Visibility = Visibility.Hidden;
